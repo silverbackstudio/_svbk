@@ -836,7 +836,7 @@ function _svbk_calculate_image_sizes( $sizes, $size ) {
 
 	// Reduced content with sidebar
 	if ( $has_sidebar ) {
-		// If the image size is less than the sidebar with use that, instead set the max with to `$content_with_sidebar_width`.
+		// If the image size is less than the sidebar width: use that, instead set the max with to `$content_with_sidebar_width`.
 		$sizes = sprintf( '(max-width: %1$dpx) 94vw, (max-width: %2$dpx) 68vw, %3$dpx', $main_breakpoints['tablet-landscape'], $main_breakpoints['desktop'], $width <= $content_with_sidebar_width ? $width : $content_with_sidebar_width);
 	}
 
