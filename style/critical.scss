@@ -7,27 +7,6 @@
 @import "footer/footer";
 //@import "layout/in-grid";
 
-/*
-// Loading/loaded content
-
-.domloading .site-content,
-.domready--show {
-	display: none;
-}
-
-.domready {
-
-	.domready--show {
-		display: block;
-	}
-
-	.domready--hide {
-		display: none;
-	}
-}
-
-*/
-
 // Elements
 
 img {
@@ -161,6 +140,47 @@ img {
 		margin-left: auto;
 		margin-right: auto;
 	}
+}
+
+// Blocks
+
+.wp-block-svbk-bullet__icon,
+.wp-block-svbk-card__icon {
+	width: 100px;
+	height: 100px;
+}
+
+.wp-block-svbk-grid {
+	display: flex;
+	justify-content: space-between;
+
+    @media screen and (max-width: breakpoint('tablet-landscape')) {
+    
+		@for $i from 1 through 3 {
+
+			&.has-#{$i}-columns-mobile {
+
+				> * {
+					flex-basis: (100% - (2% * ($i - 1)))/$i;
+					max-width: none;
+				}
+			}
+		}
+	}
+
+    @media screen and (min-width: breakpoint('tablet-landscape')) {
+
+        @for $i from 2 through 6 {
+    
+				&.has-#{$i}-columns {
+
+				> * {
+					flex-basis: (100% - (2% * ($i - 1)))/$i;
+					max-width: none;
+				}
+            }
+        }
+    }
 }
 
 // Flickity Gallery
