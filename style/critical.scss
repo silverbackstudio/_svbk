@@ -95,11 +95,39 @@ img {
 	h1, h2, h3, h4, h5, h6,
 	.wp-block-pullquote,
 	.wp-block-svbk-icon-paragraph,
+	.wp-block-button,
+	.wp-block-separator {
+		max-width: $size__text-width;
+	}
+
+	p, ul, ol,
+	h1, h2, h3, h4, h5, h6,
+	.wp-block-pullquote,
+	.wp-block-svbk-icon-paragraph,
 	.wp-block-button {
 		margin-left: auto;
 		margin-right: auto;
-		max-width: $size__large-text-width;
 	}
+
+	h1, h2 {
+		margin-top: 0;
+	}
+
+	@media screen and (min-width: $size__text-width) {
+
+		.wp-block-separator {
+				margin-left: calc((100% - 740px)/2);
+		}
+
+		.has-text-align-center + .wp-block-separator {
+			margin-left: auto;
+		}
+	}
+}
+
+img {
+	max-width: 100%;
+	height: auto;
 }
 
 .site-header {
