@@ -431,8 +431,6 @@ function _svbk_scripts() {
 		]
 	);
 
-	/*
-
 	// Styles common to all pages
 	Style::enqueue(
 		'_svbk-common',
@@ -533,8 +531,6 @@ function _svbk_scripts() {
 		]
 	);
 	wp_style_add_data( '_svbk-ie8', 'conditional', 'lt IE 9' );
-
-	*/
 
 	// Sub menu toggling class
 	Script::enqueue(

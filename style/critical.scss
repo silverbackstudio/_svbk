@@ -70,7 +70,9 @@ img {
 .wp-block-group.alignwide,
 .wp-block-media-text.alignwide,
 .wp-block-image.alignwide,
-.wp-block-cover.alignwide {
+.wp-block-cover.alignwide,
+.wp-block-image.alignfull,
+.wp-block-cover.alignfull {
 
     @media screen and (min-width: $size__page-max-width) {
 		margin: 30px #{-$padding__content-desktop};
