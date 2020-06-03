@@ -73,6 +73,8 @@ img {
 .wp-block-cover.alignwide,
 .wp-block-image.alignfull,
 .wp-block-cover.alignfull {
+	margin-top: 0;
+	margin-bottom: 0;
 
     @media screen and (min-width: $size__page-max-width) {
 		margin: 30px #{-$padding__content-desktop};
