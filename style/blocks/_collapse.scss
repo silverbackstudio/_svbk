@@ -82,10 +82,11 @@
     &.is-style-faq,
     &.is-style-accordion {
         background: #fff;
-        box-shadow: $shadow__card;
         margin-bottom: 1em;
         margin-left: auto;
         margin-right: auto;
+        border-radius: $border-radius;
+        box-shadow: $shadow__card;
 
         .wp-block-svbk-collapse__trigger {
             @include font-size(1.2);
@@ -96,20 +97,21 @@
             text-decoration: none;
             font-weight: bold;
             color: $color__text-main;
+            border-radius: $border-radius;
 
             &:after {
                 @include icon-content('\e90a');
                 @include font-size(.9);
-                background: $color__corporate;
-                color: #fff;
                 position: absolute;
-                right: 10px;
-                top: 10px;
-                width: 30px;
-                height: 30px;
-                line-height: 30px;
+                right: 1em;
+                top: 1em;
+                width: 2.15em;
+                height: 2.15em;
+                line-height: 2.15em;
                 text-align: center;
                 border-radius: 50%;
+                background: $color__background-button;
+                color: #fff;
                 box-shadow: $shadow__card;
             }
         }
@@ -121,6 +123,7 @@
         &.wp-block-svbk-collapse--open {
             
             .wp-block-svbk-collapse__trigger {
+                border-radius: $border-radius $border-radius 0 0;
 
                 &:after {
                     @include icon-content('\e909');
@@ -140,16 +143,17 @@
             margin-top: 0;
             
             .wp-block-svbk-collapse__trigger {
-                padding: 15px 50px;
+                padding: 1em 2.9em;
             
                 &:before {
                     @include icon-content('\e928');
-                    @include font-size(1.7);
+                    font-size: 1.5em;
+                    color: $color__corporate;
+                    line-height: normal;
                     font-weight: normal;
                     position: absolute;
-                    top: 15px;
-                    left: 15px;
-                    color: $color__corporate-secondary;
+                    top: .6em;
+                    left: .6em;
                 }
             }
         }
