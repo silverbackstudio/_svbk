@@ -37,6 +37,7 @@ import * as productRating from './product/rating';
 import * as callus from './call-us';
 import * as card from './card';
 import * as icon from './icon';
+import * as postIndex from './post-index';
 import * as bullet from './bullet';
 import * as profile from './profile';
 import * as stats from './stats';
@@ -68,6 +69,7 @@ wp.hooks.addFilter( 'blocks.registerBlockType', 'svbk/appearance-controls', with
 	callus,
 	card,
 	icon,
+	postIndex,
 	bullet,
 	profile,
 	stats,
