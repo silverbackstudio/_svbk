@@ -1,13 +1,17 @@
 {
-    "name": "silverbackstudio/theme_svbk",
-    "description": "Silverback _svbk Theme",
+    "name": "silverback/wp-theme",
+    "description": "Silverback Wordpress Theme Boilerplate",
     "type": "wordpress-theme",
     "license": "MIT",
     "authors": [
         {
             "name": "Brando Meniconi",
             "email": "b.meniconi@silverbackstudio.io"
-        }
+        },
+        {
+            "name": "Costanza Focardi",
+            "email": "c.focardi@silverbackstudio.io"
+        }        
     ],
     "repositories": [
         {

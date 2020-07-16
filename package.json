@@ -1,10 +1,10 @@
 {
-  "name": "@silverback/theme_svbk",
+  "name": "@silverback/wp-theme",
   "author": "Silverback Studio",
   "license": "ISC",
-  "repository": "github:silverbackstudio/_svbk",
+  "repository": "github:silverbackstudio/wp-theme",
   "version": "1.0.0",
-  "description": "Silverback Starter Theme",
+  "description": "Silverback Wordpress Theme Boilerplate",
   "main": "index.php",
   "scripts": {
     "sass": "sass --watch ./sass:./",
