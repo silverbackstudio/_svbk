@@ -54,7 +54,7 @@ export const settings = {
 		__( 'bullet' ),
 		__( 'card' ),
 	],
-	
+
 	styles: [
 	    // Mark style as default.
 	    {
@@ -67,7 +67,7 @@ export const settings = {
 	        label: __( 'Offset', '_svbk' ),
 	    },	    
 	],	
-	
+
 	attributes: {
 		icon: {
 			type: 'string',
@@ -108,7 +108,7 @@ export const settings = {
 	edit,
 
 	save: function( { attributes } ) {
-		
+
 		const { 
 			icon,
 			title, 
@@ -120,9 +120,9 @@ export const settings = {
 			customTextColor,
 			align,
 		} = attributes;		
-		
+
 		const titleTag = titleLevel ? ('h' + titleLevel) : 'h2';		
-		
+
 		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 		const textClass = getColorClassName( 'color', textColor );
 
@@ -132,13 +132,13 @@ export const settings = {
 			[ textClass ]: textClass,
 			[ backgroundClass ]: backgroundClass,			
 		} );		
-		
+
 		const style = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			color: textClass ? undefined : customTextColor,
 			textAlign: align,
 		};		
-		
+
 		return (
 			<div className={ classNames } style={ style } >
 				{ icon && (

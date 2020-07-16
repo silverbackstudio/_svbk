@@ -53,7 +53,7 @@ export const settings = {
 		__( 'assurance', '_svbk'  ),
 		__( 'guarantee', '_svbk'  ),
 	],
-	
+
 	styles: [
 	    // Mark style as default.
 	    {
@@ -66,13 +66,13 @@ export const settings = {
 	        label: __( 'Small', '_svbk' ),
 	    },
 	],	
-	
+
 	supports: {
 		anchor: true,
 	},
-	
+
 	deprecated,
-	
+
 	attributes: {
 		sealUrl: {
 			type: 'string',
@@ -132,7 +132,7 @@ export const settings = {
 	edit,
 
 	save( { attributes } ) {
-		
+
 		const { 
 			sealUrl,
 			sealId, 			
@@ -147,7 +147,7 @@ export const settings = {
 			backgroundImageUrl,
 			backgroundImageId,
 		} = attributes;		
-		
+
 		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 		const textClass = getColorClassName( 'color', textColor );
 
@@ -157,12 +157,12 @@ export const settings = {
 			[ textClass ]: textClass,
 			[ backgroundClass ]: backgroundClass,			
 		} );		
-		
+
 		const style = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			color: textClass ? undefined : customTextColor,			
 		};
-		
+
 		return (
 			<aside className={ classnames( { 'has-background-image': backgroundImageUrl } ) } >
 				<div className={ classNames } style={ style } >
@@ -171,7 +171,7 @@ export const settings = {
 							<img src={ sealUrl } alt={"Warranty Seal"} className={ sealId ? `wp-image-${ sealId }` : null } />
 						</figure> 
 					) }			
-				
+
 					<header className={ 'wp-block-svbk-warranty__header' } >
 						{ title && ( 
 						<RichText.Content tagName={ 'h3' } className={ 'wp-block-svbk-warranty__title' } value={ title } /> 
@@ -180,17 +180,17 @@ export const settings = {
 						<RichText.Content tagName={ 'p' } className={ 'wp-block-svbk-warranty__subtitle' } value={ subtitle } /> 
 						) }
 					</header>
-	
+
 					<div className={ 'wp-block-svbk-warranty__text' }> 
 						<InnerBlocks.Content />
 					</div>
-					
+
 					{ footer && ( 
 					<RichText.Content tagName={ 'footer' } className={ 'wp-block-svbk-warranty__footer' } value={ footer } /> 
 					) }	
-					
+
 				</div>
-				
+
 				{ backgroundImageUrl && (
 				<img 
 					className={ 'wp-block-svbk-warranty__background' + ( backgroundImageId ? `wp-image-${ backgroundImageId }` : null ) }

@@ -20,25 +20,27 @@ use Svbk\WP\Helpers\Config;
  * @return void
  */
 function _svbk_woocommerce_setup() {
-	
-	// Add WooCommerce Support
-	add_theme_support( 'woocommerce', array(
-		// . . .
-		// thumbnail_image_width, single_image_width, etc.
-		'thumbnail_image_width' => 420,
-		'single_image_width'    => 500,
 
-		// Product grid theme settings
-		'product_grid'          => array(
-			'default_rows'    => 3,
-			'min_rows'        => 2,
-			'max_rows'        => 8,
-				
-			'default_columns' => 4,
-			'min_columns'     => 2,
-			'max_columns'     => 5,
-		),
-	) );
+	// Add WooCommerce Support.
+	add_theme_support(
+		'woocommerce',
+		array(
+			// thumbnail_image_width, single_image_width, etc.
+			'thumbnail_image_width' => 420,
+			'single_image_width'    => 500,
+
+			// Product grid theme settings.
+			'product_grid'          => array(
+				'default_rows'    => 3,
+				'min_rows'        => 2,
+				'max_rows'        => 8,
+
+				'default_columns' => 4,
+				'min_columns'     => 2,
+				'max_columns'     => 5,
+			),
+		)
+	);
 
 	add_theme_support( 'wc-product-gallery-zoom' );
 	add_theme_support( 'wc-product-gallery-lightbox' );
@@ -60,7 +62,7 @@ function _svbk_woocommerce_scripts() {
 			'source'    => 'theme',
 			'condition' => is_product(),
 			'prefetch'  => is_shop() || is_archive( 'product' ),
-			'version' => Config::get( 'theme_version', '_svbk' )
+			'version'   => Config::get( 'theme_version', '_svbk' ),
 		]
 	);
 	Style::enqueue(
@@ -70,10 +72,10 @@ function _svbk_woocommerce_scripts() {
 			'source'    => 'theme',
 			'condition' => is_cart(),
 			'prefetch'  => is_product(),
-			'version' => Config::get( 'theme_version', '_svbk' )
+			'version'   => Config::get( 'theme_version', '_svbk' ),
 		]
 	);
-	
+
 	Style::enqueue(
 		'_svbk-wc-checkout',
 		'/dist/css/wc-checkout.css',
@@ -81,17 +83,17 @@ function _svbk_woocommerce_scripts() {
 			'source'    => 'theme',
 			'condition' => is_checkout(),
 			'prefetch'  => is_cart(),
-			'version' => Config::get( 'theme_version', '_svbk' )
+			'version'   => Config::get( 'theme_version', '_svbk' ),
 		]
 	);
-	
+
 	Style::enqueue(
 		'_svbk-wc-account',
 		'/dist/css/wc-account.css',
 		[
 			'source'    => 'theme',
 			'condition' => is_account_page(),
-			'version' => Config::get( 'theme_version', '_svbk' )
+			'version'   => Config::get( 'theme_version', '_svbk' ),
 		]
 	);
 	Style::enqueue(
@@ -100,7 +102,7 @@ function _svbk_woocommerce_scripts() {
 		[
 			'source'    => 'theme',
 			'condition' => is_shop() || is_archive( 'product' ),
-			'version' => Config::get( 'theme_version', '_svbk' )
+			'version'   => Config::get( 'theme_version', '_svbk' ),
 		]
 	);
 
@@ -116,7 +118,7 @@ function _svbk_woocommerce_scripts() {
 			'condition' => is_checkout(),
 			'prefetch'  => is_cart(),
 			'deps'      => [ 'jquery' ],
-			'version' => Config::get( 'theme_version', '_svbk' )
+			'version'   => Config::get( 'theme_version', '_svbk' ),
 		]
 	);
 
@@ -140,9 +142,6 @@ function _svbk_woocommerce_scripts() {
 		)
 	);
 
-	// Style::enqueue( 'woocommerce-layout', null, [ 'condition' => is_woocommerce() ] );
-	// Style::enqueue( 'woocommerce-smallscreen', null, [ 'condition' => is_woocommerce() ] );
-	// Style::enqueue( 'woocommerce-general', null, [ 'condition' => is_woocommerce() ] );
 	$font_path   = WC()->plugin_url() . '/assets/fonts/';
 	$inline_font = '@font-face {
 			font-family: "star";
@@ -297,7 +296,7 @@ if ( ! function_exists( '_svbk_woocommerce_cart_link' ) ) {
 	function _svbk_woocommerce_cart_link() {
 		?>
 		<a class="cart-contents" href="<?php echo esc_url( wc_get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', '_svbk' ); ?>">
-			<?php esc_html_e( 'Cart', '_svbk'); ?>
+			<?php esc_html_e( 'Cart', '_svbk' ); ?>
 			<?php
 			$item_count_text = sprintf(
 				/* translators: %d number of items in the mini cart */
@@ -349,7 +348,7 @@ if ( ! function_exists( '_svbk_woocommerce_header_cart' ) ) {
  */
 function _svbk_activate_products_block_editor( $can_edit, $post_type ) {
 
-	if ( 'product' == $post_type ) {
+	if ( 'product' === $post_type ) {
 		$can_edit = true;
 	}
 
@@ -378,11 +377,11 @@ function _svbk_wc_sorting_wrapper_close() {
 	echo '</div>';
 }
 
-// Before Product List
+// Before Product List.
 add_action( 'woocommerce_before_shop_loop', '_svbk_wc_sorting_wrapper', 10 );
 add_action( 'woocommerce_before_shop_loop', '_svbk_wc_sorting_wrapper_close', 31 );
 
-// After Product List
+// After Product List.
 add_action( 'woocommerce_after_shop_loop', '_svbk_wc_sorting_wrapper', 9 );
 add_action( 'woocommerce_after_shop_loop', '_svbk_wc_sorting_wrapper_close', 31 );
 
@@ -442,7 +441,7 @@ function _svbk_account_menu_default_woocommerce( $menu_html, $args ) {
 
 	foreach ( wc_get_account_menu_items() as $endpoint => $label ) {
 		$menu_html .=
-					  '<li class="' . wc_get_account_menu_item_classes( $endpoint ) . '">'
+					'<li class="' . wc_get_account_menu_item_classes( $endpoint ) . '">'
 					. '<a href="' . esc_url( wc_get_account_endpoint_url( $endpoint ) ) . '">' . esc_html( $label ) . '</a>'
 					. '</li>';
 	}
@@ -475,7 +474,7 @@ add_filter( 'has_nav_menu', '_svbk_account_menu_always_on', 20, 2 );
 /**
  * Defer all inline WooCommerce code to be dompatible with deferred jQuery lib
  */
-if ( !is_admin() ){
+if ( ! is_admin() ) {
 	add_filter( 'woocommerce_queued_js', array( Script::class, 'defer_inline_script' ) );
 }
 

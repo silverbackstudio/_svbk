@@ -24,32 +24,32 @@ class Post_Block {
 
 	/**
 	 * The default block attributes
-	 */	
-	public static $defaultAttributes = array(
+	 */
+	public static $default_attributes = array(
 		'align' => array(
-			'type' => 'string'
+			'type' => 'string',
 		),
 		'id' => array(
 			'type' => 'number',
-		),		
+		),
 		'display' => array(
-			'type' => 'string',
+			'type'    => 'string',
 			'default' => 'excerpt',
-		)
+		),
 	);
 
 	/**
 	 * Create an instance and register the block
-	 * 
+	 *
 	 * @param array $properties The class paramenters
-	 * 
+	 *
 	 * @return void
-	 */	
-	public function __construct( $post_type, $properties = array() ){
+	 */
+	public function __construct( $post_type, $properties = array() ) {
 
 		$this->post_type = $post_type;
 
-		if ( empty( $properties['block_name'] ) ){
+		if ( empty( $properties['block_name'] ) ) {
 			$this->block_name = 'svbk/' . $post_type . '-embed';
 		}
 
@@ -60,18 +60,18 @@ class Post_Block {
 
 	/**
 	 * Register the block
-	 * 
+	 *
 	 * @return void
-	 */		
+	 */
 	public function register_block() {
 
 		register_block_type(
 			$this->block_name,
 			array_replace_recursive(
 				array(
-					'attributes' => self::$defaultAttributes,
+					'attributes'      => self::$default_attributes,
 					'render_callback' => array( $this, 'render' ),
-					'editor_script' => '_svbk-blocks',
+					'editor_script'   => '_svbk-blocks',
 				),
 				$this->block_args
 			)
@@ -81,72 +81,74 @@ class Post_Block {
 
 	/**
 	 * Render whole posts list
-	 * 
+	 *
 	 * @param array $blockAttributes The block attributes
-	 * 
+	 *
 	 * @return string
-	 */		
-	function render( $attributes, $content ) {
-		
+	 */
+	public function render( $attributes, $content ) {
+
 		global $post;
 
-		if ( empty( $attributes['id'] ) ){
+		if ( empty( $attributes['id'] ) ) {
 			return '';
 		}
 
 		$classes = array( 'wp-block-' . str_replace( '/', '-', $this->block_name ) );
-	
-		if ( isset( $attributes['className'] )) {
-			$classes[] = trim($attributes['className']);
+
+		if ( isset( $attributes['className'] ) ) {
+			$classes[] = trim( $attributes['className'] );
 		}
-	
-		$output = '<div class="'. join($classes, ' ') .'">';
-	
+
+		$output = '<div class="' . join( $classes, ' ' ) . '">';
+
 		ob_start();
-	
-		$post = get_post($attributes['id']);
-		setup_postdata($post);
-		$this->renderPost( $attributes, $content );
+
+		$post = get_post( $attributes['id'] );
+		setup_postdata( $post );
+		$this->render_post( $attributes, $content );
 		wp_reset_postdata();
-	
+
 		$output .= ob_get_contents();
-		ob_end_clean();    
-	
+		ob_end_clean();
+
 		$output .= '</div>';
-	
+
 		return $output;
 	}
-	
+
 	/**
 	 * Get WP_Query args from a set of attributes
-	 * 
+	 *
 	 * @param array $attributes The attributes to be converted
-	 * 
+	 *
 	 * @return array
 	 */
-	public function getQueryArgs( $attributes ) {
-	
-		$query_args = new \WP_Query( array( 
-			'p' => $attributes['id'], 
-			'post_type' => $this->post_type, 
-			'post_status' => 'publish' 
-		) );
+	public function get_query_args( $attributes ) {
+
+		$query_args = new \WP_Query(
+			array(
+				'p'           => $attributes['id'],
+				'post_type'   => $this->post_type,
+				'post_status' => 'publish',
+			)
+		);
 
 		return $query_args;
 	}
 
 	/**
 	 * Render an single post
-	 * 
+	 *
 	 * @param array $attributes The input attributes
-	 * 
+	 *
 	 * @return void
-	 */	
-	public function renderPost($attributes){
+	 */
+	public function render_post( $attributes ) {
 		switch ( $attributes['display'] ) {
 			case 'full_post':
 				get_template_part( 'template-parts/content', $this->post_type );
-				break;					
+				break;
 			case 'excerpt':
 			default:
 				get_template_part( 'template-parts/preview', $this->post_type );

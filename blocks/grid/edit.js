@@ -52,7 +52,7 @@ const ALLOWED_BLOCKS = [
 class GridEdit extends Component {
 
     render() {
-    	
+
 		const {
 			attributes,
 			setAttributes,
@@ -68,13 +68,13 @@ class GridEdit extends Component {
 		    equalHeight,
 		    align,
 		} = attributes;
-		
+
 		const classNames = classnames( className,  `has-${ columns }-columns has-${ columnsMobile }-columns-mobile`, {
 			'is-selected': isSelected,
 			[ backgroundColor.class ]: backgroundColor.class,
 			[ 'has-equal-cell-height' ]: equalHeight,
 		} );		
-		
+
 		const style = {
 			backgroundColor: backgroundColor.color,
 		};

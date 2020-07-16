@@ -1,66 +1,66 @@
 .wp-block-svbk-publication,
 .wp-block-svbk-publication > a {
-    display: flex;
-    align-items: center;
-    max-width: 800px;
-    margin-top: 25px;
-    margin-bottom: 25px;
-    
-    p {
-        margin: 0;
-    }
-    
-    .wp-block-svbk-publication__picture {
-        margin: 0 20px 0 0;
-        width: 130px;
-        flex-grow: 0;
-        flex-shrink: 0;
-        
-        img {
-            width: 130px;
-            height: auto;
-            object-fit: contain;
-        }
-    }
-    
-    .wp-block-svbk-publication__author {
-        @include font-size(.85);
-        font-style: italic;
-    }
-    
-    .wp-block-svbk-publication__title {
-        @include font-size(1.2);
-        font-weight: bold;
-        border-bottom: 1px solid $color__corporate;
-        margin-top: 0;
-        margin-bottom: 3px;
-    }
-    
-    @media screen and (min-width: breakpoint('tablet-landscape')) {
+	display: flex;
+	align-items: center;
+	max-width: 800px;
+	margin-top: 25px;
+	margin-bottom: 25px;
 
-        .wp-block-svbk-publication__picture {
-            width: 170px;
-            
-            img {
-                width: 170px;
-            }
-        }
-    }
+	p {
+		margin: 0;
+	}
+
+	.wp-block-svbk-publication__picture {
+		margin: 0 20px 0 0;
+		width: 130px;
+		flex-grow: 0;
+		flex-shrink: 0;
+
+		img {
+			width: 130px;
+			height: auto;
+			object-fit: contain;
+		}
+	}
+
+	.wp-block-svbk-publication__author {
+		@include font-size(.85);
+		font-style: italic;
+	}
+
+	.wp-block-svbk-publication__title {
+		@include font-size(1.2);
+		font-weight: bold;
+		border-bottom: 1px solid $color__corporate;
+		margin-top: 0;
+		margin-bottom: 3px;
+	}
+
+	@media screen and (min-width: breakpoint('tablet-landscape')) {
+
+		.wp-block-svbk-publication__picture {
+			width: 170px;
+
+			img {
+				width: 170px;
+			}
+		}
+	}
 }
 
 .wp-block-svbk-publication > a {
-    color: $color__text-main;
-    text-decoration: none;
-    opacity: 1;
-    transition: opacity 300ms ease-in-out;
-    font-weight: normal;
-    
-    &:hover {
-        opacity: .7;
-    }
-    
-    &:hover,
-    &:focus {
-        color: $color__text-main;
-    }
+	color: $color__text-main;
+	text-decoration: none;
+	opacity: 1;
+	transition: opacity 300ms ease-in-out;
+	font-weight: normal;
+
+	&:hover {
+		opacity: .7;
+	}
+
+	&:hover,
+	&:focus {
+		color: $color__text-main;
+	}
 }

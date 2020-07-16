@@ -35,13 +35,13 @@ const deprecated = [
         		type: 'string',
         	},		
         },
-    	
+
         supports: {
         	html: false,
         },
-    	
+
     	save( { attributes } ) {
-    		
+
     		const { 
     			columns,
     			equalHeight,
@@ -49,20 +49,20 @@ const deprecated = [
     			customBackgroundColor,
     			align,
     		} = attributes;		
-    		
+
     		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
-    		
+
     		const classNames = classnames( `has-${ columns }-columns`, {
     			'has-background': backgroundColor || customBackgroundColor,
     			[ backgroundClass ]: backgroundClass,
     			[ 'has-equal-cell-height' ]: equalHeight,
     			[ `has-align-${align}` ]: align,
     		} );
-    		
+
     		const style = {
     			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
     		};	
-    		
+
     		return (
     			<div className={ classNames } style={ style } >
     				<InnerBlocks.Content />

@@ -37,7 +37,7 @@ const {
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
- 
+
 /**
  * Internal dependencies
  */
@@ -51,7 +51,7 @@ export const settings = {
 		__( 'collapse' ),
 		__( 'accordion' ),
 	],
-	
+
 	styles: [
 	    // Mark style as default.
 	    {
@@ -72,7 +72,7 @@ export const settings = {
 	        label: __( 'Button', '_svbk' ),
 	    },	  	    
 	],		
-	
+
 	attributes: {
 		defaultOpen: {
 			type: 'boolean',
@@ -109,7 +109,7 @@ export const settings = {
 		const classNames = classnames( className, {
 			'wp-block-svbk-collapse--open' : defaultOpen
 		});
-		
+
 		const buttonClassNames = classnames( 
 			[
 				'wp-block-svbk-collapse__button',
@@ -120,7 +120,7 @@ export const settings = {
 				'wp-block-svbk-collapse__button--has-close': buttonClose, 
 			}
 		);		
-		
+
 		const style = {
 			display: defaultOpen ? undefined : 'none',
 		};			

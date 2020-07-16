@@ -130,7 +130,7 @@ h2 {
 	}
 }
 
- /*--------------------------------------------------------------
+/*--------------------------------------------------------------
 # Summary
 --------------------------------------------------------------*/
 .product {
@@ -230,10 +230,10 @@ h2 {
 	}
 }
 
- /*--------------------------------------------------------------
+/*--------------------------------------------------------------
 # Tabs
 --------------------------------------------------------------*/
- .woocommerce-tabs ul.tabs {
+.woocommerce-tabs ul.tabs {
 
 	li {
 		border-top: none;
@@ -250,7 +250,7 @@ h2 {
 			a {
 				color: $color__corporate;
 			}
-			
+
 			&:after {
 				@include icon-content('\e90b');
 				@include font-size(.6);
@@ -269,19 +269,19 @@ h2 {
 			right: 8px;
 		}
 	}
- }
+}
 
- /*--------------------------------------------------------------
+/*--------------------------------------------------------------
 # Reviews
 --------------------------------------------------------------*/
 .commentlist {
-	
+
 	.review:before {
 		display: none;
 	}
 }
 
- #review_form_wrapper {
+#review_form_wrapper {
 	background-color: rgba(0,0,0,.02);
 	padding: 30px;
 
@@ -315,7 +315,7 @@ h2 {
 			@include clearfix();
 			@include clearfix-after();
 		}
-		
+
 		label {
 			width: calc(100% - 40px);
 			float: right;
@@ -339,9 +339,9 @@ h2 {
 			clear: both;
 		}
 	}
- }
+}
 
- #comments {
+#comments {
 
 	ol {
 		padding-left: 0;
@@ -353,7 +353,7 @@ h2 {
 			@include clearfix();
 			@include clearfix-after();
 		}
-		
+
 		img {
 			background: rgba(0,0,0,.1);
 			border-radius: 3px;
@@ -381,27 +381,27 @@ h2 {
 			@include font-size(.9);
 		}
 	}
- }
+}
 
-  /*--------------------------------------------------------------
+/*--------------------------------------------------------------
 # Attributes
 --------------------------------------------------------------*/
- .woocommerce-product-attributes {
-	 display: block;
-	 border: none;
+.woocommerce-product-attributes {
+	display: block;
+	border: none;
 
-	 th, td {
-		 border-right: none;
-		 padding: 0;
-	 }
+	th, td {
+		border-right: none;
+		padding: 0;
+	}
 
-	 .woocommerce-product-attributes-item__label:after {
-		 content: ':';
-		 margin-right: 8px;
-	 }
- }
+	.woocommerce-product-attributes-item__label:after {
+		content: ':';
+		margin-right: 8px;
+	}
+}
 
-   /*--------------------------------------------------------------
+/*--------------------------------------------------------------
 # Full Screen Gallery
 --------------------------------------------------------------*/
 .pswp__button {

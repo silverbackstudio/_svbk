@@ -18,7 +18,7 @@ const formatters_blank = lodash.cloneDeepWith( formatters, function(value, key, 
     if ( 'formatter' == key ) {
         return '-' + value;
     }
-    
+
     if ( 'name' == key ) {
         return value + ' (blank-padded)';
     }

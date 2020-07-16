@@ -59,15 +59,15 @@ export const settings = {
 					default: 5
 				},
 			},        	
-	
+
 			supports: {
 				html: false,
 			},	
-			
+
 			save( {attributes} ){
-				
+
 				const { rating, className } = attributes;
-				
+
 				return (
 					<div 
 					className={ classnames( [className], { [ `rating-${rating}` ] : rating }  ) }
@@ -83,9 +83,9 @@ export const settings = {
 			setAttributes,
 			className,
 		} ) {
-		
+
 		const { rating } = attributes;
-		
+
 		return (
 			<Fragment>
 				<InspectorControls>
@@ -119,13 +119,13 @@ export const settings = {
 				</div>
 			</Fragment>		
 		);
-		
+
 	},
 
 	save( {attributes} ){
-		
+
 		const { rating } = attributes;
-		
+
 		return (
 			<div 
 			className={ classnames( { [ `rating-${rating}` ] : rating }  ) }
@@ -135,5 +135,5 @@ export const settings = {
 			</div>
 		) ;
 	},
-	
+
 };

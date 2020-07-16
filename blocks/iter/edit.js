@@ -27,7 +27,7 @@ class IterEdit extends Component {
 
 	constructor (props) {
 		super(...arguments);
-		
+
 		this.updateStep	= this.updateStep.bind(this);		
 		this.addStep	= this.addStep.bind(this);		
 		this.removeStep	= this.removeStep.bind(this);		
@@ -35,14 +35,14 @@ class IterEdit extends Component {
 	}
 
 	addStep() {
-		
+
 		const {
 			attributes: { steps	},
 			setAttributes,
 		} = this.props;
 
 		let updatedSteps = steps.slice(0);
-		
+
 		updatedSteps.push( {
 			icon: '',
 			name: '',
@@ -51,33 +51,33 @@ class IterEdit extends Component {
 
 		setAttributes( { steps: updatedSteps } );
 	}
-	
+
 	removeStep( index ) {
-		
+
 		const {
 			attributes: { steps	},
 			setAttributes,
 		} = this.props;
-		
+
 		steps.splice(index, 1);
 
 		setAttributes( { steps: steps.slice(0) } );
 	}	
-	
+
 	cloneStep( index ) {
-		
+
 		const {
 			attributes: { steps	},
 			setAttributes,
 		} = this.props;
-		
+
 		steps.splice(index, 0, steps[index]);
 
 		setAttributes( { steps: steps.slice(0) } );
 	}	
 
 	updateStep( index, update ) {
-		
+
 		const {
 			attributes: { steps	},
 			setAttributes,
@@ -85,14 +85,14 @@ class IterEdit extends Component {
 
 		const updatedSteps = steps.slice(0);
 		const updatedStep  = Object.assign( {}, steps[index], update );
-		
+
 		updatedSteps[index] = updatedStep;
 
 		setAttributes( { steps: updatedSteps } );
 	}
-	
+
     render() {
-    	
+
 		const {
 			attributes,
 			className,
@@ -102,7 +102,7 @@ class IterEdit extends Component {
 		const { 
 			steps
 		} = attributes;
-		
+
 		const classNames = classnames( className, {
 			'is-selected': isSelected,
 		} );		
@@ -164,7 +164,7 @@ class IterEdit extends Component {
 			</Fragment>			
 		);
 	}
-    
+
 }
 
 export default IterEdit;

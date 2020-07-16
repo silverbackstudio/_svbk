@@ -82,7 +82,7 @@ const TEMPLATE = [
 class CardEdit extends Component {
 
     render() {
-    	
+
 		const {
 			attributes,
 			setAttributes,
@@ -112,16 +112,16 @@ class CardEdit extends Component {
 			imageType,
 			ribbonText,
 		} = attributes;
-		
+
 		const classNames = classnames( className, {
 			'is-selected': isSelected,
 			[ backgroundColor.class ]: backgroundColor.class,
 			[ textColor.class ]: textColor.class,
 			[ fontSize.class ]: fontSize.class,			
 		} );		
-		
+
 		const pictureUpdate = ( update ) => {
-			
+
 			const localUpdate = mapKeys( pick( update, [ 'id', 'url', 'alt', 'size' ] ) , function(value, key) {
 				// Convert url to pictureUrl, id to pictureId, etc
 				return 'picture' + capitalize(key);
@@ -129,18 +129,18 @@ class CardEdit extends Component {
 
 			setAttributes( localUpdate );
 		}
-		
+
 		const style = {
 			backgroundColor: backgroundColor.color,
 			color: textColor.color,
 			fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
 			textAlign: align,			
 		};
-		
+
 		const ribbonStyle = {
 			backgroundColor: ribbonColor ? ribbonColor.color : undefined,
 		};			
-		
+
         const titleTag = titleLevel ? ( 'h' + titleLevel ) : 'h3';       
 
 		return (
@@ -291,7 +291,7 @@ class CardEdit extends Component {
 			</Fragment>
 		);
 	}
-    
+
 }
 
 export default compose( [

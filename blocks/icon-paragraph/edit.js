@@ -29,7 +29,7 @@ import classnames from 'classnames';
 class IconParagraphEdit extends Component {
 
     render() {
-    	
+
 		const {
 			attributes,
 			setAttributes,
@@ -42,17 +42,17 @@ class IconParagraphEdit extends Component {
 		    align,
 			content, 
 		} = attributes;
-		
+
 
 		const classNames = classnames( className, {
 			[ fontSize.class ]: fontSize.class,			
 		} );
-		
+
 		const style = {
 			textAlign: align,
 			fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
 		};
-		
+
 		return (
 			<Fragment>
 				<div className={ 'wp-block-svbk-icon-paragraph' }>

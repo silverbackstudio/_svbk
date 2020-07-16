@@ -38,27 +38,27 @@ class HeadingToolbar extends Component {
 export { HeadingToolbar }
 
 class Heading extends Component {
- 
+
  	constructor() {
 		super( ...arguments );
-		
+
 		this.onLevelChange = this.onLevelChange.bind(this);
-		
+
 		this.state = {
 		    isSelected: false,
 		};
 	}
- 
+
     onLevelChange( newLevel ) {
         this.props.onLevelChange( newLevel );
     }
- 
+
     render() {
-        
+
         const { level, isSelected } = this.props;
-        
+
         const titleTag = level ? ( 'h' + level ) : 'h2';       
-        
+
         return (
             <Fragment>
     			{ isSelected && (
@@ -72,7 +72,7 @@ class Heading extends Component {
 			</Fragment>
         );
     }   
-    
+
 }
 
 export default Heading;

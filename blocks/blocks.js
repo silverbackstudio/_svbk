@@ -83,8 +83,8 @@ wp.hooks.addFilter( 'blocks.registerBlockType', 'svbk/appearance-controls', with
 	trust
 ].forEach( ( block ) => {
 	if ( ! block ) { return; }
-	
+
 	const { name, settings } = block;
-	
+
 	registerBlockType( name, settings );
 } );

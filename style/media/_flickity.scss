@@ -1,13 +1,13 @@
 .is-style-flickity,
 .is-style-flickity-slider {
-    display: block;
+	display: block;
 }
 
 .wp-block-gallery[class*="columns"] {
 
 	.flickity-enabled {
 		display: block;
-		
+
 		.blocks-gallery-item {
 			display: block;
 			margin: 0 10px 0 0;
@@ -22,10 +22,10 @@
 		}
 	}
 
-    @for $i from 1 through 5 {
+	@for $i from 1 through 5 {
 
-        &.columns-#{$i} {
-      
+		&.columns-#{$i} {
+
 			.flickity-enabled .blocks-gallery-item {
 				width: (100%/$i);
 			}
@@ -89,7 +89,7 @@
 
 	.dot {
 		background: $color__corporate;
-		
+
 		&:before {
 			display: none;
 		}

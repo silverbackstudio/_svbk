@@ -89,7 +89,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						</header>
 
 						<div class="lessons-list" >
-							
+
 							<?php
 							while ( sensei_module_has_lessons() ) :
 								the_post();
@@ -122,11 +122,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			</article>
 
-		<?php endif; // sensei_module_has_lessons ?>
+		<?php endif; // sensei_module_has_lessons. ?>
 
-	<?php endwhile; // sensei_have_modules ?>
+	<?php endwhile; // sensei_have_modules. ?>
 
-<?php endif; // sensei_have_modules ?>
+<?php endif; // sensei_have_modules. ?>
 
 <?php
 

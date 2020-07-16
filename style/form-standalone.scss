@@ -92,7 +92,7 @@ body {
 
 	.hs-submit {
 		margin-top: 15px;
-		
+
 		input {
 			border-color: $color__corporate;
 		}
@@ -183,7 +183,7 @@ body {
 			@include font-size(.7);
 			line-height: 1.3em;
 		}
-		
+
 		label {
 			min-height: 25px;
 
@@ -191,12 +191,12 @@ body {
 			span {
 				vertical-align: middle;
 			}
-			
+
 			input[type="checkbox"] {
 				float: none;
 				display: inline-block;
 			}
-			
+
 			span {
 				display: inline;
 				margin-left: 0;

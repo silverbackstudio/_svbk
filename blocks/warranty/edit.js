@@ -66,7 +66,7 @@ const TEMPLATE = [
 class WarrantyEdit extends Component {
 
     render() {
-    	
+
 		const {
 			attributes,
 			setAttributes,
@@ -89,25 +89,25 @@ class WarrantyEdit extends Component {
 			backgroundImageId,
 			backgroundImageSize
 		} = attributes;
-		
+
 		const classNames = classnames( className, {
 			'is-selected': isSelected,
 			[ backgroundColor.class ]: backgroundColor.class,
 			[ textColor.class ]: textColor.class,
 		} );		
-		
+
 		const containerStyle = backgroundImageUrl ? {
 			backgroundImage: `url(${backgroundImageUrl})`,
 			backgroundSize: 'cover',
 		} : {};
-		
+
 		const contentStyle = {
 			backgroundColor: backgroundColor.color,
 			color: textColor.color,
 		};
-		
+
 		const sealUpdate = ( update ) => {
-			
+
 			const localUpdate = mapKeys( pick( update, [ 'id', 'url', 'size' ] ) , function(value, key) {
 				// Convert url to pictureUrl, id to pictureId, etc
 				return 'seal' + capitalize(key);
@@ -117,7 +117,7 @@ class WarrantyEdit extends Component {
 		}		
 
 		const backgroundImageUpdate = ( update ) => {
-			
+
 			const localUpdate = mapKeys( pick( update, [ 'id', 'url', 'size' ] ) , function(value, key) {
 				// Convert url to pictureUrl, id to pictureId, etc
 				return 'backgroundImage' + capitalize(key);
@@ -125,7 +125,7 @@ class WarrantyEdit extends Component {
 
 			setAttributes( localUpdate );
 		}		
-		
+
 		return (
 			<Fragment>
 				<div className={ classNames } style={ containerStyle } >
@@ -214,7 +214,7 @@ class WarrantyEdit extends Component {
 			</Fragment>
 		);
 	}
-    
+
 }
 
 export default compose( [

@@ -54,7 +54,7 @@ export const settings = {
 		__( 'testimonial' ),
 		__( 'feedback' ),
 	],
-	
+
 	attributes: {
 		pictureUrl: {
 			type: 'string',
@@ -105,7 +105,7 @@ export const settings = {
 	edit,
 
 	save: function( { attributes } ) {
-		
+
 		const { 
 			pictureUrl,
 			pictureId,
@@ -118,7 +118,7 @@ export const settings = {
 			textColor,
 			customTextColor,			
 		} = attributes;		
-		
+
 		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 		const textClass = getColorClassName( 'color', textColor );
 
@@ -128,12 +128,12 @@ export const settings = {
 			[ textClass ]: textClass,
 			[ backgroundClass ]: backgroundClass,			
 		} );		
-		
+
 		const style = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			color: textClass ? undefined : customTextColor,
 		};			
-		
+
 		return (
 			<div className={ classNames } style={ style }>
 				{ pictureUrl && (

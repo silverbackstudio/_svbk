@@ -29,7 +29,7 @@ export const settings = {
 	icon: 'star-half',
 
 	category: 'widgets',
-	
+
 	keywords: [ __( 'rating', '_svbk' ), __( 'product', '_svbk' )],
 
 	supports: {
@@ -47,9 +47,9 @@ export const settings = {
 			setAttributes,
 			className,
 		} ) {
-		
+
 		const { product_id  } = attributes;
-		
+
 		return (
 			<Fragment>
 				<InspectorControls>
@@ -67,11 +67,11 @@ export const settings = {
 				<div className={ className } >{ 'Product Rating' }</div>
 			</Fragment>
 		);
-		
+
 	},
 
 	save({ attributes }){
 		return null;
 	},
-	
+
 };

@@ -78,7 +78,7 @@ const TEMPLATE = [
 class TestimonialEdit extends Component {
 
     render() {
-    	
+
 		const {
 			attributes,
 			setAttributes,
@@ -101,9 +101,9 @@ class TestimonialEdit extends Component {
 			source,
 			date,
 		} = attributes;
-		
+
 		const avatarUpdate = ( update ) => {
-			
+
 			const localUpdate = mapKeys( pick( update, [ 'id', 'url' ] ), function(value, key) {
 				return 'avatar' + capitalize(key);
 			});
@@ -112,25 +112,25 @@ class TestimonialEdit extends Component {
 		}		
 
 		const companyLogoUpdate = ( update ) => {
-			
+
 			const localUpdate = mapKeys( pick( update, [ 'id', 'url' ] ), function(value, key) {
 				return 'companyLogo' + capitalize(key);
 			});
 
 			setAttributes( localUpdate );
 		}		
-		
+
 		const classNames = classnames( className, {
 			'is-selected': isSelected,
 			[ backgroundColor.class ]: backgroundColor.class,
 			[ textColor.class ]: textColor.class,
 		} );		
-		
+
 		const style = {
 			backgroundColor: backgroundColor.color,
 			color: textColor.color,
 		};		
-		
+
 		const isStyle = RegExp(/is-style-/)
 		const styleName = isStyle.test(attributes.className)
 			? attributes.className.replace(isStyle, '')
@@ -138,7 +138,7 @@ class TestimonialEdit extends Component {
 
 		return (
 			<div className={ classNames } style={ style } >
-				
+
 				<div className={ 'wp-block-svbk-testimonial__header' } >
 
 					<ImageEdit
@@ -162,7 +162,7 @@ class TestimonialEdit extends Component {
 						placeholder={ __( 'Role..', '_svbk' ) }
 						className={ 'wp-block-svbk-testimonial__role-name' }
 					/>
-					
+
 					<div className={ classnames( 'block-editor-rating',  { [ `rating-${rating}` ] : rating }  ) }>
 						<ButtonGroup className={ 'block-editor-rating__stars' }>
 						{
@@ -177,7 +177,7 @@ class TestimonialEdit extends Component {
 						}				
 						</ButtonGroup>
 					</div>
-	
+
 					<div className={ 'wp-block-svbk-testimonial__meta' } >
 						<PlainText
 							value={ date }
@@ -192,7 +192,7 @@ class TestimonialEdit extends Component {
 							className={ 'wp-block-svbk-testimonial__source' }
 						/>				
 					</div>
-				
+
 					<ImageEdit
 						setAttributes={ companyLogoUpdate }
 						url={ companyLogoUrl }
@@ -202,9 +202,9 @@ class TestimonialEdit extends Component {
 						labels={ { title: __( 'Company Logo', '_svbk' ) } }
 						changeSize={false}
 					/>
-					
+
 				</div>
-	
+
 				<div className={ 'wp-block-svbk-testimonial__content' } >
 					<InnerBlocks 
 						templateLock={ false }
@@ -212,7 +212,7 @@ class TestimonialEdit extends Component {
 						template={ TEMPLATE }
 					/>
 				</div>						
-				
+
 				<InspectorControls>
 					<PanelBody title={ __( 'Testimonial Settings', '_svbk' ) }>
 						<RangeControl
@@ -251,7 +251,7 @@ class TestimonialEdit extends Component {
 			</div>
 		);
 	}
-    
+
 }
 
 export default compose( [

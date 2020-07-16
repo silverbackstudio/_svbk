@@ -41,13 +41,13 @@ class CallUsEdit extends Component {
 		    actionWide,
 		    align,
 		} = attributes;
-		
+
 		const classNames = classnames( className, {
 			[`has-action`]: action,
 			[`has-action-wide`]: actionWide,
 			[`has-align-${align}`]: align,
 		} );			
-		
+
 		return (
 			<div classNames={ classNames } >
 				<RichText
@@ -94,7 +94,7 @@ class CallUsEdit extends Component {
 			</div>
 		);
 	}
-    
+
 }
 
 export default CallUsEdit;

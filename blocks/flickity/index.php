@@ -12,15 +12,15 @@ function _svbk_conditionally_load_blocks_deps() {
 	}
 
 	$has_gallery = has_block( 'gallery', $post );
-	
-	Style::enqueue( 
-		'flickity',  
-		'dist/flickity.min.css' ,
-		[ 
-			'version' => '2.2.1',
-			'async'     => true,			
-			'condition' => $has_gallery
-		] 
+
+	Style::enqueue(
+		'flickity',
+		'dist/flickity.min.css',
+		[
+			'version'   => '2.2.1',
+			'async'     => true,
+			'condition' => $has_gallery,
+		]
 	);
 
 	Script::enqueue(
@@ -30,15 +30,17 @@ function _svbk_conditionally_load_blocks_deps() {
 			'version'   => '2.2.1',
 			'defer'     => true,
 			'async'     => true,
-			'condition' => $has_gallery
+			'condition' => $has_gallery,
 		]
 	);
 
-	// Retrigger resize/reposition after all CSS files has been loaded (fixes firefox bugs)
-	wp_add_inline_script( 'flickity', "
+	// Retrigger resize/reposition after all CSS files has been loaded (fixes firefox bugs).
+	wp_add_inline_script(
+		'flickity',
+		"
 	  window.addEventListener('load', function(event) {
 		var flickityElements = document.querySelectorAll( '.flickity-enabled' );
-		
+
 		for (var i = 0; i < flickityElements.length; i++) {
 		    var flickityInstance = Flickity.data( document.querySelectorAll( '[data-flickity]' )[i] );
 		    if ( flickityInstance  ){ 
@@ -46,14 +48,17 @@ function _svbk_conditionally_load_blocks_deps() {
 		    	flickityInstance.reposition(); 
 		    }
 		}
-	});" );
+	});"
+	);
 
 }
 
 add_action( 'wp_enqueue_scripts', '_svbk_conditionally_load_blocks_deps', 10 );
 
 
-// Disable Jetpack LazyLoad on Galleries
+/**
+ * Disable Jetpack LazyLoad on Galleries
+ */
 function _svbk_exclude_flickity_from_lazyload( $classes ) {
 
 	$classes[] = 'flickity-lazyload-image';

@@ -5,7 +5,6 @@ namespace Svbk\WP\Integrations;
 use Svbk\WP\Helpers;
 use Wp_Query;
 
-
 /**
  * Sensei Integration.
  *
@@ -13,7 +12,6 @@ use Wp_Query;
  * @category Integration
  * @author   Brando Meniconi
  */
-
 class AffiliateWP {
 
 	public $integration;

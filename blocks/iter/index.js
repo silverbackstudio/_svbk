@@ -53,7 +53,7 @@ export const settings = {
 		__( 'iter', '_svbk' ),
 		__( 'steps', '_svbk' ),
 	],
-	
+
 	attributes: {
 		steps: {
 			type: "array",
@@ -93,11 +93,11 @@ export const settings = {
 	edit,
 
 	save: function( { attributes } ) {
-		
+
 		const { 
 			steps,
 		} = attributes;		
-		
+
 		return (
 			<div>
 				{

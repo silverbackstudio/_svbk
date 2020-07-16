@@ -16,23 +16,23 @@ const _ = window.lodash;
 
 // Check if Flickity is enabled on a particular block, based on attributes and optionally blockType
 export const isFlickity = ( attributes, blockType ) => {
-	
+
 	if ( blockType && ( blockType.name !== 'core/gallery' ) ) {
 		return false;
 	}
-	
+
 	if ( attributes && attributes.className && attributes.className.includes('is-style-flickity') ) {
 		return true;
 	}
-	
+
 	return false;
 }
 
 // Extract Flickity options from block attributes
 export const getFlickityOptions = function( attributes ){
-	
+
 	let flickityOptions = {};
-	
+
     if ( attributes.flickity ) {
 	    try {
 			flickityOptions = JSON.parse(attributes.flickity);
@@ -40,9 +40,9 @@ export const getFlickityOptions = function( attributes ){
 	    	console.error( 'Invalid JSON for Flickity Options' );
 	    }
     }	
-	
+
 	return flickityOptions;
-	
+
 }
 
 /**
@@ -57,21 +57,21 @@ export const getFlickityOptions = function( attributes ){
  */
 
 export const withFlickityEditor = createHigherOrderComponent( ( GalleryEdit ) => {
-    
+
 	return ( props ) => {
-	    
+
 		const { setAttributes, attributes } = props;
-		
+
 		if ( ! isFlickity(attributes) ) {
 			return <GalleryEdit { ...props } />;
 		}
-	   
+
 	    const flickityOptions = getFlickityOptions( attributes );
-	   
+
 	    const setFlickityOptions = ( options ) => {
 		  	setAttributes( { flickity: JSON.stringify( _.assign({}, flickityOptions, options) ) } );
 	    }
-		
+
 	    return (
             <Fragment>
                 <GalleryEdit { ...props } /> 

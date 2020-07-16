@@ -11,11 +11,11 @@ use \Svbk\WP\Helpers\Assets\Style;
 use \Svbk\WP\Helpers\Assets\Script;
 use \Svbk\WP\Integrations;
 
- /**
-  * Sensei specific scripts & stylesheets.
-  *
-  * @return void
-  */
+/**
+ * Sensei specific scripts & stylesheets.
+ *
+ * @return void
+ */
 function _svbk_sensei_scripts() {
 	Style::enqueue(
 		'_svbk-sensei',
@@ -214,7 +214,7 @@ function _svbk_lesson_quiz_button_intro( $lesson_id ) {
 	$show_actions              = is_user_logged_in() ? true : false;
 
 	if ( intval( $lesson_prerequisite ) > 0 ) {
-		// If the user hasn't completed the prereq then hide the current actions
+		// If the user hasn't completed the prereq then hide the current actions.
 		$show_actions = Sensei_Utils::user_completed_lesson( $lesson_prerequisite, $user_id );
 	}
 
@@ -275,11 +275,11 @@ function _svbk_sensei_normalize_learner_profile_query( $wp_query ) {
 
 add_filter( 'parse_query', '_svbk_sensei_normalize_learner_profile_query' );
 
- /**
-  * Add lesson--preview class when not in single lesson
-  *
-  * @return array
-  */
+/**
+ * Add lesson--preview class when not in single lesson
+ *
+ * @return array
+ */
 function _svbk_sensei_lesson_classes( $classes, $class, $post_id ) {
 
 	if ( 'lesson' === get_post_type( $post_id ) && ! is_singular( 'lesson' ) ) {

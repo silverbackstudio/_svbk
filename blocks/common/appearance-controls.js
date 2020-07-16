@@ -9,7 +9,7 @@ const { __ } = wp.i18n
 
 const withAppearanceControls =  createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
-	    
+
 	    const { 
 	    	setAttributes, 
 	    	attributes: { 
@@ -19,13 +19,13 @@ const withAppearanceControls =  createHigherOrderComponent( ( BlockEdit ) => {
 	    		className 
 	    	}
 	    } = props;
-	    
+
 	    props.attributes.className = classnames( className, { 
 	    	'is-critical-rendering': criticalRendering,
 	    	'is-mobile-hidden': mobileHidden,
 	    	'is-animated': enableAnimation
 	    } );
-	    
+
 		return (
 			<Fragment>
 				<BlockEdit { ...props } />

@@ -26,7 +26,7 @@ export const settings = {
 	icon: 'products',
 
 	category: 'widgets',
-	
+
 	keywords: [ __( 'add to cart', '_svbk' ), __( 'cart', '_svbk' ) ],
 
 	supports: {
@@ -55,9 +55,9 @@ export const settings = {
 			setAttributes,
 			className,
 		} ) {
-		
+
 		const { product_id, quantity, sku, show_price  } = attributes;
-		
+
 		return (
 			<Fragment>
 				<InspectorControls>
@@ -98,11 +98,11 @@ export const settings = {
 				<button className={ className } >{ __( 'Add To Cart', '_svbk' ) + ' (' + quantity + ' ' + __('Products', '_svbk') + ')' }</button>
 			</Fragment>
 		);
-		
+
 	},
 
 	save({ attributes }){
 		return null;
 	},
-	
+
 };

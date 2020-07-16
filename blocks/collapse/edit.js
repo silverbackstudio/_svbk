@@ -38,7 +38,7 @@ const TEMPLATE = [
 class CollapseEdit extends Component {
 
     render() {
-    	
+
 		const {
 			attributes,
 			setAttributes,
@@ -52,11 +52,11 @@ class CollapseEdit extends Component {
 			buttonClose,
 			buttonOpen,
 		} = attributes;
-		
+
 		const classNames = classnames( className, {
 			'is-selected': isSelected,
 		} );		
-	
+
 		return (
 			<Fragment>
 				<div className={ classNames } >
@@ -99,7 +99,7 @@ class CollapseEdit extends Component {
 			</Fragment>			
 		);
 	}
-    
+
 }
 
 export default CollapseEdit;

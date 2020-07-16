@@ -1,58 +1,58 @@
 .search-form {
-    display: flex;
-    
-    label {
-        padding: 0;
-        flex-grow: 1;
-    }
+	display: flex;
+
+	label {
+		padding: 0;
+		flex-grow: 1;
+	}
 }
 
 .search-form .search-field {
-    background: none;
-    border: none;
-    border-width: 0 0 1px 0;
-    border-style: solid;
-    border-color: $color__corporate;
-    border-radius: 0;
-    padding: 0;
+	background: none;
+	border: none;
+	border-width: 0 0 1px 0;
+	border-style: solid;
+	border-color: $color__corporate;
+	border-radius: 0;
+	padding: 0;
 
-    &:focus {
-        border-width: 0 0 2px 0;
-    }
+	&:focus {
+		border-width: 0 0 2px 0;
+	}
 }
 
 .search-toggle,
 .search-submit {
-    background: none;
-    border: none;
-    padding: 0;
-    box-shadow: none;
-    height: 40px;
-    width: 40px;
-    text-indent: -999px;
-    overflow: hidden;
-    position: relative;
-    font-weight: normal;
-    cursor: pointer;
+	background: none;
+	border: none;
+	padding: 0;
+	box-shadow: none;
+	height: 40px;
+	width: 40px;
+	text-indent: -999px;
+	overflow: hidden;
+	position: relative;
+	font-weight: normal;
+	cursor: pointer;
 
-    &:after {
-        @include icon-content('\e912');
-        width: 40px;
-        height: 40px;
-        line-height: 40px;
-        text-align: center;
-        text-indent: 0;
-        position: absolute;
-        right: 0;
-        top: 0;
-        color: $color__corporate;
-    }
+	&:after {
+		@include icon-content('\e912');
+		width: 40px;
+		height: 40px;
+		line-height: 40px;
+		text-align: center;
+		text-indent: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+		color: $color__corporate;
+	}
 
-    &:hover,
-    &:focus {
-        background: none;
-        border: none;
-        padding: 0;
-        box-shadow: none;
-    }
+	&:hover,
+	&:focus {
+		background: none;
+		border: none;
+		padding: 0;
+		box-shadow: none;
+	}
 }

@@ -49,8 +49,8 @@ export const settings = {
 		__( 'book', '_svbk' ),
 		__( 'publication', '_svbk' ),
 	],
-	
-	
+
+
 	attributes: {
 		pictureUrl: {
 			type: 'string',
@@ -96,7 +96,7 @@ export const settings = {
 	edit,
 
 	save: function( { attributes } ) {
-		
+
 		const { 
 			pictureUrl,
 			pictureAlt,
@@ -106,7 +106,7 @@ export const settings = {
 			meta,
 			url, 
 		} = attributes;		
-		
+
 		const blockContent = (
 			<Fragment>
 				{ pictureUrl && (
@@ -125,7 +125,7 @@ export const settings = {
 				</div>
 			</Fragment>
 		) ;
-		
+
 		return (
 			<aside>
 				{ url ? ( 

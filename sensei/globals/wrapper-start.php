@@ -8,6 +8,7 @@
  * @package Sensei/Templates
  * @version 1.6.4
  */
+
 ?>
 <?php echo _svbk_sensei_navigation(); ?>
 <div id="primary" class="content-area sensei__content">

@@ -134,7 +134,7 @@ blockquote,
 	text-align: center;
 	margin-left: auto;
 	margin-right: auto;
-	
+
 	&.has-light-background {
 		background: $color__background-light;
 	}
@@ -175,7 +175,7 @@ blockquote,
 			display: block;
 			text-transform: none;
 			margin-top: 20px;
-			
+
 			&:before {
 				content: "-";
 				margin-right: 5px;

@@ -55,7 +55,7 @@ export const settings = {
 		},
 		className: {
 			type: "string"
-			
+
 		},
 		columns: {
 			type: "number", 
@@ -103,9 +103,9 @@ export const settings = {
 	},
 
 	save( attributes ) {
-		
+
 		const { className } = attributes;
-		
+
 		return ( <div className={ className }></div> );
 	},
 };

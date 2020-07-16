@@ -1,5 +1,5 @@
 .site-footer {
-	
+
 	.wrap {
 		padding-top: 30px;
 		padding-bottom: 20px;
@@ -16,38 +16,38 @@
 		border-bottom: 1px solid #fff;
 		width: 100%;
 	}
-	
+
 	a {
 		color: rgba(255,255,255,.7);
-		
+
 		&:hover {
 			color: #f0f0f0;
 		}
 	}
-	
+
 	.footer-section__title {
 		@include font-size(1.1);
 		color: #fff;
 		margin: 0;
 		margin-bottom: 10px;
 	}
-	
+
 	.site-footer__section {
 		position: relative;
 		margin-bottom: 30px;
 		max-width: 400px;
-		
+
 		&:last-of-type {
 			margin-bottom: 0;
 		}
-		
+
 		.footer-section__title {
 			position: relative;
 			padding-left: 30px;
 			border-bottom: 1px solid #fff;
 			padding-bottom: 12px;
 			text-transform: uppercase;
-			
+
 			&:before {
 				@include font-size(1.2);
 				position: absolute;
@@ -114,38 +114,38 @@
 			}
 		}
 	}
-	
+
 	#company-contacts .footer-section__title:before {
 		@include icon-content('\e930');
 	}
-	
+
 	#company-opening-hours .footer-section__title:before {
 		@include icon-content('\e902');
 	}
-	
+
 	#company-address .footer-section__title:before {
 		@include icon-content('\e93d');
 	}
-	
+
 	.company-additional-info {
 		margin-top: 10px;
 		display: block;
 		line-height: 1.3em;
 	}
-	
+
 	a {
 		text-decoration: none;
 		color: #fff;
-			
+
 		&:hover {
 			color: #f0f0f0;
 		}
-		
+
 		&:visited {
 			color: #fff;
 		}
 	}
-	
+
 	.widget-title {
 		@include font-size(1.1);
 		border-bottom: 1px solid $color__corporate;
@@ -153,7 +153,7 @@
 		padding: 0 0 15px 30px;
 		text-transform: uppercase;
 		position: relative;
-		
+
 		&:before {
 			@include font-size(1.2);
 			color: #fff;
@@ -163,38 +163,38 @@
 			font-weight: normal;
 		}
 	}
-	
+
 	.widget {
 		margin-bottom: 30px;
-		
+
 		&:nth-of-type(1) .widget-title:before {
 			@include icon-content('\e930');
 		}
-		
+
 		&:nth-of-type(2) .widget-title:before {
 			@include icon-content('\e902');
 		}
-		
+
 		&:nth-of-type(3) .widget-title:before {
 			@include icon-content('\e93d');
 		}
 	}
-	
+
 	.sub-footer {
 		background-color: $color__background-sub-footer;
 		padding: 10px 20px;
 		text-align: center;
-		
+
 
 		.menu {
 			display: block;
 			padding: 0;
 			margin: 0;
-			
+
 			li {
 				margin-right: 3px;
 				display: inline;
-				
+
 				&:last-of-type {
 					margin-right: 0;
 				}
@@ -218,32 +218,32 @@
 
 	@media screen and (min-width: breakpoint('tablet-landscape')) {
 		margin-bottom: 0;
-		
+
 		.wrap {
 			display: flex;
 		}
-		
+
 		.site-footer__section {
 			flex-basis: 25%;
 			margin-bottom: 0;
 			padding: 10px 30px;
-			
+
 			.footer-section__title {
 				padding-top: 45px;
-				
+
 				&:before {
 					top: auto;
 					bottom: 13px;
 				}
 			}
-			
+
 			&:before {
 				@include font-size(1.5);
 				display: block;
 				position: static;
 				margin-bottom: 10px;
 			}
-			
+
 			&:last-of-type {
 				border-right: none;
 			}

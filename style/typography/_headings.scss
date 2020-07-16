@@ -11,7 +11,7 @@ h2,
 .wp-block-media-text h1,
 .wp-block-columns h1 {
 	@include font-size(1.76);
-	
+
 	@media screen and (min-width: breakpoint('tablet-landscape')) {
 		@include font-size(2);
 	}

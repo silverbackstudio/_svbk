@@ -22,7 +22,7 @@ export const settings = {
 	icon: 'admin-users',
 
 	category: 'widgets',
-	
+
 	keywords: [ __( 'author', '_svbk' ) ],
 
 	supports: {
@@ -51,9 +51,9 @@ export const settings = {
 			setAttributes,
 			className,
 		} ) {
-		
+
 		const { author_name, author_role } = attributes;
-		
+
 		return (
 			<Fragment>
 				<RichText
@@ -76,13 +76,13 @@ export const settings = {
 				/>
 			</Fragment>			
 		);
-		
+
 	},
 
 	save({ attributes }){
-		
+
 		const { author_name, author_role, className } = attributes;
-		
+
 		return (
 			<div className={ className }>
 				<div className="author__name">{author_name}</div>
@@ -90,5 +90,5 @@ export const settings = {
 			</div>
 		);
 	},
-	
+
 };

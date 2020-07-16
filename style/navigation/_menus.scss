@@ -55,7 +55,7 @@
 						color: $color__border-button-hover;
 						border-color: $color__border-button-hover;
 					}
-				
+
 					&:active,
 					&:focus {
 						color: $color__border-button-focus;
@@ -128,11 +128,11 @@
 		ul {
 
 			li {
-				
+
 				a {
 					transition: color .15s ease-in-out;
 					display: block;
-					
+
 					&:hover {
 						color: $color__corporate;
 					}
@@ -214,7 +214,7 @@
 				> a:after {
 					@include icon-content("\e90b");
 				}
-	
+
 				.sub-menu {
 					max-height: 300px;
 					display: block;
@@ -277,7 +277,7 @@
 		position: relative;
 		height: 100%;
 		overflow: hidden;
-	
+
 		&:before {
 			content: "";
 			position: absolute;

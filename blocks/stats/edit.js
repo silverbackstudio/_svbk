@@ -25,7 +25,7 @@ import IconEditor from '../icon/editor';
 class StatsEdit extends Component {
 
     render() {
-    	
+
 		const {
 			attributes,
 			setAttributes,
@@ -40,17 +40,17 @@ class StatsEdit extends Component {
 			metric,
 			description, 
 		} = attributes;
-		
+
 		const classNames = classnames( className, {
 			'is-selected': isSelected,
 			[ textColor.class ]: textColor.class,
 		} );		
-		
+
 		const style = {
 			color: textColor.color,
 			textAlign: align,			
 		};
-		
+
 		return (
 			<Fragment>
 				<div className={ classNames } >
@@ -88,7 +88,7 @@ class StatsEdit extends Component {
 			</Fragment>
 		);
 	}
-    
+
 }
 
 export default compose( [

@@ -14,40 +14,40 @@ class Feedback extends Post_List {
 
 	public function __construct( $post_type = 'feedback', $properties = array() ) {
 
-		$this->labels['name']          =
-		$this->labels['singular_name'] =
-			empty( $properties['name'] ) ? __( 'Feedback', '_svbk' ) : $properties['name'];
+		$label                         = empty( $properties['name'] ) ? __( 'Feedback', '_svbk' ) : $properties['name'];
+		$this->labels['name']          = $label;
+		$this->labels['singular_name'] = $label;
 
-		parent::__construct( $post_type, $properties);
+		parent::__construct( $post_type, $properties );
 
 		add_action( 'init', array( $this, 'init' ), 10 );
-		
+
 		if ( ! did_action( 'after_setup_theme' ) ) {
 			add_action( 'after_setup_theme', array( $this, 'register_shortcodes' ), 20 );
 		} else {
 			$this->register_shortcodes();
 		}
-		
+
 		if ( ! is_admin() ) {
 			add_filter( 'query_vars', array( static::class, 'public_query_vars' ) );
 		}
 
-		// Main render hook
+		// Main render hook.
 		add_filter( "feedback_render_{$this->post_type}", array( $this, 'render' ), 10, 2 );
 	}
 
 	public static function register( $post_type = 'feedback', $properties = array() ) {
 		return new static( $post_type, $properties );
 	}
-	
+
 	public function init() {
 		$this->register_post_types();
 	}
 
-	public function register_shortcodes(){
+	public function register_shortcodes() {
 		add_shortcode( "feedback-{$this->post_type}-count", array( $this, 'count_shortcode' ) );
 	}
-	
+
 	public function register_post_types() {
 
 		if ( ! $this->post_type ) {
@@ -78,16 +78,16 @@ class Feedback extends Post_List {
 		register_post_type( $this->post_type, apply_filters( 'svbk_feedback_post_type', $post_type_args, $this ) );
 
 		$metas = array(
-			'rating' => 'integer',
-			'authorName' => 'string',
-			'authorRole' => 'string',
-			'publishDate' => 'string',
+			'rating'            => 'integer',
+			'authorName'        => 'string',
+			'authorRole'        => 'string',
+			'publishDate'       => 'string',
 			'testimonialSource' => 'string',
-			'companyLogoId' => 'integer',
-			'avatarId' => 'integer',
+			'companyLogoId'     => 'integer',
+			'avatarId'          => 'integer',
 		);
 
-		foreach( $metas as $meta => $type ){			
+		foreach ( $metas as $meta => $type ) {
 			register_meta(
 				'post',
 				$meta,
@@ -134,8 +134,12 @@ class Feedback extends Post_List {
 	public function query_vars( $query_vars ) {
 
 		if ( ! empty( $query_vars['post_type'] ) && ( $this->post_type === $query_vars['post_type'] ) ) {
-			! empty( $query_vars['posts_per_page'] ) && $query_vars['posts_per_page'] = intval( $query_vars['posts_per_page'] );
-			! empty( $query_vars['offset'] ) && $query_vars['offset']                 = intval( $query_vars['offset'] );
+			if ( ! empty( $query_vars['posts_per_page'] ) ) {
+				$query_vars['posts_per_page'] = intval( $query_vars['posts_per_page'] );
+			}
+			if ( ! empty( $query_vars['offset'] ) ) {
+				$query_vars['offset'] = intval( $query_vars['offset'] );
+			}
 		} else {
 			unset( $query_vars['offset'] );
 			unset( $query_vars['posts_per_page'] );
@@ -146,16 +150,19 @@ class Feedback extends Post_List {
 		return $query_vars;
 	}
 
-	public function count_shortcode($atts){
-		
-	     $params = shortcode_atts( array(
-		      'categories' => [],
-	     ), $atts );		
-		
-		$query_args     = $this->getQueryArgs( $params );
+	public function count_shortcode( $atts ) {
+
+		$params = shortcode_atts(
+			array(
+				'categories' => [],
+			),
+			$atts
+		);
+
+		$query_args           = $this->getQueryArgs( $params );
 		$query_args['fields'] = 'ids';
-		$feedback_query = new WP_Query( $query_args );		
-		
+		$feedback_query       = new WP_Query( $query_args );
+
 		return $feedback_query->found_posts;
 	}
 

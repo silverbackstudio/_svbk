@@ -52,7 +52,7 @@ import { HeadingToolbar } from '../common/heading';
 class TrustEdit extends Component {
 
     render() {
-    	
+
 		const {
 			attributes,
 			setAttributes,
@@ -70,16 +70,16 @@ class TrustEdit extends Component {
 			title,
 			titleLevel,
 		} = attributes;
-		
+
 		const classNames = classnames( className, {
 			'is-selected': isSelected,
 			[ backgroundColor.class ]: backgroundColor.class,
 			[ textColor.class ]: textColor.class,
 			[ ribbonColor.class ]: ribbonColor.class,
 		} );		
-		
+
         const titleTag = titleLevel ? ( 'h' + titleLevel ) : 'h2';
-		
+
 		return (
 			<Fragment>
 				<div className={ classNames }>
@@ -143,7 +143,7 @@ class TrustEdit extends Component {
 			</Fragment>
 		);
 	}
-    
+
 }
 
 export default compose( [

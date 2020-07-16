@@ -22,7 +22,7 @@
 	<?php if ( 'post' === get_post_type() ) : ?>
 		<div class="<?php the_post_type(); ?>__meta post__meta entry-meta">
 			<?php
-			echo get_the_category_list();
+			echo get_the_category_list(); // WPCS: XSS OK.
 			_svbk_post_reading_time();
 			?>
 		</div><!-- .entry-meta -->

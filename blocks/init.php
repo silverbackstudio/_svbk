@@ -8,6 +8,9 @@
  * @package CGB
  */
 
+use Svbk\WP\Helpers\Config;
+
+
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -23,15 +26,15 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since 1.0.0
  */
 function _svbk_blocks_editor_assets() {
-	
+
 	wp_enqueue_script(
 		'_svbk-blocks',
-		get_theme_file_uri( '/dist/js/blocks.js' ), 
+		get_theme_file_uri( '/dist/js/blocks.js' ),
 		array( 'react', 'react-dom', 'wp-element', 'wp-polyfill' ),
-		null,
+		Config::get( 'theme_version', '_svbk' ),
 		true
 	);
-} 
+}
 
 
 add_action( 'enqueue_block_editor_assets', '_svbk_blocks_editor_assets' );

@@ -25,7 +25,7 @@
 
 		ul, ol {
 			color: #fff;
-	
+
 			li:before {
 				color: #fff;
 			}
@@ -45,7 +45,7 @@
 }
 
 @each $name, $value in $colors {
-	
+
 	.has-#{$name}-color {
 		color: $value;
 	}

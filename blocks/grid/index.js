@@ -100,7 +100,7 @@ export const settings = {
 	},
 
 	save( { attributes } ) {
-		
+
 		const { 
 			columns,
 			columnsMobile,
@@ -109,20 +109,20 @@ export const settings = {
 			customBackgroundColor,
 			align,
 		} = attributes;		
-		
+
 		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
-		
+
 		const classNames = classnames( `has-${ columns }-columns has-${ columnsMobile }-columns-mobile`, {
 			'has-background': backgroundColor || customBackgroundColor,
 			[ backgroundClass ]: backgroundClass,
 			[ 'has-equal-cell-height' ]: equalHeight,
 			[ `has-align-${align}` ]: align,
 		} );
-		
+
 		const style = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 		};	
-		
+
 		return (
 			<div className={ classNames } style={ style } >
 				<InnerBlocks.Content />

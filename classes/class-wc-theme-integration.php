@@ -167,9 +167,9 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Theme_Integration' ) ) :
 
 			add_action( 'woocommerce_before_edit_account_form', array( $this, 'woocommerce_edit_account' ) );
 
-			add_filter( 'product_type_options', array( $this, 'disable_wc_product_template_option') );
-			add_action( 'woocommerce_admin_process_product_object', array( $this, 'disable_wc_product_template_option_save') );
-			
+			add_filter( 'product_type_options', array( $this, 'disable_wc_product_template_option' ) );
+			add_action( 'woocommerce_admin_process_product_object', array( $this, 'disable_wc_product_template_option_save' ) );
+
 			add_action( 'wp', array( $this, 'woocommerce_product_remove_default_contents' ) );
 
 			/**
@@ -209,7 +209,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Theme_Integration' ) ) :
 		 * @return  void
 		 */
 		public function disable_wc_product_template_option( $options ) {
-		
+
 			$options['_svbk_custom_template'] = array(
 				'id'            => '_svbk_custom_template',
 				'wrapper_class' => 'show_if_simple show_if_variable show_if_grouped show_if_external',
@@ -217,13 +217,13 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Theme_Integration' ) ) :
 				'description'   => __( 'Disable WooCommerce default template. Allows you to build the full product page', '_svbk' ),
 				'default'       => 'no',
 			);
-		
+
 			return $options;
 		}
-		
-		
-		public function disable_wc_product_template_option_save( $product ){
-		    update_post_meta( $product->get_id(), "_svbk_custom_template", isset( $_POST['_svbk_custom_template'] ) ? "yes" : "no" );
+
+
+		public function disable_wc_product_template_option_save( $product ) {
+			update_post_meta( $product->get_id(), '_svbk_custom_template', isset( $_POST['_svbk_custom_template'] ) ? 'yes' : 'no' );
 		}
 
 		public function woocommerce_product_remove_default_contents() {
@@ -240,7 +240,6 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Theme_Integration' ) ) :
 				remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5 );
 				remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10 );
 
-				// remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
 				remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
 				remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
 				remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
@@ -288,7 +287,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Theme_Integration' ) ) :
 			if ( 'required' === $phone_status ) {
 				$fields['billing_phone']['required'] = true;
 				$fields['billing_phone']['priority'] = 26;
-			} elseif ( 'recommended' == $phone_status ) {
+			} elseif ( 'recommended' === $phone_status ) {
 				$fields['billing_phone']['label'] = __( 'Phone (recommended)', '_svbk' );
 			}
 
@@ -353,7 +352,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Theme_Integration' ) ) :
 
 			}
 
-			// Temporary Fix:
+			// Temporary Fix.
 			if ( isset( $fields['shipping']['shipping_phone'] ) && ! isset( $fields['shipping']['shipping_phone']['priority'] ) ) {
 				$fields['shipping']['shipping_phone']['priority'] = 25;
 			}

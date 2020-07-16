@@ -11,7 +11,7 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( [ 'post' ] ); ?>>
 	<header class="post__header entry-header first-paint">	
-		
+
 		<?php
 		if ( is_singular() ) :
 			the_title( '<h1 class="post__title entry-title screen-reader-text">', '</h1>' );
@@ -19,7 +19,7 @@
 			the_title( '<h2 class="post__title entry-title screen-reader-text"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 		endif;
 		?>
-		
+
 	</header><!-- .entry-header -->
 
 	<div class="post__content entry-content domready--show">

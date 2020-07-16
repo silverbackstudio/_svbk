@@ -8,5 +8,5 @@
  */
 ?>
 <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<?php the_content( __('Read more', '_svbk'), false); ?>
+	<?php the_content( __( 'Read more', '_svbk' ), false ); ?>
 </div>

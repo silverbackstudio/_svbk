@@ -68,14 +68,14 @@ function _svbk_customize_register( $wp_customize ) {
 			'type'        => 'checkbox',
 		)
 	);
-	
+
 	$wp_customize->add_setting(
 		'header_top_bar',
 		array(
 			'default' => false,
 		)
 	);
-	
+
 	$wp_customize->add_control(
 		'header_top_bar',
 		array(
@@ -92,7 +92,7 @@ function _svbk_customize_register( $wp_customize ) {
 			'default' => false,
 		)
 	);
-	
+
 	$wp_customize->add_control(
 		'header_search',
 		array(
@@ -257,14 +257,14 @@ function _svbk_customize_register( $wp_customize ) {
 			'sanitize_callback' => 'sanitize_email',
 		)
 	);
-	
+
 	$wp_customize->add_setting(
 		'company_opening_hours',
 		array(
 			'sanitize_callback' => 'sanitize_post',
 		)
 	);
-	
+
 	$wp_customize->add_setting(
 		'company_vat',
 		array(
@@ -328,7 +328,7 @@ function _svbk_customize_register( $wp_customize ) {
 			'section' => 'contacts',
 		)
 	);
-	
+
 	$wp_customize->add_control(
 		'company_opening_hours',
 		array(
@@ -391,16 +391,16 @@ function _svbk_customize_register( $wp_customize ) {
 		);
 	}
 
-	// Set native image sizes settings to allow starter-content to save those options
+	// Set native image sizes settings to allow starter-content to save those options.
 	$native_image_sizes = array(
 		'thumbnail',
 		'medium',
 		'medium_large',
-		'large'
+		'large',
 	);
 
-	foreach( $native_image_sizes as $native_image_size ) {
-		
+	foreach ( $native_image_sizes as $native_image_size ) {
+
 		$wp_customize->add_setting(
 			$native_image_size . '_size_w',
 			array(
@@ -408,7 +408,7 @@ function _svbk_customize_register( $wp_customize ) {
 				'capability' => 'manage_options',
 				'type'       => 'option',
 			)
-		);	
+		);
 
 		$wp_customize->add_setting(
 			$native_image_size . '_size_h',
@@ -417,7 +417,7 @@ function _svbk_customize_register( $wp_customize ) {
 				'capability' => 'manage_options',
 				'type'       => 'option',
 			)
-		);	
+		);
 
 	}
 
@@ -453,26 +453,26 @@ add_action( 'customize_preview_init', '_svbk_customize_preview_js' );
 /**
  * Add mobile logo switching via <picture> tag
  */
-function _svbk_custom_logo_with_mobile( $custom_logo_html, $blog_id ){
+function _svbk_custom_logo_with_mobile( $custom_logo_html, $blog_id ) {
 
-    $html          = '';
-    $switched_blog = false;
-	
-	if ( is_multisite() && ! empty( $blog_id ) && (int) $blog_id !== get_current_blog_id() ) {
-        switch_to_blog( $blog_id );
-        $switched_blog = true;
-    }
+	$html          = '';
+	$switched_blog = false;
+
+	if ( is_multisite() && ! empty( $blog_id ) && get_current_blog_id() !== (int) $blog_id ) {
+		switch_to_blog( $blog_id );
+		$switched_blog = true;
+	}
 
 	$custom_logo_mobile_id = get_theme_mod( 'custom_logo_mobile' );
-	$custom_logo_id = get_theme_mod( 'custom_logo' );
+	$custom_logo_id        = get_theme_mod( 'custom_logo' );
 
-	// No mobile log set, use default behavior
-	if ( !$custom_logo_id || !$custom_logo_mobile_id ) {
+	// No mobile log set, use default behavior.
+	if ( ! $custom_logo_id || ! $custom_logo_mobile_id ) {
 		return $custom_logo_html;
 	}
- 
-	$custom_logo = wp_get_attachment_image_src( $custom_logo_id, 'medium' );
-	$custom_logo_attr = array();
+
+	$custom_logo             = wp_get_attachment_image_src( $custom_logo_id, 'medium' );
+	$custom_logo_attr        = array();
 	$custom_logo_mobile_attr = array();
 
 	if ( ! $custom_logo ) {
@@ -480,25 +480,25 @@ function _svbk_custom_logo_with_mobile( $custom_logo_html, $blog_id ){
 	}
 
 	list($custom_logo_src, $width, $height) = $custom_logo;
-	
-	// Generate 'srcset' and 'sizes'
+
+	// This generate 'srcset' and 'sizes'.
 	$image_meta = wp_get_attachment_metadata( $custom_logo_id );
 
 	if ( is_array( $image_meta ) ) {
-		$size_array = array( absint( $width ), absint( $height ) );
+		$size_array                 = array( absint( $width ), absint( $height ) );
 		$custom_logo_attr['srcset'] = wp_calculate_image_srcset( $size_array, $custom_logo_src, $image_meta, $custom_logo_id );
 		if ( $custom_logo_attr['srcset'] ) {
-			$custom_logo_attr['sizes']  = wp_calculate_image_sizes( $size_array, $custom_logo_src, $image_meta, $custom_logo_id );
+			$custom_logo_attr['sizes'] = wp_calculate_image_sizes( $size_array, $custom_logo_src, $image_meta, $custom_logo_id );
 		}
 	}
 
-	$breakpoints = Config::get( 'main_breakpoints', '_svbk' );
-	$custom_logo_attr['media'] = sprintf('(min-width: %dpx)', $breakpoints['tablet-landscape']);
+	$breakpoints               = Config::get( 'main_breakpoints', '_svbk' );
+	$custom_logo_attr['media'] = sprintf( '(min-width: %dpx)', $breakpoints['tablet-landscape'] );
 
 	$custom_logo_attr_string = '';
 	foreach ( $custom_logo_attr as $name => $value ) {
 		$custom_logo_attr_string .= " $name=" . '"' . $value . '"';
-	}	
+	}
 
 	/*
 	* If the logo alt attribute is empty, get the site title and explicitly
@@ -509,10 +509,10 @@ function _svbk_custom_logo_with_mobile( $custom_logo_html, $blog_id ){
 		$custom_logo_mobile_attr['alt'] = get_bloginfo( 'name', 'display' );
 	}
 
-	$image_html = 
+	$image_html =
 		'<picture class="custom-logo" >' .
-			'<source ' . $custom_logo_attr_string . '/>'.
-			wp_get_attachment_image( $custom_logo_mobile_id, 'medium', false, $custom_logo_mobile_attr) .
+			'<source ' . $custom_logo_attr_string . '/>' .
+			wp_get_attachment_image( $custom_logo_mobile_id, 'medium', false, $custom_logo_mobile_attr ) .
 		'</picture>';
 
 	$html = sprintf(
@@ -520,12 +520,12 @@ function _svbk_custom_logo_with_mobile( $custom_logo_html, $blog_id ){
 		esc_url( home_url( '/' ) ),
 		$image_html
 	);
- 
-    if ( $switched_blog ) {
+
+	if ( $switched_blog ) {
 		restore_current_blog();
 	}
 
 	return $html;
 }
 
-add_filter( 'get_custom_logo', '_svbk_custom_logo_with_mobile', 10, 2); 
+add_filter( 'get_custom_logo', '_svbk_custom_logo_with_mobile', 10, 2 );

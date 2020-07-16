@@ -10,7 +10,7 @@
 	page = document.getElementById( 'page' );
 
 	container = document.getElementById( 'main-navigation' );
-	
+
 	if ( ! container ) {
 		return;
 	}

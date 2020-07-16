@@ -1,7 +1,4 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
 /**
  * Pagination - Lesson
  *
@@ -10,6 +7,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @category    Templates
  * @version     1.9.0
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 global $post;
 
@@ -24,8 +25,8 @@ if ( is_array( $modules_and_lessons ) && count( $modules_and_lessons ) > 0 ) {
 		$item_is_linkable = true;
 
 		if ( $item instanceof WP_Term
-			 && 'module' === $item->taxonomy
-			 && ! Sensei()->modules->do_link_to_module( $item, true )
+			&& 'module' === $item->taxonomy
+			&& ! Sensei()->modules->do_link_to_module( $item, true )
 		) {
 			$item_is_linkable = false;
 		}
@@ -50,7 +51,7 @@ if ( is_array( $modules_and_lessons ) && count( $modules_and_lessons ) > 0 ) {
 }
 
 
-// Output HTML
+// Output HTML.
 if ( isset( $next ) ) { ?>
 	<nav id="post-entries" class="post-entries fix">
 		<div class="nav-next fr">

@@ -38,7 +38,7 @@ get_header();
 				endwhile;
 				?>
 			</div>
-			
+
 			<?php the_posts_navigation(); ?>
 
 			<?php

@@ -11,13 +11,15 @@ class Post_List_Block extends Post_List {
 
 	/**
 	 * The block registration args
+	 *
+	 * @var $block_args
 	 */
 	public $block_args = [];
 
 	/**
 	 * The default block attributes
-	 */	
-	public static $defaultAttributes = array(
+	 */
+	public static $default_attributes = array(
 		'align' => array(
 			'type' => 'string',
 		),
@@ -70,14 +72,14 @@ class Post_List_Block extends Post_List {
 
 	/**
 	 * Create an instance and register the block
-	 * 
+	 *
 	 * @param array $properties The class paramenters
-	 * 
+	 *
 	 * @return void
-	 */	
-	public function __construct( $post_type, $properties = array() ){
+	 */
+	public function __construct( $post_type, $properties = array() ) {
 
-		if ( empty( $properties['block_name'] ) ){
+		if ( empty( $properties['block_name'] ) ) {
 			$this->block_name = 'svbk/' . $post_type;
 		}
 
@@ -88,18 +90,18 @@ class Post_List_Block extends Post_List {
 
 	/**
 	 * Register the block
-	 * 
+	 *
 	 * @return void
-	 */		
+	 */
 	public function register_block() {
 
 		register_block_type(
 			$this->block_name,
 			array_replace_recursive(
 				array(
-					'attributes' => self::$defaultAttributes,
+					'attributes'      => self::$default_attributes,
 					'render_callback' => array( $this, 'render' ),
-					'editor_script' => '_svbk-blocks',
+					'editor_script'   => '_svbk-blocks',
 				),
 				$this->block_args
 			)
@@ -109,57 +111,62 @@ class Post_List_Block extends Post_List {
 
 	/**
 	 * Render whole posts list
-	 * 
-	 * @param array $blockAttributes The block attributes
-	 * 
+	 *
+	 * @param array $block_attributes The block attributes
+	 *
 	 * @return string
-	 */		
-	function render( $blockAttributes ) {
-	
-		// Format defaults from block attributes
-		$defaults = array_map(function($attr) { return isset($attr->default) ? $attr->default : ''; }, self::$defaultAttributes);
+	 */
+	public function render( $block_attributes ) {
 
-		$attributes = shortcode_atts($defaults, $blockAttributes);
+		// Format defaults from block attributes.
+		$defaults = array_map(
+			function( $attr ) {
+				return isset( $attr->default ) ? $attr->default : '';
+			},
+			self::$default_attributes
+		);
+
+		$attributes = shortcode_atts( $defaults, $block_attributes );
 
 		$attributes['posts_per_page'] = $attributes['postsToShow'];
-		$attributes['orderby'] = $attributes['orderBy'];
-		$attributes['load_more'] = $attributes['loadMore'];
+		$attributes['orderby']        = $attributes['orderBy'];
+		$attributes['load_more']      = $attributes['loadMore'];
 
 		$classes = array( 'wp-block-' . str_replace( '/', '-', $this->block_name ) );
 
-		if ( isset( $blockAttributes['align'] ) ) {
-			$classes[] = 'align' . $blockAttributes['align'];
+		if ( isset( $block_attributes['align'] ) ) {
+			$classes[] = 'align' . $block_attributes['align'];
 		}
-	
-		if ( isset( $blockAttributes['postLayout'] ) && 'grid' === $blockAttributes['postLayout'] ) {
+
+		if ( isset( $block_attributes['postLayout'] ) && 'grid' === $block_attributes['postLayout'] ) {
 			$classes[] = 'is-grid';
 		}
-	
-		if ( isset( $blockAttributes['columns'] ) && 'grid' === $blockAttributes['postLayout'] ) {
-			$classes[] = 'columns-' . $blockAttributes['columns'];
+
+		if ( isset( $block_attributes['columns'] ) && 'grid' === $block_attributes['postLayout'] ) {
+			$classes[] = 'columns-' . $block_attributes['columns'];
 		}
-	
-		if ( isset( $blockAttributes['className'] ) ) {
-			$classes[] = $blockAttributes['className'];
+
+		if ( isset( $block_attributes['className'] ) ) {
+			$classes[] = $block_attributes['className'];
 		}
-	
+
 		$attributes['container_class'] = join( $classes, ' ' );
 
-		return parent::render($attributes);
+		return parent::render( $attributes );
 	}
 
 	/**
 	 * Render an single post
-	 * 
+	 *
 	 * @param array $attributes The input attributes
-	 * 
+	 *
 	 * @return void
-	 */	
-	public function renderPost($attributes){
+	 */
+	public function render_post( $attributes ) {
 		switch ( $attributes['display'] ) {
 			case 'full_post':
 				get_template_part( 'template-parts/content', $this->post_type );
-				break;					
+				break;
 			case 'excerpt':
 			default:
 				get_template_part( 'template-parts/preview', $this->post_type );

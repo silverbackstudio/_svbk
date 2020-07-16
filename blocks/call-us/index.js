@@ -4,12 +4,12 @@
  * Shows a phone call button with number
  * @author: Costanza Focardi <c.focardi@silverbackstudio.it>
  */
- 
+
 /**
  * External dependencies
  */
 import classnames from 'classnames'; 
- 
+
 /**
  * WordPress dependencies
  */
@@ -37,7 +37,7 @@ export const settings = {
 	icon: 'phone',
 
 	category: 'common',
-	
+
 	keywords: [ 
 		__( 'phone', '_svbk' ),
 		__( 'contacts', '_svbk' ), 
@@ -76,22 +76,22 @@ export const settings = {
 	edit,
 
 	save({ attributes }){
-		
+
 		const { 
 			number,
 			action, 
 			actionWide, 
 			align
 		} = attributes;
-		
+
 		const classNames = classnames( {
 			[`has-action`]: action,
 			[`has-action-wide`]: actionWide,
 			[`has-align-${align}`]: align,
 		} );			
-		
+
 		const normalizedNumber = number.replace("+", "00").replace(/[\s\(\)]/g, "");
-		
+
 		return (
 			<div className={ classNames } >
 				<a href={"tel:" + normalizedNumber } className={ 'wp-block-svbk-call-us__link' }>

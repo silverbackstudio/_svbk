@@ -73,9 +73,9 @@ const deprecated = [
     			type: 'number',
     		},		
     	},	
-    
+
     	save( { attributes } ) {
-    		
+
     		const { 
     			sealUrl,
     			sealId, 			
@@ -90,22 +90,22 @@ const deprecated = [
     			backgroundImageUrl,
     			backgroundImageId,
     		} = attributes;		
-    		
+
     		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
     		const textClass = getColorClassName( 'color', textColor );
-    
+
     		const classNames = classnames( 'wp-block-svbk-warranty__content', {
     			'has-text-color': textColor || customTextColor,
     			'has-background': backgroundColor || customBackgroundColor,			
     			[ textClass ]: textClass,
     			[ backgroundClass ]: backgroundClass,			
     		} );		
-    		
+
     		const style = {
     			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
     			color: textClass ? undefined : customTextColor,			
     		};
-    		
+
     		return (
     			<aside className={ classnames( { 'has-background-image': backgroundImageUrl } ) } >
     				<div className={ classNames } style={ style } >
@@ -114,7 +114,7 @@ const deprecated = [
     							<img src={ sealUrl } alt={"Warranty Seal"} className={ sealId ? `wp-image-${ sealId }` : null } />
     						</figure> 
     					) }			
-    				
+
     					<header className={ 'wp-block-svbk-warranty__header' } >
     						{ title && ( 
     						<RichText.Content tagName={ 'h3' } className={ 'wp-block-svbk-warranty__title' } value={ title } /> 
@@ -123,17 +123,17 @@ const deprecated = [
     						<RichText.Content tagName={ 'p' } className={ 'wp-block-svbk-warranty__subtitle' } value={ subtitle } /> 
     						) }
     					</header>
-    	
+
     					<div className={ 'wp-block-svbk-warranty__content' }> 
     						<InnerBlocks.Content />
     					</div>
-    					
+
     					{ footer && ( 
     					<RichText.Content tagName={ 'footer' } className={ 'wp-block-svbk-warranty__footer' } value={ footer } /> 
     					) }	
-    					
+
     				</div>
-    				
+
     				{ backgroundImageUrl && (
     				<img 
     					className={ 'wp-block-svbk-warranty__background' + ( backgroundImageId ? `wp-image-${ backgroundImageId }` : null ) }

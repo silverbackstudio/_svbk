@@ -160,7 +160,7 @@ export const settings = {
 	edit,
 
 	save: function( { attributes } ) {
-		
+
 		const { 
 			pictureUrl,
 			pictureId, 
@@ -180,16 +180,16 @@ export const settings = {
 			footer,
 			bottomPadded
 		} = attributes;		
-		
+
 		const classNames = classnames( {
 			[`has-align-${align}`]: align,
 			[ 'has-bottom-padding' ]: bottomPadded,
 		} );		
-		
+
 		const style = {};
-		
+
 		const titleTag = titleLevel ? ('h' + titleLevel) : 'h1';
-		
+
 		return (
 			<div className={ classNames } style={ style } >
 				{ pictureUrl && (

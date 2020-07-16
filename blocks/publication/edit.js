@@ -37,7 +37,7 @@ import ImageEdit from '../common/image';
 class PublicationEdit extends Component {
 
     render() {
-    	
+
 		const {
 			attributes,
 			setAttributes,
@@ -55,13 +55,13 @@ class PublicationEdit extends Component {
 			meta, 
 			url,
 		} = attributes;
-		
+
 		const classNames = classnames( className, {
 			'is-selected': isSelected,
 		} );		
-		
+
 		const pictureUpdate = ( update ) => {
-			
+
 			const localUpdate = mapKeys( pick( update, [ 'id', 'url', 'alt', 'size' ] ) , function(value, key) {
 				// Convert url to pictureUrl, id to pictureId, etc
 				return 'picture' + capitalize(key);
@@ -69,7 +69,7 @@ class PublicationEdit extends Component {
 
 			setAttributes( localUpdate );
 		}
-				
+
 		return (
 			<Fragment>
 				<div className={ classNames } >
@@ -116,7 +116,7 @@ class PublicationEdit extends Component {
 			</Fragment>
 		);
 	}
-    
+
 }
 
 export default PublicationEdit;

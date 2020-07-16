@@ -78,15 +78,15 @@ class HeroEdit extends Component {
 			secondaryButtonText,
 			bottomPadded
 		} = attributes;
-		
+
 		const classNames = classnames( className, {
 			'is-selected': isSelected,
 			[`has-align-${align}`]: align,
 			[ 'has-bottom-padding' ]: bottomPadded,
 		} );		
-		
+
 		const pictureUpdate = ( update ) => {
-			
+
 			const localUpdate = mapKeys( pick( update, [ 'id', 'url', 'alt', 'size' ] ) , function(value, key) {
 				// Convert url to pictureUrl, id to pictureId, etc
 				return 'picture' + capitalize(key);
@@ -94,9 +94,9 @@ class HeroEdit extends Component {
 
 			setAttributes( localUpdate );
 		}
-		
+
 		const pictureStackedUpdate = ( update ) => {
-			
+
 			const localUpdate = mapKeys( pick( update, [ 'id', 'url', 'size' ] ) , function(value, key) {
 				// Convert url to pictureUrl, id to pictureId, etc
 				return 'pictureStacked' + capitalize(key);
@@ -104,9 +104,9 @@ class HeroEdit extends Component {
 
 			setAttributes( localUpdate );
 		}		
-		
+
 		const style = { };
-	
+
 		const toolbarControls = [ 
 			{
 				icon: 'align-pull-right',
@@ -121,9 +121,9 @@ class HeroEdit extends Component {
 				onClick: () => setAttributes( { align: 'right' } ),
 			}
 		]	
-	
+
         const titleTag = titleLevel ? ( 'h' + titleLevel ) : 'h1';    	
-	
+
 		return (
 			<Fragment>
 				<div className={ classNames } style={ style } >	
@@ -254,7 +254,7 @@ class HeroEdit extends Component {
 			</Fragment>
 		);
 	}
-    
+
 }
 
 export default HeroEdit;

@@ -39,7 +39,7 @@ const {
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
- 
+
 /**
  * Internal dependencies
  */
@@ -54,7 +54,7 @@ export const settings = {
 		__( 'number' ),
 		__( 'counter' ),
 	],
-	
+
 	attributes: {
 		icon: {
 			type: 'string',

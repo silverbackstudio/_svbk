@@ -1,8 +1,8 @@
 @font-face {
-  font-family: 'theme-icons';
-  src: url('fonts/theme-icons.woff') format('woff'),
-    url('fonts/theme-icons.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: block;
+	font-family: 'theme-icons';
+	src: url('fonts/theme-icons.woff') format('woff'),
+		url('fonts/theme-icons.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+	font-display: block;
 }

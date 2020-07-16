@@ -27,13 +27,14 @@ get_header(); ?>
 					</header><!-- .page-header -->
 
 					<?php
-					if ( $categories  = wp_list_categories(
+					$categories = wp_list_categories(
 						array(
 							'title_li'        => '',
 							'show_option_all' => __( 'All categories', '_svbk' ),
 							'echo'            => 0,
 						)
-					) ) :
+					);
+					if ( $categories ) :
 						?>
 					<ul id="category-filter" class="ajax-filter filter-list">
 						<?php echo $categories; ?>
@@ -57,7 +58,7 @@ get_header(); ?>
 							endwhile;
 							?>
 					</div>
-					
+
 					<?php
 					the_posts_pagination(
 						array(
@@ -66,7 +67,7 @@ get_header(); ?>
 						)
 					);
 					?>
-					
+
 					<?php
 				else :
 					get_template_part( 'template-parts/content', 'none' );

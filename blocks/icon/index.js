@@ -46,10 +46,10 @@ export const settings = {
 	edit,
 
 	save( { attributes } ) {
-	    
+
 	    const { textColor } = attributes;
 	    const textClass = getColorClassName( 'color', textColor );
-	
+
 		return ( 
 			<div className={ textClass } >
 				<RawHTML>{ attributes.icon }</RawHTML>

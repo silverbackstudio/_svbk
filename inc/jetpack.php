@@ -43,32 +43,32 @@ function _svbk_jetpack_setup() {
 
 	$jetpack_filter_the_content_priority = has_filter( 'the_content', array( Jetpack_Photon::class, 'filter_the_content' ) );
 
-	if ( $jetpack_filter_the_content_priority ){
+	if ( $jetpack_filter_the_content_priority ) {
 		add_filter( 'the_content', '_svbk_jetpack_set_max_image_size', $jetpack_filter_the_content_priority - 1 );
 		add_filter( 'the_content', '_svbk_jetpack_unset_max_image_size', $jetpack_filter_the_content_priority + 1 );
 	}
-	
+
 }
 add_action( 'after_setup_theme', '_svbk_jetpack_setup' );
 
 
-function _svbk_jetpack_set_max_image_size($content){
+function _svbk_jetpack_set_max_image_size( $content ) {
 	add_filter( 'get_content_width', '_svbk_jetpack_max_image_size' );
 	return $content;
 }
 
-function _svbk_jetpack_max_image_size($content_width){
+function _svbk_jetpack_max_image_size( $content_width ) {
 
 	$page_max_width = Config::get( 'page_max_width', '_svbk' );
 
-	if ( $page_max_width && $page_max_width > $content_width) {
+	if ( $page_max_width && $page_max_width > $content_width ) {
 		$content_width = $page_max_width;
 	}
 
 	return $content_width;
 }
 
-function _svbk_jetpack_unset_max_image_size($content){
+function _svbk_jetpack_unset_max_image_size( $content ) {
 	remove_filter( 'get_content_width', '_svbk_jetpack_max_image_size' );
 	return $content;
 }

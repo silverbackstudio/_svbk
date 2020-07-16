@@ -69,9 +69,9 @@ const autocompleters = [
 const formatters_placeholders = lodash.keyBy( formatters, 'formatter' );
 const formatters_placeholder_regex = /%(-?\w+)/gi;
 const stringToFormat = ( formatString ) => formatString.replace(formatters_placeholder_regex, ( match, placeholder ) => {
-	
+
 	let formatter = formatters_placeholders[placeholder];
-	
+
 	if ( typeof formatter !== 'undefined' ) {
 		try {
 			return ReactDOMServer.renderToStaticMarkup( formatterTemplate(formatter) );
@@ -79,7 +79,7 @@ const stringToFormat = ( formatString ) => formatString.replace(formatters_place
 			console.error(err);
 		}
 	}
-	
+
 	return match;
 } );
 
@@ -99,7 +99,7 @@ export const settings = {
 	icon: 'backup',
 
 	category: 'widgets',
-	
+
 	keywords: [ __( 'countdown', '_svbk' ), __( 'timer', '_svbk' ) ],
 
 	supports: {
@@ -126,11 +126,11 @@ export const settings = {
 	                format: {
 	                    type: 'string',
 	                    shortcode: ( { named: { format = attributes.format.default } } ) => {
-	                    	
+
 	                    	if ( encodeURIComponent(format).includes('<') ) {
 	                    		return format;
 	                    	}
-	                    	
+
 	                        return stringToFormat(format);
 	                    },
 	                },	                
@@ -144,10 +144,10 @@ export const settings = {
 			setAttributes,
 			className,
 		} ) {
-		
+
 		const { expires, persists, format } = attributes;
 		const expireDate = new Date( expires );
-			
+
 		return ( expires ? 
 				( 
 				<Fragment>
@@ -192,12 +192,12 @@ export const settings = {
 		        </Fragment>
 		        ) 
 		);
-		
+
 	},
 
 	save( { attributes } ) {
 		const { expires, format, persist } = attributes;
-	
+
 		return (
 			<RichText.Content
 				className={ 'countdown' } 
@@ -208,5 +208,5 @@ export const settings = {
 			/>
 		);
 	},
-	
+
 };

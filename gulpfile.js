@@ -34,43 +34,43 @@ function jsCopy(){
     return src('./node_modules/fg-loadcss/dist/cssrelpreload.min.js')
         .pipe(dest('./dist/js'));
 }
-    
+
 exports.jsCopy = jsCopy
 
 var imageSetOptions = function( imageResizes, options ){
-    
+
     var imageOptions = [];
-    
+
     for(let sizeName in imageResizes){
-        
+
         imageOptions.push( 
             _.merge(
                 {
                     width: imageResizes[sizeName],
                     rename: function (filepath) {
                         filepath.dirname += path.sep + imageResizes[sizeName];
-                        
+
                         if ( options.rename && options.rename.extname ) {
                             filepath.extname = options.rename.extname;
                         }
-    
+
                         return filepath;
                     }
                 },
                 options
             )
         );
-    
+
     }
-    
+
     return imageOptions;
 }
 
 var resizeConfig = function( options = {} ){
-    
+
     var breakpoints = config.main_breakpoints;
     breakpoints.page_max_width = config.page_max_width;    
-    
+
     return {
       'backgrounds/*.jpg': imageSetOptions( breakpoints, options ),
       'backgrounds/*.png': imageSetOptions( breakpoints, options ),
@@ -80,7 +80,7 @@ var resizeConfig = function( options = {} ){
 }
 
 function imageMinify (){
-    
+
     var globalConfig = {
       // The output quality for JPEG, WebP and TIFF output formats
       quality: 70,
@@ -101,7 +101,7 @@ function imageMinify (){
 }
 
 function imageMinifyWebP (){
-    
+
     var globalConfig = {
       // The output quality for JPEG, WebP and TIFF output formats
       quality: 70,

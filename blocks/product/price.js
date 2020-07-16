@@ -17,7 +17,7 @@ export const settings = {
 	icon: 'tag',
 
 	category: 'widgets',
-	
+
 	keywords: [ __( 'price', '_svbk' ) ],
 
 	supports: {
@@ -35,19 +35,19 @@ export const settings = {
 			setAttributes,
 			className,
 		} ) {
-		
+
 		const { product_id } = attributes;
-		
+
 		return (
 			<Fragment>
 				<div className={ className } >{ '9999 €' }</div>
 			</Fragment>
 		);
-		
+
 	},
 
 	save({ attributes }){
 		return null;
 	},
-	
+
 };

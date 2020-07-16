@@ -175,7 +175,7 @@ add_filter(
 	'get_the_archive_title',
 	function( $title ) {
 		/* translators: %s represents the post type name */
-		return str_replace( sprintf( __( 'Archives: %s' ), '' ), '', $title );
+		return str_replace( sprintf( __( 'Archives: %s', 'default' ), '' ), '', $title );
 	}
 );
 
@@ -286,7 +286,7 @@ if ( ! function_exists( 'get_the_cookie_policy_link' ) ) {
 			$link = sprintf(
 				'<a class="cookie-policy-link" href="%s">%s</a>',
 				esc_url( $privacy_policy_url ),
-				__( 'Cookie Policy' )
+				__( 'Cookie Policy', 'default' )
 			);
 		}
 
@@ -379,8 +379,8 @@ function _svbk_post_reading_time( $words_per_minute = 200 ) {
 
 		$est = sprintf( _n( '%s min', '%s mins', $minutes, '_svbk' ), $minutes );
 	?>
-		
-		<span class="reading-time" data-wpm="<?php esc_attr_e( $words_per_minute ); ?>" data-wc="<?php esc_attr_e( $word_count ); ?>">
+
+		<span class="reading-time" data-wpm="<?php esc_attr( $words_per_minute ); ?>" data-wc="<?php esc_attr( $word_count ); ?>">
 			<span  class="readind-time__label"><?php _ex( 'Reading', 'post reading time label', '_svbk' ); ?>: </span>
 			<span class="reading-time__value"><?php echo $est; ?></span>
 		</span>
@@ -405,7 +405,7 @@ function _svbk_contact_info( $info, $link = '' ) {
 		return;
 	}
 	?>
-	<span class="<?php esc_attr_e( $info ); ?>"><?php echo $value; ?></span>
+	<span class="<?php esc_attr( $info ); ?>"><?php echo $value; ?></span>
 	<?php
 }
 

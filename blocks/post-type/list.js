@@ -37,7 +37,7 @@ export const settings = {
 		},
 		className: {
 			type: "string"
-			
+
 		},
 		columns: {
 			type: "number", 

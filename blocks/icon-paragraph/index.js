@@ -54,7 +54,7 @@ export const settings = {
 		__( 'paragraph' ),
 	],
 
-	
+
 	attributes: {
 		icon: {
 			type: 'string',
@@ -80,7 +80,7 @@ export const settings = {
 	edit,
 
 	save: function( { attributes } ) {
-		
+
 		const { 
 			icon,
 			content,
@@ -88,14 +88,14 @@ export const settings = {
 			fontSize,
 			customFontSize,
 		} = attributes;	
-		
+
 		const fontSizeClass = getFontSizeClass( fontSize );
-	
+
 		const style = {
 			textAlign: align,
 			fontSize: fontSizeClass ? undefined : customFontSize,
 		};		
-		
+
 		return (
 			<div className={ classnames( 'wp-block-svbk-icon-paragraph', { [ fontSizeClass ]: fontSizeClass } )} style={ style } >
 				{ icon && (

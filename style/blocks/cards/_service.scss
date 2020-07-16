@@ -3,68 +3,68 @@
 	background: #fff;
 	box-shadow: $shadow__card;
 	color: $color__text-main;
-	
+
 	p {
 		margin-bottom: 15px;
 	}
-	
+
 	.wp-block-group {
 		padding: 15px 15px 5px;
-		
+
 		p {
 			margin-top: 0;
 			margin-bottom: 10px
 		}
 
 		ul {
-			
+
 			li {
 				margin-bottom: 5px;
 			}
-		}	
+		}
 	}
-		
+
 	.wp-block-svbk-card__picture {
 		margin-left: -20px;
 		margin-right: -20px;
-		
+
 		img {
 			width: 100%;
 			border-radius: $border-radius;
 		}
 	}
-	
+
 	.wp-block-svbk-card__title {
 		margin: 20px 0 10px;
 	}
-	
+
 	.wp-block-button {
 		margin-top: 20px;
 	}
-	
+
 	&.is-style-featured {
-		
+
 		.wp-block-svbk-card__title {
 			margin: 0 -20px;
 			text-align: center;
 		}
 	}
-	
+
 	&.has-icon {
-		
+
 		.has-background & svg {
 			fill: $color__text-main;
 		}
-		
+
 		.wp-block-svbk-card__title,
 		.wp-block-svbk-card__subtitle {
 			text-align: center;
 			margin: 10px 0;
 		}
-		
+
 		@media screen and (min-width: breakpoint('tablet-portrait')) {
 			padding-bottom: 20px;
-			
+
 			.wp-block-button {
 				position: static;
 			}
@@ -108,11 +108,11 @@
 			border-bottom-color: #fff;
 		}
 	}
-	
+
 	@media screen and (min-width: breakpoint('tablet-portrait')) {
 		padding: 0 20px 75px;
 		position: relative;
-		
+
 		.wp-block-button {
 			position: absolute;
 			left: 20px;

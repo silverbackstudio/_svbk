@@ -59,12 +59,12 @@ class ImageEdit extends Component {
 		this.onSelectURL = this.onSelectURL.bind( this );
 		this.updateImageSize = this.updateImageSize.bind( this );
 		this.onSetLinkDestination = this.onSetLinkDestination.bind( this );
-		
+
 		this.state = {
 			isEditing: false
 		};
 	}
-	
+
 	updateAlt( newAlt ) {
 		this.props.setAttributes( { alt: newAlt } );
 	}	
@@ -132,7 +132,7 @@ class ImageEdit extends Component {
 			isEditing: false,
 		} );
 	}
-	
+
 	updateImageSize( size ) {
 
 		const { image } = this.props;
@@ -145,20 +145,20 @@ class ImageEdit extends Component {
 			size: size,
 		} );
 	}	
-	
+
 	getImageSizes() {
 		const { imageSizes, image } = this.props;
-		
+
 		if ( !image ) {
 			return [];
 		}
-		
+
 		const currentImageSizes = get( image, [ 'media_details', 'sizes' ] );
 
 		if ( !currentImageSizes ) {
 			return [];
 		}
-		
+
 		return imageSizes.reduce(( results, imageSize ) => {
 			let sizeSpec = currentImageSizes[imageSize.slug];
 
@@ -173,7 +173,7 @@ class ImageEdit extends Component {
 	}	
 
 	render() {
-		
+
 		const { 
 			url, 
 			alt, 
@@ -184,12 +184,12 @@ class ImageEdit extends Component {
 			changeSize = true,
 			image,
 		} = this.props;
-		
+
 		let imageUrl = url;
 
 		if ( !url && image ) {
 			imageUrl = get( image, [ 'media_details', 'sizes', size, 'source_url' ] )
-			
+
 			// Fallback sizes
 			!imageUrl && ( imageUrl = get( image, [ 'media_details', 'sizes', 'thumbnail', 'source_url' ] ) );
 			!imageUrl && ( imageUrl = get( image, [ 'media_details', 'sizes', 'full', 'source_url' ] ) );		
@@ -218,7 +218,7 @@ class ImageEdit extends Component {
 				) }
 			</Fragment>				
 		);
-		
+
 		const toolbar = (
 			<Toolbar className= { 'block-editor-svbk-picture__controls' }>
 				<MediaUpload
@@ -263,7 +263,7 @@ class ImageEdit extends Component {
 				)}
 				{ id && !image && (<Spinner />)}
 				{ !imageUrl && !id && ( 
-					
+
 						<MediaPlaceholder
 							//className={ className }
 							onSelect={ this.onSelectImage }
@@ -285,7 +285,7 @@ class ImageEdit extends Component {
 			</Fragment>
 		);
 	}
-	
+
 }
 
 export default compose( [
@@ -294,7 +294,7 @@ export default compose( [
 		const { getSettings } = select( 'core/block-editor' );
 		const { id } = props;
 		const { maxWidth, isRTL, imageSizes } = getSettings();
-	
+
 		return {
 			image: id ? getMedia( id ) : null,
 			maxWidth,

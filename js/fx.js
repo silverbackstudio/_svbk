@@ -20,9 +20,9 @@
 
   $(document).ready( smoothScroll );
   $(document.body).on( 'post-load', smoothScroll );
- 
+
   $(document).ready(function() {
- 
+
     var animatedElements = [
       '.is-animated .wp-block-media-text__media',
       '.is-animated .wp-block-media-text__content',
@@ -31,7 +31,7 @@
       '.is-animated .wp-block-svbk-iter__step',
       '.is-animated.wp-block-svbk-warranty',
     ];
- 
+
     /* Animations */
     $( animatedElements.join(',') ).waypoint({
         handler: function() {
@@ -40,7 +40,7 @@
         offset: '90%',
         triggerOnce: true
     });
-    
+
     /* Highlight animation */
     $('.highlight').waypoint({
         handler: function() {
@@ -52,7 +52,7 @@
         offset: '70%',
         triggerOnce: true
     });
-    
+
     /* Fixed bar showing animation*/
     $('#page').waypoint({
       handler: function(direction) {
@@ -60,7 +60,7 @@
       },
       offset: "-500"
     });
-    
+
   });
 
 

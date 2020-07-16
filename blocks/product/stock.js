@@ -26,7 +26,7 @@ export const settings = {
 	icon: 'sort',
 
 	category: 'widgets',
-	
+
 	keywords: [ __( 'stock', 'product' ) ],
 
 	supports: {
@@ -44,9 +44,9 @@ export const settings = {
 			setAttributes,
 			className,
 		} ) {
-		
+
 		const { product_id } = attributes;
-		
+
 		return (
 			<Fragment>
 				<InspectorControls>
@@ -63,11 +63,11 @@ export const settings = {
 				<div className={ className } >{ 'XX stock items' }</div>
 			</Fragment>
 		);
-		
+
 	},
 
 	save({ attributes }){
 		return null;
 	},
-	
+
 };

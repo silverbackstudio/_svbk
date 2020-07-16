@@ -46,30 +46,30 @@ class MapEdit extends Component {
 
 	constructor (props) {
 		super(...arguments);
-		
+
 		this.state = {
 			editingMarker: false,
 		}		
-		
+
 		this.mapRef = createRef();
-		
+
 		// this.autocomplete = null
-		
+
 		// this.onAutocompleteLoad = this.onAutocompleteLoad.bind(this);
 		// this.onPlaceChanged = this.onPlaceChanged.bind(this);
-		
+
 		this.onCenterChange 	= this.onCenterChange.bind(this);		
 		this.onZoomChange		= this.onZoomChange.bind(this);		
 		this.onAddMarkerClick	= this.onAddMarkerClick.bind(this);		
 		this.onMapClick			= this.onMapClick.bind(this);		
 	}
-	
+
 	// onAutocompleteLoad (autocomplete) {
 	// 	console.log('autocomplete: ', autocomplete)
-		
+
 	// 	this.autocomplete = autocomplete
 	// }
-	
+
 	// onPlaceChanged () {
 	// 	if (this.autocomplete !== null) {
 	// 	  console.log(this.autocomplete.getPlace())
@@ -77,9 +77,9 @@ class MapEdit extends Component {
 	// 	  console.log('Autocomplete is not loaded yet!')
 	// 	}
 	// }
-	
+
 	// markerUpdate ( update ) {
-		
+
 	// 	const localUpdate = mapKeys( pick( update, [ 'id', 'url' ] ) , function(value, key) {
 	// 		// Convert url to pictureUrl, id to pictureId, etc
 	// 		return 'marker' + capitalize(key);
@@ -87,14 +87,14 @@ class MapEdit extends Component {
 
 	// 	setAttributes( localUpdate );
 	// }
-	
+
 	onCenterChange () {
 		const {
 			setAttributes,
 		} = this.props;		
-	
+
 		const center = this.getMapCenter();
-		
+
 		if ( center ) {
 			setAttributes({
 				centerLat: center.lat,
@@ -102,26 +102,26 @@ class MapEdit extends Component {
 			});		
 		}
 	}		
-	
+
 	getMapCenter(){
 		const mapRef = this.mapRef.current;
-		
+
 		if ( !mapRef ) return;
-		
+
 		return {
 			lat: mapRef.state.map.center.lat().toFixed(7), 
 			lng: mapRef.state.map.center.lng().toFixed(7) 
 		};		
 	}
-	
+
 	onZoomChange() {
-		
+
 		const {
 			setAttributes,
 		} = this.props;
 
 		const mapRef = this.mapRef.current;
-		
+
 		if ( mapRef ) {
 			setAttributes( {zoom: mapRef.state.map.zoom } );
 		}
@@ -132,12 +132,12 @@ class MapEdit extends Component {
 	}
 
 	onAddMarkerClick() {
-		
+
 		const mapCenter = this.getMapCenter();
-		
+
 		this.addMarker(mapCenter);
 	}
-	
+
 	addMarker( marker ) {
 		const {
 			attributes,
@@ -147,16 +147,16 @@ class MapEdit extends Component {
 		let { 
 			markers
 		} = attributes;		
-	
+
 		if ( !markers ) {
 			markers = [];
 		}
-	
+
 		markers.push( marker );
 		setAttributes( { markers } );
 		this.forceUpdate();
 	}
-	
+
 	removeMarker( index ) {
 		const {
 			attributes,
@@ -166,21 +166,21 @@ class MapEdit extends Component {
 		let { 
 			markers
 		} = attributes;		
-	
+
 		if ( !markers ) {
 			return;
 		}
-		
+
 		markers.splice(index, 1);
 		setAttributes( { markers: markers.slice(0) } );	
 	}
-	
+
 	onEditMarker( index ) {
 		this.setState( { editingMarker: index } );
 	}
-		
+
 	updateMarker( index, markerUpdate ) {
-		
+
 		const {
 			attributes,
 			setAttributes,
@@ -189,14 +189,14 @@ class MapEdit extends Component {
 		const { 
 			markers
 		} = attributes;		
-		
+
 		Object.assign( markers[index], markerUpdate );
 		setAttributes( { markers } );
 		this.forceUpdate();
 	}	
 
 	render() {
-    	
+
 		const {
 			attributes,
 			setAttributes,
@@ -211,7 +211,7 @@ class MapEdit extends Component {
 			zoom,
 			type,
 		} = attributes;
-		
+
 		const classNames = classnames( className, {
 			'is-selected': isSelected,
 		} );		
@@ -219,7 +219,7 @@ class MapEdit extends Component {
 		const editableMarker = (this.state.editingMarker !== false) ? markers[this.state.editingMarker] : false;
 
 		const markerIconUpdate = ( index, update ) => {
-			
+
 			const localUpdate = mapKeys( pick( update, [ 'id', 'url' ] ) , function(value, key) {
 				// Convert url to pictureUrl, id to pictureId, etc
 				return 'icon' + capitalize(key);
@@ -340,7 +340,7 @@ class MapEdit extends Component {
 			</Fragment>
 		);
 	}
-    
+
 }
 
 export default MapEdit;

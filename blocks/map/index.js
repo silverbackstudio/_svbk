@@ -31,7 +31,7 @@ const { __ } = wp.i18n; // Import __() from wp.i18n
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
- 
+
 /**
  * Internal dependencies
  */
@@ -46,7 +46,7 @@ export const settings = {
 		__( 'google map' ),
 		__( 'location' ),
 	],
-	
+
 	attributes: {
 		centerLat: {
 			type: 'string',

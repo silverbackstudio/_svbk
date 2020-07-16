@@ -16,9 +16,10 @@
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="wrap">
 			<?php
-			$footer_logo = get_theme_mod( 'footer_logo', '' );
+			$footer_logo  = get_theme_mod( 'footer_logo', '' );
 			$company_name = get_theme_mod( 'company_name', '' );
-			if ( $footer_logo || $company_name ) :	?>
+			if ( $footer_logo || $company_name ) :
+				?>
 			<div id="company-info" class="site-footer__section">
 				<?php echo wp_get_attachment_image( get_theme_mod( 'footer_logo', '' ), 'large' ); ?>
 				<aside class="widget-area">
@@ -26,9 +27,9 @@
 				</aside>
 			</div>
 			<?php endif ?>
-	
+
 			<div id="company-contacts" class="site-footer__section">
-				<h3 class="footer-section__title"><?php _e('Contacts', '_svbk') ?></h3>
+				<h3 class="footer-section__title"><?php _e( 'Contacts', '_svbk' ); ?></h3>
 				<?php if ( get_theme_mod( 'company_phone', false ) ) : ?>
 				<span class="company-phone">Tel: <a href="tel:<?php echo get_theme_mod( 'company_phone' ); ?>"><?php echo get_theme_mod( 'company_phone' ); ?></a></span><br/>
 				<?php endif; ?>
@@ -36,51 +37,51 @@
 				<span class="company-email">Email: <a href="mailto:<?php echo get_theme_mod( 'company_email' ); ?>"><?php echo get_theme_mod( 'company_email' ); ?></a></span>
 				<?php endif; ?>		
 			</div>
-			
+
 			<?php if ( get_theme_mod( 'company_opening_hours', false ) ) : ?>
 			<div id="company-opening-hours" class="site-footer__section">
-				<h3 class="footer-section__title"><?php _e('Opening Hours', '_svbk') ?></h3>
+				<h3 class="footer-section__title"><?php _e( 'Opening Hours', '_svbk' ); ?></h3>
 				<span class="company-opening-hours"><?php echo nl2br( get_theme_mod( 'company_opening_hours' ) ); ?></span>
 			</div>
 			<?php endif; ?>
 
 			<?php if ( get_theme_mod( 'company_address', false ) ) : ?>
 			<div id="company-address" class="site-footer__section">
-				<h3 class="footer-section__title"><?php _e('Address', '_svbk') ?></h3>
+				<h3 class="footer-section__title"><?php _e( 'Address', '_svbk' ); ?></h3>
 				<span class="company-address"><?php echo nl2br( get_theme_mod( 'company_address' ) ); ?></span>
 			</div>
 			<?php endif; ?>			
 		</div>
-		
+
 		<div id="legal" class="site-footer__bar bar sub-footer">
 			<span class="copyright-notice">&copy;<?php echo date( 'Y' ); ?></span> - 
 			<?php if ( get_theme_mod( 'company_name', false ) ) : ?>
 			<span class="company-name"><?php echo get_theme_mod( 'company_name' ); ?></span> - 
 			<?php endif; ?>
 			<?php if ( get_theme_mod( 'company_vat', false ) ) : ?>
-			<?php _e('VAT', '_svbk'); ?>:
+				<?php _e( 'VAT', '_svbk' ); ?>:
 			<span class="company-vat"><?php echo get_theme_mod( 'company_vat' ); ?></span> - 
 			<?php endif; ?>
 			<?php if ( get_theme_mod( 'company_rea', false ) ) : ?>
-			<?php _e('REA', '_svbk'); ?>:
+				<?php _e( 'REA', '_svbk' ); ?>:
 			<span class="company-rea"><?php echo get_theme_mod( 'company_rea' ); ?></span> - 
 			<?php endif; ?>
 			<?php if ( get_theme_mod( 'company_certified_email', false ) ) : ?>
-			<?php _e('Certified e-mail', '_svbk'); ?>:
+				<?php _e( 'Certified e-mail', '_svbk' ); ?>:
 			<span class="company-certified-email"><?php echo get_theme_mod( 'company_certified_email' ); ?></span> - 
 			<?php endif; ?>
 			<?php if ( get_theme_mod( 'company_share_capital', false ) ) : ?>
-			<?php _e('Share Capital', '_svbk'); ?>:
+				<?php _e( 'Share Capital', '_svbk' ); ?>:
 			<span class="company-share-capital"><?php echo get_theme_mod( 'company_share_capital' ); ?></span>
 			<?php endif; ?>
 			<?php
-				if ( has_nav_menu( 'legal-menu' ) ) :
-					wp_nav_menu(
-						array(
-							'theme_location' => 'legal-menu',
-							'menu_id'        => 'legal-menu',
-						)
-					);
+			if ( has_nav_menu( 'legal-menu' ) ) :
+				wp_nav_menu(
+					array(
+						'theme_location' => 'legal-menu',
+						'menu_id'        => 'legal-menu',
+					)
+				);
 				else :
 					?>
 					<ul id="legal-menu" class="menu">
@@ -89,14 +90,14 @@
 					</ul>
 			<?php endif; ?>
 		</div>
-		
+
 		<?php if ( get_theme_mod( 'fixed_footer_bar' ) ) : ?>
 		<div class="site-footer__bar bar bar--fixed footer-fixed-bar">
 			<?php echo do_shortcode( get_theme_mod( 'fixed_footer_bar_content', __( 'Customize this text in Theme Customizer', '_svbk' ) ) ); ?>
 		</div>
 		<?php endif ?>
-		
-		
+
+
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 

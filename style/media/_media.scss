@@ -43,7 +43,7 @@ object {
 }
 
 .wp-block-embed.is-type-video {
-	
+
 	.has-primary-background-color &,
 	.has-secondary-background-color &,
 	.has-dark-background-color & {
@@ -56,11 +56,11 @@ object {
 	img {
 		display: block;
 	}
-	
+
 	&.is-style-rounded img {
 		border-radius: 50%;
 	}
-	
+
 	&.is-style-rounded-corners img {
 		border-radius: $border-radius;
 	}

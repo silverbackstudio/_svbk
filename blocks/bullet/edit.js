@@ -29,7 +29,7 @@ import { HeadingToolbar } from '../common/heading';
 class BulletEdit extends Component {
 
     render() {
-    	
+
 		const {
 			attributes,
 			setAttributes,
@@ -47,21 +47,21 @@ class BulletEdit extends Component {
 			titleLevel,
 			content, 
 		} = attributes;
-		
+
 		const classNames = classnames( className, {
 			'is-selected': isSelected,
 			[ backgroundColor.class ]: backgroundColor.class,
 			[ textColor.class ]: textColor.class,
 		} );		
-		
+
 		const style = {
 			backgroundColor: backgroundColor.color,
 			color: textColor.color,
 			textAlign: align,			
 		};
-		
+
         const titleTag = titleLevel ? ( 'h' + titleLevel ) : 'h2';
-		
+
 		return (
 			<Fragment>
 				<div className={ classNames } >
@@ -124,7 +124,7 @@ class BulletEdit extends Component {
 			</Fragment>
 		);
 	}
-    
+
 }
 
 export default compose( [

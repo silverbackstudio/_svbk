@@ -38,21 +38,21 @@ class IconEditor extends Component {
 	}
 
 	render() {
-		
+
 		const { 
 			attributes,
 			isSelected,
 			setAttributes,
 			className
 		} = this.props;
-		
+
 		const { 
 			icon,
 		} = attributes;		
-		
+
 		const isPreview = this.state.isPreview;
 		const classNames = classnames( className, 'icon-editor' );		
-		
+
 		return (	
 			<div className={ classNames }>
 				{ isSelected && (
@@ -95,9 +95,9 @@ class IconEditor extends Component {
 				</Disabled.Consumer>
 			</div>
 		);
-	
+
 	}
-	
+
 }
 
 export default IconEditor;

@@ -9,13 +9,13 @@ const { __ } = wp.i18n
 
 const withSpeedUpdate =  createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
-	    
+
 	    const { setAttributes, attributes: { criticalRendering, className } } = props;
-	    
+
 	    if ( criticalRendering ) {
 	        props.attributes.className = classnames( className, { 'critical-rendering': criticalRendering } );
 	    }
-	    
+
 		return (
 			<Fragment>
 				<BlockEdit { ...props } />

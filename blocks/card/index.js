@@ -163,7 +163,7 @@ export const settings = {
 	edit,
 
 	save: function( { attributes } ) {
-		
+
 		const { 
 			imageType,
 			pictureUrl,
@@ -187,14 +187,14 @@ export const settings = {
 			customRibbonColor,
 			ribbonText
 		} = attributes;		
-		
+
 		const titleTag = titleLevel ? ('h' + titleLevel) : 'h3';		
-		
+
 		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 		const textClass = getColorClassName( 'color', textColor );
 		const ribbonClass = getColorClassName( 'ribbon', ribbonColor );
 		const fontSizeClass = getFontSizeClass( fontSize );
-		
+
 		const classNames = classnames( {
 			'has-text-color': textColor || customTextColor,
 			'has-background': backgroundColor || customBackgroundColor,			
@@ -204,14 +204,14 @@ export const settings = {
 			[ textClass ]: textClass,
 			[ backgroundClass ]: backgroundClass,			
 		} );
-		
+
 		const style = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			color: textClass ? undefined : customTextColor,
 			fontSize: fontSizeClass ? undefined : customFontSize,
 			textAlign: align,
 		};	
-		
+
 		const ribbonStyle = {
 			backgroundColor: ribbonClass ? undefined : customRibbonColor,
 		};			
@@ -219,7 +219,7 @@ export const settings = {
 		const contentStyle = {
 			textAlign: contentAlign
 		};
-		
+
 		return (
 			<div className={ classNames } style={ style } >
 				{ ribbonText && (

@@ -43,7 +43,7 @@ import ImageEdit from '../common/image';
 class ProfileEdit extends Component {
 
     render() {
-    	
+
 		const {
 			attributes,
 			setAttributes,
@@ -67,23 +67,23 @@ class ProfileEdit extends Component {
 			buttonUrl, 
 			buttonText,				
 		} = attributes;
-		
+
 		const classNames = classnames( className, {
 			'is-selected': isSelected,
 			[ backgroundColor.class ]: backgroundColor.class,
 			[ textColor.class ]: textColor.class,
 		} );		
-		
+
 		const style = {
 			backgroundColor: backgroundColor.color,
 			color: textColor.color,
 			textAlign: align,			
 		};
-		
+
         const titleTag = 'h3';
-		
+
 		const pictureUpdate = ( update ) => {
-			
+
 			const localUpdate = mapKeys( pick( update, [ 'id', 'url', 'alt', 'size' ] ) , function(value, key) {
 				// Convert url to pictureUrl, id to pictureId, etc
 				return 'picture' + capitalize(key);
@@ -91,7 +91,7 @@ class ProfileEdit extends Component {
 
 			setAttributes( localUpdate );
 		}
-				
+
 		return (
 			<Fragment>
 				<div className={ classNames } >
@@ -180,7 +180,7 @@ class ProfileEdit extends Component {
 			</Fragment>
 		);
 	}
-    
+
 }
 
 export default compose( [

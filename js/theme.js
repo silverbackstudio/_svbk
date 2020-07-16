@@ -27,25 +27,25 @@
 
 		$.get( loadmore.attr('href') + ' #main', function( response ){
 		  var loader = $( response );
-			
+
 			  container
 				  .append(loader.find('.hentry'))
 				  .removeClass('loading');
-			
+
 			  var nextPage = loader.find('.navigation .nav-previous a');
-			
+
 			  if( nextPage.length ){
 				  loadmore.attr('href', nextPage.attr('href') );
 				  container
 					  .append(loadmore)
 			  } 
-			
+
 			$(document.body).trigger( 'post-load' );
 		} );
-		
+
 		loadmore.detach();
 	});		
-		
+
   function getCookie(name) {
     var value = "; " + document.cookie;
     var parts = value.split("; " + name + "=");
@@ -53,10 +53,10 @@
   }
 
   $(document).ready(function(){
-    
+
       $(".countdown").each(function(){
       	var countdown_expires =  $(this).data('expires');
-      	
+
       	if( $.isNumeric( countdown_expires ) ) {
       		countdown_expires += new Date().getTime();
       	} else if ( countdown_expires )  {
@@ -64,13 +64,13 @@
       	} else {
       	  return;
       	}
-      	
+
       	var countdown_persist = parseInt($(this).data('persist'));
-      	
+
       	if( countdown_persist ) {
  	        var cookie_name = $(this).attr("id") + "_expires";
       		var countdown_cookie = getCookie(cookie_name);
-      		
+
       		if (countdown_cookie) {
       			countdown_expires = countdown_cookie;
       		} else {
@@ -79,33 +79,33 @@
 	          document.cookie = cookie_name + "=" + countdown_expires + "; expires=" + cookie_expire;                    		
       		}   
       	}
-      	
+
       	var date_format = $(this).html();
-      	
+
       	$(this).countdown( countdown_expires, function(event) {
-      	    
+
         $(this).addClass('countdown--running');
-        
+
         if (event.elapsed) { 
             $(this).addClass('countdown--elapsed');
             $(this).removeClass('countdown--running');
         } else {
           $(this).html( event.strftime( date_format ) );
         }      	  
-      	 
+
       });
   	});
-    
+
     $( '.wp-block-svbk-collapse__trigger').on( 'click', function(){
       var $button = $(this);
       var $collapse = $button.closest('.wp-block-svbk-collapse');
-      
+
       $collapse.find('.wp-block-svbk-collapse__content').slideToggle(500, function(){
           $collapse.toggleClass('wp-block-svbk-collapse--open');
       });
-      
+
     } );
-    
+
   });
 
 

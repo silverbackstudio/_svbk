@@ -5,7 +5,7 @@
 			$( '#order-details' ).slideToggle();
 		}
 	);
-	
+
 	var options = _svbk_woocommerce || {
         'cvcInstructions' : {
         	'buttonText': 'Where?',
@@ -14,7 +14,7 @@
         	'closeText': 'Close',
         }
 	};
-			
+
 	var cvcTooltip = $(
 		'<div class="find-your-cvc">' +
 			'<a class="find-your-cvc-hide close">' + options.cvcInstructions.closeText + '</a>' +
@@ -22,7 +22,7 @@
 			'<img src="' + options.cvcInstructions.imageUrl + '" />' +
 		'</div>'
 	);
-	
+
 	var cvcTooltipButton = $(
 		'<a class="find-your-cvc-show open">' + options.cvcInstructions.buttonText + '</a>'
 	);
@@ -32,7 +32,7 @@
 		cvcTooltipButton.on('click', function(){
 			cvcTooltip.addClass('tooltip-show');
 		});
-	
+
 		cvcTooltip.on('click', '.find-your-cvc-hide', function(){
 			cvcTooltip.removeClass('tooltip-show');
 		});	

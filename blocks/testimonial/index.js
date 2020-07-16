@@ -74,7 +74,7 @@ export const settings = {
 	        label: __( 'Press', '_svbk' ),
 	    }	    
 	],	
-	
+
 	attributes: {
 		avatarUrl: {
 			type: 'string',
@@ -141,7 +141,7 @@ export const settings = {
 	edit,
 
 	save: function( { attributes } ) {
-		
+
 		const { 
 			avatarUrl,
 			avatarId,
@@ -157,8 +157,8 @@ export const settings = {
 			textColor,
 			customTextColor,			
 		} = attributes;		
-		
-		
+
+
 		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 		const textClass = getColorClassName( 'color', textColor );
 
@@ -168,12 +168,12 @@ export const settings = {
 			[ textClass ]: textClass,
 			[ backgroundClass ]: backgroundClass,			
 		} );		
-		
+
 		const style = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			color: textClass ? undefined : customTextColor,
 		};			
-		
+
 		return (
 			<div className={ classNames } style={ style } >
 				<div className={ 'wp-block-svbk-testimonial__header' } >
@@ -182,7 +182,7 @@ export const settings = {
 						<img src={ avatarUrl } alt={ 'Profile Image' } className={ avatarId ? `wp-image-${ avatarId }` : null } />
 					</figure> 
 					) }	
-					
+
 					{ authorName && ( 
 					<div className={ 'wp-block-svbk-testimonial__author' }>
 						<div className={ 'wp-block-svbk-testimonial__author-name' } >{ authorName }</div>
@@ -191,32 +191,32 @@ export const settings = {
 						) }
 					</div>					
 					) }
-					
+
 					{ rating && ( 
 					<div className={ classnames( 'wp-block-svbk-testimonial__rating', 'rating', { [ `rating--${rating}` ] : rating }  ) } >
 						<span className={ 'rating__label' }>Rating:</span>
 						<span className={ 'rating__value' }>{rating}</span>
 					</div>
 					) }
-					
+
 					{ ( date || source ) && ( 
 					<div className={ 'wp-block-svbk-testimonial__meta' } >
 						{ date && ( <span className={ 'wp-block-svbk-testimonial__date' }>{ date }</span> ) }
 						{ source && ( <span className={ 'wp-block-svbk-testimonial__source' }> {source}</span>) }
 					</div>
 					) }				
-					
+
 					{ companyLogoUrl && (
 					<figure className={ 'wp-block-svbk-testimonial__company-logo'} >
 						<img src={ companyLogoUrl } alt={ 'Company Logo' } className={ companyLogoId ? `wp-image-${ companyLogoId }` : null } />
 					</figure> 
 					) }
 				</div>
-				
+
 				<div className={ 'wp-block-svbk-testimonial__content' } >
 					<InnerBlocks.Content />
 				</div>
-				
+
 			</div>
 		);
 	},

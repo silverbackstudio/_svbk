@@ -143,11 +143,11 @@ input[type="submit"],
 
 			&.has-#{$name}-color {
 				color: $value;
-	
+
 				&:hover {
 					color: lighten( $value, 10% );
 				}
-	
+
 				&:focus,
 				&:active {
 					color: darken( $value, 5% );

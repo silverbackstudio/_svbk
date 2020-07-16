@@ -19,7 +19,7 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+	exit; // Exit if accessed directly.
 }
 
 do_action( 'woocommerce_before_account_dashboard' );
@@ -84,7 +84,7 @@ do_action( 'woocommerce_before_account_dashboard' );
 		);
 		?>
 		</p>
-	
+
 		<p>
 		<?php
 			printf(
@@ -96,8 +96,8 @@ do_action( 'woocommerce_before_account_dashboard' );
 		?>
 		</p>
 	<?php } ?>
-	
-	
+
+
 	<?php
 		/**
 		 * Deprecated woocommerce_after_my_account action.

@@ -64,12 +64,12 @@ wp.blocks.registerBlockStyle( 'core/gallery', {
 
 // Register new flickity options for the Gallery Block
 const addFlickityToGallery = function ( settings, name ) {
-	
+
 	// Apply only to gallery block
     if ( name !== 'core/gallery' ) {
         return settings;
     }
-    
+
 	_.assign( settings, 
     	{
     		edit: withFlickityEditor( settings.edit ),
@@ -94,7 +94,7 @@ const addFlickityToGallery = function ( settings, name ) {
 		selector: 'img',
 		attribute: 'data-flickity-lazyload-src',
 	};
-	
+
 	settings.attributes.images.query['flickityLazyloadSrcset'] = {
 		source: 'attribute',
 		selector: 'img',
@@ -112,7 +112,7 @@ wp.hooks.addFilter(
 
 // Add Flickity options property, add flickity-image class and lazyload attributes to <img>s
 const withFlickitySave = function ( mainElement, blockType, attributes) {
-	
+
 	// Check if the gallery has flickity style
     if ( !isFlickity(attributes, blockType) ) {
     	return mainElement;
@@ -183,23 +183,23 @@ wp.hooks.addFilter(
 
 // Backfill the `url`/`srcset` image attributes from the flickity lazyload params
 const backfillFlickityAttributes = function(attributes, blockType, element, type){
-	
+
     if ( ! isFlickity(attributes, blockType)  ) {
     	return attributes;
     }	
-    
+
 	attributes.images.forEach( (image) => {
-		
+
 		if ( !image.url && image.flickityLazyload ){ 
 			image.url = image.flickityLazyload;
 		}
-		
+
 		if ( !image.srcset && image.flickityLazyloadSrcset ){ 
 			image.srcSet = image.flickityLazyloadSrcset;
 		}		
-		
+
 	} );
-    
+
 	return attributes;
 }
 

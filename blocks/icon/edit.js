@@ -18,13 +18,13 @@ const {
 import IconEditor from './editor';
 
 class IconEdit extends Component {
-	
+
 	render() {
 		const { 
 			setTextColor,
 			textColor,
 		} = this.props;
-		
+
 		const classNames = classnames( 'wp-block-svbk-icon', {
 			[ textColor.class ]: textColor.class,
 		} );

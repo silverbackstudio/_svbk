@@ -9,28 +9,28 @@ abstract class Post_List {
 
 	/**
 	 * The post type
-	 */	
+	 */
 	public $post_type;
 
 	/**
 	 * The post type
-	 */		
+	 */
 	public $taxonomy;
 
 	/**
 	 * The loadmore button class
-	 */		
+	 */
 	public $loadmore_class;
 
 	/**
 	 * The loadmore button label
-	 */		
-	public $loadmore_label;	
+	 */
+	public $loadmore_label;
 
 	/**
 	 * Create an instance and register the block
-	 */	
-	public function __construct( $post_type, $properties = array() ){
+	 */
+	public function __construct( $post_type, $properties = array() ) {
 
 		$this->post_type = $post_type;
 
@@ -42,35 +42,37 @@ abstract class Post_List {
 		$this->loadmore_label = __( 'Show more', '_svbk' );
 
 		Utils\ObjectUtils::configure( $this, $properties );
-		
+
 		if ( ! is_admin() ) {
 			add_filter( 'query_vars', array( static::class, 'public_query_vars' ) );
-			//add_filter( 'request', array( $this, 'query_vars' ) );
 		}
 
 	}
-	
+
 	/**
 	 * Get WP_Query args from a set of attributes
-	 * 
-	 * @param array $attributes The attributes to be converted
-	 * 
+	 *
+	 * @param array $attributes The attributes to be converted.
+	 *
 	 * @return array
 	 */
-	public function getQueryArgs( $attributes ) {
+	public function get_query_args( $attributes ) {
 
-		$query_args = shortcode_atts( array(
-			'post_type'      => $this->post_type,
-			'post_status'    => 'publish',
-			'orderby'        => 'menu_order date',
-			'order'          => 'desc',
-			'posts_per_page' => null,
-			'paged'          => 1,
-			'offset'         => null,
-			'tax_query'      => [],
-		), $attributes);
+		$query_args = shortcode_atts(
+			array(
+				'post_type'      => $this->post_type,
+				'post_status'    => 'publish',
+				'orderby'        => 'menu_order date',
+				'order'          => 'desc',
+				'posts_per_page' => null,
+				'paged'          => 1,
+				'offset'         => null,
+				'tax_query'      => [],
+			),
+			$attributes
+		);
 
-		// Setting offset to 0 breaks pagination
+		// Setting offset to 0 breaks pagination.
 		if ( $this->taxonomy && ! empty( $attributes['categories'] ) ) {
 			$query_args['tax_query'][] = array(
 				'taxonomy' => $this->taxonomy,
@@ -79,7 +81,7 @@ abstract class Post_List {
 			);
 		};
 
-		// Setting offset to 0 breaks pagination
+		// Setting offset to 0 breaks pagination.
 		if ( intval( $query_args['offset'] ) === 0 ) {
 			unset( $query_args['offset'] );
 		}
@@ -89,14 +91,14 @@ abstract class Post_List {
 
 	/**
 	 * Render whole posts list
-	 * 
-	 * @param array $attributes The block attributes
-	 * 
+	 *
+	 * @param array $attributes The block attributes.
+	 *
 	 * @return string
-	 */	
-	function render( $attributes ) {
+	 */
+	public function render( $attributes ) {
 
-		$query_args = $this->getQueryArgs( $attributes );
+		$query_args = $this->get_query_args( $attributes );
 		$post_query = new \WP_Query( $query_args );
 
 		$classes = ! empty( $attributes['container_class'] ) ? $attributes['container_class'] : ( $this->post_type . '__container' );
@@ -105,8 +107,9 @@ abstract class Post_List {
 
 		ob_start();
 
-			while ( $post_query->have_posts() ) : $post_query->the_post();
-				$this->renderPost($attributes, $post_query);
+		while ( $post_query->have_posts() ) :
+			$post_query->the_post();
+			$this->render_post( $attributes, $post_query );
 			endwhile;
 
 			wp_reset_postdata();
@@ -115,8 +118,8 @@ abstract class Post_List {
 
 		ob_end_clean();
 
-		if ( !empty($attributes['load_more']) && ( $query_args['paged'] < $post_query->max_num_pages ) ) {
-			$output .= $this->renderLoadMore($query_args, $attributes);
+		if ( ! empty( $attributes['load_more'] ) && ( $query_args['paged'] < $post_query->max_num_pages ) ) {
+			$output .= $this->render_load_more( $query_args, $attributes );
 		}
 
 		$output .= '</div>';
@@ -126,23 +129,23 @@ abstract class Post_List {
 
 	/**
 	 * Render an single post
-	 * 
-	 * @param array $attributes The input attributes
-	 * 
+	 *
+	 * @param array $attributes The input attributes.
+	 *
 	 * @return void
-	 */		
-	public function renderPost( $attributes ){
+	 */
+	public function render_post( $attributes ) {
 		get_template_part( 'template-parts/content', $this->post_type );
 	}
 
 	/**
-	 * Render and return the load more 
-	 * 
-	 * @param array $query_args The query args
-	 * 
+	 * Render and return the load more
+	 *
+	 * @param array $query_args The query args.
+	 *
 	 * @return string
-	 */		
-	public function renderLoadMore($query_args, $attributes){
+	 */
+	public function render_load_more( $query_args, $attributes ) {
 
 		$loadmore_args = array(
 			'paged'          => $query_args['paged'] + 1,
@@ -158,18 +161,18 @@ abstract class Post_List {
 			$loadmore_args[ $this->taxonomy ] = $term->slug;
 		}
 
-		return '<a href="' . add_query_arg( $loadmore_args, get_post_type_archive_link( $this->post_type ) ) . '" class="loadmore__button' . ( $this->loadmore_class ? ( ' ' . esc_attr( $this->loadmore_class ) ) : '' ) . '">' . 
+		return '<a href="' . add_query_arg( $loadmore_args, get_post_type_archive_link( $this->post_type ) ) . '" class="loadmore__button' . ( $this->loadmore_class ? ( ' ' . esc_attr( $this->loadmore_class ) ) : '' ) . '">' .
 			$this->loadmore_label .
 		'</a>';
 	}
 
 	/**
 	 * Setup input query vars
-	 * 
-	 * @param array $public_query_vars The query args
-	 * 
+	 *
+	 * @param array $public_query_vars The query args.
+	 *
 	 * @return array
-	 */	
+	 */
 	public static function public_query_vars( $public_query_vars ) {
 
 		$public_query_vars[] = 'posts_per_page';

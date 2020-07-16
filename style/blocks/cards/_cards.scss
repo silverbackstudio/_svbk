@@ -25,33 +25,33 @@
 			}
 		}
 	}
-	
+
 	figure img {
 		display: block;
 	}
-	
+
 	h2, h3 {
 		@include font-size(1.4);
 	}
-	
+
 	.wp-block-svbk-card__subtitle,
 	.wp-block-svbk-profile__role {
 		font-weight: bold;
 		@include font-size(1.1);
 	}
-	
+
 	.wp-block-button__link {
 		display: block;
 	}
-	
+
 	&[class$="background-color"] {
 		padding-left: 20px;
 		padding-right: 20px;
 		box-shadow: $shadow__card;
 	}
-	
+
 	&.is-style-featured {
-		
+
 		.wp-block-svbk-profile__name,
 		.wp-block-svbk-card__title {
 			background: $color__corporate;
@@ -63,11 +63,11 @@
 
 .wp-block-svbk-card,
 .wp-block-svbk-profile {
-	
+
 	.wp-block-svbk-card__picture {
 		margin: 0;
 	}
-	
+
 	.wp-block-svbk-card__subtitle {
 		margin: 10px 0;
 	}
@@ -79,7 +79,7 @@
 	margin-top: 65px;
 	padding-top: 50px;
 	position: relative;
-	
+
 	.wp-block-svbk-bullet__icon,
 	.wp-block-svbk-card__icon {
 		width: 100px;
@@ -92,7 +92,7 @@
 		left: 50%;
 		transform: translateX(-50%);
 		padding: 10px;
-		
+
 		svg {
 			fill: $color__corporate;
 		}

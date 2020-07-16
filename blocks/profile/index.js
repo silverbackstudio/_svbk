@@ -50,7 +50,7 @@ export const settings = {
 		__( 'team' ),
 		__( 'member' ),
 	],
-	
+
 	styles: [
 	    // Mark style as default.
 	    {
@@ -63,7 +63,7 @@ export const settings = {
 	        label: __( 'Featured' ),
 	    },	    
 	],	
-	
+
 	attributes: {
 		pictureUrl: {
 			type: 'string',
@@ -129,7 +129,7 @@ export const settings = {
 	edit,
 
 	save: function( { attributes } ) {
-		
+
 		const { 
 			pictureUrl,
 			pictureAlt,
@@ -145,9 +145,9 @@ export const settings = {
 			customTextColor,
 			align,
 		} = attributes;		
-		
+
 		const titleTag = 'h3';		
-		
+
 		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 		const textClass = getColorClassName( 'color', textColor );
 
@@ -157,7 +157,7 @@ export const settings = {
 			[ textClass ]: textClass,
 			[ backgroundClass ]: backgroundClass,			
 		} );		
-		
+
 		const style = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			color: textClass ? undefined : customTextColor,

@@ -9,6 +9,7 @@
  * @category  Templates
  * @version   1.9.20
  */
+
 ?>
 
 <?php get_sensei_header(); ?>
@@ -32,9 +33,9 @@
 					 */
 					do_action( 'sensei_taxonomy_module_content_inside_before' );
 				?>
-		
+
 				<?php
-				// Loop through all lessons
+				// Loop through all lessons.
 				while ( have_posts() ) {
 					the_post();
 

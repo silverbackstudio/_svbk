@@ -80,7 +80,7 @@ function _svbk_the_whole_content() {
 
 function _svbk_update_word_count( $post_ID, $post, $update ) {
 	$content = apply_filters( 'the_content', $post->post_content );
-	$words   = str_word_count( strip_tags( $content ) );
+	$words   = str_word_count( wp_strip_all_tags( $content ) );
 
 	update_post_meta( $post_ID, 'word_count', $words );
 }
@@ -168,18 +168,18 @@ if ( ! function_exists( 'the_post_meta' ) ) {
 	}
 }
 
-/** 
- * Removes the wp:more block idenfier before piping content to do_blocks. 
+/**
+ * Removes the wp:more block idenfier before piping content to do_blocks.
  * Patches an error.
  */
-function _svbk_strip_unclosed_more_block( $content ){
+function _svbk_strip_unclosed_more_block( $content ) {
 
-	if ( is_admin() ){
+	if ( is_admin() ) {
 		return $content;
 	}
-	
-	$content = preg_replace('/<!-- wp:more(\s.*?)? -->/', '', $content);
-	$content = str_replace('<!-- /wp:more -->', '', $content);
+
+	$content = preg_replace( '/<!-- wp:more(\s.*?)? -->/', '', $content );
+	$content = str_replace( '<!-- /wp:more -->', '', $content );
 
 	return $content;
 }
@@ -188,6 +188,7 @@ add_filter( 'the_content', '_svbk_strip_unclosed_more_block', 8 );
 
 /**
  * Shim for WP 5.2 new body_open action trigger function
+ *
  * @see https://make.wordpress.org/core/2019/04/24/miscellaneous-developer-updates-in-5-2/
  */
 if ( ! function_exists( 'wp_body_open' ) ) {

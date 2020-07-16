@@ -14,7 +14,7 @@ li.product {
 		top: 0;
 		left: 0;
 	}
-	
+
 	.price {
 		font-weight: normal;
 	}
@@ -65,7 +65,7 @@ li.product {
 		&:focus {
 			box-shadow: 0 2px 4px rgba(0,0,0,0.35);
 		}
-	
+
 		&:active {
 			box-shadow: 0 0 2px rgba(0,0,0,0.4);
 		}

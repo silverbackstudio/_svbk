@@ -25,20 +25,20 @@
 		right: 0;
 		z-index: 99;
 	}
-	
+
 	img {
 		border-radius: 50%;
 		margin-bottom: 0;
 		margin-right: 10px;
 	}
-	
+
 	p {
 		margin: 0;
 		margin-right: 10px;
 		text-align: left;
 		line-height: 1.2em;
 	}
-	
+
 	.button {
 		@include font-size(.9);
 		margin: 0;

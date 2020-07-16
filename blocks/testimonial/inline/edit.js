@@ -43,7 +43,7 @@ import ImageEdit from '../../common/image';
 class TestimonialInlineEdit extends Component {
 
     render() {
-    	
+
 		const {
 			attributes,
 			setAttributes,
@@ -64,9 +64,9 @@ class TestimonialInlineEdit extends Component {
 			rating,
 			role,
 		} = attributes;
-		
+
 		const pictureUpdate = ( update ) => {
-			
+
 			const localUpdate = mapKeys( pick( update, [ 'id', 'url', 'alt', 'size' ] ) , function(value, key) {
 				// Convert url to pictureUrl, id to pictureId, etc
 				return 'picture' + capitalize(key);
@@ -74,18 +74,18 @@ class TestimonialInlineEdit extends Component {
 
 			setAttributes( localUpdate );
 		}		
-		
+
 		const classNames = classnames( className, {
 			'is-selected': isSelected,
 			[ backgroundColor.class ]: backgroundColor.class,
 			[ textColor.class ]: textColor.class,
 		} );		
-		
+
 		const style = {
 			backgroundColor: backgroundColor.color,
 			color: textColor.color,
 		};		
-		
+
 		return (
 			<div className={ classNames } style={ style } >
 				<ImageEdit
@@ -166,7 +166,7 @@ class TestimonialInlineEdit extends Component {
 			</div>
 		);
 	}
-    
+
 }
 
 export default compose( [

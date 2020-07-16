@@ -49,9 +49,9 @@ export const settings = {
 			setAttributes,
 			className,
 		} ) {
-		
+
 		const { rating } = attributes;
-		
+
 		return (
 			<Fragment>
 				<InspectorControls>
@@ -70,21 +70,21 @@ export const settings = {
 				>Rate: {rating}</div>
 			</Fragment>		
 		);
-		
+
 	},
 
 	save({
 			attributes,
 			className,
 		}) {
-			
+
 		const { rating } = attributes;
-			
+
 		return (
 			<div 
 				className={ classnames( [ className, `rating-${rating}` ] ) }
 			>Rate: {rating}</div>
 		);
 	},
-	
+
 };

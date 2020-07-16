@@ -35,7 +35,6 @@ if ( ! function_exists( '_svbk_setup' ) ) :
 	 * as indicating support for post thumbnails.
 	 */
 	function _svbk_setup() {
-
 		/*
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
@@ -110,7 +109,7 @@ if ( ! function_exists( '_svbk_setup' ) ) :
 			)
 		);
 
-		// Add support for Featured Images
+		// Add support for Featured Images.
 		add_theme_support( 'post-thumbnails' );
 
 		// Add theme support for selective refresh for widgets.
@@ -149,7 +148,7 @@ if ( ! function_exists( '_svbk_setup' ) ) :
 		// Add support for responsive embedded content.
 		add_theme_support( 'responsive-embeds' );
 
-		// Add support for style management
+		// Add support for style management.
 		add_theme_support(
 			'styles-management',
 			array(
@@ -157,7 +156,7 @@ if ( ! function_exists( '_svbk_setup' ) ) :
 			)
 		);
 
-		// Add support for script management
+		// Add support for script management.
 		add_theme_support(
 			'scripts-management',
 			array(
@@ -165,7 +164,7 @@ if ( ! function_exists( '_svbk_setup' ) ) :
 			)
 		);
 
-		// Add support SVBK hubspot forms
+		// Add support SVBK hubspot forms.
 		add_theme_support(
 			'hubspot-forms',
 			array(
@@ -173,87 +172,86 @@ if ( ! function_exists( '_svbk_setup' ) ) :
 			)
 		);
 
-		// Add WooCommerce Support
+		// Add WooCommerce Support.
 		add_theme_support( 'woocommerce' );
 
-		// Add Sensei Support
+		// Add Sensei Support.
 		add_theme_support( 'sensei' );
 
-		// Load image sizes from config file
-		$page_max_width = Config::get( 'page_max_width', '_svbk' );
-		$content_width  = Config::get( 'content_width', '_svbk' );
-		$page_width 	= Config::get( 'page_width', '_svbk' );
+		// Load image sizes from config file.
+		$page_max_width     = Config::get( 'page_max_width', '_svbk' );
+		$content_width      = Config::get( 'content_width', '_svbk' );
+		$page_width         = Config::get( 'page_width', '_svbk' );
 		$image_height_ratio = 1 / ( 4 / 3 );
 
-		$sidebar_width_ratio = Config::get( 'sidebar_width_ratio', '_svbk' ) ?: 0.3;
-		$sidebar_width = $page_width * $sidebar_width_ratio;
+		$sidebar_width_ratio        = Config::get( 'sidebar_width_ratio', '_svbk' ) ?: 0.3;
+		$sidebar_width              = $page_width * $sidebar_width_ratio;
 		$content_with_sidebar_width = $page_width - $sidebar_width;
 
 		add_image_size( 'main-sidebar', $sidebar_width, 9999 );
 		add_image_size( 'wide', $page_max_width, 9999 );
 
-		set_post_thumbnail_size( ceil($content_width / 2), ceil($content_width / 2 * $image_height_ratio), true );
+		set_post_thumbnail_size( ceil( $content_width / 2 ), ceil( $content_width / 2 * $image_height_ratio ), true );
 
 		// Define and register starter content to set up default values.
 		$starter_content = array(
 			'posts'     => array(
-				'home'             => array(
+				'home' => array(
 					'post_type'    => 'page',
 					'post_title'   => _x( 'Home', 'Theme starter content', '_svbk' ),
 				),
-				'about'            => array(
+				'about' => array(
 					'post_type'    => 'page',
 					'post_title'   => _x( 'About', 'Theme starter content', '_svbk' ),
 				),
-				'contact'          => array(
+				'contact' => array(
 					'post_type'    => 'page',
 					'post_title'   => _x( 'Contact', 'Theme starter content', '_svbk' ),
 				),
-				'blog'             => array(
+				'blog' => array(
 					'post_type'  => 'page',
 					'post_title' => _x( 'Blog', 'Theme starter content', '_svbk' ),
-				),				
-			),			
-
+				),
+			),
 			'options' => array(
 				// Default to a static front page and assign the front and posts pages.
-				'show_on_front'  => 'page',
-				'page_on_front'  => '{{home}}',
-				'page_for_posts' => '{{blog}}',
+				'show_on_front'       => 'page',
+				'page_on_front'       => '{{home}}',
+				'page_for_posts'      => '{{blog}}',
 
 				// Set default image sizes to values that match the theme widths.
-				'thumbnail_size_w' => ceil($content_width / 3),
-				'thumbnail_size_h' => ceil($content_width / 3 * $image_height_ratio),
-				'medium_size_w' => ceil($content_width / 2),
-				'medium_size_h' => ceil(($content_width / 2) * $image_height_ratio),
+				'thumbnail_size_w'    => ceil( $content_width / 3 ),
+				'thumbnail_size_h'    => ceil( $content_width / 3 * $image_height_ratio ),
+				'medium_size_w'       => ceil( $content_width / 2 ),
+				'medium_size_h'       => ceil( ( $content_width / 2 ) * $image_height_ratio ),
 				'medium_large_size_w' => $content_with_sidebar_width,
 				'medium_large_size_h' => $content_with_sidebar_width * $image_height_ratio,
-				'large_size_w' => $content_width,
-				'large_size_h' => ceil($content_width * $image_height_ratio)
+				'large_size_w'        => $content_width,
+				'large_size_h'        => ceil( $content_width * $image_height_ratio ),
 			),
 
 			// Set up nav menus for each of the two areas registered in the theme.
-			'nav_menus'   => array(
+			'nav_menus' => array(
 				// Assign a menu to the "top" location.
 				'primary' => array(
 					'name'  => __( 'Top Menu', '_svbk' ),
 					'items' => array(
-						'page_about'     => array(
+						'page_about' => array(
 							'type'      => 'post_type',
 							'object'    => 'page',
 							'object_id' => '{{about}}',
 						),
-						'page_blog'       => array(
+						'page_blog' => array(
 							'type'      => 'post_type',
 							'object'    => 'page',
 							'object_id' => '{{blog}}',
 						),
-						'page_news'       => array(
+						'page_news' => array(
 							'type'      => 'post_type',
 							'object'    => 'page',
 							'object_id' => '{{news}}',
 						),
-						'page_contact'    => array(
+						'page_contact' => array(
 							'type'      => 'post_type',
 							'object'    => 'page',
 							'object_id' => '{{contact}}',
@@ -268,17 +266,17 @@ if ( ! function_exists( '_svbk_setup' ) ) :
 		// Load AMP overrides.
 		Helpers\Theme\AMP::init();
 
-		// Load Google Maps
+		// Load Google Maps.
 		if ( Config::exists( 'googlemaps' ) ) {
-			(new Helpers\Maps\GoogleMaps( Config::get( array(), 'googlemaps' ) ) )->setDefault();
+			( new Helpers\Maps\GoogleMaps( Config::get( array(), 'googlemaps' ) ) )->setDefault();
 		}
 
-		// Load Iubenda
+		// Load Iubenda.
 		if ( Config::exists( 'iubenda' ) ) {
 			( new Helpers\Compliance\Iubenda( Helpers\Config::get( array(), 'iubenda' ) ) )->setDefault();
 		}
 
-		// Load Testimanial CPT
+		// Load Testimanial CPT.
 		_svbk\Feedback::register( 'testimonial', [ 'name' => __( 'Testimonials', '_svbk' ) ] );
 	}
 endif;
@@ -286,35 +284,35 @@ endif;
 
 /**
  * Allow <picture> tags in post content
- * 
- * @param array $tags An array of tags and allowed attributes
- *  {
- *      "tagname" : {
- *          "param1":true,
- *          "param2":false
- *      },
- *  ...
- *  }** 
+ *
+ * @param array  $tags An array of tags and allowed attributes
+ *   {
+ *       "tagname" : {
+ *           "param1":true,
+ *           "param2":false
+ *       },
+ *   ...
+ *   }**
  * @param string $context The context in which these tags are allowed
  */
-function _svbk_allow_picture_tag( $tags, $context ){
-	
-	if ( 'post' !== $context ){
+function _svbk_allow_picture_tag( $tags, $context ) {
+
+	if ( 'post' !== $context ) {
 		return $tags;
 	}
 
 	$tags['picture'] = array(
 		'class' => true,
-		'id' => true,
+		'id'    => true,
 		'title' => true,
 	);
 
 	$tags['source'] = array(
-		'src' => true,
+		'src'    => true,
 		'srcset' => true,
-		'sizes' => true,
-		'type' => true,
-		'media' => true,
+		'sizes'  => true,
+		'type'   => true,
+		'media'  => true,
 	);
 
 	return $tags;
@@ -373,7 +371,7 @@ function _svbk_widgets_init() {
 			'after_title'   => '</h2>',
 		)
 	);
-	
+
 	register_sidebar(
 		array(
 			'name'          => esc_html__( 'Footer', '_svbk' ),
@@ -384,7 +382,7 @@ function _svbk_widgets_init() {
 			'before_title'  => '<h2 class="widget-title">',
 			'after_title'   => '</h2>',
 		)
-	);	
+	);
 }
 add_action( 'widgets_init', '_svbk_widgets_init' );
 
@@ -406,46 +404,63 @@ add_action( 'after_setup_theme', '_svbk_set_content_width', 0 );
 /**
  * Gets critical CSS from files and prints it into page <head>
  */
-function _svbk_print_critical_css(){
+function _svbk_print_critical_css() {
 
 	$main_critical_file = get_theme_file_path( '/dist/css/critical.css' );
-	$critical_css_path = apply_filters( '_svbk_critical_css_file', $main_critical_file );
+	$critical_css_path  = apply_filters( '_svbk_critical_css_file', $main_critical_file );
 
-	if ( !file_exists($critical_css_path) ) {
+	if ( ! file_exists( $critical_css_path ) ) {
 		$critical_css_path = $main_critical_file;
-	} 
+	}
 
-	if ( !file_exists($critical_css_path) ) {
+	if ( ! file_exists( $critical_css_path ) ) {
 		return;
-	} 
-	
+	}
+
 	$code = apply_filters( '_svbk_critical_css', file_get_contents( $critical_css_path ) );
-	echo '<style id="critical-css">'. $code .'</style>';
-	
+	echo '<style id="critical-css">' . $code . '</style>';
+
 }
 
-add_action('wp_head', '_svbk_print_critical_css', 5);
+add_action( 'wp_head', '_svbk_print_critical_css', 5 );
 
 /**
  * Enqueue scripts and styles.
  */
 
 function _svbk_scripts() {
-	
-	Script::register( 'waypoints', 'lib/jquery.waypoints.min.js', [ 'version' => '4.0.1', 'deps' => 'jquery', 'defer' => true ] );
-	Script::register( 'waypoints-sticky', 'lib/shortcuts/sticky.min.js', [ 'version' => '4.0.1', 'deps' => ['jquery', 'waypoints'], 'package' => 'waypoints', 'defer' => true ] );	
 
-	// Styles common to all pages
+	Script::register(
+		'waypoints',
+		'lib/jquery.waypoints.min.js',
+		[
+			'version' => '4.0.1',
+			'deps'    => 'jquery',
+			'defer'   => true,
+		]
+	);
+	Script::register(
+		'waypoints-sticky',
+		'lib/shortcuts/sticky.min.js',
+		[
+			'version' => '4.0.1',
+			'deps'    => [ 'jquery', 'waypoints' ],
+			'package' => 'waypoints',
+			'defer'   => true,
+		]
+	);
+
+	// Styles common to all pages.
 	Style::enqueue(
 		'_svbk-common',
 		'/dist/css/common.css',
 		[
-			'source' 	=> 'theme',
-			'version' 	=> Config::get( 'theme_version', '_svbk' )
+			'source'    => 'theme',
+			'version'   => Config::get( 'theme_version', '_svbk' ),
 		]
-	);	
+	);
 
-	// Page-specific styles
+	// Page-specific styles.
 	Style::enqueue(
 		'_svbk-front-page',
 		'/dist/css/front-page.css',
@@ -454,10 +469,10 @@ function _svbk_scripts() {
 			'source'    => 'theme',
 			'condition' => is_front_page(),
 			'prefetch'  => ! is_front_page(),
-			'version' 	=> Config::get( 'theme_version', '_svbk' )
+			'version'   => Config::get( 'theme_version', '_svbk' ),
 		]
 	);
-	
+
 	Style::enqueue(
 		'_svbk-blog',
 		'/dist/css/blog.css',
@@ -466,7 +481,7 @@ function _svbk_scripts() {
 			'source'    => 'theme',
 			'condition' => is_home() || is_category() || is_tag() || is_post_type_archive( 'post' ),
 			'prefetch'  => ! is_home() && ! is_post_type_archive( 'post' ),
-			'version' 	=> Config::get( 'theme_version', '_svbk' )
+			'version'   => Config::get( 'theme_version', '_svbk' ),
 		]
 	);
 
@@ -478,7 +493,7 @@ function _svbk_scripts() {
 			'source'    => 'theme',
 			'condition' => is_singular( 'post' ),
 			'prefetch'  => is_home(),
-			'version' 	=> Config::get( 'theme_version', '_svbk' )
+			'version'   => Config::get( 'theme_version', '_svbk' ),
 		]
 	);
 
@@ -490,7 +505,7 @@ function _svbk_scripts() {
 			'source'    => 'theme',
 			'condition' => is_page() && ! ( is_front_page() || is_home() ),
 			'prefetch'  => is_page(),
-			'version' 	=> Config::get( 'theme_version', '_svbk' )
+			'version'   => Config::get( 'theme_version', '_svbk' ),
 		]
 	);
 
@@ -502,10 +517,10 @@ function _svbk_scripts() {
 			'source'    => 'theme',
 			'condition' => is_singular( 'testimonial' ),
 			'prefetch'  => is_post_type_archive( 'testimonial' ),
-			'version' 	=> Config::get( 'theme_version', '_svbk' )
+			'version'   => Config::get( 'theme_version', '_svbk' ),
 		]
-	);	
-	
+	);
+
 	Style::enqueue(
 		'_svbk-search',
 		'/dist/css/search.css',
@@ -513,7 +528,7 @@ function _svbk_scripts() {
 			'deps'      => array( '_svbk-common' ),
 			'source'    => 'theme',
 			'condition' => is_search(),
-			'version' 	=> Config::get( 'theme_version', '_svbk' )
+			'version'   => Config::get( 'theme_version', '_svbk' ),
 		]
 	);
 
@@ -524,18 +539,18 @@ function _svbk_scripts() {
 			'deps'      => array( '_svbk-common' ),
 			'source'    => 'theme',
 			'condition' => is_404(),
-			'version' 	=> Config::get( 'theme_version', '_svbk' )
+			'version'   => Config::get( 'theme_version', '_svbk' ),
 		]
 	);
 
-	// IE compatibility
+	// IE compatibility.
 	Style::enqueue(
 		'_svbk-ie9',
 		'/dist/css/ie9.css',
 		[
-			'deps'   	=> array( '_svbk-common' ),
-			'source' 	=> 'theme',
-			'version' 	=> Config::get( 'theme_version', '_svbk' )
+			'deps'      => array( '_svbk-common' ),
+			'source'    => 'theme',
+			'version'   => Config::get( 'theme_version', '_svbk' ),
 		]
 	);
 	wp_style_add_data( '_svbk-ie9', 'conditional', 'IE 9' );
@@ -544,22 +559,22 @@ function _svbk_scripts() {
 		'_svbk-ie8',
 		'/dist/css/ie8.css',
 		[
-			'deps'   	=> array( '_svbk-common' ),
-			'source' 	=> 'theme',
-			'version' 	=> Config::get( 'theme_version', '_svbk' )
+			'deps'      => array( '_svbk-common' ),
+			'source'    => 'theme',
+			'version'   => Config::get( 'theme_version', '_svbk' ),
 		]
 	);
 	wp_style_add_data( '_svbk-ie8', 'conditional', 'lt IE 9' );
 
-	// Sub menu toggling class
+	// Sub menu toggling class.
 	Script::enqueue(
 		'_svbk-navigation',
 		'/dist/js/navigation.min.js',
 		[
-			'source' 	=> 'theme',
-			'async'  	=> true,
-			'defer'  	=> false,
-			'version' 	=> Config::get( 'theme_version', '_svbk' )
+			'source'    => 'theme',
+			'async'     => true,
+			'defer'     => false,
+			'version'   => Config::get( 'theme_version', '_svbk' ),
 		]
 	);
 
@@ -567,45 +582,45 @@ function _svbk_scripts() {
 		'jquery-countdown',
 		'dist/jquery.countdown.min.js',
 		[
-			'deps' 		=> array( 'jquery' ),
-			'version' 	=> '2.2.0'
+			'deps'      => array( 'jquery' ),
+			'version'   => '2.2.0',
 		]
 	);
 
-	// Main Theme JS file
+	// Main Theme JS file.
 	Script::enqueue(
 		'_svbk-theme',
 		'/dist/js/theme.min.js',
 		[
-			'deps'   	=> array( 'jquery', 'jquery-countdown' ),
-			'source' 	=> 'theme',
-			'version' 	=> Config::get( 'theme_version', '_svbk' )
+			'deps'      => array( 'jquery', 'jquery-countdown' ),
+			'source'    => 'theme',
+			'version'   => Config::get( 'theme_version', '_svbk' ),
 		]
 	);
-	
-	// Effects / Animations JS File
+
+	// Effects / Animations JS File.
 	Script::enqueue(
 		'_svbk-theme-fx',
 		'/dist/js/fx.min.js',
 		[
-			'deps'   	=> array( 'jquery', 'waypoints' ),
-			'source' 	=> 'theme',
-			'version' 	=> Config::get( 'theme_version', '_svbk' )
+			'deps'      => array( 'jquery', 'waypoints' ),
+			'source'    => 'theme',
+			'version'   => Config::get( 'theme_version', '_svbk' ),
 		]
-	);	
+	);
 
-	// Google Maps Managment script, enable this if you use Google Maps shortcodes in your theme
+	// Google Maps Managment script, enable this if you use Google Maps shortcodes in your theme.
 	Script::enqueue(
 		'_svbk-maps',
 		'/dist/js/map-block.min.js',
 		[
-			'deps'   	=> array( 'jquery' ),
-			'source' 	=> 'theme',
-			'version' 	=> Config::get( 'theme_version', '_svbk' )
+			'deps'      => array( 'jquery' ),
+			'source'    => 'theme',
+			'version'   => Config::get( 'theme_version', '_svbk' ),
 		]
 	);
 
-	// CSS object-fit polyfill
+	// CSS object-fit polyfill.
 	Script::enqueue(
 		'object-fit-images',
 		'dist/ofi.js',
@@ -643,7 +658,14 @@ function _svbk_scripts() {
 	Asset::hint( 'preconnect', '//fonts.googleapis.com' );
 	Asset::hint( 'preconnect', '//fonts.gstatic.com' );
 
-	Asset::preload( get_theme_file_uri('style/icons/fonts/theme-icons.woff'), 'font', array( 'crossorigin' => true, 'type' => 'font/woff' )  );
+	Asset::preload(
+		get_theme_file_uri( 'style/icons/fonts/theme-icons.woff' ),
+		'font',
+		array(
+			'crossorigin' => true,
+			'type'        => 'font/woff',
+		)
+	);
 
 }
 add_action( 'wp_enqueue_scripts', '_svbk_scripts', 15 );
@@ -651,9 +673,9 @@ add_action( 'wp_enqueue_scripts', '_svbk_scripts', 15 );
 /**
  * Gets critical CSS from files and prints it into page <head>
  */
-function _svbk_select_critical_css_file($critical_css_path){
-	
-	if ( is_home() || is_single() ){
+function _svbk_select_critical_css_file( $critical_css_path ) {
+
+	if ( is_home() || is_single() ) {
 		$critical_css_path = get_theme_file_path( '/dist/css/critical-blog.css' );
 	}
 
@@ -674,10 +696,11 @@ add_filter( '_svbk_critical_css_file', '_svbk_select_critical_css_file', 15 );
 function _svbk_blocks_editor_custom_assets() {
 	wp_enqueue_style(
 		'_svbk-blocks-editor-custom',
-		get_theme_file_uri( '/dist/css/block-editor.css' ), 
-		array( 'wp-edit-blocks' )
+		get_theme_file_uri( '/dist/css/block-editor.css' ),
+		array( 'wp-edit-blocks' ),
+		Config::get( 'theme_version', '_svbk' )
 	);
-} 
+}
 
 
 add_action( 'enqueue_block_editor_assets', '_svbk_blocks_editor_custom_assets' );
@@ -739,14 +762,14 @@ function _svbk_enqueue_config_fonts( $config_key = 'fonts', $prefix = null, $che
 		return;
 	}
 
-	// Fontface Observer
+	// Fontface Observer.
 	Script::enqueue(
 		'fontfaceobserver',
 		'fontfaceobserver.js',
 		[
-			'source' => JsDelivr::class,
+			'source'  => JsDelivr::class,
 			'version' => Config::get( 'theme_version', '_svbk' ),
-			'defer'  => true,
+			'defer'   => true,
 		]
 	);
 
@@ -770,17 +793,17 @@ function _svbk_enqueue_config_fonts( $config_key = 'fonts', $prefix = null, $che
 
 	foreach ( $font_sources as $font_url => $font_handle ) {
 		$is_absolute = preg_match( '|^(https?:)?//|', $font_url );
-		Style::enqueue( 
-			$prefix . $font_handle, 
-			$font_url, 
-			[ 
-				'source' => $is_absolute ? false : 'theme', 
-				'version' => $is_absolute ? null : Config::get( 'theme_version', '_svbk' ) 
-			] 
-		); 
+		Style::enqueue(
+			$prefix . $font_handle,
+			$font_url,
+			[
+				'source'  => $is_absolute ? false : 'theme',
+				'version' => $is_absolute ? null : Config::get( 'theme_version', '_svbk' ),
+			]
+		);
 	}
 
-	$observerCode = '(function(){ ';
+	$observer_code = '(function(){ ';
 
 	$font_families = array_unique( $font_families );
 
@@ -789,20 +812,20 @@ function _svbk_enqueue_config_fonts( $config_key = 'fonts', $prefix = null, $che
 	}
 
 	if ( count( $font_families ) > 1 ) {
-		$observerCode .= 'var fontObservers = []; ';
+		$observer_code .= 'var fontObservers = []; ';
 		foreach ( $font_families as $font_familiy ) {
-			$observerCode .= 'fontObservers.push( (new FontFaceObserver(\'' . $font_familiy . '\')).load(' . $check_chars . ') ); ';
+			$observer_code .= 'fontObservers.push( (new FontFaceObserver(\'' . $font_familiy . '\')).load(' . $check_chars . ') ); ';
 		}
-		$observerCode .= 'Promise.all(fontObservers)';
+		$observer_code .= 'Promise.all(fontObservers)';
 	} else {
-		$observerCode .= 'var fontObs = new FontFaceObserver(\'' . $font_families[0] . '\').load(' . $check_chars . '); ';
-		$observerCode .= 'fontObs';
+		$observer_code .= 'var fontObs = new FontFaceObserver(\'' . $font_families[0] . '\').load(' . $check_chars . '); ';
+		$observer_code .= 'fontObs';
 	}
 
 	$cookie_name = $config_key . '_loaded';
 	$class_name  = $config_key . '-loaded';
 
-	$observerCode .=
+	$observer_code .=
 		'.then(function () {' .
 		'	var date = new Date();' .
 		'	date.setTime( date.getTime() + (30*24*60*60*1000) );' .
@@ -810,9 +833,9 @@ function _svbk_enqueue_config_fonts( $config_key = 'fonts', $prefix = null, $che
 		'	document.documentElement.className += " ' . $class_name . '";' .
 		'}); ';
 
-	$observerCode .= ' })();';
+	$observer_code .= ' })();';
 
-	wp_add_inline_script( 'fontfaceobserver', $observerCode );
+	wp_add_inline_script( 'fontfaceobserver', $observer_code );
 
 }
 
@@ -825,7 +848,7 @@ function _svbk_enqueue_config_fonts( $config_key = 'fonts', $prefix = null, $che
  */
 function _svbk_html_attributes( $attributes ) {
 
-	// $attributes['class'][] = 'domloading';
+	// @TODO: Add domloading class `$attributes['class'][] = 'domloading';`
 	if ( filter_input( INPUT_COOKIE, 'fonts_loaded', FILTER_VALIDATE_BOOLEAN ) ) {
 		$attributes['class'][] = 'fonts-loaded';
 	}
@@ -862,38 +885,38 @@ add_filter( 'max_srcset_image_width', '_svbk_max_srcset_image_width' );
 function _svbk_calculate_image_sizes( $sizes, $size ) {
 	$width = $size[0];
 
-	$page_max_width = Config::get( 'page_max_width', '_svbk' );
-	$content_width = Config::get( 'content_width', '_svbk' );
+	$page_max_width   = Config::get( 'page_max_width', '_svbk' );
+	$content_width    = Config::get( 'content_width', '_svbk' );
 	$main_breakpoints = Config::get( 'main_breakpoints', '_svbk' );
-	$page_width = Config::get( 'page_width', '_svbk' );
-	
-	$sidebar_width_ratio = Config::get( 'sidebar_width_ratio', '_svbk' ) ?: 0.3;
-	$sidebar_width = $page_width * $sidebar_width_ratio;
+	$page_width       = Config::get( 'page_width', '_svbk' );
+
+	$sidebar_width_ratio        = Config::get( 'sidebar_width_ratio', '_svbk' ) ?: 0.3;
+	$sidebar_width              = $page_width * $sidebar_width_ratio;
 	$content_with_sidebar_width = $page_width - $sidebar_width;
 
-	// Wide images
+	// Wide images.
 	if ( $width > $content_width ) {
-		$sizes = sprintf('(max-width: %1$dpx) 100vw, %2$dpx', $main_breakpoints['desktop-stretch'], $page_width );
+		$sizes = sprintf( '(max-width: %1$dpx) 100vw, %2$dpx', $main_breakpoints['desktop-stretch'], $page_width );
 	}
 
-	// Full width images
+	// Full width images.
 	if ( $width > $page_max_width ) {
-		$sizes = sprintf('(max-width: %1$dpx) 100vw, %2$dpx', $main_breakpoints['desktop-stretch'], $width );
-	}	
+		$sizes = sprintf( '(max-width: %1$dpx) 100vw, %2$dpx', $main_breakpoints['desktop-stretch'], $width );
+	}
 
-	$has_sidebar = is_active_sidebar( 'sidebar-1' ) && ( is_archive() || is_search() || is_home() || is_singular('post') );
+	$has_sidebar = is_active_sidebar( 'sidebar-1' ) && ( is_archive() || is_search() || is_home() || is_singular( 'post' ) );
 
-	// Reduced content with sidebar
+	// Reduced content with sidebar.
 	if ( $has_sidebar ) {
 		// If the image size is less than the sidebar with use that, instead set the max with to `$content_with_sidebar_width`.
-		$sizes = sprintf( '(max-width: %1$dpx) 94vw, (max-width: %2$dpx) 68vw, %3$dpx', $main_breakpoints['tablet-landscape'], $main_breakpoints['desktop'], $width <= $content_with_sidebar_width ? $width : $content_with_sidebar_width);
+		$sizes = sprintf( '(max-width: %1$dpx) 94vw, (max-width: %2$dpx) 68vw, %3$dpx', $main_breakpoints['tablet-landscape'], $main_breakpoints['desktop'], $width <= $content_with_sidebar_width ? $width : $content_with_sidebar_width );
 	}
 
 	return $sizes;
 }
 
-add_filter( 'wp_calculate_image_sizes', '_svbk_calculate_image_sizes', 10, 4);
- 
+add_filter( 'wp_calculate_image_sizes', '_svbk_calculate_image_sizes', 10, 4 );
+
 /**
  * Add custom image sizes labels
  *
@@ -904,14 +927,14 @@ add_filter( 'wp_calculate_image_sizes', '_svbk_calculate_image_sizes', 10, 4);
 function _svbk_custom_image_sizes( $sizes ) {
 
 	$theme_sizes = array(
-        'main-sidebar' => __( 'Main Sidebar', '_svbk' ),
-        'medium_large' => __( 'Medium Large', '_svbk' ),
-        'wide' => __( 'Wide', '_svbk' ),
-        'full' => __( 'Native', '_svbk' ),
+		'main-sidebar' => __( 'Main Sidebar', '_svbk' ),
+		'medium_large' => __( 'Medium Large', '_svbk' ),
+		'wide'         => __( 'Wide', '_svbk' ),
+		'full'         => __( 'Native', '_svbk' ),
 	);
 
 	$sizes = array_merge( $sizes, $theme_sizes );
-	
+
 	return $sizes;
 }
 
@@ -925,25 +948,25 @@ add_filter( 'image_size_names_choose', '_svbk_custom_image_sizes' );
  */
 function _svbk_domready_loader() {
 	?>
-  <script type="text/javascript" >
-  
+	<script type="text/javascript" >
+
 	// var loaderTimeout = setTimeout( function(){
 	// 	document.documentElement.classList.remove('domloading');
 	// }, 10 );
-	
+
 	var domReadyClass = function(){
 		document.documentElement.classList.add('domready');
 		document.documentElement.classList.remove('domloading');
 	}
-  
+
 	var tm = setTimeout( domReadyClass, 2000 );
 	document.addEventListener("load", function(){
 		clearTimeout(tm);
 		//clearTimeout(loaderTimeout);
 		domReadyClass();
 	});
-	
- </script>
+
+	</script>
 	<?php
 }
 add_action( 'wp_print_footer_scripts', '_svbk_domready_loader', 100 );
@@ -970,7 +993,7 @@ function _svbk_after_body_tag() {
 		gtm4wp_the_gtm_tag();
 	}
 
-	//Backward compatibility
+	// Backward compatibility.
 	do_action( 'after_body_tag' );
 
 }
@@ -981,13 +1004,13 @@ add_action( 'wp_body_open', '_svbk_after_body_tag' );
  * Disable the emoji's callback
  */
 function _svbk_disable_emojis_callback() {
-	 remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
-	 remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
-	 remove_action( 'wp_print_styles', 'print_emoji_styles' );
-	 remove_action( 'admin_print_styles', 'print_emoji_styles' );
-	 remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
-	 remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
-	 remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+	remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+	remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+	remove_action( 'wp_print_styles', 'print_emoji_styles' );
+	remove_action( 'admin_print_styles', 'print_emoji_styles' );
+	remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+	remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
+	remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
 }
 add_action( 'init', '_svbk_disable_emojis_callback' );
 
@@ -1027,7 +1050,7 @@ add_action( 'init', '_svbk_register_compliance_menu_items', 10, 2 );
  */
 function _svbk_extend_bloginfo( $output, $show ) {
 
-	if ( substr( $show, 0, 8 ) == 'contact_' ) {
+	if ( 'contact_' === substr( $show, 0, 8 ) ) {
 		$show   = substr( $show, 8 );
 		$output = get_theme_mod( $show ) ?: $output;
 	}
@@ -1049,7 +1072,7 @@ add_shortcode( 'bloginfo', '_svbk_bloginfo_shortcode' );
  */
 function _svbk_excerpt_length( $lenght ) {
 
-	if ( ! is_singular( 'post' ) && 'post' == get_post_type() ) {
+	if ( ! is_singular( 'post' ) && 'post' === get_post_type() ) {
 		return 25;
 	}
 

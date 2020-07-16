@@ -9,6 +9,7 @@
  * @category    Templates
  * @version     1.9.0
  */
+
 ?>
 
 <?php get_sensei_header(); ?>
@@ -47,15 +48,14 @@ do_action( 'sensei_learner_profile_content_before' );
 
 			<?php
 
-			// show the user information
+			// show the user information.
 			Sensei_Learner_Profiles::user_info( $learner_user );
 
 			?>
 
 			<?php
 
-			// show the user courses
-			// Sensei()->course->load_user_courses_content( $learner_user );
+			// show the user courses.
 			?>
 			<?php remove_action( 'sensei_my_courses_content_inside_before', '_svbk_sensei_navigation', 9 ); ?>    
 			<div id="my-courses">
@@ -63,10 +63,10 @@ do_action( 'sensei_learner_profile_content_before' );
 					<li><a href="#active-courses"><?php esc_html_e( 'Active Courses', '_svbk' ); ?></a></li>
 					<li><a href="#completed-courses"><?php esc_html_e( 'Completed Courses', '_svbk' ); ?></a></li>
 				</ul>
-	
+
 				<div id="active-courses"><?php echo do_shortcode( '[sensei_user_courses status="active"]' ); ?></div>
 				<div id="completed-courses"><?php echo do_shortcode( '[sensei_user_courses status="complete"]' ); ?></div>
-			
+
 			</div>
 
 		<?php } else { ?>

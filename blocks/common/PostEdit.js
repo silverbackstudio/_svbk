@@ -35,7 +35,7 @@ class PostList extends Component {
 			postPreview: false,
 		};
 	}
-	
+
 	componentDidMount() {
 		this.isStillMounted = true;
 
@@ -117,7 +117,7 @@ class PostList extends Component {
 
 		const inspectorControls = (
 			<InspectorControls>
-				
+
 				<PanelBody title={ __( 'Post Content Settings' ) }>
 					<RadioControl
 						label="Show:"

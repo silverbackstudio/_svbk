@@ -52,9 +52,9 @@ export const settings = {
 		__( 'autorevolezza', '_svbk' ),
 		__( 'logo', '_svbk' ),
 	],
-	
+
 	styles: [],	
-	
+
 	attributes: {
 		ribbon: {
 			type: 'string',
@@ -79,7 +79,7 @@ export const settings = {
 	edit,
 
 	save: function( { attributes } ) {
-		
+
 		const { 
 			ribbon, 
 			titleLevel,
@@ -87,9 +87,9 @@ export const settings = {
 			textColor,
 			ribbonColor,
 		} = attributes;		
-		
+
 		const titleTag = titleLevel ? ('h' + titleLevel) : 'h2';		
-		
+
 		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 		const textClass = getColorClassName( 'color', textColor );
 		const ribbonClass = getColorClassName( 'ribbon-color', ribbonColor );
@@ -107,7 +107,7 @@ export const settings = {
 			[ textClass ]: textClass,
 			[ ribbonClass ]: ribbonClass
 		} );		
-		
+
 		return (
 			<div className={ classNames } >			
 				{ ribbon && ( 
