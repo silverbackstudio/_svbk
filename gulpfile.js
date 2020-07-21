@@ -18,6 +18,22 @@ const fs                = require('fs');
 const svgmin            = require('gulp-svgmin');
 
 
+const capitalize = (str) => {
+    return str && str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+const snakeToCamel = (str) => str.replace(
+    /([-_][a-z])/g,
+    (group) => group.toUpperCase()
+                    .replace('-', '')
+                    .replace('_', '')
+);
+
+const kebabToSnake = (str) => str.replace(
+    /-([a-z])/g,
+    (group) => group.replace('-', '_')
+);
+
 var config = require('./config.json');
 
 function clean(){
@@ -197,11 +213,20 @@ exports.sassCompile = sassCompile;
 
 function replaceMarkers(){
 
-     return src(['./**/*.php', '!./vendor/**/*.php'])
+    return src([
+        './**/*.php', 
+        './**/*.js',
+        './composer.json',
+        '!./vendor/**/*',        
+        '!./node_modules/**/*',
+        '!./gulpfile.js',
+    ])
         .pipe(replace("'_svbk'" , "'" + config.theme_handle + "'"))
-        .pipe(replace( '_svbk_' , config.theme_handle + '_'))
-        .pipe(replace( ' _svbk' , ' ' + config.theme_handle ))
+        .pipe(replace( '_svbk_' , kebabToSnake(config.theme_handle) + '_'))
+        .pipe(replace( ' _svbk' , ' ' + kebabToSnake(config.theme_handle) ))
         .pipe(replace( '_svbk-' , config.theme_handle + '-' ))
+        .pipe(replace( '\\_svbk' , '\\' + capitalize( snakeToCamel(config.theme_handle) ) ))
+        .pipe(replace( '_svbk\\' , capitalize( snakeToCamel(config.theme_handle) ) + '\\'  ))
         .pipe(replace( '_svbk'  , config.theme_handle ))
         .pipe(dest('./'));
 }
@@ -219,8 +244,7 @@ function replaceNames(){
 function replaceConfigs(){
     return src(['./composer.json', './package.json' ])
         .pipe(replace( 'silverbackstudio/theme_svbk'  , `${config.theme_handle}/wp-theme` ))    
-        .pipe(replace( '_svbk'  , config.theme_handle ))
-        .pipe(replace( 'Silverback Starter' , 'Silverback ' + config.theme_name ))
+        .pipe(replace( 'Silverback Starter' , config.theme_name + 'Website' ))
         .pipe(dest('./'));
 }
 
@@ -229,7 +253,7 @@ function renameLanguages(){
         .pipe(rename(function (path) {
             path.basename = path.basename.replace('_svbk', config.theme_handle);
         }))
-        .pipe(dest("./languages/test"));
+        .pipe(dest("./languages/"));
 }
 
 exports.renameLanguages = renameLanguages;
