@@ -42,9 +42,9 @@ export const settings = {
 	icon: 'location-alt', 
 	category: 'common',
 	keywords: [
-		__( 'map' ),
-		__( 'google map' ),
-		__( 'location' ),
+		__( 'map', '_svbk' ),
+		__( 'google map', '_svbk' ),
+		__( 'location', '_svbk' ),
 	],
 	
 	attributes: {

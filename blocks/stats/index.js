@@ -50,9 +50,9 @@ export const settings = {
 	icon: 'chart-pie', 
 	category: 'common',
 	keywords: [
-		__( 'stats' ),
-		__( 'number' ),
-		__( 'counter' ),
+		__( 'stats', '_svbk' ),
+		__( 'number', '_svbk' ),
+		__( 'counter', '_svbk' ),
 	],
 	
 	attributes: {

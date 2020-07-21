@@ -154,7 +154,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Theme_Integration' ) ) :
 			foreach ( $this->errors as $key => $value ) {
 				?>
 			<div class="error">
-				<p><?php echo esc_html( sprintf( __( 'Looks like you made a mistake with the %S field. Make sure it isn&apos;t longer than 20 characters', 'woocommerce-integration-demo' ), $value ) ); ?></p>
+				<p><?php echo esc_html( sprintf( __( 'Looks like you made a mistake with the %S field. Make sure it isn&apos;t longer than 20 characters', '_svbk' ), $value ) ); ?></p>
 			</div>
 				<?php
 			}

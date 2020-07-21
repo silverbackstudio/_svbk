@@ -50,8 +50,8 @@ export const settings = {
 	icon: 'analytics', 
 	category: 'common',
 	keywords: [
-		__( 'contact' ),
-		__( 'paragraph' ),
+		__( 'contact', '_svbk' ),
+		__( 'paragraph', '_svbk' ),
 	],
 
 	

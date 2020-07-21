@@ -19,7 +19,7 @@ const name = 'svbk/underline-stroke';
 
 export const underlineStroke = {
 	name,
-	title: __( 'Underline Stroke' ),
+	title: __( 'Underline Stroke', '_svbk' ),
 	tagName: 'em',
 	className: 'underline-stroke',
 	edit( { isActive, value, onChange } ) {
@@ -34,7 +34,7 @@ export const underlineStroke = {
 				/>
 				<RichTextToolbarButton
 					icon= { 'admin-customizer' }
-					title={ __( 'Underline Stroke' ) }
+					title={ __( 'Underline Stroke', '_svbk' ) }
 					onClick={ onToggle }
 					isActive={ isActive }
 					shortcutType="primary"

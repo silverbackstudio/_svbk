@@ -58,7 +58,7 @@ export const settings = {
 	    // Mark style as default.
 	    {
 	        name: 'default',
-	        label: __( 'Default' ),
+	        label: __( 'Default', '_svbk' ),
 	        isDefault: true
 	    },
 	    {

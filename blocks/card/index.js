@@ -53,21 +53,21 @@ export const settings = {
 	icon: 'id', 
 	category: 'common',
 	keywords: [
-		__( 'card' ),
-		__( 'block' ),
-		__( 'content' ),
+		__( 'card', '_svbk' ),
+		__( 'block', '_svbk' ),
+		__( 'content', '_svbk' ),
 	],
 
 	styles: [
 	    // Mark style as default.
 	    {
 	        name: 'default',
-	        label: __( 'Default' ),
+	        label: __( 'Default', '_svbk' ),
 	        isDefault: true
 	    },
 	    {
 	        name: 'featured',
-	        label: __( 'Featured' ),
+	        label: __( 'Featured', '_svbk' ),
 	    },	    
 	],	
 

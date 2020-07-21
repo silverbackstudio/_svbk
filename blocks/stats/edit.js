@@ -74,13 +74,13 @@ class StatsEdit extends Component {
 				</div>
 				<InspectorControls>
 					<PanelColorSettings
-						title={ __( 'Color Settings' ) }
+						title={ __( 'Color Settings', '_svbk' ) }
 						initialOpen={ false }
                         colorSettings={ [
 							{
 								value: textColor.color,
 								onChange: setTextColor,
-								label: __( 'Text Color' ),
+								label: __( 'Text Color', '_svbk' ),
 							},
 						] }
 					/>

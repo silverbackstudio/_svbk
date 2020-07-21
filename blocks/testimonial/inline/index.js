@@ -51,8 +51,8 @@ export const settings = {
 	icon: 'carrot', 
 	category: 'widgets',
 	keywords: [
-		__( 'testimonial' ),
-		__( 'feedback' ),
+		__( 'testimonial', '_svbk' ),
+		__( 'feedback', '_svbk' ),
 	],
 	
 	attributes: {

@@ -51,15 +51,15 @@ export const settings = {
 	icon: 'pressthis', 
 	category: 'common',
 	keywords: [
-		__( 'bullet' ),
-		__( 'card' ),
+		__( 'bullet', '_svbk' ),
+		__( 'card', '_svbk' ),
 	],
 	
 	styles: [
 	    // Mark style as default.
 	    {
 	        name: 'default',
-	        label: __( 'Default' ),
+	        label: __( 'Default', '_svbk' ),
 	        isDefault: true
 	    },
 	    {

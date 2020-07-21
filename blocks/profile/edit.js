@@ -125,7 +125,7 @@ class ProfileEdit extends Component {
 							className={ 'wp-block-svbk-profile__content' }
 						/>
 						<RichText
-							placeholder={ __( 'Button text…' ) }
+							placeholder={ __( 'Button text…', '_svbk' ) }
 							value={ buttonText }
 							onChange={ ( value ) => setAttributes( { buttonText: value } ) }
 							formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
@@ -140,7 +140,7 @@ class ProfileEdit extends Component {
 									value={ buttonUrl }
 									onChange={ ( value ) => setAttributes( { buttonUrl: value } ) }
 								/>
-								<IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />
+								<IconButton icon="editor-break" label={ __( 'Apply', '_svbk' ) } type="submit" />
 							</form>
 						) }	
 					</div>					
@@ -155,18 +155,18 @@ class ProfileEdit extends Component {
 				</BlockControls>
 				<InspectorControls>
 					<PanelColorSettings
-						title={ __( 'Color Settings' ) }
+						title={ __( 'Color Settings', '_svbk' ) }
 						initialOpen={ false }
                         colorSettings={ [
 							{
 								value: backgroundColor.color,
 								onChange: setBackgroundColor,
-								label: __( 'Background Color' ),
+								label: __( 'Background Color', '_svbk' ),
 							},
 							{
 								value: textColor.color,
 								onChange: setTextColor,
-								label: __( 'Text Color' ),
+								label: __( 'Text Color', '_svbk' ),
 							},
 						] }
 					/>

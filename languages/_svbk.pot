@@ -1,131 +1,29 @@
-#, fuzzy
+# Copyright (C) 2020 Silverback Studio
+# This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: _s 1.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2020-02-24 14:57+0000\n"
+"Project-Id-Version: _svbk 2.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/wp-theme\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2020-07-21T15:29:43+02:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"X-Generator: Loco https://localise.biz/"
+"X-Generator: WP-CLI 2.4.0\n"
+"X-Domain: _svbk\n"
 
-#: functions.php:61
-msgid "Primary"
+#. Theme Name of the theme
+msgid "_svbk"
 msgstr ""
 
-#: functions.php:62
-msgid "Languages"
+#. Author of the theme
+msgid "Silverback Studio"
 msgstr ""
 
-#: functions.php:63
-msgid "Not Found (404) Page"
-msgstr ""
-
-#: functions.php:64
-msgid "Legal Menu"
-msgstr ""
-
-#: functions.php:65
-msgid "Account Pages Primary Menu"
-msgstr ""
-
-#: functions.php:66
-msgid "Account Pages Secondary Menu"
-msgstr ""
-
-#: functions.php:67
-msgid "Profile Menu"
-msgstr ""
-
-#: functions.php:202
-msgctxt "Theme starter content"
-msgid "Home"
-msgstr ""
-
-#: functions.php:206
-msgctxt "Theme starter content"
-msgid "About"
-msgstr ""
-
-#: functions.php:210
-msgctxt "Theme starter content"
-msgid "Contact"
-msgstr ""
-
-#: functions.php:214
-msgctxt "Theme starter content"
-msgid "Blog"
-msgstr ""
-
-#: functions.php:239
-msgid "Top Menu"
-msgstr ""
-
-#: functions.php:282
-msgid "Testimonials"
-msgstr ""
-
-#: functions.php:367
-msgid "Sidebar"
-msgstr ""
-
-#: functions.php:369
-msgid "Add widgets here."
-msgstr ""
-
-#: functions.php:379 inc/customizer.php:154
-msgid "Footer"
-msgstr ""
-
-#: functions.php:381
-msgid "Widgets in here goes into footer"
-msgstr ""
-
-#: functions.php:858
-msgid "Main Sidebar"
-msgstr ""
-
-#: functions.php:859
-msgid "Medium Large"
-msgstr ""
-
-#: functions.php:860
-msgid "Wide"
-msgstr ""
-
-#: functions.php:861
-msgid "Native"
-msgstr ""
-
-#: functions.php:952
-msgid "Compliance"
-msgstr ""
-
-#: functions.php:956
-msgid "Privacy Policy"
-msgstr ""
-
-#: functions.php:964
-msgid "Cookie Policy"
-msgstr ""
-
-#: category.php:33 home.php:30
-msgid "All categories"
-msgstr ""
-
-#: category.php:64 home.php:62
-msgctxt "previous set of posts"
-msgid "Previous"
-msgstr ""
-
-#: category.php:65 home.php:63
-msgctxt "next set of posts"
-msgid "Next"
+#. Author URI of the theme
+msgid "http://www.silverbackstudio.it"
 msgstr ""
 
 #: 404.php:18
@@ -133,356 +31,32 @@ msgid "That page can&rsquo;t be found."
 msgstr ""
 
 #: 404.php:22
-msgid ""
-"It looks like nothing was found at this location. Maybe try one of the links "
-"below or a search?"
+msgid "It looks like nothing was found at this location. Maybe try one of the links below or a search?"
 msgstr ""
 
 #: 404.php:23
 msgid "Back to home"
 msgstr ""
 
-#. 1: title.
-#: comments.php:35
-#, php-format
-msgid "One thought on &ldquo;%1$s&rdquo;"
+#: amp/footer.php:12
+msgid "Back to top"
 msgstr ""
 
-#. 1: comment count number, 2: title.
-#: comments.php:41
-#, php-format
-msgctxt "comments title"
-msgid "%1$s thought on &ldquo;%2$s&rdquo;"
-msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
-msgstr[0] ""
-msgstr[1] ""
-
-#: comments.php:68
-msgid "Comments are closed."
-msgstr ""
-
-#: search.php:22
-#, php-format
-msgid "Search Results for: %s"
-msgstr ""
-
-#: header.php:29 header-account.php:29
-msgid "Skip to content"
-msgstr ""
-
-#: header.php:100 header-account.php:66
-msgid "Toggle Search"
-msgstr ""
-
-#: header.php:106 header-account.php:71
-msgid "Primary Menu"
-msgstr ""
-
-#: footer.php:31 inc/customizer.php:210
-msgid "Contacts"
-msgstr ""
-
-#: footer.php:42 inc/customizer.php:318
-msgid "Opening Hours"
-msgstr ""
-
-#: footer.php:49 inc/customizer.php:291
-msgid "Address"
-msgstr ""
-
-#: footer.php:61
-msgid "VAT"
-msgstr ""
-
-#: footer.php:65
-msgid "REA"
-msgstr ""
-
-#: footer.php:69
-msgid "Certified e-mail"
-msgstr ""
-
-#: footer.php:73
-msgid "Share Capital"
-msgstr ""
-
-#: footer.php:95 header-account.php:35
-msgid "Customize this text in Theme Customizer"
-msgstr ""
-
-#: header-account.php:126
-msgid "Toggle Account Menu"
-msgstr ""
-
-#: inc/woocommerce.php:123
-msgid "Where?"
-msgstr ""
-
-#: inc/woocommerce.php:124
-msgid ""
-"If you use Mastercard, Visa and Diners, \n"
-"\t            \tthe security code is shown on the back of your credit card "
-"near \n"
-"\t            \tthe space reserved for your signature, and consists of 3 "
-"digits. \n"
-"\t            \tIf you use American Express, the secure code is placed on "
-"the \n"
-"\t            \tfront of your card and consists of 4 digits."
-msgstr ""
-
-#: inc/woocommerce.php:133
-msgid "Close"
-msgstr ""
-
-#: inc/woocommerce.php:168
-msgid "Shop Sidebar"
-msgstr ""
-
-#: inc/woocommerce.php:170
-msgid "This widgets will be shown in the shop sidebar"
-msgstr ""
-
-#: inc/woocommerce.php:180
-msgid "Woocommerce Account Sidebar"
-msgstr ""
-
-#: inc/woocommerce.php:182
-msgid ""
-"Widgets in this area will be shown in all the WooCommerce accounts pages"
-msgstr ""
-
-#: inc/woocommerce.php:294
-msgid "View your shopping cart"
-msgstr ""
-
-#: inc/woocommerce.php:295
-msgid "Cart"
-msgstr ""
-
-#. %d number of items in the mini cart
-#: inc/woocommerce.php:299
-#, php-format
-msgid "%d <span class=\"screen-reader-text\">item</span>"
-msgid_plural "%d <span class=\"screen-reader-text\">items</span>"
-msgstr[0] ""
-msgstr[1] ""
-
-#: inc/woocommerce.php:395
-msgid "Go to My Account"
-msgstr ""
-
-#: inc/woocommerce.php:412
-msgid "Login"
-msgstr ""
-
-#: inc/customizer.php:28
-msgid "Mobile Logo"
-msgstr ""
-
-#: inc/customizer.php:36
-msgid "Header"
-msgstr ""
-
-#: inc/customizer.php:48
-msgid "Sticky Header"
-msgstr ""
-
-#: inc/customizer.php:49
-msgid "Makes the header stay on top of page after scroll"
-msgstr ""
-
-#: inc/customizer.php:65
-msgid "Fade header images"
-msgstr ""
-
-#: inc/customizer.php:66
-msgid "Cycle through all header images with a CSS fade effect"
-msgstr ""
-
-#: inc/customizer.php:82
-msgid "Show Top Header"
-msgstr ""
-
-#: inc/customizer.php:83
-msgid ""
-"Show either company phone number and/or opening hours in a top header bar"
-msgstr ""
-
-#: inc/customizer.php:93
-msgid "Archives"
-msgstr ""
-
-#: inc/customizer.php:94
-msgid "Archive Customizations"
-msgstr ""
-
-#: inc/customizer.php:130
-#, php-format
-msgid "%s Archive Image"
-msgstr ""
-
-#: inc/customizer.php:141
-#, php-format
-msgid "%s Archive Description"
-msgstr ""
-
-#: inc/customizer.php:155
-msgid "Footer Settings"
-msgstr ""
-
-#: inc/customizer.php:165
-msgid "Footer Logo"
-msgstr ""
-
-#: inc/customizer.php:189
-msgid "Fixed Footer Bar"
-msgstr ""
-
-#: inc/customizer.php:190
-msgid "Fixed Footer Bar Content (supports HTML and shortcode)"
-msgstr ""
-
-#: inc/customizer.php:199
-msgid "Show Fixed Footer Bar"
-msgstr ""
-
-#: inc/customizer.php:211
-msgid "Contact informations"
-msgstr ""
-
-#: inc/customizer.php:282
-msgid "Company Name"
-msgstr ""
-
-#: inc/customizer.php:300
-msgid "Phone"
-msgstr ""
-
-#: inc/customizer.php:309
-msgid "Email"
-msgstr ""
-
-#: inc/customizer.php:327
-msgid "VAT ID"
-msgstr ""
-
-#: inc/customizer.php:336
-msgid "Company REA"
-msgstr ""
-
-#: inc/customizer.php:345
-msgid "Company Certified Email"
-msgstr ""
-
-#: inc/customizer.php:354
-msgid "Company Share Capital"
-msgstr ""
-
-#: inc/sensei.php:48
-msgid "Sensei Secondary Menu"
-msgstr ""
-
-#: inc/sensei.php:71
-msgid "Sensei Sidebar"
+#: category.php:33
+#: home.php:30
+msgid "All categories"
 msgstr ""
 
-#: inc/sensei.php:73
-msgid "This widgets will be shown in all LMS pages"
+#: category.php:64
+#: home.php:62
+msgctxt "previous set of posts"
+msgid "Previous"
 msgstr ""
-
-#: inc/sensei.php:92
-msgid "Toggle Courses Menu"
-msgstr ""
-
-#: inc/sensei.php:130
-msgid "View Course"
-msgstr ""
-
-#: inc/sensei.php:161
-msgid "Completed"
-msgstr ""
-
-#: inc/sensei.php:163
-msgid "Lesson Locked"
-msgstr ""
-
-#: inc/sensei.php:165
-msgid "Go to Lesson"
-msgstr ""
-
-#: inc/sensei.php:192
-msgid "Teacher"
-msgstr ""
-
-#: inc/sensei.php:226
-msgid "Take the quiz to complete the lesson"
-msgstr ""
-
-#: inc/sensei.php:227
-msgid ""
-"To check the skills you have acquired and complete the lesson, click on the "
-"button and immediately access the quiz."
-msgstr ""
-
-#: inc/sensei.php:249
-msgctxt "lesson comment submit label"
-msgid "Leave a comment"
-msgstr ""
-
-#: inc/sensei.php:253
-msgctxt "course comment submit label"
-msgid "Leave a comment"
-msgstr ""
-
-#. %s: post date.
-#: inc/template-tags.php:30
-#, php-format
-msgctxt "post date"
-msgid "Posted on %s"
-msgstr ""
-
-#: inc/template-tags.php:46
-#, php-format
-msgctxt "post author"
-msgid "by %s"
-msgstr ""
-
-#: inc/template-tags.php:67
-#, php-format
-msgid "Leave a Comment<span class=\"screen-reader-text\"> on %s</span>"
-msgstr ""
-
-#. used between list items, there is a space after the comma
-#: inc/template-tags.php:92 inc/template-tags.php:99
-#: template-parts/content-post.php:17 template-parts/content-post.php:79
-msgctxt "list item separator"
-msgid ", "
-msgstr ""
-
-#: inc/template-tags.php:95
-#, php-format
-msgid "Posted in %1$s"
-msgstr ""
-
-#: inc/template-tags.php:102 template-parts/content-post.php:82
-#, php-format
-msgid "Tagged %1$s"
-msgstr ""
-
-#: inc/template-tags.php:264
-msgid "Load more"
-msgstr ""
-
-#: inc/template-tags.php:380
-#, php-format
-msgid "%s min"
-msgid_plural "%s mins"
-msgstr[0] ""
-msgstr[1] ""
 
-#: inc/template-tags.php:384
-msgctxt "post reading time label"
-msgid "Reading"
+#: category.php:65
+#: home.php:63
+msgctxt "next set of posts"
+msgid "Next"
 msgstr ""
 
 #: classes/class-affiliatewp.php:33
@@ -493,7 +67,8 @@ msgstr ""
 msgid "The label for Courses in account menu"
 msgstr ""
 
-#: classes/class-affiliatewp.php:37 classes/class-affiliatewp.php:75
+#: classes/class-affiliatewp.php:37
+#: classes/class-affiliatewp.php:75
 #: classes/class-affiliatewp.php:92
 msgid "Affiliate"
 msgstr ""
@@ -519,12 +94,10 @@ msgid "Feedback"
 msgstr ""
 
 #: classes/class-feedback.php:106
-#, php-format
 msgid "%s Categories"
 msgstr ""
 
 #: classes/class-feedback.php:107
-#, php-format
 msgid "%s Category"
 msgstr ""
 
@@ -549,8 +122,7 @@ msgid "Dashboard Content Page"
 msgstr ""
 
 #: classes/class-wc-integration-silverback.php:91
-msgid ""
-"Select the page with the content to be shown in MyAccount Dashboard page"
+msgid "Select the page with the content to be shown in MyAccount Dashboard page"
 msgstr ""
 
 #: classes/class-wc-integration-silverback.php:97
@@ -611,9 +183,7 @@ msgid "Custom Template"
 msgstr ""
 
 #: classes/class-wc-integration-silverback.php:217
-msgid ""
-"Disable WooCommerce default template. Allows you to build the full product "
-"page"
+msgid "Disable WooCommerce default template. Allows you to build the full product page"
 msgstr ""
 
 #: classes/class-wc-integration-silverback.php:292
@@ -641,79 +211,463 @@ msgid "The email addresses you entered are not equal"
 msgstr ""
 
 #: classes/class-wc-integration-silverback.php:400
-msgid ""
-"The <b>billing address</b> is used to compose the invoices. The <b>shipping "
-"address</b> will be used to send you phisical products that you may purchase."
-" You will be able to change both addresses durig the checkout process."
+msgid "The <b>billing address</b> is used to compose the invoices. The <b>shipping address</b> will be used to send you phisical products that you may purchase. You will be able to change both addresses durig the checkout process."
 msgstr ""
 
-#. Name of the template
+#. translators: 1: title.
+#: comments.php:35
+msgid "One thought on &ldquo;%1$s&rdquo;"
+msgstr ""
+
+#. translators: 1: comment count number, 2: title.
+#: comments.php:41
+msgctxt "comments title"
+msgid "%1$s thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments.php:68
+msgid "Comments are closed."
+msgstr ""
+
+#: footer.php:31
+#: inc/customizer.php:227
+msgid "Contacts"
+msgstr ""
+
+#: footer.php:42
+#: inc/customizer.php:335
+msgid "Opening Hours"
+msgstr ""
+
+#: footer.php:49
+#: inc/customizer.php:308
+msgid "Address"
+msgstr ""
+
+#: footer.php:61
+msgid "VAT"
+msgstr ""
+
+#: footer.php:65
+msgid "REA"
+msgstr ""
+
+#: footer.php:69
+msgid "Certified e-mail"
+msgstr ""
+
+#: footer.php:73
+msgid "Share Capital"
+msgstr ""
+
+#: footer.php:95
+#: header-account.php:35
+msgid "Customize this text in Theme Customizer"
+msgstr ""
+
+#: functions.php:61
+msgid "Primary"
+msgstr ""
+
+#: functions.php:62
+msgid "Languages"
+msgstr ""
+
+#: functions.php:63
+msgid "Not Found (404) Page"
+msgstr ""
+
+#: functions.php:64
+msgid "Legal Menu"
+msgstr ""
+
+#: functions.php:65
+msgid "Account Pages Primary Menu"
+msgstr ""
+
+#: functions.php:66
+msgid "Account Pages Secondary Menu"
+msgstr ""
+
+#: functions.php:67
+msgid "Profile Menu"
+msgstr ""
+
+#: functions.php:202
+msgctxt "Theme starter content"
+msgid "Home"
+msgstr ""
+
+#: functions.php:206
+msgctxt "Theme starter content"
+msgid "About"
+msgstr ""
+
+#: functions.php:210
+msgctxt "Theme starter content"
+msgid "Contact"
+msgstr ""
+
+#: functions.php:214
+msgctxt "Theme starter content"
+msgid "Blog"
+msgstr ""
+
+#: functions.php:239
+msgid "Top Menu"
+msgstr ""
+
+#: functions.php:282
+#: dist/js/blocks.js:8637
+msgid "Testimonials"
+msgstr ""
+
+#: functions.php:367
+msgid "Sidebar"
+msgstr ""
+
+#: functions.php:369
+msgid "Add widgets here."
+msgstr ""
+
+#: functions.php:379
+#: inc/customizer.php:171
+msgid "Footer"
+msgstr ""
+
+#: functions.php:381
+msgid "Widgets in here goes into footer"
+msgstr ""
+
+#: functions.php:907
+msgid "Main Sidebar"
+msgstr ""
+
+#: functions.php:908
+msgid "Medium Large"
+msgstr ""
+
+#: functions.php:909
+msgid "Wide"
+msgstr ""
+
+#: functions.php:910
+msgid "Native"
+msgstr ""
+
+#: functions.php:1001
+msgid "Compliance"
+msgstr ""
+
+#: functions.php:1005
+msgid "Privacy Policy"
+msgstr ""
+
+#: functions.php:1013
+msgid "Cookie Policy"
+msgstr ""
+
+#: header-account.php:29
+#: header.php:29
+msgid "Skip to content"
+msgstr ""
+
+#: header-account.php:66
+#: header.php:106
+msgid "Toggle Search"
+msgstr ""
+
+#: header-account.php:71
+#: header.php:99
+msgid "Primary Menu"
+msgstr ""
+
+#: header-account.php:126
+msgid "Toggle Account Menu"
+msgstr ""
+
+#: inc/customizer.php:28
+msgid "Mobile Logo"
+msgstr ""
+
+#: inc/customizer.php:36
+msgid "Header"
+msgstr ""
+
+#: inc/customizer.php:48
+msgid "Sticky Header"
+msgstr ""
+
+#: inc/customizer.php:49
+msgid "Makes the header stay on top of page after scroll"
+msgstr ""
+
+#: inc/customizer.php:65
+msgid "Fade header images"
+msgstr ""
+
+#: inc/customizer.php:66
+msgid "Cycle through all header images with a CSS fade effect"
+msgstr ""
+
+#: inc/customizer.php:82
+msgid "Show Top Header"
+msgstr ""
+
+#: inc/customizer.php:83
+msgid "Show either company phone number and/or opening hours in a top header bar"
+msgstr ""
+
+#: inc/customizer.php:99
+msgid "Show Header Search Form"
+msgstr ""
+
+#: inc/customizer.php:100
+msgid "Show search trigger in site header"
+msgstr ""
+
+#: inc/customizer.php:110
+msgid "Archives"
+msgstr ""
+
+#: inc/customizer.php:111
+msgid "Archive Customizations"
+msgstr ""
+
+#. translators: %s represents the post type name
+#: inc/customizer.php:147
+msgid "%s Archive Image"
+msgstr ""
+
+#. translators: %s represents the post type name
+#: inc/customizer.php:158
+msgid "%s Archive Description"
+msgstr ""
+
+#: inc/customizer.php:172
+msgid "Footer Settings"
+msgstr ""
+
+#: inc/customizer.php:182
+msgid "Footer Logo"
+msgstr ""
+
+#: inc/customizer.php:206
+msgid "Fixed Footer Bar"
+msgstr ""
+
+#: inc/customizer.php:207
+msgid "Fixed Footer Bar Content (supports HTML and shortcode)"
+msgstr ""
+
+#: inc/customizer.php:216
+msgid "Show Fixed Footer Bar"
+msgstr ""
+
+#: inc/customizer.php:228
+msgid "Contact informations"
+msgstr ""
+
+#: inc/customizer.php:299
+msgid "Company Name"
+msgstr ""
+
+#: inc/customizer.php:317
+msgid "Phone"
+msgstr ""
+
+#: inc/customizer.php:326
+msgid "Email"
+msgstr ""
+
+#: inc/customizer.php:344
+msgid "VAT ID"
+msgstr ""
+
+#: inc/customizer.php:353
+msgid "Company REA"
+msgstr ""
+
+#: inc/customizer.php:362
+msgid "Company Certified Email"
+msgstr ""
+
+#: inc/customizer.php:371
+msgid "Company Share Capital"
+msgstr ""
+
+#: inc/sensei.php:48
+msgid "Sensei Secondary Menu"
+msgstr ""
+
+#: inc/sensei.php:71
+msgid "Sensei Sidebar"
+msgstr ""
+
+#: inc/sensei.php:73
+msgid "This widgets will be shown in all LMS pages"
+msgstr ""
+
+#: inc/sensei.php:92
+msgid "Toggle Courses Menu"
+msgstr ""
+
+#: inc/sensei.php:130
+msgid "View Course"
+msgstr ""
+
+#: inc/sensei.php:161
+msgid "Completed"
+msgstr ""
+
+#: inc/sensei.php:163
+msgid "Lesson Locked"
+msgstr ""
+
+#: inc/sensei.php:165
+msgid "Go to Lesson"
+msgstr ""
+
+#: inc/sensei.php:192
+msgid "Teacher"
+msgstr ""
+
+#: inc/sensei.php:226
+msgid "Take the quiz to complete the lesson"
+msgstr ""
+
+#: inc/sensei.php:227
+msgid "To check the skills you have acquired and complete the lesson, click on the button and immediately access the quiz."
+msgstr ""
+
+#: inc/sensei.php:249
+msgctxt "lesson comment submit label"
+msgid "Leave a comment"
+msgstr ""
+
+#: inc/sensei.php:253
+msgctxt "course comment submit label"
+msgid "Leave a comment"
+msgstr ""
+
+#. translators: %s: post date.
+#: inc/template-tags.php:30
+msgctxt "post date"
+msgid "Posted on %s"
+msgstr ""
+
+#. translators: %s: post author.
+#: inc/template-tags.php:46
+msgctxt "post author"
+msgid "by %s"
+msgstr ""
+
+#. translators: %s: post title
+#: inc/template-tags.php:67
+msgid "Leave a Comment<span class=\"screen-reader-text\"> on %s</span>"
+msgstr ""
+
+#. translators: used between list items, there is a space after the comma
+#: inc/template-tags.php:92
+#: inc/template-tags.php:99
+#: template-parts/content-post.php:17
+#: template-parts/content-post.php:79
+msgctxt "list item separator"
+msgid ", "
+msgstr ""
+
+#. translators: 1: list of categories.
+#: inc/template-tags.php:95
+msgid "Posted in %1$s"
+msgstr ""
+
+#. translators: 1: list of tags.
+#: inc/template-tags.php:102
+#: template-parts/content-post.php:82
+msgid "Tagged %1$s"
+msgstr ""
+
+#: inc/template-tags.php:264
+#: dist/js/blocks.js:2568
+msgid "Load more"
+msgstr ""
+
+#: inc/template-tags.php:380
+msgid "%s min"
+msgid_plural "%s mins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/template-tags.php:384
+msgctxt "post reading time label"
+msgid "Reading"
+msgstr ""
+
+#: inc/woocommerce.php:128
+msgid "Where?"
+msgstr ""
+
+#: inc/woocommerce.php:129
+msgid ""
+"If you use Mastercard, Visa and Diners, \n"
+"\t            \tthe security code is shown on the back of your credit card near \n"
+"\t            \tthe space reserved for your signature, and consists of 3 digits. \n"
+"\t            \tIf you use American Express, the secure code is placed on the \n"
+"\t            \tfront of your card and consists of 4 digits."
+msgstr ""
+
+#: inc/woocommerce.php:138
+msgid "Close"
+msgstr ""
+
+#: inc/woocommerce.php:173
+msgid "Shop Sidebar"
+msgstr ""
+
+#: inc/woocommerce.php:175
+msgid "This widgets will be shown in the shop sidebar"
+msgstr ""
+
+#: inc/woocommerce.php:185
+msgid "Woocommerce Account Sidebar"
+msgstr ""
+
+#: inc/woocommerce.php:187
+msgid "Widgets in this area will be shown in all the WooCommerce accounts pages"
+msgstr ""
+
+#: inc/woocommerce.php:299
+msgid "View your shopping cart"
+msgstr ""
+
+#: inc/woocommerce.php:300
+msgid "Cart"
+msgstr ""
+
+#. translators: %d number of items in the mini cart
+#: inc/woocommerce.php:304
+msgid "%d <span class=\"screen-reader-text\">item</span>"
+msgid_plural "%d <span class=\"screen-reader-text\">items</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/woocommerce.php:400
+msgid "Go to My Account"
+msgstr ""
+
+#: inc/woocommerce.php:417
+msgid "Login"
+msgstr ""
+
+#. Template Name of the theme
 msgid "Account"
 msgstr ""
 
-#: template-parts/preview.php:32
-msgid "Read More"
-msgstr ""
-
-#: template-parts/pagination-post.php:10
-msgid "Previous"
-msgstr ""
-
-#: template-parts/pagination-post.php:10
-msgid "Next"
-msgstr ""
-
-#: template-parts/content-none.php:14
-msgid "Nothing Found"
-msgstr ""
-
-#: template-parts/content-none.php:24
-#, php-format
-msgid ""
-"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
-msgstr ""
-
-#: template-parts/content-none.php:37
-msgid ""
-"Sorry, but nothing matched your search terms. Please try again with some "
-"different keywords."
-msgstr ""
-
-#: template-parts/content-none.php:44
-msgid ""
-"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
-"searching can help."
-msgstr ""
-
-#. %s: Name of current post. Only visible to screen readers
-#: template-parts/content.php:28 template-parts/content-casestudy.php:31
-#: template-parts/content-post.php:55
-#, php-format
-msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
-msgstr ""
-
-#: template-parts/content.php:41 template-parts/content-post.php:68
-msgid "Pages:"
-msgstr ""
-
-#: template-parts/preview-testimonial.php:11
-msgid "Read more"
-msgstr ""
-
-#: template-parts/meta-testimonial.php:37
-msgid "Rating"
-msgstr ""
-
-#: amp/footer.php:12
-msgid "Back to top"
-msgstr ""
-
-#: sensei/learner-profile.php:63
-msgid "Active Courses"
-msgstr ""
-
-#: sensei/learner-profile.php:64
-msgid "Completed Courses"
+#. translators: %s: search query.
+#: search.php:22
+msgid "Search Results for: %s"
 msgstr ""
 
 #: sensei/globals/pagination-lesson.php:59
@@ -726,14 +680,1182 @@ msgstr ""
 msgid "View next lesson"
 msgstr ""
 
-#. Name of the theme
-msgid "_svbk"
+#: sensei/learner-profile.php:63
+msgid "Active Courses"
 msgstr ""
 
-#. Author of the theme
-msgid "Silverback Studio"
+#: sensei/learner-profile.php:64
+msgid "Completed Courses"
 msgstr ""
 
-#. Author URI of the theme
-msgid "http://www.silverbackstudio.it"
+#. translators: %s: Name of current post. Only visible to screen readers
+#: template-parts/content-casestudy.php:31
+#: template-parts/content-post.php:55
+#: template-parts/content.php:28
+msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
+msgstr ""
+
+#: template-parts/content-none.php:14
+msgid "Nothing Found"
+msgstr ""
+
+#. translators: 1: link to WP admin new post page.
+#: template-parts/content-none.php:24
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: template-parts/content-none.php:37
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr ""
+
+#: template-parts/content-none.php:44
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr ""
+
+#: template-parts/content-post.php:68
+#: template-parts/content.php:41
+msgid "Pages:"
+msgstr ""
+
+#: template-parts/meta-testimonial.php:37
+#: dist/js/blocks.js:6635
+#: dist/js/blocks.js:8277
+#: dist/js/blocks.js:8767
+#: dist/js/blocks.js:8813
+#: dist/js/blocks.js:8815
+msgid "Rating"
+msgstr ""
+
+#: template-parts/pagination-post.php:10
+msgid "Previous"
+msgstr ""
+
+#: template-parts/pagination-post.php:10
+msgid "Next"
+msgstr ""
+
+#: template-parts/preview-testimonial.php:11
+#: dist/js/blocks.js:2008
+msgid "Read more"
+msgstr ""
+
+#: template-parts/preview.php:32
+msgid "Read More"
+msgstr ""
+
+#: dist/js/blocks.js:309
+#: dist/js/blocks.js:1254
+#: dist/js/blocks.js:4772
+#: dist/js/blocks.js:7033
+#: dist/js/blocks.js:7447
+#: dist/js/blocks.js:9494
+msgid "This is my title.."
+msgstr ""
+
+#: dist/js/blocks.js:319
+#: dist/js/blocks.js:5257
+#: dist/js/blocks.js:5866
+#: dist/js/blocks.js:7053
+msgid "Content.."
+msgstr ""
+
+#: dist/js/blocks.js:338
+#: dist/js/blocks.js:1321
+#: dist/js/blocks.js:4423
+#: dist/js/blocks.js:7091
+#: dist/js/blocks.js:7739
+#: dist/js/blocks.js:8287
+#: dist/js/blocks.js:8997
+#: dist/js/blocks.js:9541
+msgid "Color Settings"
+msgstr ""
+
+#: dist/js/blocks.js:343
+#: dist/js/blocks.js:1326
+#: dist/js/blocks.js:4428
+#: dist/js/blocks.js:7096
+#: dist/js/blocks.js:8292
+#: dist/js/blocks.js:9003
+#: dist/js/blocks.js:9546
+msgid "Background Color"
+msgstr ""
+
+#: dist/js/blocks.js:347
+#: dist/js/blocks.js:1330
+#: dist/js/blocks.js:5478
+#: dist/js/blocks.js:7100
+#: dist/js/blocks.js:7744
+#: dist/js/blocks.js:8296
+#: dist/js/blocks.js:9011
+#: dist/js/blocks.js:9550
+msgid "Text Color"
+msgstr ""
+
+#: dist/js/blocks.js:431
+msgid "Bullet"
+msgstr ""
+
+#: dist/js/blocks.js:434
+msgid "bullet"
+msgstr ""
+
+#: dist/js/blocks.js:434
+#: dist/js/blocks.js:1439
+msgid "card"
+msgstr ""
+
+#: dist/js/blocks.js:438
+#: dist/js/blocks.js:1443
+#: dist/js/blocks.js:1837
+#: dist/js/blocks.js:4982
+#: dist/js/blocks.js:7189
+#: dist/js/blocks.js:9643
+msgid "Default"
+msgstr ""
+
+#: dist/js/blocks.js:442
+#: dist/js/blocks.js:2481
+msgid "Offset"
+msgstr ""
+
+#: dist/js/blocks.js:560
+#: dist/js/blocks.js:614
+msgid "Preferisci parlarne a voce?"
+msgstr ""
+
+#: dist/js/blocks.js:566
+#: dist/js/blocks.js:620
+#: dist/js/blocks.js:676
+#: dist/js/blocks.js:731
+msgid "Chiamaci al numero"
+msgstr ""
+
+#: dist/js/blocks.js:572
+#: dist/js/blocks.js:626
+msgid "(+39) 000 00000000"
+msgstr ""
+
+#: dist/js/blocks.js:587
+#: dist/js/blocks.js:641
+msgid "Chiamaci"
+msgstr ""
+
+#: dist/js/blocks.js:861
+msgid "Action text…"
+msgstr ""
+
+#: dist/js/blocks.js:871
+msgid "Wide button action text…"
+msgstr ""
+
+#: dist/js/blocks.js:891
+msgid "Phone Number"
+msgstr ""
+
+#: dist/js/blocks.js:899
+msgid "01 23456789"
+msgstr ""
+
+#: dist/js/blocks.js:903
+#: dist/js/blocks.js:1296
+#: dist/js/blocks.js:4820
+#: dist/js/blocks.js:4848
+#: dist/js/blocks.js:7081
+msgid "Apply"
+msgstr ""
+
+#: dist/js/blocks.js:971
+msgid "Call Us"
+msgstr ""
+
+#: dist/js/blocks.js:972
+msgid "Display fancy phone contact"
+msgstr ""
+
+#: dist/js/blocks.js:975
+msgid "phone"
+msgstr ""
+
+#: dist/js/blocks.js:975
+msgid "contacts"
+msgstr ""
+
+#: dist/js/blocks.js:990
+msgid "Chiama il"
+msgstr ""
+
+#: dist/js/blocks.js:1215
+#: dist/js/blocks.js:1224
+msgid "Image"
+msgstr ""
+
+#: dist/js/blocks.js:1216
+msgid "Please select if you want to use an image or an icon"
+msgstr ""
+
+#: dist/js/blocks.js:1231
+msgid "Icon"
+msgstr ""
+
+#: dist/js/blocks.js:1233
+msgid "Back to picture type choice"
+msgstr ""
+
+#: dist/js/blocks.js:1264
+#: dist/js/blocks.js:4782
+#: dist/js/blocks.js:9504
+msgid "Subtitle.."
+msgstr ""
+
+#: dist/js/blocks.js:1271
+#: dist/js/blocks.js:7056
+msgid "Button text…"
+msgstr ""
+
+#: dist/js/blocks.js:1315
+#: dist/js/blocks.js:5267
+msgid "Text Settings"
+msgstr ""
+
+#: dist/js/blocks.js:1338
+msgid "Ribbon Settings"
+msgstr ""
+
+#: dist/js/blocks.js:1340
+msgid "Ribbon Text"
+msgstr ""
+
+#: dist/js/blocks.js:1348
+msgid "Ribbon Color Settings"
+msgstr ""
+
+#: dist/js/blocks.js:1353
+#: dist/js/blocks.js:9007
+msgid "Ribbon Color"
+msgstr ""
+
+#: dist/js/blocks.js:1436
+msgid "Card"
+msgstr ""
+
+#: dist/js/blocks.js:1439
+msgid "block"
+msgstr ""
+
+#: dist/js/blocks.js:1439
+msgid "content"
+msgstr ""
+
+#: dist/js/blocks.js:1447
+#: dist/js/blocks.js:7193
+msgid "Featured"
+msgstr ""
+
+#: dist/js/blocks.js:1721
+msgid "Insert title here.."
+msgstr ""
+
+#: dist/js/blocks.js:1735
+msgid "Open me.."
+msgstr ""
+
+#: dist/js/blocks.js:1744
+msgid "Close me.."
+msgstr ""
+
+#: dist/js/blocks.js:1747
+msgid "Collapse Settings"
+msgstr ""
+
+#: dist/js/blocks.js:1749
+msgid "Default Open"
+msgstr ""
+
+#: dist/js/blocks.js:1750
+msgid "Leave the collapse open on page load"
+msgstr ""
+
+#: dist/js/blocks.js:1750
+msgid "Leave the collapse close on page load"
+msgstr ""
+
+#: dist/js/blocks.js:1830
+msgid "Collapse"
+msgstr ""
+
+#: dist/js/blocks.js:1833
+msgid "collapse"
+msgstr ""
+
+#: dist/js/blocks.js:1833
+msgid "accordion"
+msgstr ""
+
+#: dist/js/blocks.js:1841
+msgid "Accordion"
+msgstr ""
+
+#: dist/js/blocks.js:1844
+msgid "FAQ"
+msgstr ""
+
+#: dist/js/blocks.js:1847
+msgid "Button"
+msgstr ""
+
+#: dist/js/blocks.js:2004
+msgid "(no title)"
+msgstr ""
+
+#: dist/js/blocks.js:2210
+#: dist/js/blocks.js:2435
+msgid "Post Content Settings"
+msgstr ""
+
+#: dist/js/blocks.js:2232
+msgid "Search"
+msgstr ""
+
+#: dist/js/blocks.js:2452
+msgid "Filter & Sorting"
+msgstr ""
+
+#: dist/js/blocks.js:2491
+msgid "Show Load More"
+msgstr ""
+
+#: dist/js/blocks.js:2499
+msgid "Layout"
+msgstr ""
+
+#: dist/js/blocks.js:2501
+#: dist/js/blocks.js:4376
+msgid "Columns"
+msgstr ""
+
+#: dist/js/blocks.js:2516
+msgid "No posts found."
+msgstr ""
+
+#: dist/js/blocks.js:2523
+msgid "List View"
+msgstr ""
+
+#: dist/js/blocks.js:2532
+msgid "Grid View"
+msgstr ""
+
+#: dist/js/blocks.js:2636
+msgid "Appearance"
+msgstr ""
+
+#: dist/js/blocks.js:2639
+msgid "Critical Rendering"
+msgstr ""
+
+#: dist/js/blocks.js:2647
+msgid "Hide on Mobile"
+msgstr ""
+
+#: dist/js/blocks.js:2655
+msgid "Enable Animation"
+msgstr ""
+
+#. translators: %s: heading level e.g: "1", "2", "3"
+#: dist/js/blocks.js:2765
+msgid "Heading %d"
+msgstr ""
+
+#: dist/js/blocks.js:3110
+msgid "Image Size"
+msgstr ""
+
+#: dist/js/blocks.js:3115
+msgid "Alt Text (Alternative Text)"
+msgstr ""
+
+#: dist/js/blocks.js:3118
+msgid "Alternative text describes your image to people who can’t see it. Add a short description with its key details."
+msgstr ""
+
+#: dist/js/blocks.js:3130
+msgid "Edit image"
+msgstr ""
+
+#: dist/js/blocks.js:3137
+msgid "Remove image"
+msgstr ""
+
+#: dist/js/blocks.js:3160
+msgid "Image Settings"
+msgstr ""
+
+#: dist/js/blocks.js:3316
+msgid "%D days %H hours %M min %S sec"
+msgstr ""
+
+#: dist/js/blocks.js:3375
+#: dist/js/blocks.js:3376
+msgid "Countdown"
+msgstr ""
+
+#: dist/js/blocks.js:3379
+msgid "countdown"
+msgstr ""
+
+#: dist/js/blocks.js:3379
+msgid "timer"
+msgstr ""
+
+#: dist/js/blocks.js:3425
+#: dist/js/blocks.js:6793
+msgid "Settings"
+msgstr ""
+
+#: dist/js/blocks.js:3427
+msgid "Persist"
+msgstr ""
+
+#: dist/js/blocks.js:3434
+msgid "Keep the countdown remaining time on page refresh"
+msgstr ""
+
+#: dist/js/blocks.js:3456
+msgid "Please choose an expire date"
+msgstr ""
+
+#: dist/js/blocks.js:3562
+msgid "Flickity Options"
+msgstr ""
+
+#: dist/js/blocks.js:3565
+msgid "Lazy Load"
+msgstr ""
+
+#: dist/js/blocks.js:3566
+msgid "Loads cell images when a cell is selected."
+msgstr ""
+
+#: dist/js/blocks.js:3574
+msgid "How many images to lazyload in adjacent cells"
+msgstr ""
+
+#: dist/js/blocks.js:3583
+msgid "Wait for images to load"
+msgstr ""
+
+#: dist/js/blocks.js:3584
+msgid "Unloaded images have no size, which can throw off cell positions. To fix this, the this option re-positions cells once their images have loaded."
+msgstr ""
+
+#: dist/js/blocks.js:3592
+msgid "Contain"
+msgstr ""
+
+#: dist/js/blocks.js:3593
+msgid "Contains cells to carousel element to prevent excess scroll at beginning or end. Has no effect if `wrapAround: true`"
+msgstr ""
+
+#: dist/js/blocks.js:3601
+msgid "Cell Alignment"
+msgstr ""
+
+#: dist/js/blocks.js:3602
+msgid "Align cells within the carousel element."
+msgstr ""
+
+#: dist/js/blocks.js:3605
+#: dist/js/blocks.js:4411
+msgid "Left"
+msgstr ""
+
+#: dist/js/blocks.js:3608
+#: dist/js/blocks.js:4408
+msgid "Center"
+msgstr ""
+
+#: dist/js/blocks.js:3611
+#: dist/js/blocks.js:4414
+msgid "Right"
+msgstr ""
+
+#: dist/js/blocks.js:3620
+msgid "Wrap Around"
+msgstr ""
+
+#: dist/js/blocks.js:3621
+msgid "At the end of cells, wrap-around to the other end for infinite scrolling."
+msgstr ""
+
+#: dist/js/blocks.js:3629
+msgid "Prev Next Buttons"
+msgstr ""
+
+#: dist/js/blocks.js:3630
+msgid "Creates and enables previous & next buttons. Enabled by default"
+msgstr ""
+
+#: dist/js/blocks.js:3638
+msgid "Paging Dots"
+msgstr ""
+
+#: dist/js/blocks.js:3639
+msgid "Creates and enables page dots."
+msgstr ""
+
+#: dist/js/blocks.js:3647
+msgid "Initial Index"
+msgstr ""
+
+#: dist/js/blocks.js:3648
+msgid "The initial selected cell."
+msgstr ""
+
+#: dist/js/blocks.js:3659
+msgid "Group Cells"
+msgstr ""
+
+#: dist/js/blocks.js:3660
+msgid "Groups cells together in slides. Flicking, page dots, and previous/next buttons are mapped to group slides, not individual cells"
+msgstr ""
+
+#: dist/js/blocks.js:3668
+msgid "Group Cells Number"
+msgstr ""
+
+#: dist/js/blocks.js:3677
+msgid "Autoplay"
+msgstr ""
+
+#: dist/js/blocks.js:3678
+msgid "Automatically advances to the next cell."
+msgstr ""
+
+#: dist/js/blocks.js:3686
+msgid "Autoplay Timeout"
+msgstr ""
+
+#: dist/js/blocks.js:3687
+msgid "Advance cells ever X milliseconds. (ex. 3000 = 3 sec)"
+msgstr ""
+
+#: dist/js/blocks.js:3697
+msgid "Pause Auto Play on Hover"
+msgstr ""
+
+#: dist/js/blocks.js:3698
+msgid "Auto play continues when user hovers over carousel"
+msgstr ""
+
+#: dist/js/blocks.js:3706
+msgid "Draggable"
+msgstr ""
+
+#: dist/js/blocks.js:3707
+msgid "Enables dragging and flicking. Enabled by default when carousel has 2 or more slides"
+msgstr ""
+
+#: dist/js/blocks.js:3715
+msgid "Free Scroll"
+msgstr ""
+
+#: dist/js/blocks.js:3716
+msgid "Enables content to be freely scrolled and flicked without aligning cells to an end position."
+msgstr ""
+
+#: dist/js/blocks.js:3724
+msgid "Drag threshold"
+msgstr ""
+
+#: dist/js/blocks.js:3725
+msgid "The number of pixels a mouse or touch has to move before dragging begins.."
+msgstr ""
+
+#: dist/js/blocks.js:3735
+msgid "Adaptive Height"
+msgstr ""
+
+#: dist/js/blocks.js:3736
+msgid "Changes height of carousel to fit height of selected slide."
+msgstr ""
+
+#: dist/js/blocks.js:3744
+msgid "Right to Left"
+msgstr ""
+
+#: dist/js/blocks.js:3745
+msgid "Enables right-to-left layout.."
+msgstr ""
+
+#: dist/js/blocks.js:3841
+msgid "flickity"
+msgstr ""
+
+#: dist/js/blocks.js:3980
+#: dist/js/blocks.js:4005
+msgid "Highlight"
+msgstr ""
+
+#: dist/js/blocks.js:4079
+#: dist/js/blocks.js:4110
+msgid "Standout"
+msgstr ""
+
+#: dist/js/blocks.js:4148
+#: dist/js/blocks.js:4168
+msgid "Underline Stroke"
+msgstr ""
+
+#: dist/js/blocks.js:4374
+msgid "Grid Settings"
+msgstr ""
+
+#: dist/js/blocks.js:4386
+msgid "Mobile Columns"
+msgstr ""
+
+#: dist/js/blocks.js:4396
+msgid "Equal Height"
+msgstr ""
+
+#: dist/js/blocks.js:4405
+msgid "Columns Alignment"
+msgstr ""
+
+#: dist/js/blocks.js:4516
+msgid "Grid Layout"
+msgstr ""
+
+#: dist/js/blocks.js:4519
+msgid "grid"
+msgstr ""
+
+#: dist/js/blocks.js:4519
+msgid "flex"
+msgstr ""
+
+#: dist/js/blocks.js:4519
+msgid "table"
+msgstr ""
+
+#: dist/js/blocks.js:4724
+msgid "Show content on left"
+msgstr ""
+
+#: dist/js/blocks.js:4733
+msgid "Show content on right"
+msgstr ""
+
+#: dist/js/blocks.js:4762
+msgid "Question: is this a new block?"
+msgstr ""
+
+#: dist/js/blocks.js:4795
+msgid "Primary button text…"
+msgstr ""
+
+#: dist/js/blocks.js:4823
+msgid "Secondary button text…"
+msgstr ""
+
+#: dist/js/blocks.js:4872
+msgid "Spacing"
+msgstr ""
+
+#: dist/js/blocks.js:4874
+msgid "Bottom padding"
+msgstr ""
+
+#: dist/js/blocks.js:4883
+msgid "Background Settings"
+msgstr ""
+
+#: dist/js/blocks.js:4885
+msgid "Use custom image when stacked"
+msgstr ""
+
+#: dist/js/blocks.js:4892
+msgid "Choose another image when the image is above the text"
+msgstr ""
+
+#: dist/js/blocks.js:4975
+msgid "Hero"
+msgstr ""
+
+#: dist/js/blocks.js:4978
+msgid "hero"
+msgstr ""
+
+#: dist/js/blocks.js:4978
+msgid "above"
+msgstr ""
+
+#: dist/js/blocks.js:4978
+msgid "intro"
+msgstr ""
+
+#: dist/js/blocks.js:4986
+msgid "Content with Background"
+msgstr ""
+
+#: dist/js/blocks.js:4989
+msgid "Content within a Card"
+msgstr ""
+
+#: dist/js/blocks.js:5349
+msgid "Icon Paragraph"
+msgstr ""
+
+#: dist/js/blocks.js:5352
+msgid "contact"
+msgstr ""
+
+#: dist/js/blocks.js:5352
+msgid "paragraph"
+msgstr ""
+
+#: dist/js/blocks.js:5473
+msgid "Icon Color Settings"
+msgstr ""
+
+#: dist/js/blocks.js:5592
+msgid "View"
+msgstr ""
+
+#: dist/js/blocks.js:5595
+msgid "Code"
+msgstr ""
+
+#: dist/js/blocks.js:5609
+msgid "Paste SVG…"
+msgstr ""
+
+#: dist/js/blocks.js:5610
+msgid "SVG"
+msgstr ""
+
+#: dist/js/blocks.js:5652
+msgid "Icon (SVG)"
+msgstr ""
+
+#: dist/js/blocks.js:5653
+msgid "Insert an SVG Icon"
+msgstr ""
+
+#: dist/js/blocks.js:5656
+msgid "svg"
+msgstr ""
+
+#: dist/js/blocks.js:5656
+msgid "icon"
+msgstr ""
+
+#: dist/js/blocks.js:5856
+msgid "Title.."
+msgstr ""
+
+#: dist/js/blocks.js:5874
+msgid "Remove Step"
+msgstr ""
+
+#: dist/js/blocks.js:5880
+msgid "Clone Step"
+msgstr ""
+
+#: dist/js/blocks.js:5885
+msgid "Add Step"
+msgstr ""
+
+#: dist/js/blocks.js:5963
+msgid "Iter"
+msgstr ""
+
+#: dist/js/blocks.js:5966
+msgid "iter"
+msgstr ""
+
+#: dist/js/blocks.js:5966
+msgid "steps"
+msgstr ""
+
+#: dist/js/blocks.js:6317
+#: dist/js/blocks.js:6405
+msgid "Add new Marker"
+msgstr ""
+
+#: dist/js/blocks.js:6318
+msgid "Map Settings"
+msgstr ""
+
+#: dist/js/blocks.js:6320
+#: dist/js/blocks.js:6370
+msgid "Latitude"
+msgstr ""
+
+#: dist/js/blocks.js:6328
+#: dist/js/blocks.js:6378
+msgid "Longitude"
+msgstr ""
+
+#: dist/js/blocks.js:6336
+msgid "Zoom"
+msgstr ""
+
+#: dist/js/blocks.js:6346
+msgid "Type"
+msgstr ""
+
+#: dist/js/blocks.js:6350
+msgid "Roadmap"
+msgstr ""
+
+#: dist/js/blocks.js:6353
+msgid "Satellite"
+msgstr ""
+
+#: dist/js/blocks.js:6356
+msgid "Hybrid"
+msgstr ""
+
+#: dist/js/blocks.js:6359
+msgid "Terrain"
+msgstr ""
+
+#: dist/js/blocks.js:6368
+msgid "Marker Settings"
+msgstr ""
+
+#: dist/js/blocks.js:6401
+msgid "Remove Marker"
+msgstr ""
+
+#: dist/js/blocks.js:6401
+msgid "Please click on a marker to edit or"
+msgstr ""
+
+#: dist/js/blocks.js:6475
+msgid "Map"
+msgstr ""
+
+#: dist/js/blocks.js:6478
+msgid "map"
+msgstr ""
+
+#: dist/js/blocks.js:6478
+msgid "google map"
+msgstr ""
+
+#: dist/js/blocks.js:6478
+msgid "location"
+msgstr ""
+
+#: dist/js/blocks.js:6602
+msgid "Product Add To Cart"
+msgstr ""
+
+#: dist/js/blocks.js:6603
+msgid "Display the product add to cart button"
+msgstr ""
+
+#: dist/js/blocks.js:6606
+msgid "add to cart"
+msgstr ""
+
+#: dist/js/blocks.js:6606
+msgid "cart"
+msgstr ""
+
+#: dist/js/blocks.js:6637
+#: dist/js/blocks.js:6795
+#: dist/js/blocks.js:6870
+msgid "Product ID"
+msgstr ""
+
+#: dist/js/blocks.js:6645
+msgid "SKU"
+msgstr ""
+
+#: dist/js/blocks.js:6653
+msgid "Quantity"
+msgstr ""
+
+#: dist/js/blocks.js:6663
+msgid "Show price"
+msgstr ""
+
+#: dist/js/blocks.js:6674
+msgid "Add To Cart"
+msgstr ""
+
+#: dist/js/blocks.js:6674
+msgid "Products"
+msgstr ""
+
+#: dist/js/blocks.js:6710
+msgid "Product Price"
+msgstr ""
+
+#: dist/js/blocks.js:6711
+msgid "Display the price of a product"
+msgstr ""
+
+#: dist/js/blocks.js:6714
+msgid "price"
+msgstr ""
+
+#: dist/js/blocks.js:6774
+msgid "Product Rating"
+msgstr ""
+
+#: dist/js/blocks.js:6775
+msgid "Display the rating of a product"
+msgstr ""
+
+#: dist/js/blocks.js:6778
+#: dist/js/blocks.js:8771
+msgid "rating"
+msgstr ""
+
+#: dist/js/blocks.js:6778
+msgid "product"
+msgstr ""
+
+#: dist/js/blocks.js:6849
+msgid "Product Stock"
+msgstr ""
+
+#: dist/js/blocks.js:6850
+msgid "Display the remaining stock product"
+msgstr ""
+
+#: dist/js/blocks.js:6853
+msgid "stock"
+msgstr ""
+
+#: dist/js/blocks.js:6868
+msgid "Product Availability"
+msgstr ""
+
+#: dist/js/blocks.js:7043
+#: dist/js/blocks.js:8220
+msgid "Role.."
+msgstr ""
+
+#: dist/js/blocks.js:7182
+msgid "Profile"
+msgstr ""
+
+#: dist/js/blocks.js:7185
+msgid "profile"
+msgstr ""
+
+#: dist/js/blocks.js:7185
+msgid "team"
+msgstr ""
+
+#: dist/js/blocks.js:7185
+msgid "member"
+msgstr ""
+
+#: dist/js/blocks.js:7437
+msgid "Author Name.."
+msgstr ""
+
+#: dist/js/blocks.js:7457
+msgid "Publisher, Year, .."
+msgstr ""
+
+#: dist/js/blocks.js:7460
+msgid "Publication Settings"
+msgstr ""
+
+#: dist/js/blocks.js:7540
+msgid "Publication"
+msgstr ""
+
+#: dist/js/blocks.js:7543
+msgid "book"
+msgstr ""
+
+#: dist/js/blocks.js:7543
+msgid "publication"
+msgstr ""
+
+#: dist/js/blocks.js:7726
+msgid "40M subscribers.."
+msgstr ""
+
+#: dist/js/blocks.js:7736
+msgid "Description.."
+msgstr ""
+
+#: dist/js/blocks.js:7823
+msgid "Stats"
+msgstr ""
+
+#: dist/js/blocks.js:7826
+msgid "stats"
+msgstr ""
+
+#: dist/js/blocks.js:7826
+msgid "number"
+msgstr ""
+
+#: dist/js/blocks.js:7826
+msgid "counter"
+msgstr ""
+
+#: dist/js/blocks.js:7964
+msgid "Author"
+msgstr ""
+
+#: dist/js/blocks.js:7965
+msgid "Display the author of a post"
+msgstr ""
+
+#: dist/js/blocks.js:7968
+msgid "author"
+msgstr ""
+
+#: dist/js/blocks.js:8004
+msgid "Author Name…"
+msgstr ""
+
+#: dist/js/blocks.js:8016
+msgid "Author Role…"
+msgstr ""
+
+#: dist/js/blocks.js:8201
+msgid "Author Avatar"
+msgstr ""
+
+#: dist/js/blocks.js:8211
+msgid "Name Surname.."
+msgstr ""
+
+#: dist/js/blocks.js:8247
+msgid "Date.."
+msgstr ""
+
+#: dist/js/blocks.js:8256
+msgid "Source.."
+msgstr ""
+
+#: dist/js/blocks.js:8265
+msgid "Company Logo"
+msgstr ""
+
+#: dist/js/blocks.js:8275
+msgid "Testimonial Settings"
+msgstr ""
+
+#: dist/js/blocks.js:8344
+msgid "Testimonial Embed"
+msgstr ""
+
+#: dist/js/blocks.js:8345
+msgid "Embeds a tesitmonial"
+msgstr ""
+
+#: dist/js/blocks.js:8348
+#: dist/js/blocks.js:8456
+msgid "testimonial"
+msgstr ""
+
+#: dist/js/blocks.js:8355
+#: dist/js/blocks.js:8648
+msgid "Full"
+msgstr ""
+
+#: dist/js/blocks.js:8359
+msgid "Inline"
+msgstr ""
+
+#: dist/js/blocks.js:8453
+msgid "Testimonial"
+msgstr ""
+
+#: dist/js/blocks.js:8456
+msgid "feedback"
+msgstr ""
+
+#: dist/js/blocks.js:8465
+msgid "Standard"
+msgstr ""
+
+#: dist/js/blocks.js:8469
+msgid "VIP"
+msgstr ""
+
+#: dist/js/blocks.js:8472
+msgid "Press"
+msgstr ""
+
+#: dist/js/blocks.js:8638
+msgid "Display a list of testimonials."
+msgstr ""
+
+#: dist/js/blocks.js:8641
+msgid "testimonials"
+msgstr ""
+
+#: dist/js/blocks.js:8652
+#: dist/js/blocks.js:9647
+msgid "Small"
+msgstr ""
+
+#: dist/js/blocks.js:8655
+msgid "Grid"
+msgstr ""
+
+#: dist/js/blocks.js:8658
+msgid "Masonry"
+msgstr ""
+
+#: dist/js/blocks.js:8768
+msgid "Display a list of stars"
+msgstr ""
+
+#: dist/js/blocks.js:8981
+msgid "Ribbon content..."
+msgstr ""
+
+#: dist/js/blocks.js:9098
+msgid "Autorevolezza"
+msgstr ""
+
+#: dist/js/blocks.js:9101
+msgid "trust"
+msgstr ""
+
+#: dist/js/blocks.js:9101
+msgid "autorevolezza"
+msgstr ""
+
+#: dist/js/blocks.js:9101
+msgid "logo"
+msgstr ""
+
+#: dist/js/blocks.js:9518
+msgid "Footer content.."
+msgstr ""
+
+#: dist/js/blocks.js:9540
+msgid "Remove"
+msgstr ""
+
+#: dist/js/blocks.js:9636
+msgid "Warranty"
+msgstr ""
+
+#: dist/js/blocks.js:9639
+msgid "warranty"
+msgstr ""
+
+#: dist/js/blocks.js:9639
+msgid "assurance"
+msgstr ""
+
+#: dist/js/blocks.js:9639
+msgid "guarantee"
 msgstr ""

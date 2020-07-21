@@ -31,6 +31,8 @@ function _svbk_blocks_editor_assets() {
 		null,
 		true
 	);
+
+	wp_set_script_translations( '_svbk-blocks', '_svbk', get_template_directory() . '/languages' );
 } 
 
 

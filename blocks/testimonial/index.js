@@ -48,8 +48,8 @@ export const settings = {
 	icon: 'thumbs-up', 
 	category: 'widgets',
 	keywords: [
-		__( 'testimonial' ),
-		__( 'feedback' ),
+		__( 'testimonial', '_svbk' ),
+		__( 'feedback', '_svbk' ),
 	],
 
 	supports: {
@@ -62,7 +62,7 @@ export const settings = {
 	    // Mark style as default.
 	    {
 	        name: 'default',
-	        label: __( 'Standard' ),
+	        label: __( 'Standard', '_svbk' ),
 	        isDefault: true
 	    },
 	    {

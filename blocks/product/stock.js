@@ -27,7 +27,10 @@ export const settings = {
 
 	category: 'widgets',
 	
-	keywords: [ __( 'stock', 'product' ) ],
+	keywords: [
+		__('stock', '_svbk'),
+		__( 'stock', '_svbk' )
+	],
 
 	supports: {
 		html: false,
