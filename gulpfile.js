@@ -217,6 +217,7 @@ function replaceMarkers(){
         './**/*.php', 
         './**/*.js',
         './composer.json',
+        './package.json',
         '!./vendor/**/*',        
         '!./node_modules/**/*',
         '!./gulpfile.js',
@@ -241,13 +242,6 @@ function replaceNames(){
         .pipe(dest('./'));
 }
 
-function replaceConfigs(){
-    return src(['./composer.json', './package.json' ])
-        .pipe(replace( 'silverbackstudio/theme_svbk'  , `${config.theme_handle}/wp-theme` ))    
-        .pipe(replace( 'Silverback Starter' , config.theme_name + 'Website' ))
-        .pipe(dest('./'));
-}
-
 function renameLanguages(){
     return src(['./languages/_svbk.*'])
         .pipe(rename(function (path) {
@@ -263,6 +257,6 @@ const build = parallel(sassCompile, jsCompress, jsCopy, imageMinify, imageMinify
 
 exports.refresh = series( clean, build);
 exports.build = build;
-exports.setup = parallel(replaceConfigs, replaceNames, replaceMarkers, renameLanguages, build );
+exports.setup = parallel(replaceNames, replaceMarkers, renameLanguages, build );
 
 exports.serve = parallel(sassWatch, jsWatch, imageWatch );
