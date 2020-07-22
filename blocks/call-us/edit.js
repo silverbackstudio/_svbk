@@ -51,14 +51,14 @@ class CallUsEdit extends Component {
 		return (
 			<div classNames={ classNames } >
 				<RichText
-					placeholder={ __( 'Action text…' ) }
+					placeholder={ __( 'Action text…', '_svbk' ) }
 					value={ action }
 					onChange={ ( value ) => setAttributes( { action: value } ) }
 					formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
 					className={ 'wp-block-svbk-hero__link block-library-button'}
 				/>
 				<RichText
-					placeholder={ __( 'Wide button action text…' ) }
+					placeholder={ __( 'Wide button action text…', '_svbk' ) }
 					value={ actionWide }
 					onChange={ ( value ) => setAttributes( { actionWide: value } ) }
 					formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
@@ -76,11 +76,11 @@ class CallUsEdit extends Component {
 								required
 								value={ number }
 								onChange={ ( event ) => setAttributes( { number: event.target.value } ) }
-								placeholder={ __( '01 23456789' ) }
+								placeholder={ __( '01 23456789', '_svbk' ) }
 								role="combobox"
 							/>
 						</div>
-						<IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />
+						<IconButton icon="editor-break" label={ __( 'Apply', '_svbk' ) } type="submit" />
 					</form>
 				) }	
                 <BlockControls>

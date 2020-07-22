@@ -20,9 +20,9 @@ const withSpeedUpdate =  createHigherOrderComponent( ( BlockEdit ) => {
 			<Fragment>
 				<BlockEdit { ...props } />
 				<InspectorControls>
-					<PanelBody title={ __( 'Speed Update' ) } initialOpen={ false } >
+					<PanelBody title={ __( 'Speed Update', '_svbk' ) } initialOpen={ false } >
     					<ToggleControl
-    						label={ __( 'Critical Rendering' ) }
+    						label={ __( 'Critical Rendering', '_svbk' ) }
     						onChange={ ( value ) => setAttributes( { criticalRendering: value } ) } 
     						checked={ criticalRendering }
     					/>						

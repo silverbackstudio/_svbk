@@ -202,7 +202,7 @@ class ImageEdit extends Component {
 			<Fragment>
 				{ ! isEmpty( imageSizeOptions ) && changeSize && (
 					<SelectControl
-						label={ __( 'Image Size' ) }
+						label={ __( 'Image Size', '_svbk' ) }
 						value={ size }
 						options={ imageSizeOptions }
 						onChange={ this.updateImageSize }
@@ -210,10 +210,10 @@ class ImageEdit extends Component {
 				) }				
 				{ (typeof alt !== 'undefined') && (
 				<TextareaControl
-					label={ __( 'Alt Text (Alternative Text)' ) }
+					label={ __( 'Alt Text (Alternative Text)', '_svbk' ) }
 					value={ alt }
 					onChange={ this.updateAlt }
-					help={ __( 'Alternative text describes your image to people who can’t see it. Add a short description with its key details.' ) }
+					help={ __( 'Alternative text describes your image to people who can’t see it. Add a short description with its key details.', '_svbk' ) }
 				/> 
 				) }
 			</Fragment>				
@@ -228,7 +228,7 @@ class ImageEdit extends Component {
 					render={ ( { open } ) => (
 							<IconButton
 								className="components-toolbar__control"
-								label={ __( 'Edit image' ) }
+								label={ __( 'Edit image', '_svbk' ) }
 								icon={ editImageIcon }
 								onClick={ open }
 							/>
@@ -236,7 +236,7 @@ class ImageEdit extends Component {
 				/>
 				<IconButton
 					className="components-toolbar__control"
-					label={ __( 'Remove image' ) }
+					label={ __( 'Remove image', '_svbk' ) }
 					icon='trash'
 					onClick={ () => { this.onSelectImage() } }
 				/>					
@@ -277,7 +277,7 @@ class ImageEdit extends Component {
 				}
 				{ inInspector ? settings : ( 
 					<InspectorControls>
-						<PanelBody title={ __( 'Image Settings' ) }>
+						<PanelBody title={ __( 'Image Settings', '_svbk' ) }>
 							{ settings }
 						</PanelBody>
 					</InspectorControls> 

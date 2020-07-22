@@ -118,7 +118,7 @@ class PostList extends Component {
 		const inspectorControls = (
 			<InspectorControls>
 				
-				<PanelBody title={ __( 'Post Content Settings' ) }>
+				<PanelBody title={ __( 'Post Content Settings', '_svbk' ) }>
 					<RadioControl
 						label="Show:"
 						selected={ display }

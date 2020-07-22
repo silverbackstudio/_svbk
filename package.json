@@ -9,7 +9,12 @@
   "scripts": {
     "sass": "sass --watch ./sass:./",
     "blocks": "wp-scripts start blocks/blocks.js --output-path=dist/js",
-    "blocks:build": "wp-scripts build blocks/blocks.js --output-path=dist/js"
+    "blocks:build": "wp-scripts build blocks/blocks.js --output-path=dist/js",  
+    "i18n-make-pot": "wp i18n make-pot ./  languages/_svbk.pot --domain=_svbk --exclude='node_modules,blocks/' && echo 'Did you remember to compile blocks for dev before pot-ing?'",
+    "i18n-make-mo": "for f in languages/*.po; do FILENAME=${f%%.*}; msgfmt -o ${FILENAME}.mo ${FILENAME}.po; done;",
+    "i18n-make-json": "wp i18n make-json languages/*.po --no-purge && cd languages && ls *.json | grep -v '_svbk' |  xargs -I {} mv {} _svbk-{} && cd ..",
+    "translations": "npm run i18n-make-pot && npm run make-i18n-json",
+    "build": "gulp build && npm run blocks:build"
   },
   "devDependencies": {
     "@wordpress/scripts": "^5.0.1",

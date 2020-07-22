@@ -34,13 +34,13 @@ class IconEdit extends Component {
 				<IconEditor { ...this.props } />
 				<InspectorControls>
 					<PanelColorSettings
-						title={ __( 'Icon Color Settings' ) }
+						title={ __( 'Icon Color Settings', '_svbk' ) }
 						initialOpen={ false }
                         colorSettings={ [
 							{
 								value: textColor.color,
 								onChange: setTextColor,
-								label: __( 'Text Color' ),
+								label: __( 'Text Color', '_svbk' ),
 							},
 						] }
 					/>

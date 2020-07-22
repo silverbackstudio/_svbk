@@ -32,17 +32,17 @@ const withAppearanceControls =  createHigherOrderComponent( ( BlockEdit ) => {
 				<InspectorControls>
 					<PanelBody title={ __( 'Appearance', '_svbk' ) } initialOpen={ false } >
     					<ToggleControl
-    						label={ __( 'Critical Rendering' ) }
+    						label={ __( 'Critical Rendering', '_svbk' ) }
     						onChange={ ( value ) => setAttributes( { criticalRendering: value } ) } 
     						checked={ criticalRendering }
     					/>						
     					<ToggleControl
-    						label={ __( 'Hide on Mobile' ) }
+    						label={ __( 'Hide on Mobile', '_svbk' ) }
     						onChange={ ( value ) => setAttributes( { mobileHidden: value } ) } 
     						checked={ mobileHidden }
     					/>						
     					<ToggleControl
-    						label={ __( 'Enable Animation' ) }
+    						label={ __( 'Enable Animation', '_svbk' ) }
     						onChange={ ( value ) => setAttributes( { enableAnimation: value } ) } 
     						checked={ enableAnimation }
     					/>						

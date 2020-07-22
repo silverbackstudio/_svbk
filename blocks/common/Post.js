@@ -79,7 +79,7 @@ class Post extends Component {
                             { titleTrimmed }
                         </RawHTML>
                     ) :
-                        __( '(no title)' )
+                        __( '(no title)', '_svbk' )
                     }
                 </h3>								
                 { display === 'excerpt' &&
@@ -88,7 +88,7 @@ class Post extends Component {
                         key="html"
                     >
                         { excerptLength < excerpt.trim().split( ' ' ).length ?
-                            excerpt.trim().split( ' ', excerptLength ).join( ' ' ) + ' ... <a href=' + post.link + 'target="_blank" rel="noopener noreferrer">' + __( 'Read more' ) + '</a>' :
+                            excerpt.trim().split( ' ', excerptLength ).join( ' ' ) + ' ... <a href=' + post.link + 'target="_blank" rel="noopener noreferrer">' + __( 'Read more', '_svbk' ) + '</a>' :
                             excerpt.trim().split( ' ', excerptLength ).join( ' ' ) }
                     </RawHTML>
                 </div>

@@ -74,7 +74,7 @@ class IconParagraphEdit extends Component {
 						/>				
 					</BlockControls>
 					<InspectorControls>
-						<PanelBody title={ __( 'Text Settings' ) } className="blocks-font-size">
+						<PanelBody title={ __( 'Text Settings', '_svbk' ) } className="blocks-font-size">
 							<FontSizePicker
 								value={ fontSize.size }
 								onChange={ setFontSize }

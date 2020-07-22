@@ -48,15 +48,15 @@ export const settings = {
 	icon: 'feedback', 
 	category: 'common',
 	keywords: [
-		__( 'collapse' ),
-		__( 'accordion' ),
+		__( 'collapse', '_svbk' ),
+		__( 'accordion', '_svbk' ),
 	],
 	
 	styles: [
 	    // Mark style as default.
 	    {
 	        name: 'default',
-	        label: __( 'Default' ),
+	        label: __( 'Default', '_svbk' ),
 	        isDefault: true
 		},
 	    {

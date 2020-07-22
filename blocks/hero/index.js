@@ -44,25 +44,25 @@ export const settings = {
 	icon: 'welcome-view-site', 
 	category: 'common',
 	keywords: [
-		__( 'hero' ),
-		__( 'above' ),
-		__( 'intro' ),
+		__( 'hero', '_svbk' ),
+		__( 'above', '_svbk' ),
+		__( 'intro', '_svbk' ),
 	],
 
 	styles: [
 	    // Mark style as default.
 	    {
 	        name: 'default',
-	        label: __( 'Default' ),
+	        label: __( 'Default', '_svbk' ),
 	        isDefault: true
 	    },
 	    {
 	        name: 'content-background',
-	        label: __( 'Content with Background' ),
+	        label: __( 'Content with Background', '_svbk' ),
 		},
 	    {
 	        name: 'content-card',
-	        label: __( 'Content within a Card' ),
+	        label: __( 'Content within a Card', '_svbk' ),
 	    },
 	],	
 

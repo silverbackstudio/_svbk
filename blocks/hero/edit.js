@@ -110,13 +110,13 @@ class HeroEdit extends Component {
 		const toolbarControls = [ 
 			{
 				icon: 'align-pull-right',
-				title: __( 'Show content on left' ),
+				title: __( 'Show content on left', '_svbk' ),
 				isActive: align === 'left',
 				onClick: () => setAttributes( { align: 'left' } ),
 			}, 
 			{
 				icon: 'align-pull-left',
-				title: __( 'Show content on right' ),
+				title: __( 'Show content on right', '_svbk' ),
 				isActive: align === 'right',
 				onClick: () => setAttributes( { align: 'right' } ),
 			}
@@ -166,7 +166,7 @@ class HeroEdit extends Component {
 							className={ 'wp-block-svbk-hero__text' }
 						/>
 						<RichText
-							placeholder={ __( 'Primary button text…' ) }
+							placeholder={ __( 'Primary button text…', '_svbk' ) }
 							value={ primaryButtonText }
 							onChange={ ( value ) => setAttributes( { primaryButtonText: value } ) }
 							formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
@@ -181,11 +181,11 @@ class HeroEdit extends Component {
 									value={ primaryButtonUrl }
 									onChange={ ( value ) => setAttributes( { primaryButtonUrl: value } ) }
 								/>
-								<IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />
+								<IconButton icon="editor-break" label={ __( 'Apply', '_svbk' ) } type="submit" />
 							</form>
 						) }	
 						<RichText
-							placeholder={ __( 'Secondary button text…' ) }
+							placeholder={ __( 'Secondary button text…', '_svbk' ) }
 							value={ secondaryButtonText }
 							onChange={ ( value ) => setAttributes( { secondaryButtonText: value } ) }
 							formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
@@ -200,7 +200,7 @@ class HeroEdit extends Component {
 									value={ secondaryButtonUrl }
 									onChange={ ( value ) => setAttributes( { secondaryButtonUrl: value } ) }
 								/>
-								<IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />
+								<IconButton icon="editor-break" label={ __( 'Apply', '_svbk' ) } type="submit" />
 							</form>
 						) }	
 						<RichText
@@ -220,7 +220,7 @@ class HeroEdit extends Component {
 					/>
 				</BlockControls>
 				<InspectorControls>
-					<PanelBody title={ __( 'Spacing' ) } >
+					<PanelBody title={ __( 'Spacing', '_svbk' ) } >
 						<ToggleControl
 							label={ __( 'Bottom padding', '_svbk' ) }
 							help={ bottomPadded ? 'The block has some extra bottom padding (needed by offset bullets)' : 'The block has a standard bottom padding'}
@@ -228,7 +228,7 @@ class HeroEdit extends Component {
 							onChange={ ( value ) => setAttributes( { bottomPadded: Boolean(value) } ) }
 						/>	
 					</PanelBody>
-					<PanelBody title={ __( 'Background Settings' ) } >
+					<PanelBody title={ __( 'Background Settings', '_svbk' ) } >
 						<ToggleControl
 							label={ __( 'Use custom image when stacked', '_svbk' ) }
 							checked={ this.state.customStackedImage }

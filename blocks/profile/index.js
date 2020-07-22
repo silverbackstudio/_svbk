@@ -46,21 +46,21 @@ export const settings = {
 	icon: 'id', 
 	category: 'common',
 	keywords: [
-		__( 'profile' ),
-		__( 'team' ),
-		__( 'member' ),
+		__( 'profile', '_svbk' ),
+		__( 'team', '_svbk' ),
+		__( 'member', '_svbk' ),
 	],
 	
 	styles: [
 	    // Mark style as default.
 	    {
 	        name: 'default',
-	        label: __( 'Default' ),
+	        label: __( 'Default', '_svbk' ),
 	        isDefault: true
 	    },
 	    {
 	        name: 'featured',
-	        label: __( 'Featured' ),
+	        label: __( 'Featured', '_svbk' ),
 	    },	    
 	],	
 	

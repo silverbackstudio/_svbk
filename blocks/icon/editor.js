@@ -62,14 +62,14 @@ class IconEditor extends Component {
 						className={ `components-tab-button icon-editor__toolbar-button ${ isPreview ? 'is-active' : '' }` }
 						onClick={ this.switchToPreview }
 					>
-						<span>{ __( 'View' ) }</span>
+						<span>{ __( 'View', '_svbk' ) }</span>
 					</button>	
 					) }	
 					<button
 						className={ `components-tab-button icon-editor__toolbar-button ${ ! isPreview ? 'is-active' : '' }` }
 						onClick={ this.switchToEditor }
 					>
-						<span>{ __( 'Code' ) }</span>
+						<span>{ __( 'Code', '_svbk' ) }</span>
 					</button>
 				</div>
 				) }
@@ -86,8 +86,8 @@ class IconEditor extends Component {
 								<PlainText
 									value={ icon }
 									onChange={ ( code ) => setAttributes( { icon: code } ) }
-									placeholder={ __( 'Paste SVG…' ) }
-									aria-label={ __( 'SVG' ) }
+									placeholder={ __( 'Paste SVG…', '_svbk' ) }
+									aria-label={ __( 'SVG', '_svbk' ) }
 								/>
 							</div>
 						)

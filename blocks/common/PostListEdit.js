@@ -105,7 +105,7 @@ class PostListEdit extends Component {
 		const inspectorControls = (
 			<InspectorControls>
 				
-				<PanelBody title={ __( 'Post Content Settings' ) }>
+				<PanelBody title={ __( 'Post Content Settings', '_svbk' ) }>
 					<RadioControl
 						label="Show:"
 						selected={ display }
@@ -143,7 +143,7 @@ class PostListEdit extends Component {
 				</PanelBody>
 
 				{ postLayout === 'grid' &&
-					<PanelBody title={ __( 'Layout' ) }>					
+					<PanelBody title={ __( 'Layout', '_svbk' ) }>					
 						<RangeControl
 							label={ __( 'Columns', '_svbk' ) }
 							value={ columns }
@@ -167,7 +167,7 @@ class PostListEdit extends Component {
 					>
 						{ ! Array.isArray( posts ) ?
 							<Spinner /> :
-							__( 'No posts found.' )
+							__( 'No posts found.', '_svbk' )
 						}
 					</Placeholder>
 				</Fragment>
@@ -182,13 +182,13 @@ class PostListEdit extends Component {
 		const layoutControls = [
 			{
 				icon: 'list-view',
-				title: __( 'List View' ),
+				title: __( 'List View', '_svbk' ),
 				onClick: () => setAttributes( { postLayout: 'list' } ),
 				isActive: postLayout === 'list',
 			},
 			{
 				icon: 'grid-view',
-				title: __( 'Grid View' ),
+				title: __( 'Grid View', '_svbk' ),
 				onClick: () => setAttributes( { postLayout: 'grid' } ),
 				isActive: postLayout === 'grid',
 			},

@@ -15,17 +15,17 @@ import edit from './edit';
 export const name = 'svbk/icon';
 
 export const settings = {
-	title: __( 'Icon (SVG)' ),
+	title: __( 'Icon (SVG)', '_svbk' ),
 
-	description: __( 'Insert an SVG Icon' ),
+	description: __( 'Insert an SVG Icon', '_svbk' ),
 
 	icon: 'star-filled',
 
 	category: 'common',
 
 	keywords: [ 
-	    __( 'svg' ),
-	    __( 'icon' )
+	    __( 'svg', '_svbk' ),
+	    __( 'icon', '_svbk' )
 	],
 
 	supports: {

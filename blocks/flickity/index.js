@@ -75,7 +75,7 @@ const addFlickityToGallery = function ( settings, name ) {
     		edit: withFlickityEditor( settings.edit ),
     		keywords: lodash.union( 
     			settings.keywords, 
-    			[ __( 'flickity' ) ]
+    			[ __( 'flickity', '_svbk' ) ]
     		),
 	        attributes: _.assign( {}, settings.attributes, {
 	        	flickity: {

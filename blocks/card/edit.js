@@ -152,27 +152,27 @@ class CardEdit extends Component {
 				   { !imageType && (
 				    <Placeholder
 				        icon="format-image"
-				        label={ __( 'Image' ) }
-				        instructions={ __( 'Please select if you want to use an image or an icon' ) }
+				        label={ __( 'Image', '_svbk' ) }
+				        instructions={ __( 'Please select if you want to use an image or an icon', '_svbk' ) }
 				    >
 						<Button 
 							isLarge={ true }
 							onClick={ () => { setAttributes( { imageType: 'picture' }) } }
 						>
-							{ __( 'Image' ) }
+							{ __( 'Image', '_svbk' ) }
 						</Button>
 						<Button
 							isLarge={ true }
 							onClick={ () => { setAttributes( { imageType: 'icon' }) } }
 						>
-							{ __( 'Icon' ) }
+							{ __( 'Icon', '_svbk' ) }
 						</Button>						
 				    </Placeholder>
 				   ) }
 				   { imageType && (
 						<IconButton 
 							icon="no" 
-							label={ __( 'Back to picture type choice' ) }
+							label={ __( 'Back to picture type choice', '_svbk' ) }
 							onClick={ () => { setAttributes( { imageType: null }) } }
 						/>
 				    ) }				    
@@ -211,7 +211,7 @@ class CardEdit extends Component {
 						template={ TEMPLATE }
 					/>
 					<RichText
-						placeholder={ __( 'Button text…' ) }
+						placeholder={ __( 'Button text…', '_svbk' ) }
 						value={ buttonText }
 						onChange={ ( value ) => setAttributes( { buttonText: value } ) }
 						formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
@@ -226,7 +226,7 @@ class CardEdit extends Component {
 								value={ buttonUrl }
 								onChange={ ( value ) => setAttributes( { buttonUrl: value } ) }
 							/>
-							<IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />
+							<IconButton icon="editor-break" label={ __( 'Apply', '_svbk' ) } type="submit" />
 						</form>
 					) }						
 				</div>
@@ -240,25 +240,25 @@ class CardEdit extends Component {
 					/>				
 				</BlockControls>
 				<InspectorControls>
-					<PanelBody title={ __( 'Text Settings' ) } className="blocks-font-size">
+					<PanelBody title={ __( 'Text Settings', '_svbk' ) } className="blocks-font-size">
 						<FontSizePicker
 							value={ fontSize.size }
 							onChange={ setFontSize }
 						/>
 					</PanelBody>				
 					<PanelColorSettings
-						title={ __( 'Color Settings' ) }
+						title={ __( 'Color Settings', '_svbk' ) }
 						initialOpen={ false }
                         colorSettings={ [
 							{
 								value: backgroundColor.color,
 								onChange: setBackgroundColor,
-								label: __( 'Background Color' ),
+								label: __( 'Background Color', '_svbk' ),
 							},
 							{
 								value: textColor.color,
 								onChange: setTextColor,
-								label: __( 'Text Color' ),
+								label: __( 'Text Color', '_svbk' ),
 							},
 						] }
 					/>
@@ -283,7 +283,7 @@ class CardEdit extends Component {
 							{
 								value: ribbonColor.color,
 								onChange: setRibbonColor,
-								label: __( 'Ribbon Color' ),
+								label: __( 'Ribbon Color', '_svbk' ),
 							},
 						] }
 					/>						

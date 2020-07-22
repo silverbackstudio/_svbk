@@ -764,3 +764,8 @@ msgstr "Silverback Studio"
 #. Author URI of the theme
 msgid "http://www.silverbackstudio.it"
 msgstr "http://www.silverbackstudio.it"
+
+
+#: dist/js/blocks.js:8265
+msgid "Company Logo"
+msgstr "Logo Azienda"

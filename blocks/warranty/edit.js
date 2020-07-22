@@ -189,18 +189,18 @@ class WarrantyEdit extends Component {
 						) }
 					</PanelBody>					
 					<PanelColorSettings
-						title={ __( 'Color Settings' ) }
+						title={ __( 'Color Settings', '_svbk' ) }
 						initialOpen={ false }
                         colorSettings={ [
 							{
 								value: backgroundColor.color,
 								onChange: setBackgroundColor,
-								label: __( 'Background Color' ),
+								label: __( 'Background Color', '_svbk' ),
 							},
 							{
 								value: textColor.color,
 								onChange: setTextColor,
-								label: __( 'Text Color' ),
+								label: __( 'Text Color', '_svbk' ),
 							},
 						] }
 					/>

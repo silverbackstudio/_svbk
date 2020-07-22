@@ -110,24 +110,24 @@ class GridEdit extends Component {
         					onChange={ ( value ) => setAttributes( { equalHeight: Boolean(value) } ) }
 					    />					    
 					    <SelectControl
-					        label={ __('Columns Alignment') }
+					        label={ __( 'Columns Alignment', '_svbk' ) }
 					        value={ align }
 					        options={ [
-					            { label: __('Center'), value: 'center' },
-					            { label: __('Left'), value: 'left' },
-					            { label: __('Right'), value: 'right' },
+					            { label: __( 'Center', '_svbk' ), value: 'center' },
+					            { label: __( 'Left', '_svbk' ), value: 'left' },
+					            { label: __( 'Right', '_svbk' ), value: 'right' },
 					        ] }
 					        onChange={ ( value ) => setAttributes( { align: value } ) }
 					    />			    
 					</PanelBody>
 					<PanelColorSettings
-						title={ __( 'Color Settings' ) }
+						title={ __( 'Color Settings', '_svbk' ) }
 						initialOpen={ false }
                         colorSettings={ [
 							{
 								value: backgroundColor.color,
 								onChange: setBackgroundColor,
-								label: __( 'Background Color' ),
+								label: __( 'Background Color', '_svbk' ),
 							},
 						] }
 					/>

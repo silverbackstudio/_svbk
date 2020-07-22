@@ -21,9 +21,9 @@ const {
 export const name = 'svbk/vimeo';
 
 export const settings = {
-	title: __( 'Vimeo' ),
+	title: __( 'Vimeo', '_svbk' ),
 
-	description: __( 'Embeds a Vimeo Video with options' ),
+	description: __( 'Embeds a Vimeo Video with options', '_svbk' ),
 
 	icon: {
 		foreground: '#1ab7ea',
@@ -32,7 +32,7 @@ export const settings = {
 
 	category: 'widgets',
 
-	keywords: [ __( 'rating' ) ],
+	keywords: [ __( 'rating', '_svbk' ) ],
 
 	supports: {
 		html: false,
@@ -55,9 +55,9 @@ export const settings = {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Rating' ) }>
+					<PanelBody title={ __( 'Rating', '_svbk' ) }>
 						<RangeControl
-							label={ __( 'Rating' ) }
+							label={ __( 'Rating', '_svbk' ) }
 							value={ rating }
 							onChange={ ( value ) => setAttributes( { rating: value } ) }
 							min={ 0 }

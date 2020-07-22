@@ -54,9 +54,9 @@ export const settings = {
 	icon: 'grid-view', 
 	category: 'layout',
 	keywords: [
-		__( 'grid' ),
-		__( 'flex' ),
-		__( 'table' ),
+		__( 'grid', '_svbk' ),
+		__( 'flex', '_svbk' ),
+		__( 'table', '_svbk' ),
 	],
 
 	attributes: {
