@@ -1,43 +1,47 @@
 .post__meta {
 	@include font-size(.9);
 	width: 100%;
-	position: relative;
-	padding-right: 90px;
+	display: flex;
+	flex-wrap: wrap;
 
 	a {
+		text-decoration: none;
+	}
+
+	time {
 		color: $color__text-main;
 	}
+}
 
-	.byline {
-		margin-left: 3px;
-	}
+.post__categories a {
+	text-transform: uppercase;
+}
 
-	.reading-time {
-		position: absolute;
-		right: 0;
-		top: 0;
+.reading-time {
+	text-align: right;
+	flex-grow: 1;
 
-		.readind-time__label {
-			display: inline-block;
-			vertical-align: middle;
-			text-indent: -999px;
+	.readind-time__label {
+		display: inline-block;
+		vertical-align: middle;
+		text-align: left;
+		text-indent: -999px;
+		width: 20px;
+		height: 20px;
+		position: relative;
+		overflow: hidden;
+
+		&:before {
+			@include icon-content("\e902");
+			color: $color__corporate;
+			position: absolute;
+			text-indent: 0;
+			right: 0;
+			top: 0;
+			line-height: 20px;
 			width: 20px;
 			height: 20px;
-			position: relative;
-			overflow: hidden;
-
-			&:before {
-				@include icon-content("\e902");
-				color: $color__corporate;
-				position: absolute;
-				text-indent: 0;
-				right: 0;
-				top: 0;
-				line-height: 20px;
-				width: 20px;
-				height: 20px;
-				text-align: center;
-			}
+			text-align: center;
 		}
 	}
 }

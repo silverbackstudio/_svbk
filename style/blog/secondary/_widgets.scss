@@ -25,42 +25,6 @@
 }
 
 /**
-*	Categories
-*/
-
-.widget_categories ul,
-.filter-list {
-
-	li {
-		margin: 0;
-		float: left;
-		margin: 0 10px 10px 0;
-
-		&.current-cat a {
-			background: $color__corporate;
-			cursor: default;
-
-			&:hover {
-				background: $color__corporate;
-			}
-		}
-
-		a {
-			@include font-size(.9);
-			transition: background .2s linear;
-
-			&:hover {
-				background: #888;
-			}
-		}
-	}
-}
-
-.widget_categories ul {
-	margin-bottom: 0;
-}
-
-/**
 *	Search
 */
 

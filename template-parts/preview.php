@@ -23,6 +23,7 @@
 		<div class="<?php the_post_type(); ?>__meta post__meta entry-meta">
 			<?php
 			echo get_the_category_list();
+			echo get_the_date();
 			_svbk_post_reading_time();
 			?>
 		</div><!-- .entry-meta -->

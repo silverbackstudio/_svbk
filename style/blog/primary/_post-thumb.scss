@@ -2,51 +2,65 @@
 @import 'mixins/mixins-master';
 
 .post--preview {
-	box-shadow: $shadow__card;
 	position: relative;
-	padding-bottom: 40px;
 	margin-bottom: 30px;
-	background: #fff;
-	border-radius: $border-radius;
-
-	img {
-		width: 100%;
-		display: block;
-		border-radius: $border-radius $border-radius 0 0;
-	}
+	background-color: #fff;
+	padding: 0 20px 50px;
+	box-shadow: $shadow__card;
 
 	> a {
 		display: block;
 	}
 
-	.post__meta,
-	.post__title,
-	.post__excerpt {
-		margin-left: 15px;
-		margin-right: 15px;
+	.post__thumbnail {
+		height: 0;
+		padding-bottom: 65%;
+		position: relative;
+		margin-left: -20px;
+		margin-right: -20px;
+
+		img {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
 	}
 
 	.post__header {
-		margin-top: 15px;
+		margin-top: 0;
 	}
 
 	.post__meta {
-		@include font-size(.9);
+		@include font-size(.8);
 		line-height: normal;
-		padding-bottom: 13px;
-		margin-top: 10px;
-		margin-bottom: 10px;
+		margin: 15px 0 10px;
+		padding-bottom: 10px;
 		border-bottom: 1px solid $color__background-hr;
-		width: auto;
 
 		.post__categories {
 			padding: 0;
 			margin: 0;
 
+			&:after {
+				content: '|';
+				margin: 0 2px;
+			}
+
 			li {
 				float: left;
-				margin: 0 5px 0 0;
+				margin: 0 2px 0 0;
 				padding: 0;
+
+				a {
+					color: $color__text-main;
+					text-decoration: underline;
+					text-transform: none;
+				}
 
 				&:before {
 					display: none;
@@ -73,8 +87,9 @@
 	}
 
 	.post__title {
-		margin: 15px 15px 0;
-		border: none;
+		@include font-size(1.125);
+		margin: 0 0 15px;
+		padding: 15px 0 0;
 
 		a {
 			text-decoration: none;
@@ -86,11 +101,9 @@
 
 	.post__excerpt {
 		margin-top: 0;
-		margin-bottom: 15px;
 
 		p {
-			margin-top: 0;
-			margin-bottom: 10px;
+			margin: 0;
 		}
 	}
 
@@ -99,6 +112,6 @@
 		position: absolute;
 		bottom: 0;
 		right: 0;
-		padding: 1em 10px;
+		padding: 1em 20px;
 	}
 }

@@ -19,6 +19,7 @@
 		border: 2px solid rgba(255,255,255,0);
 		color: $color__text-main;
 		margin: 0 5px;
+		border-radius: 50%;
 
 		&.next,
 		&.prev {
@@ -55,9 +56,9 @@
 		}
 
 		&.current {
-			border: 2px solid $color__corporate-secondary;
+			border: 2px solid $color__corporate;
 			font-weight: 600;
-			color: $color__corporate-secondary;
+			color: $color__corporate;
 		}
 	}
 }
