@@ -5,6 +5,9 @@
 .wp-block-hubspot-form {
 	padding: 30px 20px;
 	border-radius: $border-radius;
+	max-width: 550px;
+	margin-left: auto;
+	margin-right: auto;
 	
 	.wp-block-hubspot-form__title {
 		@include font-size(1.5);
@@ -24,6 +27,11 @@
 	
 	&.has-background {
 		box-shadow: $shadow__card;
+	}
+
+	&.has-light-gray-background-color,
+	&.has-white-background-color {
+		color: $color__text-main;
 	}
 	
 	@media screen and (min-width: breakpoint('desktop')) {
