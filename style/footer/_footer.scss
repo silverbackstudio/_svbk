@@ -179,42 +179,6 @@
 			@include icon-content('\e93d');
 		}
 	}
-	
-	.sub-footer {
-		background-color: $color__background-sub-footer;
-		padding: 10px 20px;
-		text-align: center;
-		
-
-		.menu {
-			display: block;
-			padding: 0;
-			margin: 0;
-			
-			li {
-				margin-right: 3px;
-				display: inline;
-				
-				&:last-of-type {
-					margin-right: 0;
-				}
-
-				&:before {
-					content: '|';
-					color: #aaa;
-					width: auto;
-					height: auto;
-					font-size: 1em;
-					margin: 0 5px 4px;
-				}
-
-				&:first-of-type:before {
-
-					display: none;
-				}
-			}
-		}
-	}
 
 	@media screen and (min-width: breakpoint('tablet-landscape')) {
 		margin-bottom: 0;
@@ -246,6 +210,41 @@
 			
 			&:last-of-type {
 				border-right: none;
+			}
+		}
+	}
+}
+
+.sub-footer {
+	background-color: $color__background-sub-footer;
+	padding: 10px 20px;
+	text-align: center;
+	
+	.menu {
+		display: block;
+		padding: 0;
+		margin: 0;
+		
+		li {
+			margin-right: 3px;
+			display: inline;
+			
+			&:last-of-type {
+				margin-right: 0;
+			}
+
+			&:before {
+				content: '|';
+				color: #aaa;
+				width: auto;
+				height: auto;
+				font-size: 1em;
+				margin: 0 5px 4px;
+			}
+
+			&:first-of-type:before {
+
+				display: none;
 			}
 		}
 	}
