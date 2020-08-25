@@ -97,10 +97,11 @@
 }
 
 .wp-block-svbk-testimonial {
-    background-color: $color__background-light;
-    box-shadow: $shadow__card;
+    @include font-size(.95);
     position: relative;
     padding: 20px;
+    box-shadow: $shadow__card;
+    background-color: $color__background-light;
     color: $color__text-main;
 
     p {
@@ -135,25 +136,29 @@
 
     &:before,
     &:after {
-        @include font-size(1.6);
-        color: $color__corporate;
+        @include font-size(1.4);
         position: absolute;
         z-index: 1;
+        color: $color__corporate;
 
         .has-primary-background-color & {
             color: $color__corporate-secondary;
+        }
+
+        .single-testimonial & {
+            display: none;
         }
     }
     
     &:before {
         @include icon-content('\e925');
-        top: -0.8rem;
+        top: -0.8em;
         left: 20px;
     }
     
     &:after {
         @include icon-content('\e924');
-        bottom: -0.8rem;
+        bottom: -0.8em;
         right: 20px;
     }
 
@@ -209,6 +214,7 @@
             img {
                 width: 264px;
                 height: 264px;
+                border: 3px solid $color__background-hr;
             }
         }
 
@@ -313,7 +319,7 @@
     
         .wp-block-svbk-testimonial__header {
             padding: 0;
-            border-bottom: 1px solid $color__corporate;
+            border-bottom: 1px solid $color__background-hr;
             padding-top: 15px;
             padding-bottom: 15px;
             text-align: center;
@@ -367,7 +373,7 @@
             
             .wp-block-svbk-testimonial__content {
                 padding-left: 20px;
-                border-left: 1px solid $color__corporate;
+                border-left: 1px solid $color__background-hr;
                 text-align: left;
                 flex-basis: 66.66%;
             }
@@ -384,6 +390,11 @@
 
         @media screen and (min-width: breakpoint('desktop')) {
             padding: 40px;
+
+            .is-style-grid & {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
         }
     }
 }
@@ -409,19 +420,22 @@
         object-position: center;
         border-radius: 50%;
         background-color: #fff;
-        border: 2px solid $color__corporate;
+        border: 1px solid $color__background-hr;
     }
 }
 
 .wp-block-svbk-testimonial__author-name {
     @include font-size(1.1);
-    text-transform: uppercase;
     font-weight: bold;
-    margin-bottom: 2px;
 }
 
 .wp-block-svbk-testimonial__author-role {
     margin-bottom: 3px;
+}
+
+.wp-block-svbk-testimonial__author-name,
+.testimonial__loadmore {
+    line-height: normal;
 }
 
 .testimonial__loadmore {
@@ -432,7 +446,6 @@
     display: block;
     width: 250px;
     margin: 30px 0;
-    line-height: normal;
     
     &:after {
         @include icon-content('\e931');
