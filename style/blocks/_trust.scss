@@ -12,7 +12,8 @@
 	padding-top: 10px;
 	padding-bottom: 10px;
 
-	figure {
+	.wp-block-image,
+	.wp-block-image.is-resized {
 		display: inline-block;
 		margin: 5px 10px;
 		vertical-align: middle;
