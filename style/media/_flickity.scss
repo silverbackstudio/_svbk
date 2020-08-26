@@ -58,11 +58,15 @@
 		text-shadow: 0 0 5px rgba(0,0,0,.2);
 	}
 
+	&.previsou,
+	&.next {
+		@include font-size(1.2);
+	}
+
 	&.previous {
 		left: 0;
 
 		&:before {
-			@include font-size(1.2);
 			@include icon-content('\e90d');
 		}
 
