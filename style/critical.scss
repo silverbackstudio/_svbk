@@ -12,17 +12,17 @@
 
 .domloading .site-content,
 .domready--show {
-	display: none;
+	visibility: hidden;
 }
 
 .domready {
 
 	.domready--show {
-		display: block;
+		visibility: visible;
 	}
 
 	.domready--hide {
-		display: none;
+		visibility: hidden;
 	}
 }
 
