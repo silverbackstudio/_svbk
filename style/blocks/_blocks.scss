@@ -38,15 +38,12 @@
 	.has-#{$name}-background-color {
 		background: $value;
 	}
+
+	.has-#{$name}-color {
+		color: $value;
+	}
 }
 
 .has-gradient-background-color {
 	background-image: $color__background-gradient;
-}
-
-@each $name, $value in $colors {
-	
-	.has-#{$name}-color {
-		color: $value;
-	}
 }
