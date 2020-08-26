@@ -1,41 +1,29 @@
 .wp-block-columns {
-	margin-bottom: 0;
 	
 	figure {
-		margin: 0;
+		margin: 0 0 20px;
 	}
 
-	.wp-block-column {
-		margin-bottom: 20px;
+	@media screen and (max-width: 600px) {
 
-		&:last-of-type {
-			margin-bottom: 0;
+		&.is-style-split,
+		&.is-style-split-inverted {
+
+			.wp-block-column {
+			
+				&:first-of-type {
+					padding-top: 30px;
+				}
+	
+				&:last-of-type {
+					padding-bottom: 30px;
+				}
+			}
 		}
-	}
-
-	.wp-block-gallery {
-		margin: 0;
 	}
 
 	@media screen and (min-width: 600px) {
 
-		.wp-block-column {
-			flex-grow: 1;
-			margin-bottom: 0;	
-		}
-
-		.wp-block-column:first-child {
-			padding-right: 16px;
-		}
-
-		.wp-block-column:nth-child(2n) {
-			padding-left: 16px;
-			margin-left: 0;
-	
-			h2 {
-				margin-top: 0;
-			}
-		}
 		
 		&.is-style-split,
 		&.is-style-split-inverted {
@@ -91,26 +79,5 @@
 		max-width: 100%;
 		margin-left: auto;
 		margin-right: auto;
-	}
-}
-
-@media screen and (min-width: 600px) {
-
-	@for $i from 2 through 6 {
-
-		.has-#{$i}-columns {
-			$columns-gap: 2;
-
-			> .wp-block-column {
-				$column-width: (100 - ($columns-gap * ($i - 1))) / $i;
-				flex-basis: $column-width * 1%;
-				margin-right: $columns-gap * 1%;
-				margin-left: 0;
-
-				&:nth-of-type(#{$i}n + #{$i}) {
-					margin-right: 0;
-				}
-			}
-		}
 	}
 }
