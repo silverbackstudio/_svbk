@@ -26,39 +26,80 @@ Note: `.no-sidebar` styles are not automatically loaded.
 Install
 ---------------
 
-## Install Dependencies
+### Install Dependencies
 
 ```bash
-nvm use 8
-npm install -g gulp`
 npm install
 ```
 
-## Configure the Theme Name and Theme Handle
-
-Edit the `config.json` file and customize the `theme_name` and `theme_handle` parameters.
-
-## Install the theme 
-
-Run `gulp install`, this builds all the files and customizes all the functions names with your theme prefix.
-
-## Commit
-
-Commit all the customized files and disable push to the original repository
+I you don't aready have a gulp installed, you should install it via:
 
 ```bash
-git add .
-git commit -m"$THEME_HANDLE theme config"
-git remote set-url --push origin no-pushing
+npm install -g gulp
 ```
-## Add Create Guten Block Compatibility
-If you want to develop custom blocks you should add Create Guten Block Compatibility Symlinks
+
+### Setup
+
+Edit the `config.json` file and customize all the parameters, primarly the `theme_name` and `theme_handle` parameters.
+
+Run `gulp setup`, this builds all the `dist` files and customizes all the functions names with your theme prefix.
+
+### Development
+
+This theme has many `gulp` tasks to help development, you can find all of them in the `gulpfile.js`.
+
+Here some of the most useful ones:
 
 ```bash
-ln -s $PWD/dist/blocks.build.js $PWD/dist/js/blocks.build.js 
-ln -s $PWD/blocks src 
+# Compile SASS, Images and JS in real time. 
+gulp serve
+
+# Replaces all function prefixes and text-domains with `theme_handle`, useful after git merges.
+gulp replaceMarkers
+
+# Compiles and overwrites all the assets in the `dist` folder for production.
+gulp build
 ```
 
-Now you're ready to go! Just use `gulp serve` to compile SASS in real time. The next step is easy to say, but harder to do: make an awesome WordPress theme. :)
+When you have completed your sprint, should bump the `theme_version` config entry in `composer.json`, this will be automatically added to all assets URLs to help cache-busting.
 
-Good luck!
+## Block Editor (Gutenberg) Blocks
+This theme comes with many Blocks, you can find them in the `blocks` folder.
+
+You can compile theme Blocks with:
+```bash
+# In real time while developing
+npm run blocks
+
+# To build the optimized production code
+npm run blocks:build
+```
+
+## `wp-env`
+
+This theme is compatible with the [wp-env](https://developer.wordpress.org/block-editor/packages/packages-env/) environment.
+
+You can test or develop for this theme by running:
+
+```bash
+# To start the WP server
+npm run wp-env start
+
+# To refresh the wp-env after some options changes (WP_HOME, etc)
+npm run wp-env start -- --update 
+
+# To stop the WP server
+npm run wp-env stop
+```
+The website will be available by default at [http://localhost](http://localhost).
+
+If you need to run `wp-cli` commands you can use the `npm run wp` script helper.
+
+Example:
+```bash
+# Outputs the current env user list
+npm run wp user list
+```
+
+The `.wp-env.json` file contains the configuration for the environment, but if you need to customize it just for your current projects need it's better to create a [.wp-env.override.json](https://developer.wordpress.org/block-editor/packages/packages-env/#wp-env-override-json) file that isn't committed in the repo.
+

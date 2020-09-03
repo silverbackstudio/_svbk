@@ -1,0 +1,8 @@
+{
+    "themes": [ "." ],
+    "config": {
+        "WP_SITEURL": "http://localhost",
+        "WP_HOME": "http://localhost"
+    },
+    "port": 80
+}

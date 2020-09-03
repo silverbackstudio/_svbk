@@ -1,17 +1,20 @@
 {
-  "name": "@silverback/theme_svbk",
+  "name": "@silverback/wp-theme",
   "author": "Silverback Studio",
   "license": "ISC",
-  "repository": "github:silverbackstudio/_svbk",
+  "repository": "github:silverbackstudio/wp-theme",
   "version": "1.0.0",
   "description": "Silverback Starter Theme",
   "main": "index.php",
   "scripts": {
     "sass": "sass --watch ./sass:./",
     "blocks": "wp-scripts start blocks/blocks.js --output-path=dist/js",
-    "blocks:build": "wp-scripts build blocks/blocks.js --output-path=dist/js"
+    "blocks:build": "wp-scripts build blocks/blocks.js --output-path=dist/js",
+    "wp-env": "wp-env",
+    "wp": "wp-env run cli wp"
   },
   "devDependencies": {
+    "@wordpress/env": "^1.6.0",
     "@wordpress/scripts": "^5.0.1",
     "autoprefixer": "^6.7.0",
     "classnames": "^2.2.6",
