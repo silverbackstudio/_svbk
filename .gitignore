@@ -1,6 +1,7 @@
-/node_modules
-/vendor
+node_modules/
+vendor/
+!vendor/.htaccess
 
 *.map
 
-/.wp-env.override.json
+.wp-env.override.json

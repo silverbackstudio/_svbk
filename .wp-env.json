@@ -4,5 +4,10 @@
         "WP_SITEURL": "http://localhost",
         "WP_HOME": "http://localhost"
     },
-    "port": 80
+    "port": 80,
+    "env": {
+        "tests": {
+            "port": 3000
+        }
+    }
 }

@@ -22,7 +22,8 @@ if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
 	require_once __DIR__ . '/vendor/autoload.php';
 }
 
-Config::load( get_theme_file_path( '/config.json' ), '_svbk' );
+Config::load( get_theme_file_path( 'config/theme.json' ), '_svbk' );
+Config::load( get_theme_file_path( 'config/googlemaps.json' ), 'googlemaps' );
 
 add_action( 'after_setup_theme', '_svbk_setup' );
 
@@ -271,11 +272,6 @@ if ( ! function_exists( '_svbk_setup' ) ) :
 		// Load Google Maps
 		if ( Config::exists( 'googlemaps' ) ) {
 			(new Helpers\Maps\GoogleMaps( Config::get( array(), 'googlemaps' ) ) )->setDefault();
-		}
-
-		// Load Iubenda
-		if ( Config::exists( 'iubenda' ) ) {
-			( new Helpers\Compliance\Iubenda( Helpers\Config::get( array(), 'iubenda' ) ) )->setDefault();
 		}
 
 		// Load Testimanial CPT
