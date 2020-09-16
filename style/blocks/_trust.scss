@@ -8,9 +8,10 @@
 }
 
 .wp-block-svbk-trust__content {
-	margin: 0;
+	margin: 0 auto;
 	padding-top: 10px;
 	padding-bottom: 10px;
+	max-width: $size__content-width;
 
 	.wp-block-image,
 	.wp-block-image.is-resized {
