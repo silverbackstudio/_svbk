@@ -22,7 +22,9 @@
 			if ( ($footer_logo || $company_name) || $company_info || is_active_sidebar( 'footer' ) ) :	?>
 			<div class="footer-section">
 				<?php if ( $footer_logo ) : ?>
-				<?php echo wp_get_attachment_image( $footer_logo, 'small' ); ?>
+				<figure class="footer__custom-logo">
+				<?php echo wp_get_attachment_image( $footer_logo, 'small'); ?>
+				</figure>
 				<?php else: ?>
 				<h3 class="company-name"><?php echo $company_name; ?></h3>
 				<?php endif; ?>
