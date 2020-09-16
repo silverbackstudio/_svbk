@@ -18,7 +18,7 @@ const fs                = require('fs');
 const svgmin            = require('gulp-svgmin');
 
 
-var config = require('./config.json');
+var config = require('./config/theme.json');
 
 function clean(){
     return del([
@@ -161,7 +161,7 @@ exports.jsCompress = jsCompress;
 
 function sassWatch() {
     watch("./style/**/*.scss", sassCompile);
-    watch("./config.json", sassCompile);
+    watch("./config/theme.json", sassCompile);
 }
 
 exports.sassWatch = sassWatch;
