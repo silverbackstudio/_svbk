@@ -195,7 +195,7 @@ export const settings = {
 				{ pictureUrl && (
 					<picture className={ 'wp-block-svbk-hero__picture'} >
 						{ pictureStackedUrl && (
-							<source media="(max-width: 465px)" srcSet={ pictureStackedUrl } />
+							<source media="(max-width: 600px)" srcSet={ pictureStackedUrl } />
 						) }
 						<img 
 							src={ pictureUrl } 
