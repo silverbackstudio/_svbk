@@ -489,12 +489,14 @@
         margin-bottom: 10px;
     }
 
-    .editor-block-list__layout {
+    .block-editor-block-list__layout {
         display: flex;
+        align-items: center;
     }
 
     .wp-block-image {
         max-width: 218px;
+        margin: 0 10px;
     }
 }
 

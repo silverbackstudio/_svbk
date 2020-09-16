@@ -8962,7 +8962,7 @@ function (_Component) {
           setBackgroundColor = _this$props.setBackgroundColor,
           setTextColor = _this$props.setTextColor,
           setRibbonColor = _this$props.setRibbonColor;
-      var title = attributes.title,
+      var ribbon = attributes.ribbon,
           titleLevel = attributes.titleLevel;
       var classNames = classnames__WEBPACK_IMPORTED_MODULE_7___default()(className, (_classnames = {
         'is-selected': isSelected
@@ -8972,7 +8972,7 @@ function (_Component) {
         className: classNames
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(RichText, {
         tagName: titleTag,
-        value: title,
+        value: ribbon,
         onChange: function onChange(value) {
           return setAttributes({
             ribbon: value

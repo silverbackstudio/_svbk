@@ -67,7 +67,7 @@ class TrustEdit extends Component {
 		} = this.props;
 
 		const { 
-			title,
+			ribbon,
 			titleLevel,
 		} = attributes;
 		
@@ -85,7 +85,7 @@ class TrustEdit extends Component {
 				<div className={ classNames }>
 					<RichText
 						tagName={ titleTag }
-						value={ title }
+						value={ ribbon }
 						onChange={ ( value ) => setAttributes( { ribbon: value } ) }
 						placeholder={ __( 'Ribbon content...', '_svbk' ) }
 						className={ 'wp-block-svbk-trust__ribbon' }
