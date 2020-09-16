@@ -17,76 +17,103 @@
 		<div class="wrap">
 			<?php
 			$footer_logo = get_theme_mod( 'footer_logo', '' );
-			$company_name = get_theme_mod( 'company_name', '' );
-			if ( $footer_logo || $company_name ) :	?>
-			<div id="company-info" class="site-footer__section">
-				<?php echo wp_get_attachment_image( get_theme_mod( 'footer_logo', '' ), 'large' ); ?>
-				<aside class="widget-area">
-					<?php dynamic_sidebar( 'footer' ); ?>
-				</aside>
+			$company_name = get_theme_mod( 'company_name', false );
+			$company_info = get_theme_mod( 'company_info', false );
+			if ( ($footer_logo || $company_name) || $company_info ) :	?>
+			<div class="footer-section">
+				<?php if ( $footer_logo ) : ?>
+				<?php echo wp_get_attachment_image( $footer_logo, 'small' ); ?>
+				<?php else: ?>
+				<h3 class="company-name"><?php echo $company_name; ?></h3>
+				<?php endif; ?>
+				<?php if ( $company_info ) : ?>
+				<p><?php echo nl2br($company_info); ?></p>
+				<?php endif; ?>						
 			</div>
 			<?php endif ?>
 	
-			<div id="company-contacts" class="site-footer__section">
+			<?php if ( is_active_sidebar( 'footer' ) ): ?>
+
+			<aside class="site-footer__widgets widget-area">
+				<?php dynamic_sidebar( 'footer' ); ?>			
+			</aside>
+
+			<?php else: ?>
+
+			<div id="contacts" class="footer-section footer-section--contacts">
 				<h3 class="footer-section__title"><?php _e('Contacts', '_svbk') ?></h3>
-				<?php if ( get_theme_mod( 'company_phone', false ) ) : ?>
-				<span class="company-phone">Tel: <a href="tel:<?php echo get_theme_mod( 'company_phone' ); ?>"><?php echo get_theme_mod( 'company_phone' ); ?></a></span><br/>
-				<?php endif; ?>
-				<?php if ( get_theme_mod( 'company_email', false ) ) : ?>
-				<span class="company-email">Email: <a href="mailto:<?php echo get_theme_mod( 'company_email' ); ?>"><?php echo get_theme_mod( 'company_email' ); ?></a></span>
-				<?php endif; ?>		
+				<ul>
+					<?php if ( get_theme_mod( 'company_phone', false ) ) : ?>
+					<li><?php _e('Tel', '_svbk'); ?>:&nbsp;<a href="tel:<?php echo get_theme_mod( 'company_phone' ); ?>"><?php echo get_theme_mod( 'company_phone' ); ?></a></li>
+					<?php endif; ?>
+					<?php if ( get_theme_mod( 'company_email', false ) ) : ?>
+					<li><?php _e('E-mail', '_svbk'); ?>:&nbsp;<a href="mailto:<?php echo get_theme_mod( 'company_email' ); ?>"><?php echo get_theme_mod( 'company_email' ); ?></a></li>
+					<?php endif; ?>		
+				</ul>
 			</div>
 			
 			<?php if ( get_theme_mod( 'company_opening_hours', false ) ) : ?>
-			<div id="company-opening-hours" class="site-footer__section">
+			<div id="opening-hours" class="footer-section footer-section--opening-hours">
 				<h3 class="footer-section__title"><?php _e('Opening Hours', '_svbk') ?></h3>
-				<span class="company-opening-hours"><?php echo nl2br( get_theme_mod( 'company_opening_hours' ) ); ?></span>
+				<p><?php echo nl2br( get_theme_mod( 'company_opening_hours' ) ); ?></p>
 			</div>
 			<?php endif; ?>
 
 			<?php if ( get_theme_mod( 'company_address', false ) ) : ?>
-			<div id="company-address" class="site-footer__section">
+			<div id="address" class="footer-section footer-section--address">
 				<h3 class="footer-section__title"><?php _e('Address', '_svbk') ?></h3>
-				<span class="company-address"><?php echo nl2br( get_theme_mod( 'company_address' ) ); ?></span>
+				<p><?php echo nl2br( get_theme_mod( 'company_address' ) ); ?></p>
 			</div>
-			<?php endif; ?>			
+			<?php endif; ?>		
+			
+			<?php endif ?>	
 		</div>
 		
 		<div id="legal" class="site-footer__bar bar sub-footer">
-			<span class="copyright-notice">&copy;<?php echo date( 'Y' ); ?></span> - 
-			<?php if ( get_theme_mod( 'company_name', false ) ) : ?>
-			<span class="company-name"><?php echo get_theme_mod( 'company_name' ); ?></span> - 
-			<?php endif; ?>
-			<?php if ( get_theme_mod( 'company_vat', false ) ) : ?>
-			<?php _e('VAT', '_svbk'); ?>:
-			<span class="company-vat"><?php echo get_theme_mod( 'company_vat' ); ?></span> - 
-			<?php endif; ?>
-			<?php if ( get_theme_mod( 'company_rea', false ) ) : ?>
-			<?php _e('REA', '_svbk'); ?>:
-			<span class="company-rea"><?php echo get_theme_mod( 'company_rea' ); ?></span> - 
-			<?php endif; ?>
-			<?php if ( get_theme_mod( 'company_certified_email', false ) ) : ?>
-			<?php _e('Certified e-mail', '_svbk'); ?>:
-			<span class="company-certified-email"><?php echo get_theme_mod( 'company_certified_email' ); ?></span> - 
-			<?php endif; ?>
-			<?php if ( get_theme_mod( 'company_share_capital', false ) ) : ?>
-			<?php _e('Share Capital', '_svbk'); ?>:
-			<span class="company-share-capital"><?php echo get_theme_mod( 'company_share_capital' ); ?></span>
-			<?php endif; ?>
+			<dl>
+				<dt>&copy;</dt>
+				<dd>2017-<?php echo date( 'Y' ); ?></dd>
+				
+				<?php if ( get_theme_mod( 'company_name', false ) ) : ?>
+				<dt class="screen-reader-text"><?php _e('Company Name', '_svbk'); ?></dt>
+				<dd><?php echo get_theme_mod( 'company_name' ); ?></dd>
+				<?php endif; ?>
+
+				<?php if ( get_theme_mod( 'company_vat', false ) ) : ?>
+				<dt><?php _e('VAT', '_svbk'); ?></dt>
+				<dd><?php echo get_theme_mod( 'company_vat' ); ?></dd>
+				<?php endif; ?>
+
+				<?php if ( get_theme_mod( 'company_rea', false ) ) : ?>
+				<dt><?php _e('REA', '_svbk'); ?></dt>
+				<dd><?php echo get_theme_mod( 'company_rea' ); ?></dd>
+				<?php endif; ?>
+
+				<?php if ( get_theme_mod( 'company_certified_email', false ) ) : ?>
+				<dt><?php _e('Certified e-mail', '_svbk'); ?></dt>
+				<dd><?php echo get_theme_mod( 'company_certified_email' ); ?></dd>
+				<?php endif; ?>
+
+				<?php if ( get_theme_mod( 'company_share_capital', false ) ) : ?>
+				<dt><?php _e('Share Capital', '_svbk'); ?></dt>
+				<dd><?php echo get_theme_mod( 'company_share_capital' ); ?></dd>
+				<?php endif; ?>
+			</dl>
+
+			<?php if ( has_nav_menu( 'legal-menu' ) ) : ?>
 			<?php
-				if ( has_nav_menu( 'legal-menu' ) ) :
-					wp_nav_menu(
-						array(
-							'theme_location' => 'legal-menu',
-							'menu_id'        => 'legal-menu',
-						)
-					);
-				else :
-					?>
-					<ul id="legal-menu" class="menu">
-						<?php the_privacy_policy_link( '<li class="menu-item">', '</li>' ); ?>
-						<?php the_cookie_policy_link( '<li class="menu-item">', '</li>' ); ?>
-					</ul>
+				wp_nav_menu(
+					array(
+						'theme_location' => 'legal-menu',
+						'menu_id'        => 'legal-menu',
+					)
+				);
+			?>
+			<?php else : ?>
+				<ul id="legal-menu" class="menu">
+					<?php the_privacy_policy_link( '<li class="menu-item">', '</li>' ); ?>
+					<?php the_cookie_policy_link( '<li class="menu-item">', '</li>' ); ?>
+				</ul>
 			<?php endif; ?>
 		</div>
 		
