@@ -19,7 +19,7 @@
 			$footer_logo = get_theme_mod( 'footer_logo', '' );
 			$company_name = get_theme_mod( 'company_name', false );
 			$company_info = get_theme_mod( 'company_info', false );
-			if ( ($footer_logo || $company_name) || $company_info ) :	?>
+			if ( ($footer_logo || $company_name) || $company_info || is_active_sidebar( 'footer' ) ) :	?>
 			<div class="footer-section">
 				<?php if ( $footer_logo ) : ?>
 				<?php echo wp_get_attachment_image( $footer_logo, 'small' ); ?>
@@ -28,17 +28,14 @@
 				<?php endif; ?>
 				<?php if ( $company_info ) : ?>
 				<p><?php echo nl2br($company_info); ?></p>
-				<?php endif; ?>						
+				<?php endif; ?>
+				<?php if ( is_active_sidebar( 'footer' ) ): ?>
+				<aside class="site-footer__widgets widget-area">
+					<?php dynamic_sidebar( 'footer' ); ?>			
+				</aside>
+				<?php endif; ?>					
 			</div>
 			<?php endif ?>
-	
-			<?php if ( is_active_sidebar( 'footer' ) ): ?>
-
-			<aside class="site-footer__widgets widget-area">
-				<?php dynamic_sidebar( 'footer' ); ?>			
-			</aside>
-
-			<?php else: ?>
 
 			<div id="contacts" class="footer-section footer-section--contacts">
 				<h3 class="footer-section__title"><?php _e('Contacts', '_svbk') ?></h3>
@@ -64,15 +61,13 @@
 				<h3 class="footer-section__title"><?php _e('Address', '_svbk') ?></h3>
 				<p><?php echo nl2br( get_theme_mod( 'company_address' ) ); ?></p>
 			</div>
-			<?php endif; ?>		
-			
-			<?php endif ?>	
+			<?php endif; ?>
 		</div>
 		
 		<div id="legal" class="site-footer__bar bar sub-footer">
 			<dl>
 				<dt>&copy;</dt>
-				<dd>2017-<?php echo date( 'Y' ); ?></dd>
+				<dd><?php echo date( 'Y' ); ?></dd>
 				
 				<?php if ( get_theme_mod( 'company_name', false ) ) : ?>
 				<dt class="screen-reader-text"><?php _e('Company Name', '_svbk'); ?></dt>
