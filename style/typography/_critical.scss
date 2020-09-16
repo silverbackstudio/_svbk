@@ -26,6 +26,15 @@ p {
 	margin-bottom: 1.5em;
 }
 
+h1, h2, h3, h4, h5, h6,
+.is-style-subtitle,
+.is-style-pretitle {
+	clear: both;
+	@include font( 'headings' );
+	line-height: 1.2em;
+	margin-bottom: 20px;
+}
+
 h1 {
 	@include font-size(2.2);
 	
