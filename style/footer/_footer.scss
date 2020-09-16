@@ -1,251 +1,131 @@
 .site-footer {
-	
-	.wrap {
-		padding-top: 30px;
-		padding-bottom: 20px;
-	}
+	@include font-size(.9);
+	background-color: $color__background-footer;
+	clear: both;
+	color: #fff;
 
 	img {
-		display: block;
-		object-fit: contain;
-		object-position: left;
-		padding-bottom: 20px;
-		height: 79px;
-		width: auto;
-		margin-bottom: 15px;
-		border-bottom: 1px solid #fff;
-		width: 100%;
-	}
-	
-	a {
-		color: rgba(255,255,255,.7);
-		
-		&:hover {
-			color: #f0f0f0;
-		}
-	}
-	
-	.footer-section__title {
-		@include font-size(1.1);
-		color: #fff;
-		margin: 0;
 		margin-bottom: 10px;
-	}
-	
-	.site-footer__section {
-		position: relative;
-		margin-bottom: 30px;
-		max-width: 400px;
-		
-		&:last-of-type {
-			margin-bottom: 0;
-		}
-		
-		.footer-section__title {
-			position: relative;
-			padding-left: 30px;
-			border-bottom: 1px solid #fff;
-			padding-bottom: 12px;
-			text-transform: uppercase;
-			
-			&:before {
-				@include font-size(1.2);
-				position: absolute;
-				top: 0;
-				left: 0;
-				font-weight: normal;
-				color: #fff;
-			}
+
+		@media screen and (min-width: breakpoint('tablet-landscape')) {
+			height: calc(1.1rem + 30px);
+			margin-top: -15px;
+			width: auto;
+			object-fit: contain;
+			object-position: bottom;
 		}
 	}
 
-	#company-info {
-		padding-left: 0;
-
-		p {
-			line-height: 1.2em;
-		}
-
-		.widget,
-		.menu {
-			margin-bottom: 0;
-		}
-
-		.menu {
-			padding: 0;
-
-			li {
-				display: inline-block;
-
-				a {
-					width: 2.2rem;
-					height: 2.2rem;
-					text-indent: -999px;
-					overflow: hidden;
-					position: relative;
-					font-weight: normal;
-					display: inline-block;
-
-					&:before {
-						@include font-size(1.7);
-						width: 2.2rem;
-						height: 2.2rem;
-						line-height: 2.2rem;
-						background: none;
-						position: absolute;
-						top: 0;
-						right: 0;
-						text-indent: 0;
-						color: $color__corporate-secondary;
-					}
-				}
-
-				&.facebook a:before {
-					@include icon-content("\e904");
-				}
-
-				&.instagram a:before {
-					@include icon-content("\e906");
-				}
-
-				&:before {
-					display: none;
-				}
-			}
-		}
+	p {
+		margin: 0;
 	}
-	
-	#company-contacts .footer-section__title:before {
-		@include icon-content('\e930');
-	}
-	
-	#company-opening-hours .footer-section__title:before {
-		@include icon-content('\e902');
-	}
-	
-	#company-address .footer-section__title:before {
-		@include icon-content('\e93d');
-	}
-	
-	.company-additional-info {
-		margin-top: 10px;
-		display: block;
-		line-height: 1.3em;
-	}
-	
+
 	a {
-		text-decoration: none;
 		color: #fff;
-			
-		&:hover {
-			color: #f0f0f0;
-		}
-		
-		&:visited {
-			color: #fff;
-		}
-	}
-	
-	.widget-title {
-		@include font-size(1.1);
-		border-bottom: 1px solid $color__corporate;
-		margin: 0 0 15px;
-		padding: 0 0 15px 30px;
-		text-transform: uppercase;
-		position: relative;
-		
-		&:before {
-			@include font-size(1.2);
-			color: #fff;
-			position: absolute;
-			top: 0;
-			left: 0;
-			font-weight: normal;
-		}
-	}
-	
-	.widget {
-		margin-bottom: 30px;
-		
-		&:nth-of-type(1) .widget-title:before {
-			@include icon-content('\e930');
-		}
-		
-		&:nth-of-type(2) .widget-title:before {
-			@include icon-content('\e902');
-		}
-		
-		&:nth-of-type(3) .widget-title:before {
-			@include icon-content('\e93d');
-		}
 	}
 
-	@media screen and (min-width: breakpoint('tablet-landscape')) {
-		margin-bottom: 0;
+	ul {
+		padding-left: 0;
+		margin: 0;
 		
-		.wrap {
-			display: flex;
-		}
-		
-		.site-footer__section {
-			flex-basis: 25%;
+		li {
 			margin-bottom: 0;
-			padding: 10px 30px;
-			
-			.footer-section__title {
-				padding-top: 45px;
-				
-				&:before {
-					top: auto;
-					bottom: 13px;
-				}
-			}
-			
+
 			&:before {
-				@include font-size(1.5);
-				display: block;
-				position: static;
-				margin-bottom: 10px;
+				display: none;
 			}
-			
-			&:last-of-type {
-				border-right: none;
-			}
+		}
+	}
+	
+	.wrap {
+		padding-top: 50px;
+		padding-bottom: 50px;
+
+		@media screen and (min-width: breakpoint('tablet-landscape')) {
+			display: flex;
+			padding-top: 70px;
+			padding-bottom: 70px;
 		}
 	}
 }
 
-.sub-footer {
-	background-color: $color__background-sub-footer;
-	padding: 10px 20px;
-	text-align: center;
-	
-	.menu {
-		display: block;
-		padding: 0;
-		margin: 0;
+.site-footer__widgets {
+	display: flex;
+}
+
+.site-footer__widgets,
+.footer-section {
+
+	@media screen and (min-width: breakpoint('tablet-landscape')) {
+		flex-grow: 1;
+	}
+}
+
+.footer-section {
+	padding: 20px 0;
+
+	@media screen and (min-width: breakpoint('tablet-landscape')) {
+		flex-basis: 25%;
+		flex-grow: 1;
+		padding: 0 15px;
+		border-bottom: none;
+	}
+}
+
+.footer-section__title {
+	@include font-size(1.1);
+	margin: 0 0 15px;
+	padding-bottom: 15px;
+	color: #fff;
+	border-bottom: 1px solid rgba(255,255,255,.3);
+	text-transform: uppercase;
+	display: flex;
+
+	&:before {
+		margin-right: 10px;
+
+		#contacts & {
+			@include icon-content('\e930');
+		}
 		
-		li {
-			margin-right: 3px;
-			display: inline;
-			
-			&:last-of-type {
-				margin-right: 0;
-			}
+		#opening-hours & {
+			@include icon-content('\e902');
+		}
+		
+		#address & {
+			@include icon-content('\e93d');
+		}
+	}
+}
 
-			&:before {
-				content: '|';
-				color: #aaa;
-				width: auto;
-				height: auto;
-				font-size: 1em;
-				margin: 0 5px 4px;
-			}
+.widget-title.footer-section__title {
+	@include font-size(1.1);
+}
 
-			&:first-of-type:before {
+.sub-footer {
+	@include font-size(.8);
+	background-color: $color__background-sub-footer;
+	text-align: center;
+	padding: 10px $padding__content-mobile;
 
-				display: none;
-			}
+	dl, dd, dt {
+		margin: 0;
+	}
+
+	dd, dt {
+		display: inline;
+	}
+
+	dd {
+
+		&:after {
+			content: "|";
+			margin: 0 2px 0 5px;
+			color:rgba(255,255,255,.3);
+		}
+
+		&:last-of-type:after {
+			display: none;
 		}
 	}
 }
