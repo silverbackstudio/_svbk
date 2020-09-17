@@ -61,6 +61,7 @@
 .entry-content:not(.post__content) >,
 .entry-content > .wp-block-group .wp-block-group__inner-container > {
 
+	h1, h2, h3, h4, h5, h6,
 	p, ul, ol,
 	.wp-block-pullquote,
 	.wp-block-svbk-icon-paragraph,
@@ -69,6 +70,7 @@
 		max-width: $size__text-width;
 	}
 
+	h1, h2, h3, h4, h5, h6,
 	p, ul, ol,
 	.wp-block-pullquote,
 	.wp-block-svbk-icon-paragraph,
