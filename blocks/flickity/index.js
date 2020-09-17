@@ -23,11 +23,6 @@ wp.blocks.registerBlockStyle( 'core/gallery', {
     label: 'Flickity Carousel'
 } );
 
-wp.blocks.registerBlockStyle( 'core/gallery', {
-    name: 'flickity-slider',
-    label: 'Flickity Slider'
-} );
-
 /**
  * Inject the flickity attributes in the image attributes,
  * to map something like this:

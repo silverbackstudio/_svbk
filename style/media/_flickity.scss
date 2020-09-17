@@ -1,5 +1,4 @@
-.is-style-flickity,
-.is-style-flickity-slider {
+.is-style-flickity {
 	display: block;
 }
 
@@ -44,6 +43,7 @@
 
 .flickity-button {
 	position: absolute;
+	padding: 0;
 	background: none;
 	border: none;
 	box-shadow: none;
@@ -58,7 +58,7 @@
 		text-shadow: 0 0 5px rgba(0,0,0,.2);
 	}
 
-	&.previsou,
+	&.previous,
 	&.next {
 		@include font-size(1.2);
 	}
