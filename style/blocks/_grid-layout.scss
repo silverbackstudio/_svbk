@@ -1,113 +1,60 @@
 .wp-block-svbk-grid {
-    $grid-gutter: 2;
-	display: flex;
-	justify-content: space-between;
-    
-    > figure img {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
+    $grid-gutter: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: start;
+
+    > * {
+        margin: 0;
     }
-    
-    > div,
-    > figure {
-        float: left;
+
+    &.has-align-left {
+        justify-content: flex-start;
     }
-    
-    &:after {
-        @include clearfix();
-        @include clearfix-after();
+
+    &.has-align-right {
+        justify-content: flex-end;
     }
-    
+
     &.has-equal-cell-height {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        
-        > div {
-            float: none;
-            margin-left: 0;
-        }
+        align-items: initial;
     }
-    
-    @media screen and (max-width: breakpoint('tablet-landscape')) {
-    
+
     @for $i from 1 through 3 {
+        gap: $grid-gutter;
 
         &.has-#{$i}-columns-mobile {
-      
-            > div,
-            > figure {
-                width: (100% - ($grid-gutter * ($i - 1)))/$i;
-                margin-right: 1% * $grid-gutter;
-                max-width: none;
-                
-                    &:nth-of-type(#{$i}n + #{$i}) {
-                        margin-right: 0;
-                    }
-                    
-                    &:nth-of-type(#{$i}n + 1) {
-                        clear: left;
-                    }
-                }
-            }
+
+            @media screen and (max-width: breakpoint('tablet-landscape')) {
             
-            &.has-equal-cell-height {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                
-                > div {
-                    float: none;
-                    margin-left: 0;
+                > * {
+                    width: calc((100% - (#{$grid-gutter} * (#{$i} - 1)))/#{$i});
                 }
             }
         }
     }
-    
-    @media screen and (max-width: breakpoint('tablet-landscape')) {
+
+    @media screen and (min-width: breakpoint('tablet-portrait')) and (max-width: breakpoint('tablet-landscape')) {
         
         &.has-1-columns-mobile {
             
-            > figure {
+            > * {
                 width: 49%;
-                
-                &:nth-of-type(1n + 1) {
-                    clear: none;
-                    margin-right: $grid-gutter * 1%;
-                }
-                
-                &:nth-of-type(2n + 1) {
-                    clear: left;
-                }
-                
-                &:nth-of-type(2n + 2) {
-                    margin-right: 0;
-                }
             }
         }
     }
-    
-    @media screen and (min-width: breakpoint('tablet-landscape')) {
 
-        @for $i from 2 through 6 {
-    
+    @for $i from 2 through 6 {
+
         &.has-#{$i}-columns {
-      
-            > div,
-            > figure {
-                width: (100% - ($grid-gutter * ($i - 1)))/$i;
-                margin-right: 1% * $grid-gutter;
-                max-width: none;
-                
-                    &:nth-of-type(#{$i}n + #{$i}) {
-                        margin-right: 0;
-                    }
-                    
-                    
-                    &:nth-of-type(#{$i}n + 1) {
-                        clear: left;
-                    }
+
+            @media screen and (min-width: breakpoint('tablet-landscape')) {
+                $grid-gutter: 20px;
+                gap: $grid-gutter;
+
+                > * {
+                    width: calc((100% - (#{$grid-gutter} * (#{$i} - 1)))/#{$i});
                 }
             }
         }
