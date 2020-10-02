@@ -49,8 +49,11 @@
 		}
 	}
 
-	.company-opening-hours {
+	&__right {
 		float: right;
+	}
+
+	.company-opening-hours {
 
 		&:before {
 			@include icon-content('\e902');

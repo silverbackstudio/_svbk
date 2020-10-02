@@ -27,20 +27,34 @@ use \Svbk\WP\Helpers;
 
 	<div id="page" class="site">
 		<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', '_svbk' ); ?></a>
+		
 		<header id="masthead" class="site-header" role="banner">
 		
-			<?php if ( get_theme_mod( 'header_top_bar' ) ) : ?>
+			<?php if ( get_theme_mod( 'header_top_bar' ) || function_exists( '_svbk_woocommerce_header_cart' ) ) : ?>
 			<div class="top-header">
 				<div class="wrap">
-					<?php if ( get_theme_mod( 'company_phone', false ) ) : ?>
-					<span class="company-phone"><a href="tel:<?php echo get_theme_mod( 'company_phone' ); ?>"><?php echo get_theme_mod( 'company_phone' ); ?></a></span>
+					<?php if ( get_theme_mod( 'company_phone', false ) || get_theme_mod( 'company_email', false ) ) : ?>
+					<div class="top-header__left">
+						<?php if ( get_theme_mod( 'company_phone', false ) ) : ?>
+						<span class="company-phone"><a href="tel:<?php echo get_theme_mod( 'company_phone' ); ?>"><?php echo get_theme_mod( 'company_phone' ); ?></a></span>
+						<?php endif; ?>
+						<?php if ( get_theme_mod( 'company_email', false ) ) : ?>
+						<span class="company-email"><a href="mailto:<?php echo get_theme_mod( 'company_email' ); ?>"><?php echo get_theme_mod( 'company_email' ); ?></a></span>
+						<?php endif; ?>
+					</div>
+					<? endif; ?>
+					<?php if ( get_theme_mod( 'company_opening_hours', false ) || function_exists( '_svbk_woocommerce_header_cart' ) ) : ?>
+					<div class="top-header__right">
+						<?php if ( get_theme_mod( 'company_opening_hours', false ) ) : ?>
+						<span class="company-opening-hours"><?php echo get_theme_mod( 'company_opening_hours' ); ?></span>
+						<?php endif; ?>
+						<?php
+							if ( function_exists( '_svbk_woocommerce_header_cart' ) ) {
+								_svbk_woocommerce_header_cart();
+							}
+						?>
+					</div>
 					<?php endif; ?>
-					<?php if ( get_theme_mod( 'company_email', false ) ) : ?>
-					<span class="company-email"><a href="mailto:<?php echo get_theme_mod( 'company_email' ); ?>"><?php echo get_theme_mod( 'company_email' ); ?></a></span>
-					<?php endif; ?>
-					<?php if ( get_theme_mod( 'company_opening_hours', false ) ) : ?>
-					<span class="company-opening-hours"><?php echo get_theme_mod( 'company_opening_hours' ); ?></span>
-					<?php endif; ?>	
 				</div>
 			</div>
 			<?php endif ?>
@@ -88,12 +102,6 @@ use \Svbk\WP\Helpers;
 					<?php endif; ?>
 					
 				</div><!-- .site-branding -->
-				
-				<?php
-				if ( function_exists( '_svbk_woocommerce_header_cart' ) ) {
-					_svbk_woocommerce_header_cart();
-				}
-				?>
 	
 				<button class="main-navigation-toggle" aria-controls="main-navigation" aria-expanded="false">
 					<span class="screen-reader-text"><?php esc_html_e( 'Primary Menu', '_svbk' ); ?></span>
