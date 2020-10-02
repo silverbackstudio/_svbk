@@ -160,6 +160,28 @@ function _svbk_woocommerce_scripts() {
 }
 add_action( 'wp_enqueue_scripts', '_svbk_woocommerce_scripts', 30 );
 
+/**
+ * Sets CSS from files and prints it into page <head>
+ */
+function _svbk_wc_select_critical_css_file($critical_css_path){
+	
+	if ( is_woocommerce() ) {
+		$critical_css_path = get_theme_file_path( '/dist/css/wc-critical.css' );
+	} 
+	
+	if ( is_product() ) {
+		$critical_css_path = get_theme_file_path( '/dist/css/wc-critical-product.css' );
+	}
+
+	if ( is_shop() ) {
+		$critical_css_path = get_theme_file_path( '/dist/css/wc-critical-shop.css' );
+	}
+
+	return $critical_css_path;
+}
+
+add_filter( 'chiavedivino_critical_css_file', '_svbk_wc_select_critical_css_file', 20 );
+
 
 /**
  * Register widgets areas.
