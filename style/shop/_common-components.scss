@@ -209,23 +209,25 @@
 /*--------------------------------------------------------------
 # Login / Account
 --------------------------------------------------------------*/
-.menu-item.login {
+.profile-nav {
+	display: inline-block;
 
-	a {
-		text-transform: none;
+	.menu {
+		margin: 0;
 	}
 
-	a:before {
-		@include icon-content("\e913");
-		background: $color__text-main;
-		margin-right: 5px;
-		color: #fff;
-		width: 20px;
-		height: 20px;
-		line-height: 20px;
-		display: inline-block;
-		text-align: center;
-		border-radius: 50%;
-		font-size: 12px;
+	li {
+		margin: 0;
+
+		img {
+			width: 17px;
+			height: 17px;
+			border-radius: 17px;
+			vertical-align: text-bottom;
+		}
+
+		&:before {
+			display: none;
+		}
 	}
 }

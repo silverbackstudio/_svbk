@@ -1,31 +1,698 @@
-/*--------------------------------------------------------------
-# Functions and vars
---------------------------------------------------------------*/
-@import "shop/shop-variables";
-@import "mixins/mixins-master";
-
-/*--------------------------------------------------------------
-# Normalize
---------------------------------------------------------------*/
-@import "normalize";
-
-/*--------------------------------------------------------------
-# Typography
---------------------------------------------------------------*/
-@import "typography/typography";
-
-/*--------------------------------------------------------------
-# Layout
---------------------------------------------------------------*/
-@import "layout/secondary-nav";
-
-/*--------------------------------------------------------------
-# Sensei
---------------------------------------------------------------*/
+@import 'variables-site/variables-site';
+@import 'mixins/mixins-master';
 @import "course/course";
-
-/*--------------------------------------------------------------
-# Common
---------------------------------------------------------------*/
 @import "media/media";
 @import "blog/primary/comments";
+@import "layout/secondary-nav";
+
+
+.entry-content:not(.post__content) >,
+.entry-content > .wp-block-group .wp-block-group__inner-container > {
+
+	h1, h2, h3, h4, h5, h6,
+	p, ul, ol,
+	.wp-block-pullquote,
+	.wp-block-svbk-icon-paragraph,
+	.wp-block-button,
+	.wp-block-separator {
+		max-width: none;
+    }
+}
+
+h2, h3 {
+    margin-top: 50px;
+}
+
+.single-course,
+.single-lesson,
+.post-type-archive-lesson,
+.single-quiz,
+.learner-profile,
+.post-type-archive-sensei_message,
+.single-sensei_message,
+.page-template-account {
+
+    #page {
+
+        @media screen and (min-width: breakpoint('tablet-landscape')) {
+            background: #f8f8f8;
+            border-radius: $border-radius;
+        }
+    }
+
+    .site-content {
+        max-width: $size__content-width;
+        
+        @media screen and (min-width: breakpoint('tablet-landscape')) {
+            display: grid;
+            grid-template-columns: 300px auto;
+            gap: 10px;
+        }
+    }
+
+    #sensei-navigation,
+    #primary,
+    #secondary {
+
+        @media screen and (min-width: breakpoint('tablet-landscape')) {
+            background: #fff;
+            border-radius: $border-radius;
+            padding: 0 15px;
+            box-shadow: 0 0 1px rgba(0,0,0,.2);
+        }
+    }
+
+    #sensei-navigation,
+    #primary {
+        margin: 30px 0;
+    }
+
+    #secondary {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        margin-bottom: 30px;
+    }
+
+    .thumbnail {
+        width: 100%;
+    }
+}
+
+.course #commentform #submit,
+.course-container #commentform #submit,
+.course-container .submit,
+.course-container a.button,
+.course-container a.button:visited,
+.course-container a.comment-reply-link,
+.course-container button.button,
+.course-container input.button,
+.course-container input[type=submit],
+.course .submit,
+.course a.button,
+.course a.button:visited,
+.course a.comment-reply-link,
+.course button.button,
+.course input.button,
+.course input[type=submit],
+.lesson #commentform #submit,
+.lesson .submit,
+.lesson a.button,
+.lesson a.button:visited,
+.lesson a.comment-reply-link,
+.lesson button.button,
+.lesson input.button,
+.lesson input[type=submit],
+.quiz #commentform #submit,
+.quiz .submit,
+.quiz a.button,
+.quiz a.button:visited,
+.quiz a.comment-reply-link,
+.quiz button.button,
+.quiz input.button,
+.quiz input[type=submit] {
+    border-width: 2px;
+	border-style: solid;
+	border-color: $color__border-button;
+	background: $color__background-button;
+	color: $color__text-button;
+	@include font-size(.9);
+	text-transform: uppercase;
+	line-height: 1;
+	padding: .7em 1.2em;
+	text-decoration: none;
+	text-align: center;
+	border-radius: $border-radius__button;
+	font-weight: bold;
+	box-shadow: 0px 1px 3px rgba(0,0,0,0.35);
+	transition: background .15s ease-in-out,
+				border .15s ease-in-out,
+				color .15s ease-in-out,
+				box-shadow .15s ease-in-out;
+
+	&:visited {
+		border-color: $color__border-button;
+		color: $color__text-button;
+	}
+
+	&:hover {
+		background: $color__background-button-hover;
+		border-color: $color__border-button-hover;
+		box-shadow: 0 2px 4px rgba(0,0,0,0.35);
+		color: $color__text-button;
+	}
+
+	&:focus,
+	&:active {
+		border-color: $color__border-button-focus;
+		background: $color__background-button-focus;
+		outline: none;
+		box-shadow: 0 0 2px rgba(0,0,0,0.4);
+		color: $color__text-button;
+	}
+
+	&:disabled {
+		opacity: .5;
+	}
+}
+
+.course__teacher,
+#attached-media,
+.course-video,
+.course-enrolment,
+.post-entries,
+.learner-info #learner-info {
+    margin: 30px 0;
+}
+
+.lesson--preview h2,
+.course-title {
+
+    a {
+        @include font-size(1.3);
+        color: $color__text-main;
+        display: block;
+        text-decoration: none;
+    }
+}
+
+.course-container {
+
+    @media screen and (min-width: breakpoint('tablet-portrait')) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    @media screen and (min-width: breakpoint('tablet-portrait')) {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+#my-courses.ui-tabs .ui-tabs-panel,
+#sensei-user-courses .course-container {
+
+    @media screen and (min-width: breakpoint('tablet-portrait')) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+}
+
+.course-container .post.type-course,
+.course-container .course,
+.ui-tabs-panel .course {
+    padding: 0 15px 25px !important;
+    box-shadow: $shadow__card;
+    border-radius: $border-radius;
+    background: #fff;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,.15);
+    margin-bottom: 0;
+
+    .course-author,
+    .course-lesson-progress {
+        @include screen-reader-text();
+    }
+
+    .sensei-course-meta {
+        font-style: normal;
+    }
+
+    &:before {
+        display: none;
+    }
+}
+
+.course-container {
+    max-width: none !important;
+    border-bottom: none;
+    margin: 0;
+
+    li:before {
+        display: none;
+    }
+
+    @media screen and (min-width: breakpoint('tablet-portrait')) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    @media screen and (min-width: breakpoint('tablet-portrait')) {
+        grid-template-columns: 1fr 1fr 1fr;
+
+        #sensei-user-courses & {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+}
+
+.course-container .post.type-course img,
+.ui-tabs-panel .course > a .thumbnail {
+    margin: 0 -15px 15px;
+    max-width: none;
+    width: calc(100% + 30px);
+    border-radius: $border-radius $border-radius 0 0;
+}
+
+.lesson--preview a.button.to-single,
+.lesson--preview a.button.to-single:visited,
+.course-container .post.type-course a.button,
+.course-container .post.type-course a.button:visited,
+article a.button.send-message-button {
+    @include font-size(1);
+    background: rgba(255,255,255,0);
+    border: none;
+    box-shadow: none;
+    text-transform: none;
+    padding: 15px;
+
+    &:hover,
+    &:focus {
+        background: rgba(255,255,255,0);
+        box-shadow: none;
+    }
+}
+
+.lesson--preview a.button.to-single,
+.lesson--preview a.button.to-single:visited,
+.course-container .post.type-course a.button,
+.course-container .post.type-course a.button:visited {
+    float: right;
+    color: $color__background-button;
+
+    &:hover {
+        color: $color__background-button-hover;
+    }
+
+    &:focus {
+        color: $color__background-button-focus;
+    }
+
+    &:after {
+        @include icon-content('\e922');
+        font-size: .7em;
+        margin-left: 8px;
+    }
+}
+
+.course > a .thumbnail {
+    width: 100%;
+}
+
+.course__teacher,
+.learner-info #learner-info {
+    @include font-size(.8);
+    color: #888;
+    line-height: normal;
+    display: grid;
+    grid-template-columns: 64px auto;
+    gap: 20px;
+    width: auto;
+    align-items: center;
+
+    span,
+    div {
+        display: block;
+        float: none !important;
+    }
+
+    .avatar,
+    .learner-avatar {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .name,
+    .learner-content h2 {
+        @include font-size(1);
+        font-weight: bold;
+        color: $color__text-main;
+        margin: 0;
+    }
+}
+
+.lesson-meta {
+    @include font-size(.9);
+
+    span {
+        margin-right: 10px;
+        display: inline-block;
+        color: #888;
+
+        &:last-of-type {
+            margin-right: 0;
+        }
+    }
+}
+
+#attached-media {
+    background: $color__background-light;
+    padding: 20px;
+    border-radius: $border-radius;
+
+    h2 {
+        @include font-size(1.3);
+        margin-top: 0;
+    }
+
+    ul {
+        margin-bottom: 0;
+        padding: 0;
+
+        li {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+
+            &:before {
+                display: none;
+            }
+
+            &:last-of-type {
+                padding-bottom: 0;
+                margin-bottom: 0;
+                border-bottom: none;
+            }
+        }
+
+        a {
+
+            &:before {
+                @include icon-content('\e916');
+                @include font-size(1.5);
+                margin-right: 10px;
+                vertical-align: middle;
+                font-weight: normal;
+                color: #888;
+                display: inline-block;
+                text-decoration: none;
+            }
+        }
+    }   
+}
+
+.lesson--preview {
+    margin: 20px 0;
+    position: relative;
+    border-bottom: 1px solid #f0f0f0;
+
+    &:after {
+        @include clearfix();
+        @include clearfix-after();
+    }
+
+    img.thumbnail {
+        width: 100%;
+    }
+
+    .lesson-meta {
+        margin-bottom: 0;
+
+        span {
+            font-style: normal;
+        }
+    }
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+
+    @media screen and (min-width: breakpoint('phone')) {
+
+        &.has-post-thumbnail {
+            padding-left: 170px;
+            min-height: 130px;
+        }
+
+        img.thumbnail {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 150px;
+            height: 90px;
+            object-fit: cover;
+        }
+
+        .lesson-meta {
+    
+            .lesson-status {
+                float: right;
+            }
+        }
+    }
+}
+
+.lesson-number {
+    margin-right: 5px;
+    color: #888;
+    font-weight: normal;
+}
+
+.progress.statement {
+    @include font-size(.8);
+    color: #888;
+}
+
+.meter {
+    height: 5px;
+    max-width: 400px;
+    border-radius: 0;
+    margin-top: 5px;
+
+    .value {
+        @include font-size(.7);
+        line-height: 20px;
+        border-radius: 0;
+        overflow: visible;
+        color: $color__text-main;
+        text-align: left;
+        line-height: 25px;
+    }
+}
+
+.page-numbers {
+    padding: 0;
+
+    li:before {
+        display: none;
+    }
+}
+
+.single.logged-in #main .type-course header h1 {
+    margin-right: 0;
+}
+
+.post-entries {
+
+    &:after {
+        @include clearfix();
+        @include clearfix-after();
+    }
+
+    .nav-next {
+        padding: 15px;
+
+        .single-lesson & {
+            float: none;
+            background: #fafafa;
+        }
+    }
+}
+
+.single-course .type-course > header h2,
+#private_message {
+    border-bottom: 1px solid $color__background-hr;
+    padding-bottom: 8px;
+    margin: 50px 0 30px;
+}
+
+.single a.button.send-message-button,
+.single a.button.send-message-button:visited,
+.my-messages-link,
+.my-messages-link:visited {
+    color: #888;
+    font-weight: bold;
+    display: block;
+    text-align: left;
+    border-radius: $border-radius;
+
+    &:before {
+        @include icon-content('\e93b');
+        margin-right: 12px;
+        vertical-align: bottom;
+        text-decoration: none;
+        display: inline-block;
+    }
+}
+
+.send-message-button {
+    font-size: 1.2em;
+}
+
+#quiz-intro {
+    border-top: 1px solid #f0f0f0;
+}
+
+.quiz form ol#sensei-quiz-list {
+    padding: 0;
+
+    input:focus {
+        outline: none;
+    }
+
+    > li {
+        margin-bottom: 30px;
+        padding-bottom: 30px;
+        border-bottom: 1px solid #f0f0f0;
+
+        &:before {
+            display: none;
+        }
+    }
+
+    .question-title {
+        @include font-size(1.2);
+
+        + p {
+            color: #888;
+        }
+
+        &:before {
+            content: counter(li) ".";
+            margin-right: 5px;
+            color: $color__corporate;
+        }
+    }
+
+    li .question_media_display {
+        text-align: center;
+        background: #f0f0f0;
+        padding: 15px;
+        margin: 20px 0;
+
+        dl {
+            margin-bottom: 0;
+
+            dt {
+                font-weight: normal;
+            }
+        }
+    }
+
+    .answers {
+        padding-left: 0;
+
+        li {
+
+            label {
+                font-weight: normal;
+            }
+
+            &:before {
+                display: none;
+            }
+        }
+    }
+
+    .gapfill-answer .gapfill-answer-gap {
+        width: 250px;
+        display: inline;
+        vertical-align: inherit;
+    }
+
+    textarea {
+        height: 250px;
+    }
+
+    .grade {
+        color: #888;
+        font-weight: normal;
+    }
+}
+
+#my-courses.ui-tabs .ui-tabs-nav li,
+#user-course-status-toggle {
+    border: none;
+    display: flex;
+    max-width: 100%;
+    overflow: auto;
+
+    a {
+        border: none;
+        color: #888;
+        padding: 10px 0;
+        transition: color .2s ease-in-out;
+
+        &:hover {
+            background: none;
+            color: $color__text-main;
+        }
+
+        &:last-of-type {
+            margin-right: 0;
+        }
+    }
+}
+
+#user-course-status-toggle a.active,
+#my-courses.ui-tabs .ui-tabs-nav li.ui-state-active a {
+    color: $color__text-main;
+    background: none;
+
+    &:after {
+        content: '';
+        display: block;
+        height: 2px;
+        background-color: $color__corporate;
+        margin-top: 5px;
+    }
+}
+
+#my-courses.ui-tabs .ui-tabs-nav li,
+#user-course-status-toggle a {
+    position: static;
+    margin-right: 20px;
+}
+
+.ui-tabs-nav li:before {
+    display: none;
+}
+
+#secondary {
+
+    .widget {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    
+    .widget-title {
+        @include font-size(1);
+        text-transform: uppercase;
+        margin-top: 0;
+    }
+}
+
+.message-container h2,
+.sensei_message h1 {
+    @include font-size(1.2);
+    margin: 0;
+}
+
+.message-meta {
+    margin-top: 0;
+    color: #888;
+}
+
+.sensei_message {
+    
+    .entry {
+        background: #f8f8f8;
+        padding: 1px 10px;
+        color: #666;
+
+        p {
+            margin: 15px 0;
+        }
+    }
+}

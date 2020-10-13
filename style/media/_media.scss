@@ -26,7 +26,8 @@ object {
 
 .wp-has-aspect-ratio .wp-block-embed__wrapper,
 .aspect-ratio,
-.video {
+.video,
+.course-video {
 	position: relative;
 	padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
 	height: 0;

@@ -108,6 +108,10 @@ input[type="checkbox"] {
 		padding-left: 9px;
 		vertical-align: middle;
 	}
+
+	&:focus {
+		outline: none;
+	}
 }
 
 input[type="radio"] {

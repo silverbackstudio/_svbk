@@ -35,7 +35,7 @@
 				<aside class="site-footer__widgets widget-area">
 					<?php dynamic_sidebar( 'footer' ); ?>			
 				</aside>
-				<?php endif; ?>					
+				<?php endif; ?>			
 			</div>
 			<?php endif ?>
 

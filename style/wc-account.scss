@@ -3,7 +3,6 @@
 @import "normalize";
 @import "typography/typography";
 @import "shop/components";
-@import "shop/account-nav";
 @import "course/course-preview";
 
 #primary {
@@ -46,23 +45,6 @@ mark {
 	.woocommerce-form-login__rememberme {
 		display: block;
 		margin-bottom: 20px;
-	}
-}
-
-@media screen and (min-width: breakpoint('tablet-landscape')) {
-
-	.woocommerce-MyAccount-navigation,
-	.woocommerce-MyAccount-content {
-		float: left;
-	}
-	
-	.woocommerce-MyAccount-navigation {
-		width: 27%;
-		margin-right: 6%;
-	}
-	
-	.woocommerce-MyAccount-content {
-		width: 67%;
 	}
 }
 
@@ -179,124 +161,40 @@ table {
 	}
 }
 
+.woocommerce-MyAccount-navigation {
 
-/*.woocommerce-account .woocommerce-table--order-details {
+	ul li {
 
-	@media screen and (max-width: breakpoint('tablet-landscape')) {
-
-		td, th, a {
-			text-align: left;
-		}
-
-		thead {
-			display: table-header-group;
-		}
-
-		tr:first-of-type {
-			display: table-row;
-			border-bottom: 1px solid #eee;
-		}
-
-		th, td {
-			padding: 10px 15px;
-		}
-
-		th {
-			background: $woocommerce__color-secondary;
-		}
-
-		td {
-			display: table-cell;
-
-			&:before {
-				display: none;
-			}
-		}
-	}
-}
-
-.addresses {
-
-	.title h3 {
-		margin: 0;
-	}
-
-	address {
-		font-style: normal;
-	}
-}
-
-.woocommerce-account .edit-account {
-
-	fieldset {
-		border: none;
-		background: $woocommerce__color-secondary;
-
-		legend {
+		&:before {
 			display: none;
 		}
-	}
-
-	p:last-of-type {
-		margin-bottom: 10px;
-	}
-}
-
-body.woocommerce-order-pay article.page #order_review {
-	padding: 20px;
-
-	@media screen and (min-width: breakpoint('tablet-portrait')) {
-		margin: 0 auto;
-		float: none;
-	}
-}
-
-.product-page-list {
-
-	.post--preview {
-		border-bottom: 1px solid $color__background-hr;
-		padding-bottom: 20px;
-		margin-bottom: 30px;
-
-		.post__thumbnail img {
-			display: block;
+	
+		&.is-active a:after {
+			opacity: 1;
 		}
-
-		.post__title {
-			margin: 10px 0;
+	
+		&.woocommerce-MyAccount-navigation-link--dashboard a:after {
+			@include icon-content('\e915');
 		}
-
-		p {
-			margin-top: 0;
+	
+		&.woocommerce-MyAccount-navigation-link--orders a:after {
+			@include icon-content('\e918');
 		}
-
-		&:last-of-type {
-			border-bottom: none;
+	
+		&.woocommerce-MyAccount-navigation-link--downloads a:after {
+			@include icon-content('\e916');
 		}
-	}
-
-	@media screen and (min-width: breakpoint('tablet-portrait')) {
-
-		.post--preview {
-			position: relative;
-			padding-left: 220px;
-
-			.post__thumbnail {
-				display: block;
-				position: absolute;
-				top: 0;
-				left: 0;
-
-				img {
-					width: 205px;
-					height: auto;
-				}
-			}
-
-			.post__title {
-				margin: 0 0 10px;
-			}
+	
+		&.woocommerce-MyAccount-navigation-link--edit-address a:after {
+			@include icon-content('\e914');
+		}
+	
+		&.woocommerce-MyAccount-navigation-link--edit-account a:after {
+			@include icon-content('\e913');
+		}
+	
+		&.woocommerce-MyAccount-navigation-link--customer-logout a:after {
+			@include icon-content('\e917');
 		}
 	}
 }
-*/

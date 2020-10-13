@@ -229,7 +229,6 @@ function _svbk_myaccount_sidebar( $name ) {
 		</aside><!-- #secondary -->		
 		<?php
 	endif;
-
 }
 
 add_action( 'get_footer', '_svbk_myaccount_sidebar' );
