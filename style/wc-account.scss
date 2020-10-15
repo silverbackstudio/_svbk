@@ -3,6 +3,7 @@
 @import "normalize";
 @import "typography/typography";
 @import "shop/components";
+@import "shop/login";
 @import "course/course-preview";
 
 #primary {
@@ -30,22 +31,10 @@ mark {
 	}
 }
 
-.woocommerce-form-login,
+#customer_login,
 .lost_reset_password {
-	max-width: 600px;
+	max-width: 500px;
 	margin: 20px 0 50px;
-}
-
-.woocommerce-form-login {
-
-	a {
-		text-decoration: none;
-	}
-
-	.woocommerce-form-login__rememberme {
-		display: block;
-		margin-bottom: 20px;
-	}
 }
 
 table {

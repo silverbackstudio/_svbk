@@ -1,0 +1,88 @@
+#customer_login {
+    max-width: 500px;
+    margin: 30px auto 50px;
+
+	p {
+		margin: 0;
+	}
+	
+	h2,
+	.lost_password {
+		text-align: center;
+    }
+    
+    h2 {
+        @include font-size(1.8);
+    }
+
+	.lost_password {
+		margin-top: 20px;
+    }
+    
+    input[type="text"],
+    input[type="password"] {
+        width: 100% !important;
+    }
+
+	.button[type="submit"] {
+		display: block;
+        width: 100%;
+        margin: 20px 0;
+	}
+
+	.woocommerce-form__label-for-checkbox {
+		padding: 0;
+		margin: 10px 0 0;
+	}
+}
+
+.woocommerce-form-login__rememberme,
+.remember_me {
+    text-align: center;
+    
+    label {
+        font-weight: normal;
+    }
+    
+    input {
+        margin-right: 5px;
+        vertical-align: bottom;
+
+        + span {
+            padding: 0;
+        }
+    }
+}
+
+.sensei-login-submit {
+    text-align: center;
+}
+
+.sensei #customer_login {
+
+    > div {
+        position: fixed;
+        width: calc(100% - 30px);
+        max-width: 400px;
+        top: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 0 15px 15px;
+        border-radius: $border-radius;
+        margin: 0;
+        z-index: 99999;
+        color: #fff;
+    }
+
+    &:before {
+        content: '';
+        display: block;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0,0,0,.85);
+        z-index: 9999;
+    }
+}

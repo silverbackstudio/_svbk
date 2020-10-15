@@ -6,7 +6,9 @@
 	color: #fff;
 
 	.login,
-	.login a {
+	.login a,
+	.login:visited,
+	.login a:visited {
 		color: #fff;
 		text-decoration: none;
 	

@@ -4,6 +4,7 @@
 @import "media/media";
 @import "blog/primary/comments";
 @import "layout/secondary-nav";
+@import "shop/login";
 
 
 .entry-content:not(.post__content) >,
@@ -45,7 +46,7 @@ h2, h3 {
         
         @media screen and (min-width: breakpoint('tablet-landscape')) {
             display: grid;
-            grid-template-columns: 300px auto;
+            grid-template-columns: 280px auto;
             gap: 10px;
         }
     }
@@ -694,5 +695,36 @@ article a.button.send-message-button {
         p {
             margin: 15px 0;
         }
+    }
+}
+
+#certificates_user_settings {
+    margin: 30px 0;
+
+    form > p {
+        margin: 0;
+
+        input[type="submit"] {
+            margin-top: 20px;
+            display: block;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        @media screen and (min-width: breakpoint('tablet-landscape')) {
+            display: flex;
+            align-items: center;
+
+            input[type="submit"] {
+                margin: 0 0 0 20px;
+                max-width: 250px;
+            }
+        }
+    }
+
+    + h2 {
+        margin-top: 25px;
     }
 }

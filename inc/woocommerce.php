@@ -511,3 +511,24 @@ function _svbk_rm_jetpack_publicize_woocommerce() {
 }
 
 add_action( 'init', '_svbk_rm_jetpack_publicize_woocommerce' );
+
+/**
+ * Add Woocommerce Login wrapper.
+ *
+ * @return void
+ */
+
+function _svbk_wc_login_wrapper() {
+	add_action( 'woocommerce_before_customer_login_form', 'wc_login_wrapper_open' );
+	add_action( 'woocommerce_after_customer_login_form', 'wc_login_wrapper_close' );
+
+	function wc_login_wrapper_open() {
+		echo '<div id="customer_login">';
+	}
+
+	function wc_login_wrapper_close() {
+		echo '</div>';
+	}
+}
+  
+  add_action( 'init', '_svbk_wc_login_wrapper' );

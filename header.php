@@ -45,6 +45,8 @@ use \Svbk\WP\Helpers;
 					<? endif; ?>
 					<?php if ( get_theme_mod( 'company_opening_hours', false ) || function_exists( '_svbk_woocommerce_header_cart' ) ) : ?>
 					<div class="top-header__right">
+
+
 						<?php if ( function_exists( 'sensei_user_login_url' ) ) : ?>
 							<a class="login" href="<?php echo sensei_user_login_url() ?>"><?php esc_html_e('Login', '_svbk') ?></a>
 						<?php elseif ( function_exists( '_svbk_myaccount_sidebar_profile' ) ) :
@@ -52,6 +54,8 @@ use \Svbk\WP\Helpers;
 						elseif ( get_theme_mod( 'company_opening_hours', false ) ) : ?>
 							<span class="company-opening-hours"><?php echo get_theme_mod( 'company_opening_hours' ); ?></span>
 						<?php endif; ?>
+
+
 						<?php
 							if ( function_exists( '_svbk_woocommerce_header_cart' ) ) {
 								_svbk_woocommerce_header_cart();
