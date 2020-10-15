@@ -14,7 +14,6 @@
 
 get_header();
 ?>
-	<?php echo _svbk_sensei_navigation(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
 

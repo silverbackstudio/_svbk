@@ -59,7 +59,7 @@ add_filter( '_svbk_critical_css_file', '_svbk_sensei_select_critical_css_file', 
  */
 
 function _svbk_sensei_setup() {
-	register_nav_menu( 'sensei-secondary', esc_html__( 'Sensei Secondary Menu', '_svbk' ) );
+	register_nav_menu( 'sensei-menu', esc_html__( 'Sensei Menu', '_svbk' ) );
 	remove_action( 'sensei_course_content_inside_before', array( Sensei()->course, 'the_course_meta' ) );
 	remove_action( 'sensei_course_content_inside_before', array( Sensei()->course, 'course_image' ), 30, 1 );
 	remove_action( 'sensei_course_content_inside_before', array( 'Sensei_Templates', 'the_title' ), 5, 1 );
@@ -96,49 +96,10 @@ function _svbk_sensei_widgets_init() {
 }
 add_action( 'widgets_init', '_svbk_sensei_widgets_init' );
 
-function _svbk_sensei_navigation() {
-
-	$output = '';
-
-	if ( ! has_nav_menu( 'sensei-secondary' ) || ! is_sensei() ) {
-		return $output;
-	}
-
-	//$output .= '<button class="secondary-navigation__toggle">' . esc_html__( 'Toggle Courses Menu', '_svbk' ) . '</button>';
-	$output .= '<nav id="sensei-navigation" class="secondary-navigation" role="navigation">';
-	$output .= wp_nav_menu(
-		array(
-			'theme_location' => 'sensei-secondary',
-			'menu_id'        => 'sensei-menu',
-			'echo'           => false,
-			'depth'          => 1,
-		)
-	);
-	$output .= '</nav><!-- #site-navigation -->';
-
-	return $output;
-}
-
-add_shortcode( 'sensei_navigation', '_svbk_sensei_navigation' );
-
 add_filter( 'sensei_show_main_header', '__return_true', 11 );
 add_filter( 'sensei_show_main_footer', '__return_true', 11 );
 add_filter( 'sensei_results_links', '__return_empty_string' );
 add_filter( 'sensei_show_lesson_numbers', '__return_true' );
-
-
-/*function _svbk_remove_meter_from_course_loop() {
-	global $wp_filter;
-
-	foreach ( $wp_filter['sensei_course_content_inside_after']->callbacks[10] as $handle => $hook ) {
-		if ( strpos( $handle, 'attach_course_progress' ) !== false ) {
-			unset( $wp_filter['sensei_course_content_inside_after']->callbacks[10][ $handle ] );
-		}
-	}
-
-}
-
-add_action( 'sensei_my_courses_before', '_svbk_remove_meter_from_course_loop' );*/
 
 function _svbk_sensei_course_button() {
 	?>
@@ -308,19 +269,3 @@ function _svbk_sensei_lesson_classes( $classes, $class, $post_id ) {
 
 add_filter( 'post_class', '_svbk_sensei_lesson_classes', 10, 3 );
 
-
-/**
- * Add sensei classes to the body tag.
- *
- * @param  array $classes CSS classes applied to the body tag.
- * @return array $classes modified classes list.
- */
-function _svbk_sensei_body_class( $classes ) {
-
-	if ( ( is_sensei() || is_learner_profile() ) && is_user_logged_in() && has_nav_menu( 'sensei-secondary' ) ) {
-		$classes[] = 'has-secondary-nav';
-	}
-
-	return $classes;
-}
-add_filter( 'body_class', '_svbk_sensei_body_class' );

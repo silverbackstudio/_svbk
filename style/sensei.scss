@@ -43,12 +43,6 @@ h2, h3 {
 
     .site-content {
         max-width: $size__content-width;
-        
-        @media screen and (min-width: breakpoint('tablet-landscape')) {
-            display: grid;
-            grid-template-columns: 280px auto;
-            gap: 10px;
-        }
     }
 
     #sensei-navigation,

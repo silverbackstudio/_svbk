@@ -9,6 +9,6 @@
  * @version 1.6.4
  */
 ?>
-<?php echo _svbk_sensei_navigation(); ?>
+
 <div id="primary" class="content-area sensei__content">
 	<main id="main" class="site-main" role="main">

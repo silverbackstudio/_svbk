@@ -52,40 +52,12 @@ use \Svbk\WP\Helpers;
 						elseif ( get_theme_mod( 'company_opening_hours', false ) ) : ?>
 							<span class="company-opening-hours"><?php echo get_theme_mod( 'company_opening_hours' ); ?></span>
 						<?php endif; ?>
-						<?php
-							if ( function_exists( '_svbk_woocommerce_header_cart' ) ) {
-								_svbk_woocommerce_header_cart();
-							}
-						?>
 					</div>
 					<?php endif; ?>
 				</div>
 			</div>
 			<?php endif ?>
 		
-			<?php
-
-			if ( is_front_page() ) :
-
-				$header_images = get_uploaded_header_images();
-
-				if ( get_theme_mod( 'header_cycle_images' ) && $header_images ) :
-					echo '<div class="page-featured-image-header css-crossfade">';
-					echo Svbk\WP\Helpers\Gallery\CssEffects::crossfade( '.page-featured-image-header img', count( $header_images ) );
-					foreach ( $header_images as $header_image ) {
-						echo wp_get_attachment_image( $header_image['attachment_id'], 'header' );
-					}
-					echo '</div><!-- .page-featured-image-header -->';
-					return;
-			endif;
-				?>
-		
-			<div class="custom-header-media">
-				<?php the_custom_header_markup(); ?>
-			</div>
-
-			<?php endif; ?>
-
 			<div class="wrap">
 				
 				<div class="site-branding">
@@ -113,32 +85,13 @@ use \Svbk\WP\Helpers;
 			
 				<div id="main-navigation">
 
-					<?php if ( get_theme_mod( 'header_search', false ) ) : ?>
-					<button class="search-toggle">
-						<span class="screen-reader-text"><?php esc_html_e( 'Toggle Search', '_svbk' ); ?></span>
-					</button>
-					<div class="search__overlay"></div>
-					<?php echo get_search_form(); ?>
-					<?php endif; ?>
-
-					<?php if ( is_sensei() && has_nav_menu( 'sensei-menu' ) ) : ?>
+					<?php if ( has_nav_menu( 'sensei-menu' ) ) : ?>
 					<nav id="site-navigation" role="navigation">
 						<?php
 							wp_nav_menu(
 								array(
 									'theme_location' => 'sensei-menu',
 									'menu_id'        => 'sensei-menu',
-								)
-							);
-						?>
-					</nav><!-- #sensei-navigation -->
-					<?php elseif ( has_nav_menu( 'primary' ) ) : ?>
-					<nav id="site-navigation" role="navigation">
-						<?php
-							wp_nav_menu(
-								array(
-									'theme_location' => 'primary',
-									'menu_id'        => 'primary-menu',
 								)
 							);
 						?>
