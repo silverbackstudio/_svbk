@@ -63,7 +63,7 @@ function _svbk_sensei_setup() {
 	remove_action( 'sensei_course_content_inside_before', array( Sensei()->course, 'the_course_meta' ) );
 	remove_action( 'sensei_course_content_inside_before', array( Sensei()->course, 'course_image' ), 30, 1 );
 	remove_action( 'sensei_course_content_inside_before', array( 'Sensei_Templates', 'the_title' ), 5, 1 );
-  
+	  
 	add_action( 'sensei_course_content_inside_before', array( Sensei()->course, 'course_image' ), 4 );
 	add_action( 'sensei_course_content_inside_before', array( Sensei()->course, 'the_course_meta' ), 10 );
 	add_action( 'sensei_course_content_inside_before', array( 'Sensei_Templates', 'the_title' ), 30 );
@@ -100,6 +100,19 @@ add_filter( 'sensei_show_main_header', '__return_true', 11 );
 add_filter( 'sensei_show_main_footer', '__return_true', 11 );
 add_filter( 'sensei_results_links', '__return_empty_string' );
 add_filter( 'sensei_show_lesson_numbers', '__return_true' );
+
+function raffaeleiorio_remove_meter_from_course_loop() {
+	global $wp_filter;
+
+	foreach ( $wp_filter['sensei_course_content_inside_after']->callbacks[10] as $handle => $hook ) {
+		if ( strpos( $handle, 'attach_course_progress' ) !== false ) {
+			unset( $wp_filter['sensei_course_content_inside_after']->callbacks[10][ $handle ] );
+		}
+	}
+
+}
+
+add_action( 'sensei_my_courses_before', 'raffaeleiorio_remove_meter_from_course_loop' );
 
 function _svbk_sensei_course_button() {
 	?>
@@ -144,18 +157,6 @@ function _svbk_sensei_lesson_button( $lesson_id ) {
 }
 
 add_action( 'sensei_content_lesson_after', '_svbk_sensei_lesson_button' );
-
-function _svbk_sensei_single_course_meta( $course_id ) {
-
-	echo '<div class="course-meta">';
-
-	Sensei()->course->the_progress_statement( $course_id );
-	Sensei()->course->the_progress_meter( $course_id );
-
-	_svbk_sensei_teacher();
-
-	echo '</div><!-- #course-meta --!>';
-}
 
 function _svbk_sensei_teacher( $course_id ) {
 
