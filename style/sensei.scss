@@ -40,7 +40,8 @@ h2, h3 {
 .learner-profile,
 .post-type-archive-sensei_message,
 .single-sensei_message,
-.page-template-account {
+.page-template-account,
+.sensei.archive {
 
     #page {
 
@@ -53,14 +54,21 @@ h2, h3 {
         max-width: 1110px;
     }
 
-    #primary,
-    #secondary {
+    @media screen and (min-width: breakpoint('tablet-landscape')) {
 
-        @media screen and (min-width: breakpoint('tablet-landscape')) {
+        #primary,
+        #secondary {
             background: #fff;
             border-radius: $border-radius;
-            padding: 30px;
             box-shadow: 0 0 1px rgba(0,0,0,.2);
+        }
+
+        #primary {
+            padding: 30px;
+        }
+
+        #secondary {
+            padding: 15px 20px;
         }
     }
 
@@ -70,8 +78,6 @@ h2, h3 {
     }
 
     #secondary {
-        grid-column-start: 1;
-        grid-column-end: 3;
         margin-bottom: 30px;
     }
 
@@ -80,6 +86,19 @@ h2, h3 {
         float: none;
         margin: 0;
         display: block;
+    }
+
+    .site-content {
+
+        @media screen and (min-width: breakpoint('tablet-landscape')) {
+            display: grid;
+            grid-template-columns: auto 300px;
+            gap: 20px;
+
+            #secondary {
+                margin-top: 30px;
+            }
+        }
     }
 }
 
@@ -91,14 +110,12 @@ h2, h3 {
 .course-container a.comment-reply-link,
 .course-container button.button,
 .course-container input.button,
-.course-container input[type=submit],
 .course .submit,
 .course a.button,
 .course a.button:visited,
 .course a.comment-reply-link,
 .course button.button,
 .course input.button,
-.course input[type=submit],
 .lesson #commentform #submit,
 .lesson .submit,
 .lesson a.button,
@@ -106,7 +123,6 @@ h2, h3 {
 .lesson a.comment-reply-link,
 .lesson button.button,
 .lesson input.button,
-.lesson input[type=submit],
 .quiz #commentform #submit,
 .quiz .submit,
 .quiz a.button,
@@ -114,11 +130,11 @@ h2, h3 {
 .quiz a.comment-reply-link,
 .quiz button.button,
 .quiz input.button,
+.course-container input[type=submit],
+.course input[type=submit],
+.lesson input[type=submit],
 .quiz input[type=submit] {
-    border-width: 2px;
-	border-style: solid;
 	border-color: $color__border-button;
-	background: $color__background-button;
 	color: $color__text-button;
 	@include font-size(.9);
 	text-transform: uppercase;
@@ -134,6 +150,55 @@ h2, h3 {
 				color .15s ease-in-out,
 				box-shadow .15s ease-in-out;
 
+	&:hover {
+		box-shadow: 0 2px 4px rgba(0,0,0,0.35);
+	}
+
+	&:focus,
+	&:active {
+		outline: none;
+		box-shadow: 0 0 2px rgba(0,0,0,0.4);
+	}
+
+	&:disabled {
+		opacity: .5;
+	}
+}
+
+.course #commentform #submit,
+.course-container #commentform #submit,
+.course-container .submit,
+.course-container a.button,
+.course-container a.button:visited,
+.course-container a.comment-reply-link,
+.course-container button.button,
+.course-container input.button,
+.course .submit,
+.course a.button,
+.course a.button:visited,
+.course a.comment-reply-link,
+.course button.button,
+.course input.button,
+.lesson #commentform #submit,
+.lesson .submit,
+.lesson a.button,
+.lesson a.button:visited,
+.lesson a.comment-reply-link,
+.lesson button.button,
+.lesson input.button,
+.quiz #commentform #submit,
+.quiz .submit,
+.quiz a.button,
+.quiz a.button:visited,
+.quiz a.comment-reply-link,
+.quiz button.button,
+.quiz input.button {
+    border-width: 2px;
+	border-style: solid;
+	border-color: $color__border-button;
+	background: $color__background-button;
+	color: $color__text-button;
+
 	&:visited {
 		border-color: $color__border-button;
 		color: $color__text-button;
@@ -142,7 +207,6 @@ h2, h3 {
 	&:hover {
 		background: $color__background-button-hover;
 		border-color: $color__border-button-hover;
-		box-shadow: 0 2px 4px rgba(0,0,0,0.35);
 		color: $color__text-button;
 	}
 
@@ -151,13 +215,27 @@ h2, h3 {
 		border-color: $color__border-button-focus;
 		background: $color__background-button-focus;
 		outline: none;
-		box-shadow: 0 0 2px rgba(0,0,0,0.4);
 		color: $color__text-button;
 	}
+}
 
-	&:disabled {
-		opacity: .5;
-	}
+.course-container input[type=submit],
+.course input[type=submit],
+.lesson input[type=submit],
+.quiz input[type=submit],
+.lesson footer a.button {
+    @include font-size(1);
+    display: block;
+    width: 100%;
+    padding: 1.2em;
+
+    &:hover {
+        background-color: lighten(#63a95f, 10%);
+    }
+
+    &:focus {
+        background-color: darken(#63a95f, 5%);
+    }
 }
 
 .course__teacher,
@@ -187,7 +265,7 @@ h2, h3 {
 .course-title {
 
     a {
-        @include font-size(1.3);
+        @include font-size(1.2);
         color: $color__text-main;
         display: block;
         text-decoration: none;
@@ -301,7 +379,8 @@ article a.button.send-message-button {
 .lesson--preview a.button.to-single,
 .lesson--preview a.button.to-single:visited,
 .course-container .post.type-course a.button,
-.course-container .post.type-course a.button:visited {
+.course-container .post.type-course a.button:visited,
+.goto {
     float: right;
     color: $color__background-button;
 
@@ -327,13 +406,17 @@ article a.button.send-message-button {
 .course__teacher,
 .learner-info #learner-info {
     @include font-size(.8);
-    color: #888;
     line-height: normal;
     display: grid;
     grid-template-columns: 64px auto;
     gap: 20px;
     width: auto;
     align-items: center;
+    background: $color__background-gradient;
+    border-radius: $border-radius;
+    padding: 10px;
+    color: #fff;
+    box-shadow: 1px 1px 3px rgba(0,0,0,.5);
 
     span,
     div {
@@ -353,18 +436,17 @@ article a.button.send-message-button {
     .learner-content h2 {
         @include font-size(1);
         font-weight: bold;
-        color: $color__text-main;
         margin: 0;
     }
 }
 
 .lesson-meta {
-    @include font-size(.9);
+    @include font-size(.85);
 
     span {
         margin-right: 10px;
         display: inline-block;
-        color: #888;
+        color: $color__text-main;
 
         &:last-of-type {
             margin-right: 0;
@@ -440,8 +522,18 @@ article a.button.send-message-button {
         }
     }
 
+    .lesson-excerpt,
+    .entry > p {
+        margin-bottom: 10px;
+        color: #888;
+    }
+
     &:last-of-type {
         margin-bottom: 0;
+    }
+
+    a.button.to-single {
+        padding: .7em 0;
     }
 
     @media screen and (min-width: breakpoint('phone')) {
@@ -506,23 +598,6 @@ article a.button.send-message-button {
     margin-right: 0;
 }
 
-.post-entries {
-
-    &:after {
-        @include clearfix();
-        @include clearfix-after();
-    }
-
-    .nav-next {
-        padding: 15px;
-
-        .single-lesson & {
-            float: none;
-            background: #fafafa;
-        }
-    }
-}
-
 .single-course .type-course > header h2,
 #private_message {
     border-bottom: 1px solid $color__background-hr;
@@ -539,6 +614,7 @@ article a.button.send-message-button {
     display: block;
     text-align: left;
     border-radius: $border-radius;
+    padding: .7em 0;
 
     &:before {
         @include icon-content('\e93b');
@@ -748,5 +824,141 @@ article a.button.send-message-button {
 
     + h2 {
         margin-top: 25px;
+    }
+}
+
+.course .module {
+    margin-top: 30px;
+
+    header,
+    .lesson-title,
+    .module-description,
+    .module-lessons header {
+        padding: 0 !important;
+    }
+
+    header,
+    .module-description,
+    .module-lessons header {
+        background: none;
+    }
+
+    .module-description {
+        margin: 10px 0 30px;
+    }
+
+    .module-lessons header,
+    .lesson-title {
+        border: none !important;
+    }
+
+    .lesson--preview {
+        border-top: none;
+    }
+
+    > header h2 a {
+        @include font-size(1.3);
+    }
+
+    .module-lessons > header {
+        @include screen-reader-text();
+    }
+}
+
+.lesson {
+
+    header.lesson-title,
+    header.lesson-title h1 {
+        display: block;
+    }
+
+    header.lesson-title {
+        margin-bottom: 30px;
+    }
+}
+
+.post-entries {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+
+    &:after {
+        @include clearfix();
+        @include clearfix-after();
+    }
+
+    > div {
+        float: none;
+
+        &.nav-next {
+            text-align: right;
+        }
+
+        .single-lesson & {
+
+            a,
+            img {
+                display: block;
+            }
+
+            a {
+                padding: 10px 10px 0 10px;
+            }
+
+            span {
+                display: block;
+                line-height: normal;
+            }
+
+            .prev-next.notice {
+                @include font-size(.9);
+                font-weight: normal;
+                color: #888;
+            }
+
+            .next-title {
+                color: $color__text-main;
+            }
+
+            .goto {
+                float: none;
+                padding: .7em 0;
+            }
+    
+            a {
+                display: block;
+                box-shadow: 1px 1px 4px rgba(0,0,0,.4);
+                border-radius: 4px;
+                text-decoration: none;
+
+                &.has-thumbnail {
+                    position: relative;
+                    min-height: 110px;
+                    border-radius: $border-radius;
+                    padding: 10px 10px 10px 130px;
+
+                    img {
+                        width: 110px;
+                        height: 65px;
+                        object-fit: cover;
+                        position: absolute;
+                        top: 10px;
+                        left: 10px;
+                    }
+                }
+            }
+
+            @media screen and (min-width: breakpoint('tablet-landscape')) {
+
+                a.has-thumbnail {
+                    padding: 10px 10px 10px 170px;
+
+                    img {
+                        width: 150px;
+                        height: 90px; 
+                    }
+                }
+            }
+        }
     }
 }

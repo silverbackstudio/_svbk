@@ -1,6 +1,6 @@
 //Corporate
-$color__corporate: #0097a7;
-$color__corporate-secondary: #ffa000;
+$color__corporate: #1D4E89;
+$color__corporate-secondary: #3b9dff;
 $color__corporate-tertiary: #1D4E89;
 
 //Text
@@ -24,7 +24,7 @@ $color__background-sub-footer: #333;
 
 $color__background-dark: #6b6b6b;
 $color__background-light: #F6F7F9;
-$color__background-gradient: linear-gradient(to bottom, $color__corporate, darken($color__corporate, 15%));
+$color__background-gradient: linear-gradient(to left, $color__corporate, darken($color__corporate, 15%));
 
 $color__background-hr: #bababa;
 $color__background-pre: #eee;
@@ -36,7 +36,7 @@ $color__border-abbr: #666;
 
 //Button
 $color__text-button: #fff;
-$color__background-button: #ffa000;
+$color__background-button: #3b9dff;
 $color__border-button: $color__background-button;
 $color__background-button-hover: lighten($color__background-button, 10%);
 $color__border-button-hover: $color__background-button-hover;

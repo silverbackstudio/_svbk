@@ -54,7 +54,7 @@ if ( is_array( $modules_and_lessons ) && count( $modules_and_lessons ) > 0 ) {
 if ( isset( $next ) ) { ?>
 	<nav id="post-entries" class="post-entries fix">
 		<div class="nav-next fr">
-			<a href="<?php echo esc_url( sensei_get_navigation_url( $course_id, $next ) ); ?>" rel="prev">
+			<a href="<?php echo esc_url( sensei_get_navigation_url( $course_id, $next ) ); ?>" rel="prev" class="<?php if ( get_the_post_thumbnail() ) : echo 'has-thumbnail'; endif; ?>">
 				<?php echo get_the_post_thumbnail( $next, 'thumbnail' ); ?>
 				<span class="prev-next notice"><?php _e( 'Next Lesson', '_svbk' ); ?>&colon;</span>
 				<span class="next-title"><?php echo get_the_title( $next ); ?></span>

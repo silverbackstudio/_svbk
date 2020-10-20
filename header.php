@@ -43,7 +43,7 @@ use \Svbk\WP\Helpers;
 						<?php endif; ?>
 					</div>
 					<? endif; ?>
-					<?php if ( get_theme_mod( 'company_opening_hours', false ) || function_exists( '_svbk_woocommerce_header_cart' ) ) : ?>
+					<?php if ( get_theme_mod( 'company_opening_hours', false ) || function_exists( '_svbk_woocommerce_header_cart' ) || function_exists( 'sensei_user_login_url' ) ) : ?>
 					<div class="top-header__right">
 						<?php if ( function_exists( 'sensei_user_login_url' ) ) : ?>
 							<a class="login" href="<?php echo sensei_user_login_url() ?>"><?php esc_html_e('Login', '_svbk') ?></a>
@@ -121,7 +121,7 @@ use \Svbk\WP\Helpers;
 					<?php echo get_search_form(); ?>
 					<?php endif; ?>
 
-					<?php if ( is_sensei() && has_nav_menu( 'sensei-menu' ) ) : ?>
+					<?php if ( class_exists('Sensei_Main') && is_sensei() && has_nav_menu( 'sensei-menu' ) ) : ?>
 					<nav id="site-navigation" role="navigation">
 						<?php
 							wp_nav_menu(

@@ -63,7 +63,7 @@ function _svbk_sensei_setup() {
 	remove_action( 'sensei_course_content_inside_before', array( Sensei()->course, 'the_course_meta' ) );
 	remove_action( 'sensei_course_content_inside_before', array( Sensei()->course, 'course_image' ), 30, 1 );
 	remove_action( 'sensei_course_content_inside_before', array( 'Sensei_Templates', 'the_title' ), 5, 1 );
-	  
+
 	add_action( 'sensei_course_content_inside_before', array( Sensei()->course, 'course_image' ), 4 );
 	add_action( 'sensei_course_content_inside_before', array( Sensei()->course, 'the_course_meta' ), 10 );
 	add_action( 'sensei_course_content_inside_before', array( 'Sensei_Templates', 'the_title' ), 30 );
@@ -170,6 +170,7 @@ function _svbk_sensei_teacher( $course_id ) {
 			<span class="name" ><?php echo esc_html( get_the_author_meta( 'display_name', $teacher_id ) ); ?></span>
 			<span class="role"><?php _e( 'Teacher', '_svbk' ); ?></span>
 		</p>
+
 	</div>
 		<?php
 	}
