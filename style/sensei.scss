@@ -222,7 +222,7 @@ h2, h3 {
 .course-container input[type=submit],
 .course input[type=submit],
 .lesson input[type=submit],
-.quiz input[type=submit],
+.quiz input[type=submit].complete,
 .lesson footer a.button {
     @include font-size(1);
     display: block;
@@ -235,6 +235,17 @@ h2, h3 {
 
     &:focus {
         background-color: darken(#63a95f, 5%);
+    }
+}
+
+.quiz input[type=submit].reset, {
+
+    &:hover {
+        background-color: lighten(#ed6c6c, 10%);
+    }
+
+    &:focus {
+        background-color: darken(#ed6c6c, 5%);
     }
 }
 
@@ -316,6 +327,11 @@ h2, h3 {
 
     &:before {
         display: none;
+    }
+
+    .course-excerpt {
+        margin-top: 10px;
+        color: #888;
     }
 
     .button {
