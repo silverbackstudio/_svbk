@@ -143,7 +143,7 @@ class Post_List_Block extends Post_List {
 			$classes[] = $blockAttributes['className'];
 		}
 	
-		$attributes['container_class'] = join( $classes, ' ' );
+		$attributes['container_class'] = join( ' ', $classes );
 
 		return parent::render($attributes);
 	}

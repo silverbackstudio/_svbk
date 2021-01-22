@@ -142,7 +142,6 @@ input[type="submit"],
 		@each $name, $value in $colors {
 
 			&.has-#{$name}-color {
-				color: $value;
 	
 				&:hover {
 					color: lighten( $value, 10% );
@@ -177,7 +176,6 @@ input[type="submit"],
 	@each $name, $value in $colors {
 
 		&.has-#{$name}-color {
-			border-color: $value;
 
 			&:hover {
 				border-color: lighten( $value, 10% );
