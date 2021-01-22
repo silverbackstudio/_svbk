@@ -3,39 +3,54 @@
 //@import 'desktop/logo-center';
 
 .site-header {
+	@include font-size(.9);
 	background: $color__background-header;
 	width: 100%;
 	z-index: 999;
-	box-shadow: 0 0 3px rgba(0,0,0,.2);
-    position: relative;
+	box-shadow: 0 0 3px #00000033;
+	position: relative;
+	
+	.wrap {
+		display: grid;
+		grid-column-gap: 10px;
+		grid-template-columns: auto 40px;
+	}
 }
 
 .site-branding {
-	display: inline-block;
+	line-height: normal;
+	margin: 10px 0;
+
+	a,
+	a:visited {
+		color: $color__text-main;
+		text-decoration: none;
+	}
+
+	.site-title,
+	.site-description {
+		margin: 0;
+	}
+
+	.site-description {
+		color: $color__background-dark;
+	}
 
 	img {
 		display: block;
 		height: $size__logo-height-mobile;
 		width: auto;
-		margin-top: 7px;
-		margin-bottom: 2px;
+		margin: 0;
 	}
 
 	@media screen and (min-width: breakpoint('desktop-nav')) {
-		display: inline-block;
-		vertical-align: bottom;
+
+		.site-title {
+			@include font-size(1.2);
+		}
 
 		img {
 			height: $size__logo-height-desktop;
-			margin-top: 10px;
-			margin-bottom: 10px;
 		}
     }
-    
-	@media screen and (min-width: breakpoint('desktop-nav')) {
-
-		.wrap {
-			position: relative;
-		}
-	}
 }

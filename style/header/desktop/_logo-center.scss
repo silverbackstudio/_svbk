@@ -1,15 +1,10 @@
-.site-header {
+#masthead {
 
 	@media screen and (min-width: breakpoint('desktop-nav')) {
+		text-align: center;
 
-		#site-navigation li:not(.cta-item) a,
-		button.search-toggle {
-			height: 55px;
-		}
-
-		button.search-toggle:after,
-		#site-navigation li:not(.cta-item) a {
-			line-height: 55px;
+		.wrap {
+			display: block;
 		}
 
 		div#main-navigation {
@@ -20,8 +15,6 @@
 			display: block;
 
 			li {
-				display: inline-block;
-				float: none;
 
 				&.cta-item {
 					height: 43px !important;
@@ -33,9 +26,17 @@
 			}
 		}
 
+		#primary-menu {
+			justify-content: center;
+			align-items: center;
+
+			> li:not(.cta-item) > a {
+				height: 55px;
+				line-height: 55px;
+			}
+		}
+
 		.site-branding {
-			float: none;
-			display: block;
 			padding: 15px;
 			margin: 0;
 			border-bottom: 1px solid #ddd;

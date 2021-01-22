@@ -1,4 +1,4 @@
-.site-header.stuck {
+#masthead.stuck {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -37,7 +37,6 @@
 	@media screen and (min-width: breakpoint('desktop-nav')) {
 
 		#main-navigation li.cta-item {
-			height: $size__header-height-desktop;
 			animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
 
 			a {

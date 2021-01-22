@@ -1,6 +1,7 @@
 #main-navigation {
+	width: 100%;
 	position: fixed;
-    right: -100%;
+	right: -100%;
 
 	ul {
 		list-style: none;
@@ -26,18 +27,16 @@
 	}
 
 	@media screen and (min-width: breakpoint('desktop-nav')) {
-		text-align: center;
-		background: none;
 		padding: 0;
+		box-shadow: none;
 		position: static;
-		width: auto;
-        box-shadow: none;
 
         .sub-menu {
             @include screen-reader-text();
         }
 
         ul {
+			display: flex;
 
             &:after {
 				@include clearfix();
@@ -46,7 +45,6 @@
             
             li {
                 margin: 0;
-                float: left;
                 padding: 0 10px;
 
                 a {
@@ -59,11 +57,7 @@
 }
 
 .main-navigation-toggle {
-	position: absolute;
-    top: 0;
-    right: $padding__content-mobile;
 	padding: 0;
-	height: $size__header-height-mobile;
 	background: none;
 	border: none;
 	box-shadow: none;

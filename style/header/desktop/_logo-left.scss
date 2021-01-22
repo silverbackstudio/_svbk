@@ -1,26 +1,20 @@
-.site-header {
+#masthead {
 
 	@media screen and (min-width: breakpoint('desktop-nav')) {
 
+		.wrap {
+			display: flex;
+			justify-content: space-between;
+		}
+
 		.site-branding {
-			margin-left: 0;
+			flex-grow: 1;
+			margin-top: 15px;
+			line-height: 1.5em;
 		}
 
-		#main-navigation {
-			float: right;
-
-			nav {
-				float: left;
-				margin-left: 15px;
-			}
-
-			li a {
-				line-height: $size__header-height-desktop;
-			}
+		#primary-menu > li > a {
+			line-height: $size__header-height-desktop;
 		}
-	}
-
-	form.search-form button:before {
-		right: $padding__content-desktop + 14px;
 	}
 }
