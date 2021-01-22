@@ -649,7 +649,7 @@ add_action( 'wp_enqueue_scripts', '_svbk_scripts', 15 );
  */
 function _svbk_select_critical_css_file($critical_css_path){
 	
-	if ( is_home() || is_single() ){
+	if ( is_home() || is_single() || is_archive('post') ){
 		$critical_css_path = get_theme_file_path( '/dist/css/critical-blog.css' );
 	}
 

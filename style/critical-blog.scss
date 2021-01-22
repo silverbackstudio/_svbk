@@ -131,12 +131,8 @@
 		}
 
 		&.current-cat a {
-			background: $color__corporate;
+			color: $color__text-main;
 			cursor: default;
-
-			&:hover {
-				background: $color__corporate;
-			}
 		}
 
 		a {
