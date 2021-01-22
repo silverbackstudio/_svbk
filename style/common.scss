@@ -37,9 +37,7 @@
 .wp-block-group.alignwide,
 .wp-block-media-text.alignwide,
 .wp-block-image.alignwide,
-.wp-block-cover.alignwide,
-.wp-block-image.alignfull,
-.wp-block-cover.alignfull {
+.wp-block-cover.alignwide {
 	margin-top: 0;
 	margin-bottom: 0;
 
@@ -61,7 +59,12 @@
 .entry-content:not(.post__content) >,
 .entry-content > .wp-block-group .wp-block-group__inner-container > {
 
-	h1, h2, h3, h4, h5, h6,
+	h1.has-text-align-center,
+	h2.has-text-align-center,
+	h3.has-text-align-center,
+	h4.has-text-align-center,
+	h5.has-text-align-center,
+	h6.has-text-align-center,
 	p, ul, ol,
 	.wp-block-pullquote,
 	.wp-block-svbk-icon-paragraph,
@@ -70,7 +73,12 @@
 		max-width: $size__text-width;
 	}
 
-	h1, h2, h3, h4, h5, h6,
+	h1.has-text-align-center,
+	h2.has-text-align-center,
+	h3.has-text-align-center,
+	h4.has-text-align-center,
+	h5.has-text-align-center,
+	h6.has-text-align-center,
 	p, ul, ol,
 	.wp-block-pullquote,
 	.wp-block-svbk-icon-paragraph,

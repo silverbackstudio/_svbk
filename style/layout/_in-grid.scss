@@ -16,20 +16,22 @@
 	}
 }
 
-.wp-block-svbk-hero {
-	
+figure.wp-block-image.alignwide,
+figure.wp-block-image.alignfull,
+.wp-block-svbk-hero,
+div.wp-block-cover.alignfull {
+
 	@media screen and (min-width: $size__page-max-width) {
-		padding-left: $padding__content-desktop;
-		padding-right: $padding__content-desktop;
 		margin-left: -$padding__content-desktop;
 		margin-right: -$padding__content-desktop;
 	}
 }
 
-.wp-block-image.alignwide {
-
+.wp-block-svbk-hero,
+div.wp-block-cover.alignfull {
+	
 	@media screen and (min-width: $size__page-max-width) {
-		margin-top: 0;
-		margin-bottom: 0;
+		padding-left: $padding__content-desktop;
+		padding-right: $padding__content-desktop;
 	}
 }
