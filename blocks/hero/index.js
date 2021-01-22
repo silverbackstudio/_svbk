@@ -5,7 +5,7 @@
  * BLOCK: hero
  *
  * Shows a  hero
- * @author: Brando Meniconi <b.meniconi@silverbackstudio.it>
+ * @author: Silverback Studio <webmaster@silverbackstudio.it>
  */
 import edit from './edit';
 

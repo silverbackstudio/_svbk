@@ -5,7 +5,7 @@
  * BLOCK: testimonial
  *
  * Shows a  testimonial
- * @author: Brando Meniconi <b.meniconi@silverbackstudio.it>
+ * @author: Silverback Studio <webmaster@silverbackstudio.it>
  */
 
 /**

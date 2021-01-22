@@ -11,7 +11,7 @@ use Wp_Query;
  *
  * @package  _svbk
  * @category Integration
- * @author   Brando Meniconi
+ * @author   Silverback Studio
  */
 
 class AffiliateWP {

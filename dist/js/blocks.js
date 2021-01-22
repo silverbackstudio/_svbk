@@ -391,7 +391,7 @@ __webpack_require__.r(__webpack_exports__);
  * BLOCK: card
  *
  * Shows a  card
- * @author: Brando Meniconi <b.meniconi@silverbackstudio.it>
+ * @author: Silverback Studio <webmaster@silverbackstudio.it>
  */
 
 /**
@@ -1394,7 +1394,7 @@ __webpack_require__.r(__webpack_exports__);
  * BLOCK: card
  *
  * Shows a  card
- * @author: Brando Meniconi <b.meniconi@silverbackstudio.it>
+ * @author: Silverback Studio <webmaster@silverbackstudio.it>
  */
 
 /**
@@ -1791,7 +1791,7 @@ __webpack_require__.r(__webpack_exports__);
  * BLOCK: card
  *
  * Shows a  card
- * @author: Brando Meniconi <b.meniconi@silverbackstudio.it>
+ * @author: Silverback Studio <webmaster@silverbackstudio.it>
  */
 
 /**
@@ -4471,7 +4471,7 @@ __webpack_require__.r(__webpack_exports__);
  * BLOCK: card
  *
  * Shows a  card
- * @author: Brando Meniconi <b.meniconi@silverbackstudio.it>
+ * @author: Silverback Studio <webmaster@silverbackstudio.it>
  */
 
 /**
@@ -4934,7 +4934,7 @@ __webpack_require__.r(__webpack_exports__);
  * BLOCK: hero
  *
  * Shows a  hero
- * @author: Brando Meniconi <b.meniconi@silverbackstudio.it>
+ * @author: Silverback Studio <webmaster@silverbackstudio.it>
  */
 
 /**
@@ -5305,7 +5305,7 @@ __webpack_require__.r(__webpack_exports__);
  * BLOCK: card
  *
  * Shows a  card
- * @author: Brando Meniconi <b.meniconi@silverbackstudio.it>
+ * @author: Silverback Studio <webmaster@silverbackstudio.it>
  */
 
 /**
@@ -5921,7 +5921,7 @@ var _name, _title;
  * BLOCK: card
  *
  * Shows a  card
- * @author: Brando Meniconi <b.meniconi@silverbackstudio.it>
+ * @author: Silverback Studio <webmaster@silverbackstudio.it>
  */
 
 /**
@@ -6435,7 +6435,7 @@ __webpack_require__.r(__webpack_exports__);
  * BLOCK: card
  *
  * Shows a  card
- * @author: Brando Meniconi <b.meniconi@silverbackstudio.it>
+ * @author: Silverback Studio <webmaster@silverbackstudio.it>
  */
 
 /**
@@ -7140,7 +7140,7 @@ __webpack_require__.r(__webpack_exports__);
  * BLOCK: card
  *
  * Shows a card
- * @author: Brando Meniconi <b.meniconi@silverbackstudio.it>
+ * @author: Silverback Studio <webmaster@silverbackstudio.it>
  */
 
 /**
@@ -7499,7 +7499,7 @@ __webpack_require__.r(__webpack_exports__);
  * BLOCK: card
  *
  * Shows a card
- * @author: Brando Meniconi <b.meniconi@silverbackstudio.it>
+ * @author: Silverback Studio <webmaster@silverbackstudio.it>
  */
 
 /**
@@ -7781,7 +7781,7 @@ __webpack_require__.r(__webpack_exports__);
  * BLOCK: card
  *
  * Shows a  card
- * @author: Brando Meniconi <b.meniconi@silverbackstudio.it>
+ * @author: Silverback Studio <webmaster@silverbackstudio.it>
  */
 
 /**
@@ -8410,7 +8410,7 @@ __webpack_require__.r(__webpack_exports__);
  * BLOCK: testimonial
  *
  * Shows a  testimonial
- * @author: Brando Meniconi <b.meniconi@silverbackstudio.it>
+ * @author: Silverback Studio <webmaster@silverbackstudio.it>
  */
 
 /**
@@ -9054,7 +9054,7 @@ __webpack_require__.r(__webpack_exports__);
  * BLOCK: card
  *
  * Block for customers logos 
- * @author: Brando Meniconi <b.meniconi@silverbackstudio.it>
+ * @author: Silverback Studio <webmaster@silverbackstudio.it>
  */
 
 /**
@@ -9178,7 +9178,7 @@ __webpack_require__.r(__webpack_exports__);
  * BLOCK: card
  *
  * Shows a  card
- * @author: Brando Meniconi <b.meniconi@silverbackstudio.it>
+ * @author: Silverback Studio <webmaster@silverbackstudio.it>
  */
 
 /**
@@ -9591,7 +9591,7 @@ __webpack_require__.r(__webpack_exports__);
  * BLOCK: card
  *
  * Shows a  card
- * @author: Brando Meniconi <b.meniconi@silverbackstudio.it>
+ * @author: Silverback Studio <webmaster@silverbackstudio.it>
  */
 
 /**

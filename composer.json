@@ -5,8 +5,8 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Brando Meniconi",
-            "email": "b.meniconi@silverbackstudio.io"
+            "name": "Silverback Studio",
+            "email": "webmaster@silverbackstudio.it"
         }
     ],
     "repositories": [
@@ -25,7 +25,7 @@
     "require-dev": {
         "wp-coding-standards/wpcs": "^1.2",
         "dealerdirect/phpcodesniffer-composer-installer": "^0.4.2",
-        "wimg/php-compatibility": "^8.0"
+        "phpcompatibility/php-compatibility": "^9.3.5"
     },
     "autoload": {
         "psr-4": {"Svbk\\WP\\Theme\\_svbk\\": "inc/"},

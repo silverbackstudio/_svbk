@@ -5,7 +5,7 @@
  * BLOCK: card
  *
  * Shows a  card
- * @author: Brando Meniconi <b.meniconi@silverbackstudio.it>
+ * @author: Silverback Studio <webmaster@silverbackstudio.it>
  */
 
 import edit from './edit';

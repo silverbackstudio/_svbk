@@ -5,7 +5,7 @@
  * BLOCK: card
  *
  * Block for customers logos 
- * @author: Brando Meniconi <b.meniconi@silverbackstudio.it>
+ * @author: Silverback Studio <webmaster@silverbackstudio.it>
  */
 
 /**

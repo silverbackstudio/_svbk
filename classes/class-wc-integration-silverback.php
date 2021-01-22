@@ -11,7 +11,7 @@ use Svbk\WP\Helpers;
  *
  * @package  WC_Theme_Integration
  * @category Integration
- * @author   Brando Meniconi
+ * @author   Silverback Studio
  */
 
 if ( ! class_exists( __NAMESPACE__ . '\\WC_Theme_Integration' ) ) :
