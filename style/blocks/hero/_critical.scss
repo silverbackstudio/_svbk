@@ -18,11 +18,6 @@
         align-items: center;
         padding: 60px calc(50vw - 50%);
     }
-
-    @media screen and (min-width: $size__page-max-width) {
-		margin: 30px #{-$padding__content-desktop};
-        padding: 80px $padding__content-desktop;
-    }
 }
 
 .wp-block-svbk-hero__picture {
