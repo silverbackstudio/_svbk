@@ -51,11 +51,10 @@ import ImageEdit from '../common/image';
  * @type {string[]}
 */
 const ALLOWED_BLOCKS = [ 
-	'core/paragraph', 
+	'core/paragraph',
 	'core/list', 
-	'core/more', 
-	'core-embed/youtube',
-	'core-embed/vimeo',
+	'core/more',
+	'core/html',
 	'core/button'
 ];
 
@@ -71,7 +70,7 @@ const TEMPLATE = [
 	} ],
 	[ 'core/more', { } ],	
 	[ 'core/paragraph', {
-		content: 'This text should be shown in the single testimonial..',
+		content: 'This text should be shown in the single testimonial.',
 	} ],
 ];
 

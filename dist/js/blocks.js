@@ -8110,7 +8110,7 @@ var _wp$components = wp.components,
  * @type {string[]}
 */
 
-var ALLOWED_BLOCKS = ['core/paragraph', 'core/list', 'core/more', 'core-embed/youtube', 'core-embed/vimeo', 'core/button'];
+var ALLOWED_BLOCKS = ['core/paragraph', 'core/list', 'core/more', 'core/html', 'core/button'];
 /**
  * Default block template
  * 
@@ -8121,7 +8121,7 @@ var ALLOWED_BLOCKS = ['core/paragraph', 'core/list', 'core/more', 'core-embed/yo
 var TEMPLATE = [['core/paragraph', {
   content: 'This text should be shown in the preview..'
 }], ['core/more', {}], ['core/paragraph', {
-  content: 'This text should be shown in the single testimonial..'
+  content: 'This text should be shown in the single testimonial.'
 }]];
 
 var TestimonialEdit =
@@ -10075,11 +10075,202 @@ module.exports = _typeof;
 
 /***/ }),
 
+/***/ "./node_modules/@googlemaps/js-api-loader/dist/index.esm.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@googlemaps/js-api-loader/dist/index.esm.js ***!
+  \******************************************************************/
+/*! exports provided: Loader */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Loader", function() { return Loader; });
+/**
+ * Copyright 2019 Google LLC. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at.
+ *
+ *      Http://www.apache.org/licenses/LICENSE-2.0.
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/**
+ * [[Loader]] makes it easier to add Google Maps JavaScript API to your application
+ * dynamically using
+ * [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
+ * It works by dynamically creating and appending a script node to the the
+ * document head and wrapping the callback function so as to return a promise.
+ *
+ * ```
+ * const loader = new Loader({
+ *   apiKey: "",
+ *   version: "weekly",
+ *   libraries: ["places"]
+ * });
+ *
+ * loader.load().then(() => {
+ *   const map = new google.maps.Map(...)
+ * })
+ * ```
+ */
+var Loader = /** @class */ (function () {
+    /**
+     * Creates an instance of Loader using [[LoaderOptions]]. No defaults are set
+     * using this library, instead the defaults are set by the Google Maps
+     * JavaScript API server.
+     *
+     * ```
+     * const loader = Loader({apiKey, version: 'weekly', libraries: ['places']});
+     * ```
+     */
+    function Loader(_a) {
+        var apiKey = _a.apiKey, channel = _a.channel, _b = _a.id, id = _b === void 0 ? "__googleMapsScriptId" : _b, _c = _a.libraries, libraries = _c === void 0 ? [] : _c, language = _a.language, region = _a.region, version = _a.version, mapIds = _a.mapIds, nonce = _a.nonce, _d = _a.url, url = _d === void 0 ? "https://maps.googleapis.com/maps/api/js" : _d;
+        this.CALLBACK = "__googleMapsCallback";
+        this.callbacks = [];
+        this.done = false;
+        this.loading = false;
+        this.version = version;
+        this.apiKey = apiKey;
+        this.channel = channel;
+        this.id = id;
+        this.libraries = libraries;
+        this.language = language;
+        this.region = region;
+        this.mapIds = mapIds;
+        this.nonce = nonce;
+        this.url = url;
+    }
+    /**
+     * CreateUrl returns the Google Maps JavaScript API script url given the [[LoaderOptions]].
+     *
+     * @ignore
+     */
+    Loader.prototype.createUrl = function () {
+        var url = this.url;
+        url += "?callback=" + this.CALLBACK;
+        if (this.apiKey) {
+            url += "&key=" + this.apiKey;
+        }
+        if (this.channel) {
+            url += "&channel=" + this.channel;
+        }
+        if (this.libraries.length > 0) {
+            url += "&libraries=" + this.libraries.join(",");
+        }
+        if (this.language) {
+            url += "&language=" + this.language;
+        }
+        if (this.region) {
+            url += "&region=" + this.region;
+        }
+        if (this.version) {
+            url += "&v=" + this.version;
+        }
+        if (this.mapIds) {
+            url += "&map_ids=" + this.mapIds.join(",");
+        }
+        return url;
+    };
+    /**
+     * Load the Google Maps JavaScript API script and return a Promise.
+     */
+    Loader.prototype.load = function () {
+        return this.loadPromise();
+    };
+    /**
+     * Load the Google Maps JavaScript API script and return a Promise.
+     *
+     * @ignore
+     */
+    Loader.prototype.loadPromise = function () {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.loadCallback(function (err) {
+                if (!err) {
+                    resolve();
+                }
+                else {
+                    reject(err);
+                }
+            });
+        });
+    };
+    /**
+     * Load the Google Maps JavaScript API script with a callback.
+     */
+    Loader.prototype.loadCallback = function (fn) {
+        this.callbacks.push(fn);
+        this.execute();
+    };
+    /**
+     * Set the script on document.
+     */
+    Loader.prototype.setScript = function () {
+        if (this.id && document.getElementById(this.id)) {
+            this.callback();
+            return;
+        }
+        var url = this.createUrl();
+        var script = document.createElement("script");
+        script.id = this.id;
+        script.type = "text/javascript";
+        script.src = url;
+        script.onerror = this.loadErrorCallback.bind(this);
+        script.defer = true;
+        script.async = true;
+        if (this.nonce) {
+            script.nonce = this.nonce;
+        }
+        document.head.appendChild(script);
+    };
+    Loader.prototype.loadErrorCallback = function (e) {
+        this.onerrorEvent = e;
+        this.callback();
+    };
+    Loader.prototype.setCallback = function () {
+        window.__googleMapsCallback = this.callback.bind(this);
+    };
+    Loader.prototype.callback = function () {
+        var _this = this;
+        this.done = true;
+        this.loading = false;
+        this.callbacks.forEach(function (cb) {
+            cb(_this.onerrorEvent);
+        });
+        this.callbacks = [];
+    };
+    Loader.prototype.execute = function () {
+        if (this.done) {
+            this.callback();
+        }
+        else {
+            if (this.loading) ;
+            else {
+                this.loading = true;
+                this.setCallback();
+                this.setScript();
+            }
+        }
+    };
+    return Loader;
+}());
+
+
+
+
+/***/ }),
+
 /***/ "./node_modules/@react-google-maps/api/dist/reactgooglemapsapi.esm.js":
 /*!****************************************************************************!*\
   !*** ./node_modules/@react-google-maps/api/dist/reactgooglemapsapi.esm.js ***!
   \****************************************************************************/
-/*! exports provided: Autocomplete, BicyclingLayer, Circle, Data, DirectionsRenderer, DirectionsService, DistanceMatrixService, DrawingManager, GoogleMap, GroundOverlay, HeatmapLayer, InfoBox, InfoWindow, KmlLayer, LoadScript, LoadScriptNext, Marker, MarkerClusterer, OverlayView, Polygon, Polyline, Rectangle, StandaloneSearchBox, StreetViewPanorama, StreetViewService, TrafficLayer, TransitLayer, useGoogleMap, useLoadScript */
+/*! exports provided: Autocomplete, BicyclingLayer, Circle, Data, DirectionsRenderer, DirectionsService, DistanceMatrixService, DrawingManager, GoogleMap, GroundOverlay, HeatmapLayer, InfoBox, InfoWindow, KmlLayer, LoadScript, LoadScriptNext, MapContext, Marker, MarkerClusterer, OverlayView, Polygon, Polyline, Rectangle, StandaloneSearchBox, StreetViewPanorama, StreetViewService, TrafficLayer, TransitLayer, useGoogleMap, useJsApiLoader, useLoadScript */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10100,6 +10291,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "KmlLayer", function() { return KmlLayer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoadScript", function() { return LoadScript; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoadScriptNext", function() { return LoadScriptNext$1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MapContext", function() { return MapContext; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Marker", function() { return Marker; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MarkerClusterer", function() { return ClustererComponent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OverlayView", function() { return OverlayView; });
@@ -10112,20 +10304,59 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TrafficLayer", function() { return TrafficLayer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TransitLayer", function() { return TransitLayer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useGoogleMap", function() { return useGoogleMap; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useJsApiLoader", function() { return useJsApiLoader; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useLoadScript", function() { return useLoadScript; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var invariant__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! invariant */ "./node_modules/invariant/browser.js");
 /* harmony import */ var invariant__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(invariant__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _react_google_maps_marker_clusterer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @react-google-maps/marker-clusterer */ "./node_modules/@react-google-maps/marker-clusterer/dist/markerclusterer.esm.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-dom */ "react-dom");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _react_google_maps_infobox__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @react-google-maps/infobox */ "./node_modules/@react-google-maps/infobox/dist/infobox.esm.js");
+/* harmony import */ var _googlemaps_js_api_loader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @googlemaps/js-api-loader */ "./node_modules/@googlemaps/js-api-loader/dist/index.esm.js");
+/* harmony import */ var _react_google_maps_marker_clusterer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @react-google-maps/marker-clusterer */ "./node_modules/@react-google-maps/marker-clusterer/dist/markerclusterer.esm.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-dom */ "react-dom");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _react_google_maps_infobox__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @react-google-maps/infobox */ "./node_modules/@react-google-maps/infobox/dist/infobox.esm.js");
 
 
 
 
 
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+  try {
+    var info = gen[key](arg);
+    var value = info.value;
+  } catch (error) {
+    reject(error);
+    return;
+  }
+
+  if (info.done) {
+    resolve(value);
+  } else {
+    Promise.resolve(value).then(_next, _throw);
+  }
+}
+
+function _asyncToGenerator(fn) {
+  return function () {
+    var self = this,
+        args = arguments;
+    return new Promise(function (resolve, reject) {
+      var gen = fn.apply(self, args);
+
+      function _next(value) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+      }
+
+      function _throw(err) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+      }
+
+      _next(undefined);
+    });
+  };
+}
 
 function _extends() {
   _extends = Object.assign || function (target) {
@@ -10170,27 +10401,35 @@ var MapContext =
 /*#__PURE__*/
 Object(react__WEBPACK_IMPORTED_MODULE_0__["createContext"])(null);
 function useGoogleMap() {
-  !!!react__WEBPACK_IMPORTED_MODULE_0__["useContext"] ?  true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, "useGoogleMap is React hook and requires React version 16.8+") : undefined : void 0;
+  !!!react__WEBPACK_IMPORTED_MODULE_0__["useContext"] ?  true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, 'useGoogleMap is React hook and requires React version 16.8+') : undefined : void 0;
   var map = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(MapContext);
-  !!!map ?  true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, "useGoogleMap needs a GoogleMap available up in the tree") : undefined : void 0;
+  !!!map ?  true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, 'useGoogleMap needs a GoogleMap available up in the tree') : undefined : void 0;
   return map;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 var reduce = function reduce(obj, fn, acc) {
   return Object.keys(obj).reduce(function reducer(newAcc, key) {
     return fn(newAcc, obj[key], key);
   }, acc);
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function forEach(obj, fn) {
   Object.keys(obj).forEach(function iterator(key) {
     return fn(obj[key], key);
   });
 }
 
-/* eslint-disable filenames/match-regex */
-var applyUpdaterToNextProps = function applyUpdaterToNextProps(updaterMap, prevProps, nextProps, instance) {
-  var map = {};
+/* global google */
+var applyUpdaterToNextProps = function applyUpdaterToNextProps( // eslint-disable-next-line @typescript-eslint/no-explicit-any
+updaterMap, // eslint-disable-next-line @typescript-eslint/no-explicit-any
+prevProps, // eslint-disable-next-line @typescript-eslint/no-explicit-any
+nextProps, // eslint-disable-next-line @typescript-eslint/no-explicit-any
+instance // eslint-disable-next-line @typescript-eslint/no-explicit-any
+) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  var map = {}; // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
   var iter = function iter(fn, key) {
     var nextValue = nextProps[key];
@@ -10204,8 +10443,11 @@ var applyUpdaterToNextProps = function applyUpdaterToNextProps(updaterMap, prevP
   forEach(updaterMap, iter);
   return map;
 };
-function registerEvents(props, instance, eventMap) {
-  var registeredList = reduce(eventMap, function reducer(acc, googleEventName, onEventName) {
+function registerEvents( // eslint-disable-next-line @typescript-eslint/no-explicit-any
+props, // eslint-disable-next-line @typescript-eslint/no-explicit-any
+instance, eventMap) {
+  var registeredList = reduce(eventMap, function reducer(acc, googleEventName, // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  onEventName) {
     if (typeof props[onEventName] === 'function') {
       acc.push(google.maps.event.addListener(instance, googleEventName, props[onEventName]));
     }
@@ -10224,7 +10466,7 @@ function unregisterEvents(events) {
     events = [];
   }
 
-  events.map(unregisterEvent);
+  events.forEach(unregisterEvent);
 }
 function applyUpdatersToPropsAndRegisterEvents(_ref) {
   var updaterMap = _ref.updaterMap,
@@ -10238,27 +10480,27 @@ function applyUpdatersToPropsAndRegisterEvents(_ref) {
 }
 
 var eventMap = {
-  onDblClick: "dblclick",
-  onDragEnd: "dragend",
-  onDragStart: "dragstart",
-  onMapTypeIdChanged: "maptypeid_changed",
-  onMouseMove: "mousemove",
-  onMouseOut: "mouseout",
-  onMouseOver: "mouseover",
-  onMouseDown: "mousedown",
-  onMouseUp: "mouseup",
-  onRightClick: "rightclick",
-  onTilesLoaded: "tilesloaded",
-  onBoundsChanged: "bounds_changed",
-  onCenterChanged: "center_changed",
-  onClick: "click",
-  onDrag: "drag",
-  onHeadingChanged: "heading_changed",
-  onIdle: "idle",
-  onProjectionChanged: "projection_changed",
-  onResize: "resize",
-  onTiltChanged: "tilt_changed",
-  onZoomChanged: "zoom_changed"
+  onDblClick: 'dblclick',
+  onDragEnd: 'dragend',
+  onDragStart: 'dragstart',
+  onMapTypeIdChanged: 'maptypeid_changed',
+  onMouseMove: 'mousemove',
+  onMouseOut: 'mouseout',
+  onMouseOver: 'mouseover',
+  onMouseDown: 'mousedown',
+  onMouseUp: 'mouseup',
+  onRightClick: 'rightclick',
+  onTilesLoaded: 'tilesloaded',
+  onBoundsChanged: 'bounds_changed',
+  onCenterChanged: 'center_changed',
+  onClick: 'click',
+  onDrag: 'drag',
+  onHeadingChanged: 'heading_changed',
+  onIdle: 'idle',
+  onProjectionChanged: 'projection_changed',
+  onResize: 'resize',
+  onTiltChanged: 'tilt_changed',
+  onZoomChanged: 'zoom_changed'
 };
 var updaterMap = {
   extraMapTypes: function extraMapTypes(map, extra) {
@@ -10304,9 +10546,13 @@ function (_React$PureComponent) {
       map: null
     };
     _this.registeredEvents = [];
-    _this.mapRef = null; // eslint-disable-next-line @getify/proper-arrows/this, @getify/proper-arrows/name
+    _this.mapRef = null;
 
     _this.getInstance = function () {
+      if (_this.mapRef === null) {
+        return null;
+      }
+
       return new google.maps.Map(_this.mapRef, _this.props.options);
     };
 
@@ -10316,8 +10562,7 @@ function (_React$PureComponent) {
       if (map) {
         map.panTo(latLng);
       }
-    }; // eslint-disable-next-line @getify/proper-arrows/this, @getify/proper-arrows/name
-
+    };
 
     _this.setMapCallback = function () {
       if (_this.state.map !== null) {
@@ -10326,10 +10571,6 @@ function (_React$PureComponent) {
         }
       }
     };
-    /* eslint-disable @getify/proper-arrows/name */
-
-    /* eslint-disable @getify/proper-arrows/this */
-
 
     _this.getRef = function (ref) {
       _this.mapRef = ref;
@@ -10349,14 +10590,11 @@ function (_React$PureComponent) {
       nextProps: this.props,
       instance: map
     });
-
-    function setMap() {
+    this.setState(function setMap() {
       return {
         map: map
       };
-    }
-
-    this.setState(setMap, this.setMapCallback);
+    }, this.setMapCallback);
   };
 
   _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
@@ -10396,11 +10634,747 @@ function (_React$PureComponent) {
   return GoogleMap;
 }(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
 
+function createCommonjsModule(fn, module) {
+	return module = { exports: {} }, fn(module, module.exports), module.exports;
+}
+
+var runtime_1 = createCommonjsModule(function (module) {
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+var runtime = (function (exports) {
+
+  var Op = Object.prototype;
+  var hasOwn = Op.hasOwnProperty;
+  var undefined$1; // More compressible than void 0.
+  var $Symbol = typeof Symbol === "function" ? Symbol : {};
+  var iteratorSymbol = $Symbol.iterator || "@@iterator";
+  var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
+  var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
+
+  function wrap(innerFn, outerFn, self, tryLocsList) {
+    // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
+    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
+    var generator = Object.create(protoGenerator.prototype);
+    var context = new Context(tryLocsList || []);
+
+    // The ._invoke method unifies the implementations of the .next,
+    // .throw, and .return methods.
+    generator._invoke = makeInvokeMethod(innerFn, self, context);
+
+    return generator;
+  }
+  exports.wrap = wrap;
+
+  // Try/catch helper to minimize deoptimizations. Returns a completion
+  // record like context.tryEntries[i].completion. This interface could
+  // have been (and was previously) designed to take a closure to be
+  // invoked without arguments, but in all the cases we care about we
+  // already have an existing method we want to call, so there's no need
+  // to create a new function object. We can even get away with assuming
+  // the method takes exactly one argument, since that happens to be true
+  // in every case, so we don't have to touch the arguments object. The
+  // only additional allocation required is the completion record, which
+  // has a stable shape and so hopefully should be cheap to allocate.
+  function tryCatch(fn, obj, arg) {
+    try {
+      return { type: "normal", arg: fn.call(obj, arg) };
+    } catch (err) {
+      return { type: "throw", arg: err };
+    }
+  }
+
+  var GenStateSuspendedStart = "suspendedStart";
+  var GenStateSuspendedYield = "suspendedYield";
+  var GenStateExecuting = "executing";
+  var GenStateCompleted = "completed";
+
+  // Returning this object from the innerFn has the same effect as
+  // breaking out of the dispatch switch statement.
+  var ContinueSentinel = {};
+
+  // Dummy constructor functions that we use as the .constructor and
+  // .constructor.prototype properties for functions that return Generator
+  // objects. For full spec compliance, you may wish to configure your
+  // minifier not to mangle the names of these two functions.
+  function Generator() {}
+  function GeneratorFunction() {}
+  function GeneratorFunctionPrototype() {}
+
+  // This is a polyfill for %IteratorPrototype% for environments that
+  // don't natively support it.
+  var IteratorPrototype = {};
+  IteratorPrototype[iteratorSymbol] = function () {
+    return this;
+  };
+
+  var getProto = Object.getPrototypeOf;
+  var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
+  if (NativeIteratorPrototype &&
+      NativeIteratorPrototype !== Op &&
+      hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
+    // This environment has a native %IteratorPrototype%; use it instead
+    // of the polyfill.
+    IteratorPrototype = NativeIteratorPrototype;
+  }
+
+  var Gp = GeneratorFunctionPrototype.prototype =
+    Generator.prototype = Object.create(IteratorPrototype);
+  GeneratorFunction.prototype = Gp.constructor = GeneratorFunctionPrototype;
+  GeneratorFunctionPrototype.constructor = GeneratorFunction;
+  GeneratorFunctionPrototype[toStringTagSymbol] =
+    GeneratorFunction.displayName = "GeneratorFunction";
+
+  // Helper for defining the .next, .throw, and .return methods of the
+  // Iterator interface in terms of a single ._invoke method.
+  function defineIteratorMethods(prototype) {
+    ["next", "throw", "return"].forEach(function(method) {
+      prototype[method] = function(arg) {
+        return this._invoke(method, arg);
+      };
+    });
+  }
+
+  exports.isGeneratorFunction = function(genFun) {
+    var ctor = typeof genFun === "function" && genFun.constructor;
+    return ctor
+      ? ctor === GeneratorFunction ||
+        // For the native GeneratorFunction constructor, the best we can
+        // do is to check its .name property.
+        (ctor.displayName || ctor.name) === "GeneratorFunction"
+      : false;
+  };
+
+  exports.mark = function(genFun) {
+    if (Object.setPrototypeOf) {
+      Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
+    } else {
+      genFun.__proto__ = GeneratorFunctionPrototype;
+      if (!(toStringTagSymbol in genFun)) {
+        genFun[toStringTagSymbol] = "GeneratorFunction";
+      }
+    }
+    genFun.prototype = Object.create(Gp);
+    return genFun;
+  };
+
+  // Within the body of any async function, `await x` is transformed to
+  // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
+  // `hasOwn.call(value, "__await")` to determine if the yielded value is
+  // meant to be awaited.
+  exports.awrap = function(arg) {
+    return { __await: arg };
+  };
+
+  function AsyncIterator(generator, PromiseImpl) {
+    function invoke(method, arg, resolve, reject) {
+      var record = tryCatch(generator[method], generator, arg);
+      if (record.type === "throw") {
+        reject(record.arg);
+      } else {
+        var result = record.arg;
+        var value = result.value;
+        if (value &&
+            typeof value === "object" &&
+            hasOwn.call(value, "__await")) {
+          return PromiseImpl.resolve(value.__await).then(function(value) {
+            invoke("next", value, resolve, reject);
+          }, function(err) {
+            invoke("throw", err, resolve, reject);
+          });
+        }
+
+        return PromiseImpl.resolve(value).then(function(unwrapped) {
+          // When a yielded Promise is resolved, its final value becomes
+          // the .value of the Promise<{value,done}> result for the
+          // current iteration.
+          result.value = unwrapped;
+          resolve(result);
+        }, function(error) {
+          // If a rejected Promise was yielded, throw the rejection back
+          // into the async generator function so it can be handled there.
+          return invoke("throw", error, resolve, reject);
+        });
+      }
+    }
+
+    var previousPromise;
+
+    function enqueue(method, arg) {
+      function callInvokeWithMethodAndArg() {
+        return new PromiseImpl(function(resolve, reject) {
+          invoke(method, arg, resolve, reject);
+        });
+      }
+
+      return previousPromise =
+        // If enqueue has been called before, then we want to wait until
+        // all previous Promises have been resolved before calling invoke,
+        // so that results are always delivered in the correct order. If
+        // enqueue has not been called before, then it is important to
+        // call invoke immediately, without waiting on a callback to fire,
+        // so that the async generator function has the opportunity to do
+        // any necessary setup in a predictable way. This predictability
+        // is why the Promise constructor synchronously invokes its
+        // executor callback, and why async functions synchronously
+        // execute code before the first await. Since we implement simple
+        // async functions in terms of async generators, it is especially
+        // important to get this right, even though it requires care.
+        previousPromise ? previousPromise.then(
+          callInvokeWithMethodAndArg,
+          // Avoid propagating failures to Promises returned by later
+          // invocations of the iterator.
+          callInvokeWithMethodAndArg
+        ) : callInvokeWithMethodAndArg();
+    }
+
+    // Define the unified helper method that is used to implement .next,
+    // .throw, and .return (see defineIteratorMethods).
+    this._invoke = enqueue;
+  }
+
+  defineIteratorMethods(AsyncIterator.prototype);
+  AsyncIterator.prototype[asyncIteratorSymbol] = function () {
+    return this;
+  };
+  exports.AsyncIterator = AsyncIterator;
+
+  // Note that simple async functions are implemented on top of
+  // AsyncIterator objects; they just return a Promise for the value of
+  // the final result produced by the iterator.
+  exports.async = function(innerFn, outerFn, self, tryLocsList, PromiseImpl) {
+    if (PromiseImpl === void 0) PromiseImpl = Promise;
+
+    var iter = new AsyncIterator(
+      wrap(innerFn, outerFn, self, tryLocsList),
+      PromiseImpl
+    );
+
+    return exports.isGeneratorFunction(outerFn)
+      ? iter // If outerFn is a generator, return the full iterator.
+      : iter.next().then(function(result) {
+          return result.done ? result.value : iter.next();
+        });
+  };
+
+  function makeInvokeMethod(innerFn, self, context) {
+    var state = GenStateSuspendedStart;
+
+    return function invoke(method, arg) {
+      if (state === GenStateExecuting) {
+        throw new Error("Generator is already running");
+      }
+
+      if (state === GenStateCompleted) {
+        if (method === "throw") {
+          throw arg;
+        }
+
+        // Be forgiving, per 25.3.3.3.3 of the spec:
+        // https://people.mozilla.org/~jorendorff/es6-draft.html#sec-generatorresume
+        return doneResult();
+      }
+
+      context.method = method;
+      context.arg = arg;
+
+      while (true) {
+        var delegate = context.delegate;
+        if (delegate) {
+          var delegateResult = maybeInvokeDelegate(delegate, context);
+          if (delegateResult) {
+            if (delegateResult === ContinueSentinel) continue;
+            return delegateResult;
+          }
+        }
+
+        if (context.method === "next") {
+          // Setting context._sent for legacy support of Babel's
+          // function.sent implementation.
+          context.sent = context._sent = context.arg;
+
+        } else if (context.method === "throw") {
+          if (state === GenStateSuspendedStart) {
+            state = GenStateCompleted;
+            throw context.arg;
+          }
+
+          context.dispatchException(context.arg);
+
+        } else if (context.method === "return") {
+          context.abrupt("return", context.arg);
+        }
+
+        state = GenStateExecuting;
+
+        var record = tryCatch(innerFn, self, context);
+        if (record.type === "normal") {
+          // If an exception is thrown from innerFn, we leave state ===
+          // GenStateExecuting and loop back for another invocation.
+          state = context.done
+            ? GenStateCompleted
+            : GenStateSuspendedYield;
+
+          if (record.arg === ContinueSentinel) {
+            continue;
+          }
+
+          return {
+            value: record.arg,
+            done: context.done
+          };
+
+        } else if (record.type === "throw") {
+          state = GenStateCompleted;
+          // Dispatch the exception by looping back around to the
+          // context.dispatchException(context.arg) call above.
+          context.method = "throw";
+          context.arg = record.arg;
+        }
+      }
+    };
+  }
+
+  // Call delegate.iterator[context.method](context.arg) and handle the
+  // result, either by returning a { value, done } result from the
+  // delegate iterator, or by modifying context.method and context.arg,
+  // setting context.delegate to null, and returning the ContinueSentinel.
+  function maybeInvokeDelegate(delegate, context) {
+    var method = delegate.iterator[context.method];
+    if (method === undefined$1) {
+      // A .throw or .return when the delegate iterator has no .throw
+      // method always terminates the yield* loop.
+      context.delegate = null;
+
+      if (context.method === "throw") {
+        // Note: ["return"] must be used for ES3 parsing compatibility.
+        if (delegate.iterator["return"]) {
+          // If the delegate iterator has a return method, give it a
+          // chance to clean up.
+          context.method = "return";
+          context.arg = undefined$1;
+          maybeInvokeDelegate(delegate, context);
+
+          if (context.method === "throw") {
+            // If maybeInvokeDelegate(context) changed context.method from
+            // "return" to "throw", let that override the TypeError below.
+            return ContinueSentinel;
+          }
+        }
+
+        context.method = "throw";
+        context.arg = new TypeError(
+          "The iterator does not provide a 'throw' method");
+      }
+
+      return ContinueSentinel;
+    }
+
+    var record = tryCatch(method, delegate.iterator, context.arg);
+
+    if (record.type === "throw") {
+      context.method = "throw";
+      context.arg = record.arg;
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    var info = record.arg;
+
+    if (! info) {
+      context.method = "throw";
+      context.arg = new TypeError("iterator result is not an object");
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    if (info.done) {
+      // Assign the result of the finished delegate to the temporary
+      // variable specified by delegate.resultName (see delegateYield).
+      context[delegate.resultName] = info.value;
+
+      // Resume execution at the desired location (see delegateYield).
+      context.next = delegate.nextLoc;
+
+      // If context.method was "throw" but the delegate handled the
+      // exception, let the outer generator proceed normally. If
+      // context.method was "next", forget context.arg since it has been
+      // "consumed" by the delegate iterator. If context.method was
+      // "return", allow the original .return call to continue in the
+      // outer generator.
+      if (context.method !== "return") {
+        context.method = "next";
+        context.arg = undefined$1;
+      }
+
+    } else {
+      // Re-yield the result returned by the delegate method.
+      return info;
+    }
+
+    // The delegate iterator is finished, so forget it and continue with
+    // the outer generator.
+    context.delegate = null;
+    return ContinueSentinel;
+  }
+
+  // Define Generator.prototype.{next,throw,return} in terms of the
+  // unified ._invoke helper method.
+  defineIteratorMethods(Gp);
+
+  Gp[toStringTagSymbol] = "Generator";
+
+  // A Generator should always return itself as the iterator object when the
+  // @@iterator function is called on it. Some browsers' implementations of the
+  // iterator prototype chain incorrectly implement this, causing the Generator
+  // object to not be returned from this call. This ensures that doesn't happen.
+  // See https://github.com/facebook/regenerator/issues/274 for more details.
+  Gp[iteratorSymbol] = function() {
+    return this;
+  };
+
+  Gp.toString = function() {
+    return "[object Generator]";
+  };
+
+  function pushTryEntry(locs) {
+    var entry = { tryLoc: locs[0] };
+
+    if (1 in locs) {
+      entry.catchLoc = locs[1];
+    }
+
+    if (2 in locs) {
+      entry.finallyLoc = locs[2];
+      entry.afterLoc = locs[3];
+    }
+
+    this.tryEntries.push(entry);
+  }
+
+  function resetTryEntry(entry) {
+    var record = entry.completion || {};
+    record.type = "normal";
+    delete record.arg;
+    entry.completion = record;
+  }
+
+  function Context(tryLocsList) {
+    // The root entry object (effectively a try statement without a catch
+    // or a finally block) gives us a place to store values thrown from
+    // locations where there is no enclosing try statement.
+    this.tryEntries = [{ tryLoc: "root" }];
+    tryLocsList.forEach(pushTryEntry, this);
+    this.reset(true);
+  }
+
+  exports.keys = function(object) {
+    var keys = [];
+    for (var key in object) {
+      keys.push(key);
+    }
+    keys.reverse();
+
+    // Rather than returning an object with a next method, we keep
+    // things simple and return the next function itself.
+    return function next() {
+      while (keys.length) {
+        var key = keys.pop();
+        if (key in object) {
+          next.value = key;
+          next.done = false;
+          return next;
+        }
+      }
+
+      // To avoid creating an additional object, we just hang the .value
+      // and .done properties off the next function object itself. This
+      // also ensures that the minifier will not anonymize the function.
+      next.done = true;
+      return next;
+    };
+  };
+
+  function values(iterable) {
+    if (iterable) {
+      var iteratorMethod = iterable[iteratorSymbol];
+      if (iteratorMethod) {
+        return iteratorMethod.call(iterable);
+      }
+
+      if (typeof iterable.next === "function") {
+        return iterable;
+      }
+
+      if (!isNaN(iterable.length)) {
+        var i = -1, next = function next() {
+          while (++i < iterable.length) {
+            if (hasOwn.call(iterable, i)) {
+              next.value = iterable[i];
+              next.done = false;
+              return next;
+            }
+          }
+
+          next.value = undefined$1;
+          next.done = true;
+
+          return next;
+        };
+
+        return next.next = next;
+      }
+    }
+
+    // Return an iterator with no values.
+    return { next: doneResult };
+  }
+  exports.values = values;
+
+  function doneResult() {
+    return { value: undefined$1, done: true };
+  }
+
+  Context.prototype = {
+    constructor: Context,
+
+    reset: function(skipTempReset) {
+      this.prev = 0;
+      this.next = 0;
+      // Resetting context._sent for legacy support of Babel's
+      // function.sent implementation.
+      this.sent = this._sent = undefined$1;
+      this.done = false;
+      this.delegate = null;
+
+      this.method = "next";
+      this.arg = undefined$1;
+
+      this.tryEntries.forEach(resetTryEntry);
+
+      if (!skipTempReset) {
+        for (var name in this) {
+          // Not sure about the optimal order of these conditions:
+          if (name.charAt(0) === "t" &&
+              hasOwn.call(this, name) &&
+              !isNaN(+name.slice(1))) {
+            this[name] = undefined$1;
+          }
+        }
+      }
+    },
+
+    stop: function() {
+      this.done = true;
+
+      var rootEntry = this.tryEntries[0];
+      var rootRecord = rootEntry.completion;
+      if (rootRecord.type === "throw") {
+        throw rootRecord.arg;
+      }
+
+      return this.rval;
+    },
+
+    dispatchException: function(exception) {
+      if (this.done) {
+        throw exception;
+      }
+
+      var context = this;
+      function handle(loc, caught) {
+        record.type = "throw";
+        record.arg = exception;
+        context.next = loc;
+
+        if (caught) {
+          // If the dispatched exception was caught by a catch block,
+          // then let that catch block handle the exception normally.
+          context.method = "next";
+          context.arg = undefined$1;
+        }
+
+        return !! caught;
+      }
+
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        var record = entry.completion;
+
+        if (entry.tryLoc === "root") {
+          // Exception thrown outside of any try block that could handle
+          // it, so set the completion value of the entire function to
+          // throw the exception.
+          return handle("end");
+        }
+
+        if (entry.tryLoc <= this.prev) {
+          var hasCatch = hasOwn.call(entry, "catchLoc");
+          var hasFinally = hasOwn.call(entry, "finallyLoc");
+
+          if (hasCatch && hasFinally) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            } else if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else if (hasCatch) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            }
+
+          } else if (hasFinally) {
+            if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else {
+            throw new Error("try statement without catch or finally");
+          }
+        }
+      }
+    },
+
+    abrupt: function(type, arg) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc <= this.prev &&
+            hasOwn.call(entry, "finallyLoc") &&
+            this.prev < entry.finallyLoc) {
+          var finallyEntry = entry;
+          break;
+        }
+      }
+
+      if (finallyEntry &&
+          (type === "break" ||
+           type === "continue") &&
+          finallyEntry.tryLoc <= arg &&
+          arg <= finallyEntry.finallyLoc) {
+        // Ignore the finally entry if control is not jumping to a
+        // location outside the try/catch block.
+        finallyEntry = null;
+      }
+
+      var record = finallyEntry ? finallyEntry.completion : {};
+      record.type = type;
+      record.arg = arg;
+
+      if (finallyEntry) {
+        this.method = "next";
+        this.next = finallyEntry.finallyLoc;
+        return ContinueSentinel;
+      }
+
+      return this.complete(record);
+    },
+
+    complete: function(record, afterLoc) {
+      if (record.type === "throw") {
+        throw record.arg;
+      }
+
+      if (record.type === "break" ||
+          record.type === "continue") {
+        this.next = record.arg;
+      } else if (record.type === "return") {
+        this.rval = this.arg = record.arg;
+        this.method = "return";
+        this.next = "end";
+      } else if (record.type === "normal" && afterLoc) {
+        this.next = afterLoc;
+      }
+
+      return ContinueSentinel;
+    },
+
+    finish: function(finallyLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.finallyLoc === finallyLoc) {
+          this.complete(entry.completion, entry.afterLoc);
+          resetTryEntry(entry);
+          return ContinueSentinel;
+        }
+      }
+    },
+
+    "catch": function(tryLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc === tryLoc) {
+          var record = entry.completion;
+          if (record.type === "throw") {
+            var thrown = record.arg;
+            resetTryEntry(entry);
+          }
+          return thrown;
+        }
+      }
+
+      // The context.catch method must only be called with a location
+      // argument that corresponds to a known catch block.
+      throw new Error("illegal catch attempt");
+    },
+
+    delegateYield: function(iterable, resultName, nextLoc) {
+      this.delegate = {
+        iterator: values(iterable),
+        resultName: resultName,
+        nextLoc: nextLoc
+      };
+
+      if (this.method === "next") {
+        // Deliberately forget the last sent value so that we don't
+        // accidentally pass it on to the delegate.
+        this.arg = undefined$1;
+      }
+
+      return ContinueSentinel;
+    }
+  };
+
+  // Regardless of whether this script is executing as a CommonJS module
+  // or not, return the runtime object so that we can declare the variable
+  // regeneratorRuntime in the outer scope, which allows this module to be
+  // injected easily by `bin/regenerator --include-runtime script.js`.
+  return exports;
+
+}(
+  // If this script is executing as a CommonJS module, use module.exports
+  // as the regeneratorRuntime namespace. Otherwise create a new empty
+  // object. Either way, the resulting object will be used to initialize
+  // the regeneratorRuntime variable at the top of this file.
+   module.exports 
+));
+
+try {
+  regeneratorRuntime = runtime;
+} catch (accidentalStrictMode) {
+  // This module should not be running in strict mode, so the above
+  // assignment should always work unless something is misconfigured. Just
+  // in case runtime.js accidentally runs in strict mode, we can escape
+  // strict mode using a global Function call. This could conceivably fail
+  // if a Content Security Policy forbids using Function, but in that case
+  // the proper solution is to fix the accidental strict mode problem. If
+  // you've misconfigured your bundler to force strict mode and applied a
+  // CSP to forbid Function, and you're not willing to fix either of those
+  // problems, please detail your unique predicament in a GitHub issue.
+  Function("r", "regeneratorRuntime = r")(runtime);
+}
+});
+
 var isBrowser = typeof document !== 'undefined';
 
 var injectScript = function injectScript(_ref) {
   var url = _ref.url,
-      id = _ref.id;
+      id = _ref.id,
+      nonce = _ref.nonce;
 
   if (!isBrowser) {
     return Promise.reject(new Error('document is undefined'));
@@ -10412,8 +11386,10 @@ var injectScript = function injectScript(_ref) {
 
     if (existingScript) {
       // Same script id/url: keep same script
-      if (existingScript.src === url) {
-        if (existingScript.getAttribute('data-state') === 'ready') {
+      var dataStateAttribute = existingScript.getAttribute('data-state');
+
+      if (existingScript.src === url && dataStateAttribute !== 'error') {
+        if (dataStateAttribute === 'ready') {
           return resolve(id);
         } else {
           var originalInitMap = windowWithGoogleMap.initMap;
@@ -10437,7 +11413,9 @@ var injectScript = function injectScript(_ref) {
 
           return;
         }
-      } // Same script id but url changed: recreate the script
+      } // Same script id, but either
+      // 1. requested URL is different
+      // 2. script failed to load
       else {
           existingScript.remove();
         }
@@ -10448,7 +11426,12 @@ var injectScript = function injectScript(_ref) {
     script.src = url;
     script.id = id;
     script.async = true;
-    script.onerror = reject;
+    script.nonce = nonce;
+
+    script.onerror = function onerror(err) {
+      script.setAttribute('data-state', 'error');
+      reject(err);
+    };
 
     windowWithGoogleMap.initMap = function onload() {
       script.setAttribute('data-state', 'ready');
@@ -10458,6 +11441,7 @@ var injectScript = function injectScript(_ref) {
     document.head.appendChild(script);
   })["catch"](function (err) {
     console.error('injectScript error: ', err);
+    throw err;
   });
 };
 
@@ -10468,10 +11452,14 @@ var isRobotoStyle = function isRobotoStyle(element) {
   } // roboto style elements
 
 
-  if (element.tagName.toLowerCase() === 'style' && // @ts-ignore
-  element.styleSheet && // @ts-ignore
-  element.styleSheet.cssText && // @ts-ignore
+  if (element.tagName.toLowerCase() === 'style' && // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+  // @ts-ignore
+  element.styleSheet && // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+  // @ts-ignore
+  element.styleSheet.cssText && // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+  // @ts-ignore
   element.styleSheet.cssText.replace('\r\n', '').indexOf('.gm-style') === 0) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
     // @ts-ignore
     element.styleSheet.cssText = '';
     return true;
@@ -10484,13 +11472,14 @@ var isRobotoStyle = function isRobotoStyle(element) {
   } // when google tries to add empty style
 
 
-  if (element.tagName.toLowerCase() === 'style' && // @ts-ignore
+  if (element.tagName.toLowerCase() === 'style' && // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+  // @ts-ignore
   !element.styleSheet && !element.innerHTML) {
     return true;
   }
 
   return false;
-}; // Preventing the Google Maps libary from downloading an extra font
+}; // Preventing the Google Maps library from downloading an extra font
 
 
 var preventGoogleFonts = function preventGoogleFonts() {
@@ -10498,7 +11487,8 @@ var preventGoogleFonts = function preventGoogleFonts() {
   // default methods for other elements are not affected
   var head = document.getElementsByTagName('head')[0];
   var trueInsertBefore = head.insertBefore.bind(head); // TODO: adding return before reflect solves the TS issue
-  //@ts-ignore
+  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+  // @ts-ignore
 
   head.insertBefore = function insertBefore(newElement, referenceElement) {
     if (!isRobotoStyle(newElement)) {
@@ -10507,7 +11497,8 @@ var preventGoogleFonts = function preventGoogleFonts() {
   };
 
   var trueAppend = head.appendChild.bind(head); // TODO: adding return before reflect solves the TS issue
-  //@ts-ignore
+  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+  // @ts-ignore
 
   head.appendChild = function appendChild(textNode) {
     if (!isRobotoStyle(textNode)) {
@@ -10524,7 +11515,8 @@ function makeLoadScriptUrl(_ref) {
       language = _ref.language,
       region = _ref.region,
       libraries = _ref.libraries,
-      channel = _ref.channel;
+      channel = _ref.channel,
+      mapIds = _ref.mapIds;
   var params = [];
   !(googleMapsApiKey && googleMapsClientId || !(googleMapsApiKey && googleMapsClientId)) ?  true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, 'You need to specify either googleMapsApiKey or googleMapsClientId for @react-google-maps/api load script to work. You cannot use both at the same time.') : undefined : void 0;
 
@@ -10554,6 +11546,10 @@ function makeLoadScriptUrl(_ref) {
     params.push("channel=" + channel);
   }
 
+  if (mapIds && mapIds.length) {
+    params.push("map_ids=" + mapIds.join(','));
+  }
+
   params.push('callback=initMap');
   return "https://maps.googleapis.com/maps/api/js?" + params.join('&');
 }
@@ -10579,38 +11575,51 @@ function (_React$PureComponent) {
     _this.check = Object(react__WEBPACK_IMPORTED_MODULE_0__["createRef"])();
     _this.state = {
       loaded: false
-    }; // eslint-disable-next-line @getify/proper-arrows/this, @getify/proper-arrows/name
+    };
 
     _this.cleanupCallback = function () {
-      //@ts-ignore
-      delete window.google;
+      // @ts-ignore
+      delete window.google.maps;
 
       _this.injectScript();
-    }; // eslint-disable-next-line @getify/proper-arrows/name
-
-
-    _this.isCleaningUp = function () {
-      try {
-        var promiseCallback = function promiseCallback(resolve) {
-          if (!cleaningUp) {
-            resolve();
-          } else {
-            if (isBrowser) {
-              var timer = window.setInterval(function interval() {
-                if (!cleaningUp) {
-                  window.clearInterval(timer);
-                  resolve();
-                }
-              }, 1);
-            }
-          }
-        };
-
-        return Promise.resolve(new Promise(promiseCallback));
-      } catch (e) {
-        return Promise.reject(e);
-      }
     };
+
+    _this.isCleaningUp =
+    /*#__PURE__*/
+    _asyncToGenerator(
+    /*#__PURE__*/
+    runtime_1.mark(function _callee() {
+      var promiseCallback;
+      return runtime_1.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              promiseCallback = function _ref2(resolve) {
+                if (!cleaningUp) {
+                  resolve();
+                } else {
+                  if (isBrowser) {
+                    var timer = window.setInterval(function interval() {
+                      if (!cleaningUp) {
+                        window.clearInterval(timer);
+                        resolve();
+                      }
+                    }, 1);
+                  }
+                }
+
+                return;
+              };
+
+              return _context.abrupt("return", new Promise(promiseCallback));
+
+            case 2:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
 
     _this.cleanup = function () {
       cleaningUp = true;
@@ -10620,29 +11629,28 @@ function (_React$PureComponent) {
         script.parentNode.removeChild(script);
       }
 
-      Array.prototype.slice.call(document.getElementsByTagName("script")).filter(function filter(script) {
-        return script.src.includes("maps.googleapis");
+      Array.prototype.slice.call(document.getElementsByTagName('script')).filter(function filter(script) {
+        return typeof script.src === 'string' && script.src.includes('maps.googleapis');
       }).forEach(function forEach(script) {
         if (script.parentNode) {
           script.parentNode.removeChild(script);
         }
       });
-      Array.prototype.slice.call(document.getElementsByTagName("link")).filter(function filter(link) {
-        return link.href === "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Google+Sans";
+      Array.prototype.slice.call(document.getElementsByTagName('link')).filter(function filter(link) {
+        return link.href === 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Google+Sans';
       }).forEach(function forEach(link) {
         if (link.parentNode) {
           link.parentNode.removeChild(link);
         }
       });
-      Array.prototype.slice.call(document.getElementsByTagName("style")).filter(function filter(style) {
-        return style.innerText !== undefined && style.innerText.length > 0 && style.innerText.includes(".gm-");
+      Array.prototype.slice.call(document.getElementsByTagName('style')).filter(function filter(style) {
+        return style.innerText !== undefined && style.innerText.length > 0 && style.innerText.includes('.gm-');
       }).forEach(function forEach(style) {
         if (style.parentNode) {
           style.parentNode.removeChild(style);
         }
       });
-    }; // eslint-disable-next-line @getify/proper-arrows/this, @getify/proper-arrows/name
-
+    };
 
     _this.injectScript = function () {
       if (_this.props.preventGoogleFontsLoading) {
@@ -10652,10 +11660,10 @@ function (_React$PureComponent) {
       !!!_this.props.id ?  true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, 'LoadScript requires "id" prop to be a string: %s', _this.props.id) : undefined : void 0;
       var injectScriptOptions = {
         id: _this.props.id,
+        nonce: _this.props.nonce,
         url: makeLoadScriptUrl(_this.props)
       };
-      injectScript(injectScriptOptions) // eslint-disable-next-line @getify/proper-arrows/this, @getify/proper-arrows/name
-      .then(function () {
+      injectScript(injectScriptOptions).then(function () {
         if (_this.props.onLoad) {
           _this.props.onLoad();
         }
@@ -10665,8 +11673,9 @@ function (_React$PureComponent) {
             loaded: true
           };
         });
-      }) // eslint-disable-next-line @getify/proper-arrows/this, @getify/proper-arrows/name
-      ["catch"](function (err) {
+
+        return;
+      })["catch"](function (err) {
         if (_this.props.onError) {
           _this.props.onError(err);
         }
@@ -10682,21 +11691,20 @@ function (_React$PureComponent) {
 
   _proto.componentDidMount = function componentDidMount() {
     if (isBrowser) {
-      // @ts-ignore
-      if (window.google && !cleaningUp) {
-        console.error("google api is already presented");
+      if (window.google && window.google.maps && !cleaningUp) {
+        console.error('google api is already presented');
         return;
       }
 
-      this.isCleaningUp().then(this.injectScript)["catch"](function err(err) {
-        console.error("Error at injecting script after cleaning up: ", err);
+      this.isCleaningUp().then(this.injectScript)["catch"](function error(err) {
+        console.error('Error at injecting script after cleaning up: ', err);
       });
     }
   };
 
   _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
     if (this.props.libraries !== prevProps.libraries) {
-      console.warn('Performance warning! Loadscript has been reloaded unintentionally! You should not pass `libraries` prop as new array. Please keep an array of libraries as static class property for Components and PureComponents, or just a const variable ounside of component, or somwhere in config files or ENV variables');
+      console.warn('Performance warning! LoadScript has been reloaded unintentionally! You should not pass `libraries` prop as new array. Please keep an array of libraries as static class property for Components and PureComponents, or just a const variable outside of component, or somewhere in config files or ENV variables');
     }
 
     if (isBrowser && prevProps.language !== this.props.language) {
@@ -10715,11 +11723,11 @@ function (_React$PureComponent) {
     var _this2 = this;
 
     if (isBrowser) {
-      this.cleanup(); // eslint-disable-next-line @getify/proper-arrows/this
+      this.cleanup();
 
       var timeoutCallback = function timeoutCallback() {
         if (!_this2.check.current) {
-          //@ts-ignore
+          // @ts-ignore
           delete window.google;
           cleaningUp = false;
         }
@@ -10751,13 +11759,15 @@ function useLoadScript(_ref) {
       id = _ref$id === void 0 ? defaultLoadScriptProps.id : _ref$id,
       _ref$version = _ref.version,
       version = _ref$version === void 0 ? defaultLoadScriptProps.version : _ref$version,
+      nonce = _ref.nonce,
       googleMapsApiKey = _ref.googleMapsApiKey,
       googleMapsClientId = _ref.googleMapsClientId,
       language = _ref.language,
       region = _ref.region,
       libraries = _ref.libraries,
       preventGoogleFontsLoading = _ref.preventGoogleFontsLoading,
-      channel = _ref.channel;
+      channel = _ref.channel,
+      mapIds = _ref.mapIds;
   var isMounted = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(false);
 
   var _React$useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
@@ -10781,8 +11791,7 @@ function useLoadScript(_ref) {
   }, [preventGoogleFontsLoading]);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function validateLoadedState() {
     if (isLoaded) {
-      ! // @ts-ignore
-      !!window.google ?  true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, "useLoadScript was marked as loaded, but window.google is not present. Something went wrong.") : undefined : void 0;
+      !!!window.google ?  true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, 'useLoadScript was marked as loaded, but window.google is not present. Something went wrong.') : undefined : void 0;
     }
   }, [isLoaded]);
   var url = makeLoadScriptUrl({
@@ -10792,7 +11801,8 @@ function useLoadScript(_ref) {
     language: language,
     region: region,
     libraries: libraries,
-    channel: channel
+    channel: channel,
+    mapIds: mapIds
   });
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function loadScriptAndModifyLoadedState() {
     if (!isBrowser) {
@@ -10806,14 +11816,15 @@ function useLoadScript(_ref) {
       }
     }
 
-    if (window.google && previouslyLoadedUrl === url) {
+    if (window.google && window.google.maps && previouslyLoadedUrl === url) {
       setLoadedIfMounted();
       return;
     }
 
     injectScript({
       id: id,
-      url: url
+      url: url,
+      nonce: nonce
     }).then(setLoadedIfMounted)["catch"](function handleInjectError(err) {
       if (isMounted.current) {
         setLoadError(err);
@@ -10822,11 +11833,11 @@ function useLoadScript(_ref) {
       console.warn("\n        There has been an Error with loading Google Maps API script, please check that you provided correct google API key (" + (googleMapsApiKey || '-') + ") or Client ID (" + (googleMapsClientId || '-') + ")\n        Otherwise it is a Network issue.\n      ");
       console.error(err);
     });
-  }, [id, url]);
+  }, [id, url, nonce]);
   var prevLibraries = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function checkPerformance() {
     if (prevLibraries.current && libraries !== prevLibraries.current) {
-      console.warn('Performance warning! Loadscript has been reloaded unintentionally! You should not pass `libraries` prop as new array. Please keep an array of libraries as static class property for Components and PureComponents, or just a const variable outside of component, or somewhere in config files or ENV variables');
+      console.warn('Performance warning! LoadScript has been reloaded unintentionally! You should not pass `libraries` prop as new array. Please keep an array of libraries as static class property for Components and PureComponents, or just a const variable outside of component, or somewhere in config files or ENV variables');
     }
 
     prevLibraries.current = libraries;
@@ -10855,12 +11866,12 @@ function LoadScriptNext(_ref) {
       loadError = _useLoadScript.loadError;
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function handleOnLoad() {
-    if (isLoaded && typeof onLoad === "function") {
+    if (isLoaded && typeof onLoad === 'function') {
       onLoad();
     }
   }, [isLoaded, onLoad]);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function handleOnError() {
-    if (loadError && typeof onError === "function") {
+    if (loadError && typeof onError === 'function') {
       onError(loadError);
     }
   }, [loadError, onError]);
@@ -10876,6 +11887,70 @@ function LoadScriptNext(_ref) {
 
 var LoadScriptNext$1 = /*#__PURE__*/
 Object(react__WEBPACK_IMPORTED_MODULE_0__["memo"])(LoadScriptNext);
+
+/* eslint-disable filenames/match-regex */
+function useJsApiLoader(_ref) {
+  var _ref$id = _ref.id,
+      id = _ref$id === void 0 ? defaultLoadScriptProps.id : _ref$id,
+      _ref$version = _ref.version,
+      version = _ref$version === void 0 ? defaultLoadScriptProps.version : _ref$version,
+      nonce = _ref.nonce,
+      googleMapsApiKey = _ref.googleMapsApiKey,
+      language = _ref.language,
+      region = _ref.region,
+      libraries = _ref.libraries,
+      preventGoogleFontsLoading = _ref.preventGoogleFontsLoading,
+      mapIds = _ref.mapIds;
+
+  var _React$useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      isLoaded = _React$useState[0],
+      setLoaded = _React$useState[1];
+
+  var _React$useState2 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(undefined),
+      loadError = _React$useState2[0],
+      setLoadError = _React$useState2[1];
+
+  var loader = Object(react__WEBPACK_IMPORTED_MODULE_0__["useMemo"])(function memo() {
+    return new _googlemaps_js_api_loader__WEBPACK_IMPORTED_MODULE_2__["Loader"]({
+      id: id,
+      apiKey: googleMapsApiKey,
+      version: version,
+      libraries: libraries,
+      language: language,
+      region: region,
+      mapIds: mapIds,
+      nonce: nonce
+    });
+  }, [id, googleMapsApiKey, version, libraries, language, region, mapIds, nonce]);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function effect() {
+    if (isLoaded) {
+      return;
+    } else {
+      loader.load().then(function then() {
+        setLoaded(true);
+      })["catch"](function onrejected(error) {
+        setLoadError(error);
+      });
+    }
+  }, []);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function applyPreventGoogleFonts() {
+    if (isBrowser && preventGoogleFontsLoading) {
+      preventGoogleFonts();
+    }
+  }, [preventGoogleFontsLoading]);
+  var prevLibraries = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function effect() {
+    if (prevLibraries.current && libraries !== prevLibraries.current) {
+      console.warn('Performance warning! LoadScript has been reloaded unintentionally! You should not pass `libraries` prop as new array. Please keep an array of libraries as static class property for Components and PureComponents, or just a const variable outside of component, or somewhere in config files or ENV variables');
+    }
+
+    prevLibraries.current = libraries;
+  }, [libraries]);
+  return {
+    isLoaded: isLoaded,
+    loadError: loadError
+  };
+}
 
 var eventMap$1 = {};
 var updaterMap$1 = {
@@ -10894,11 +11969,12 @@ function (_PureComponent) {
     _this = _PureComponent.apply(this, arguments) || this;
     _this.state = {
       trafficLayer: null
-    }; // eslint-disable-next-line @getify/proper-arrows/this, @getify/proper-arrows/name
+    };
 
     _this.setTrafficLayerCallback = function () {
       if (_this.state.trafficLayer !== null) {
         if (_this.props.onLoad) {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
           // @ts-ignore
           _this.props.onLoad(_this.state.trafficLayer);
         }
@@ -10922,14 +11998,11 @@ function (_PureComponent) {
       nextProps: this.props,
       instance: trafficLayer
     });
-
-    function setTrafficlayer() {
+    this.setState(function setTrafficLayer() {
       return {
         trafficLayer: trafficLayer
       };
-    }
-
-    this.setState(setTrafficlayer, this.setTrafficLayerCallback);
+    }, this.setTrafficLayerCallback);
   };
 
   _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
@@ -10948,11 +12021,13 @@ function (_PureComponent) {
   _proto.componentWillUnmount = function componentWillUnmount() {
     if (this.state.trafficLayer !== null) {
       if (this.props.onUnmount) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
         // @ts-ignore
         this.props.onUnmount(this.state.trafficLayer);
       }
 
-      unregisterEvents(this.registeredEvents); // @ts-ignore
+      unregisterEvents(this.registeredEvents); // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // @ts-ignore
 
       this.state.trafficLayer.setMap(null);
     }
@@ -10977,16 +12052,18 @@ function (_React$PureComponent) {
     _this = _React$PureComponent.apply(this, arguments) || this;
     _this.state = {
       bicyclingLayer: null
-    }; // eslint-disable-next-line @getify/proper-arrows/this, @getify/proper-arrows/name
+    };
 
     _this.setBicyclingLayerCallback = function () {
       if (_this.state.bicyclingLayer !== null) {
         // TODO: how is this possibly null if we're doing a null check
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
         // @ts-ignore
         _this.state.bicyclingLayer.setMap(_this.context);
 
         if (_this.props.onLoad) {
-          //@ts-ignore
+          // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+          // @ts-ignore
           _this.props.onLoad(_this.state.bicyclingLayer);
         }
       }
@@ -10999,22 +12076,21 @@ function (_React$PureComponent) {
 
   _proto.componentDidMount = function componentDidMount() {
     var bicyclingLayer = new google.maps.BicyclingLayer();
-
-    function setBicyclingLayer() {
+    this.setState(function setBicyclingLayer() {
       return {
         bicyclingLayer: bicyclingLayer
       };
-    }
-
-    this.setState(setBicyclingLayer, this.setBicyclingLayerCallback);
+    }, this.setBicyclingLayerCallback);
   };
 
   _proto.componentWillUnmount = function componentWillUnmount() {
     if (this.state.bicyclingLayer !== null) {
       if (this.props.onUnmount) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
         // @ts-ignore
         this.props.onUnmount(this.state.bicyclingLayer);
-      } // @ts-ignore
+      } // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // @ts-ignore
 
 
       this.state.bicyclingLayer.setMap(null);
@@ -11040,16 +12116,18 @@ function (_React$PureComponent) {
     _this = _React$PureComponent.apply(this, arguments) || this;
     _this.state = {
       transitLayer: null
-    }; // eslint-disable-next-line @getify/proper-arrows/this, @getify/proper-arrows/name
+    };
 
     _this.setTransitLayerCallback = function () {
       if (_this.state.transitLayer !== null) {
         // TODO: how is this possibly null if we're doing a null check
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
         // @ts-ignore
         _this.state.transitLayer.setMap(_this.context);
 
         if (_this.props.onLoad) {
-          //@ts-ignore
+          // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+          // @ts-ignore
           _this.props.onLoad(_this.state.transitLayer);
         }
       }
@@ -11062,22 +12140,21 @@ function (_React$PureComponent) {
 
   _proto.componentDidMount = function componentDidMount() {
     var transitLayer = new google.maps.TransitLayer();
-
-    function setTransitLayer() {
+    this.setState(function setTransitLayer() {
       return {
         transitLayer: transitLayer
       };
-    }
-
-    this.setState(setTransitLayer, this.setTransitLayerCallback);
+    }, this.setTransitLayerCallback);
   };
 
   _proto.componentWillUnmount = function componentWillUnmount() {
     if (this.state.transitLayer !== null) {
       if (this.props.onUnmount) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
         // @ts-ignore
         this.props.onUnmount(this.state.transitLayer);
-      } // @ts-ignore
+      } // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // @ts-ignore
 
 
       this.state.transitLayer.setMap(null);
@@ -11093,12 +12170,12 @@ function (_React$PureComponent) {
 TransitLayer.contextType = MapContext;
 
 var eventMap$2 = {
-  onCircleComplete: "circlecomplete",
-  onMarkerComplete: "markercomplete",
-  onOverlayComplete: "overlaycomplete",
-  onPolygonComplete: "polygoncomplete",
-  onPolylineComplete: "polylinecomplete",
-  onRectangleComplete: "rectanglecomplete"
+  onCircleComplete: 'circlecomplete',
+  onMarkerComplete: 'markercomplete',
+  onOverlayComplete: 'overlaycomplete',
+  onPolygonComplete: 'polygoncomplete',
+  onPolylineComplete: 'polylinecomplete',
+  onRectangleComplete: 'rectanglecomplete'
 };
 var updaterMap$2 = {
   drawingMode: function drawingMode(instance, _drawingMode) {
@@ -11120,7 +12197,7 @@ function (_React$PureComponent) {
     _this.registeredEvents = [];
     _this.state = {
       drawingManager: null
-    }; // eslint-disable-next-line @getify/proper-arrows/this, @getify/proper-arrows/name
+    };
 
     _this.setDrawingManagerCallback = function () {
       if (_this.state.drawingManager !== null && _this.props.onLoad) {
@@ -11145,14 +12222,11 @@ function (_React$PureComponent) {
       nextProps: this.props,
       instance: drawingManager
     });
-
-    function setDrawingManager() {
+    this.setState(function setDrawingManager() {
       return {
         drawingManager: drawingManager
       };
-    }
-
-    this.setState(setDrawingManager, this.setDrawingManagerCallback);
+    }, this.setDrawingManagerCallback);
   };
 
   _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
@@ -11188,27 +12262,27 @@ function (_React$PureComponent) {
 DrawingManager.contextType = MapContext;
 
 var eventMap$3 = {
-  onAnimationChanged: "animation_changed",
-  onClick: "click",
-  onClickableChanged: "clickable_changed",
-  onCursorChanged: "cursor_changed",
-  onDblClick: "dblclick",
-  onDrag: "drag",
-  onDragEnd: "dragend",
-  onDraggableChanged: "draggable_changed",
-  onDragStart: "dragstart",
-  onFlatChanged: "flat_changed",
-  onIconChanged: "icon_changed",
-  onMouseDown: "mousedown",
-  onMouseOut: "mouseout",
-  onMouseOver: "mouseover",
-  onMouseUp: "mouseup",
-  onPositionChanged: "position_changed",
-  onRightClick: "rightclick",
-  onShapeChanged: "shape_changed",
-  onTitleChanged: "title_changed",
-  onVisibleChanged: "visible_changed",
-  onZindexChanged: "zindex_changed"
+  onAnimationChanged: 'animation_changed',
+  onClick: 'click',
+  onClickableChanged: 'clickable_changed',
+  onCursorChanged: 'cursor_changed',
+  onDblClick: 'dblclick',
+  onDrag: 'drag',
+  onDragEnd: 'dragend',
+  onDraggableChanged: 'draggable_changed',
+  onDragStart: 'dragstart',
+  onFlatChanged: 'flat_changed',
+  onIconChanged: 'icon_changed',
+  onMouseDown: 'mousedown',
+  onMouseOut: 'mouseout',
+  onMouseOver: 'mouseover',
+  onMouseUp: 'mouseup',
+  onPositionChanged: 'position_changed',
+  onRightClick: 'rightclick',
+  onShapeChanged: 'shape_changed',
+  onTitleChanged: 'title_changed',
+  onVisibleChanged: 'visible_changed',
+  onZindexChanged: 'zindex_changed'
 };
 var updaterMap$3 = {
   animation: function animation(instance, _animation) {
@@ -11266,7 +12340,7 @@ function (_React$PureComponent) {
     _this.registeredEvents = [];
     _this.state = {
       marker: null
-    }; // eslint-disable-next-line @getify/proper-arrows/this, @getify/proper-arrows/name
+    };
 
     _this.setMarkerCallback = function () {
       if (_this.state.marker !== null && _this.props.onLoad) {
@@ -11280,7 +12354,7 @@ function (_React$PureComponent) {
   var _proto = Marker.prototype;
 
   _proto.componentDidMount = function componentDidMount() {
-    var markerOptions = _extends({}, this.props.options || {}, {}, this.props.clusterer ? {} : {
+    var markerOptions = _extends({}, this.props.options || {}, this.props.clusterer ? {} : {
       map: this.context
     }, {
       position: this.props.position
@@ -11289,7 +12363,8 @@ function (_React$PureComponent) {
     var marker = new google.maps.Marker(markerOptions);
 
     if (this.props.clusterer) {
-      this.props.clusterer.addMarker( // @ts-ignore
+      this.props.clusterer.addMarker( // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // @ts-ignore
       marker, !!this.props.noClustererRedraw);
     } else {
       marker.setMap(this.context);
@@ -11302,14 +12377,11 @@ function (_React$PureComponent) {
       nextProps: this.props,
       instance: marker
     });
-
-    function setMarker() {
+    this.setState(function setMarker() {
       return {
         marker: marker
       };
-    }
-
-    this.setState(setMarker, this.setMarkerCallback);
+    }, this.setMarkerCallback);
   };
 
   _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
@@ -11334,7 +12406,8 @@ function (_React$PureComponent) {
       unregisterEvents(this.registeredEvents);
 
       if (this.props.clusterer) {
-        this.props.clusterer.removeMarker( // @ts-ignore
+        this.props.clusterer.removeMarker( // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // @ts-ignore
         this.state.marker, !!this.props.noClustererRedraw);
       } else {
         this.state.marker && this.state.marker.setMap(null);
@@ -11343,7 +12416,24 @@ function (_React$PureComponent) {
   };
 
   _proto.render = function render() {
-    return this.props.children || null;
+    var _this2 = this;
+
+    var children = null;
+
+    if (this.props.children) {
+      children = react__WEBPACK_IMPORTED_MODULE_0__["Children"].map(this.props.children, function (child) {
+        if (!Object(react__WEBPACK_IMPORTED_MODULE_0__["isValidElement"])(child)) {
+          return child;
+        }
+
+        var elementChild = child;
+        return Object(react__WEBPACK_IMPORTED_MODULE_0__["cloneElement"])(elementChild, {
+          anchor: _this2.state.marker
+        });
+      });
+    }
+
+    return children || null;
   };
 
   return Marker;
@@ -11351,11 +12441,11 @@ function (_React$PureComponent) {
 Marker.contextType = MapContext;
 
 var eventMap$4 = {
-  onClick: "click",
-  onClusteringBegin: "clusteringbegin",
-  onClusteringEnd: "clusteringend",
-  onMouseOut: "mouseout",
-  onMouseOver: "mouseover"
+  onClick: 'click',
+  onClusteringBegin: 'clusteringbegin',
+  onClusteringEnd: 'clusteringend',
+  onMouseOut: 'mouseout',
+  onMouseOver: 'mouseover'
 };
 var updaterMap$4 = {
   averageCenter: function averageCenter(instance, _averageCenter) {
@@ -11431,7 +12521,7 @@ function (_React$PureComponent) {
 
   _proto.componentDidMount = function componentDidMount() {
     if (this.context) {
-      var markerClusterer = new _react_google_maps_marker_clusterer__WEBPACK_IMPORTED_MODULE_2__["Clusterer"](this.context, [], this.props.options);
+      var markerClusterer = new _react_google_maps_marker_clusterer__WEBPACK_IMPORTED_MODULE_3__["Clusterer"](this.context, [], this.props.options);
       this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
         updaterMap: updaterMap$4,
         eventMap: eventMap$4,
@@ -11466,7 +12556,8 @@ function (_React$PureComponent) {
         this.props.onUnmount(this.state.markerClusterer);
       }
 
-      unregisterEvents(this.registeredEvents); //@ts-ignore
+      unregisterEvents(this.registeredEvents); // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // @ts-ignore
 
       this.state.markerClusterer.setMap(null);
     }
@@ -11481,11 +12572,11 @@ function (_React$PureComponent) {
 ClustererComponent.contextType = MapContext;
 
 var eventMap$5 = {
-  onCloseClick: "closeclick",
-  onContentChanged: "content_changed",
-  onDomReady: "domready",
-  onPositionChanged: "position_changed",
-  onZindexChanged: "zindex_changed"
+  onCloseClick: 'closeclick',
+  onContentChanged: 'content_changed',
+  onDomReady: 'domready',
+  onPositionChanged: 'position_changed',
+  onZindexChanged: 'zindex_changed'
 };
 var updaterMap$5 = {
   options: function options(instance, _options) {
@@ -11526,7 +12617,7 @@ function (_React$PureComponent) {
       } else if (infoBox.getPosition()) {
         infoBox.open(_this.context);
       } else {
-          true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, "You must provide either an anchor or a position prop for <InfoBox>.") : undefined ;
+          true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, 'You must provide either an anchor or a position prop for <InfoBox>.') : undefined ;
       }
     };
 
@@ -11565,7 +12656,7 @@ function (_React$PureComponent) {
       positionLatLng = new google.maps.LatLng(position.lat, position.lng);
     }
 
-    var infoBox = new _react_google_maps_infobox__WEBPACK_IMPORTED_MODULE_4__["InfoBox"](_extends({}, infoBoxOptions, {}, positionLatLng ? {
+    var infoBox = new _react_google_maps_infobox__WEBPACK_IMPORTED_MODULE_5__["InfoBox"](_extends({}, infoBoxOptions, positionLatLng ? {
       position: positionLatLng
     } : {}));
     this.containerElement = document.createElement('div');
@@ -11615,7 +12706,7 @@ function (_React$PureComponent) {
       return null;
     }
 
-    return Object(react_dom__WEBPACK_IMPORTED_MODULE_3__["createPortal"])(react__WEBPACK_IMPORTED_MODULE_0__["Children"].only(this.props.children), this.containerElement);
+    return Object(react_dom__WEBPACK_IMPORTED_MODULE_4__["createPortal"])(react__WEBPACK_IMPORTED_MODULE_0__["Children"].only(this.props.children), this.containerElement);
   };
 
   return InfoBoxComponent;
@@ -11623,11 +12714,11 @@ function (_React$PureComponent) {
 InfoBoxComponent.contextType = MapContext;
 
 var eventMap$6 = {
-  onCloseClick: "closeclick",
-  onContentChanged: "content_changed",
-  onDomReady: "domready",
-  onPositionChanged: "position_changed",
-  onZindexChanged: "zindex_changed"
+  onCloseClick: 'closeclick',
+  onContentChanged: 'content_changed',
+  onDomReady: 'domready',
+  onPositionChanged: 'position_changed',
+  onZindexChanged: 'zindex_changed'
 };
 var updaterMap$6 = {
   options: function options(instance, _options) {
@@ -11665,7 +12756,7 @@ function (_React$PureComponent) {
       }
     };
 
-    _this.setInfowindowCallback = function () {
+    _this.setInfoWindowCallback = function () {
       if (_this.state.infoWindow !== null && _this.containerElement !== null) {
         _this.state.infoWindow.setContent(_this.containerElement);
 
@@ -11684,7 +12775,7 @@ function (_React$PureComponent) {
 
   _proto.componentDidMount = function componentDidMount() {
     var infoWindow = new google.maps.InfoWindow(_extends({}, this.props.options || {}));
-    this.containerElement = document.createElement("div");
+    this.containerElement = document.createElement('div');
     this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
       updaterMap: updaterMap$6,
       eventMap: eventMap$6,
@@ -11692,14 +12783,11 @@ function (_React$PureComponent) {
       nextProps: this.props,
       instance: infoWindow
     });
-
-    function setInfoWindow() {
+    this.setState(function setInfoWindow() {
       return {
         infoWindow: infoWindow
       };
-    }
-
-    this.setState(setInfoWindow, this.setInfowindowCallback);
+    }, this.setInfoWindowCallback);
   };
 
   _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
@@ -11723,7 +12811,7 @@ function (_React$PureComponent) {
   };
 
   _proto.render = function render() {
-    return this.containerElement ? Object(react_dom__WEBPACK_IMPORTED_MODULE_3__["createPortal"])(react__WEBPACK_IMPORTED_MODULE_0__["Children"].only(this.props.children), this.containerElement) : Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null);
+    return this.containerElement ? Object(react_dom__WEBPACK_IMPORTED_MODULE_4__["createPortal"])(react__WEBPACK_IMPORTED_MODULE_0__["Children"].only(this.props.children), this.containerElement) : Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null);
   };
 
   return InfoWindow;
@@ -11731,17 +12819,17 @@ function (_React$PureComponent) {
 InfoWindow.contextType = MapContext;
 
 var eventMap$7 = {
-  onClick: "click",
-  onDblClick: "dblclick",
-  onDrag: "drag",
-  onDragEnd: "dragend",
-  onDragStart: "dragstart",
-  onMouseDown: "mousedown",
-  onMouseMove: "mousemove",
-  onMouseOut: "mouseout",
-  onMouseOver: "mouseover",
-  onMouseUp: "mouseup",
-  onRightClick: "rightclick"
+  onClick: 'click',
+  onDblClick: 'dblclick',
+  onDrag: 'drag',
+  onDragEnd: 'dragend',
+  onDragStart: 'dragstart',
+  onMouseDown: 'mousedown',
+  onMouseMove: 'mousemove',
+  onMouseOut: 'mouseout',
+  onMouseOver: 'mouseover',
+  onMouseUp: 'mouseup',
+  onRightClick: 'rightclick'
 };
 var updaterMap$7 = {
   draggable: function draggable(instance, _draggable) {
@@ -11775,7 +12863,7 @@ function (_React$PureComponent) {
     _this.registeredEvents = [];
     _this.state = {
       polyline: null
-    }; // eslint-disable-next-line @getify/proper-arrows/this, @getify/proper-arrows/name
+    };
 
     _this.setPolylineCallback = function () {
       if (_this.state.polyline !== null && _this.props.onLoad) {
@@ -11799,14 +12887,11 @@ function (_React$PureComponent) {
       nextProps: this.props,
       instance: polyline
     });
-
-    function setPolyline() {
+    this.setState(function setPolyline() {
       return {
         polyline: polyline
       };
-    }
-
-    this.setState(setPolyline, this.setPolylineCallback);
+    }, this.setPolylineCallback);
   };
 
   _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
@@ -11842,17 +12927,17 @@ function (_React$PureComponent) {
 Polyline.contextType = MapContext;
 
 var eventMap$8 = {
-  onClick: "click",
-  onDblClick: "dblclick",
-  onDrag: "drag",
-  onDragEnd: "dragend",
-  onDragStart: "dragstart",
-  onMouseDown: "mousedown",
-  onMouseMove: "mousemove",
-  onMouseOut: "mouseout",
-  onMouseOver: "mouseover",
-  onMouseUp: "mouseup",
-  onRightClick: "rightclick"
+  onClick: 'click',
+  onDblClick: 'dblclick',
+  onDrag: 'drag',
+  onDragEnd: 'dragend',
+  onDragStart: 'dragstart',
+  onMouseDown: 'mousedown',
+  onMouseMove: 'mousemove',
+  onMouseOut: 'mouseout',
+  onMouseOver: 'mouseover',
+  onMouseUp: 'mouseup',
+  onRightClick: 'rightclick'
 };
 var updaterMap$8 = {
   draggable: function draggable(instance, _draggable) {
@@ -11889,16 +12974,12 @@ function (_React$PureComponent) {
     _this.registeredEvents = [];
     _this.state = {
       polygon: null
-    }; // eslint-disable-next-line @getify/proper-arrows/this, @getify/proper-arrows/name
+    };
 
     _this.setPolygonCallback = function () {
       if (_this.state.polygon !== null && _this.props.onLoad) {
         _this.props.onLoad(_this.state.polygon);
       }
-    };
-
-    _this.render = function () {
-      return null;
     };
 
     return _this;
@@ -11917,14 +12998,11 @@ function (_React$PureComponent) {
       nextProps: this.props,
       instance: polygon
     });
-
-    function setPolygon() {
+    this.setState(function setPolygon() {
       return {
         polygon: polygon
       };
-    }
-
-    this.setState(setPolygon, this.setPolygonCallback);
+    }, this.setPolygonCallback);
   };
 
   _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
@@ -11951,23 +13029,27 @@ function (_React$PureComponent) {
     }
   };
 
+  _proto.render = function render() {
+    return null;
+  };
+
   return Polygon;
 }(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
 Polygon.contextType = MapContext;
 
 var eventMap$9 = {
-  onBoundsChanged: "bounds_changed",
-  onClick: "click",
-  onDblClick: "dblclick",
-  onDrag: "drag",
-  onDragEnd: "dragend",
-  onDragStart: "dragstart",
-  onMouseDown: "mousedown",
-  onMouseMove: "mousemove",
-  onMouseOut: "mouseout",
-  onMouseOver: "mouseover",
-  onMouseUp: "mouseup",
-  onRightClick: "rightclick"
+  onBoundsChanged: 'bounds_changed',
+  onClick: 'click',
+  onDblClick: 'dblclick',
+  onDrag: 'drag',
+  onDragEnd: 'dragend',
+  onDragStart: 'dragstart',
+  onMouseDown: 'mousedown',
+  onMouseMove: 'mousemove',
+  onMouseOut: 'mouseout',
+  onMouseOver: 'mouseover',
+  onMouseUp: 'mouseup',
+  onRightClick: 'rightclick'
 };
 var updaterMap$9 = {
   bounds: function bounds(instance, _bounds) {
@@ -12001,7 +13083,7 @@ function (_React$PureComponent) {
     _this.registeredEvents = [];
     _this.state = {
       rectangle: null
-    }; // eslint-disable-next-line @getify/proper-arrows/this, @getify/proper-arrows/name
+    };
 
     _this.setRectangleCallback = function () {
       if (_this.state.rectangle !== null && _this.props.onLoad) {
@@ -12025,14 +13107,11 @@ function (_React$PureComponent) {
       nextProps: this.props,
       instance: rectangle
     });
-
-    function setRectangle() {
+    this.setState(function setRectangle() {
       return {
         rectangle: rectangle
       };
-    }
-
-    this.setState(setRectangle, this.setRectangleCallback);
+    }, this.setRectangleCallback);
   };
 
   _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
@@ -12068,19 +13147,19 @@ function (_React$PureComponent) {
 Rectangle.contextType = MapContext;
 
 var eventMap$a = {
-  onCenterChanged: "center_changed",
-  onClick: "click",
-  onDblClick: "dblclick",
-  onDrag: "drag",
-  onDragEnd: "dragend",
-  onDragStart: "dragstart",
-  onMouseDown: "mousedown",
-  onMouseMove: "mousemove",
-  onMouseOut: "mouseout",
-  onMouseOver: "mouseover",
-  onMouseUp: "mouseup",
-  onRadiusChanged: "radius_changed",
-  onRightClick: "rightclick"
+  onCenterChanged: 'center_changed',
+  onClick: 'click',
+  onDblClick: 'dblclick',
+  onDrag: 'drag',
+  onDragEnd: 'dragend',
+  onDragStart: 'dragstart',
+  onMouseDown: 'mousedown',
+  onMouseMove: 'mousemove',
+  onMouseOut: 'mouseout',
+  onMouseOver: 'mouseover',
+  onMouseUp: 'mouseup',
+  onRadiusChanged: 'radius_changed',
+  onRightClick: 'rightclick'
 };
 var updaterMap$a = {
   center: function center(instance, _center) {
@@ -12117,7 +13196,7 @@ function (_React$PureComponent) {
     _this.registeredEvents = [];
     _this.state = {
       circle: null
-    }; // eslint-disable-next-line @getify/proper-arrows/this, @getify/proper-arrows/name
+    };
 
     _this.setCircleCallback = function () {
       if (_this.state.circle !== null && _this.props.onLoad) {
@@ -12141,14 +13220,11 @@ function (_React$PureComponent) {
       nextProps: this.props,
       instance: circle
     });
-
-    function setCircle() {
+    this.setState(function setCircle() {
       return {
         circle: circle
       };
-    }
-
-    this.setState(setCircle, this.setCircleCallback);
+    }, this.setCircleCallback);
   };
 
   _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
@@ -12184,18 +13260,18 @@ function (_React$PureComponent) {
 Circle.contextType = MapContext;
 
 var eventMap$b = {
-  onAddFeature: "addfeature",
-  onClick: "click",
-  onDblClick: "dblclick",
-  onMouseDown: "mousedown",
-  onMouseOut: "mouseout",
-  onMouseOver: "mouseover",
-  onMouseUp: "mouseup",
-  onRemoveFeature: "removefeature",
-  onRemoveProperty: "removeproperty",
-  onRightClick: "rightclick",
-  onSetGeometry: "setgeometry",
-  onSetProperty: "setproperty"
+  onAddFeature: 'addfeature',
+  onClick: 'click',
+  onDblClick: 'dblclick',
+  onMouseDown: 'mousedown',
+  onMouseOut: 'mouseout',
+  onMouseOver: 'mouseover',
+  onMouseUp: 'mouseup',
+  onRemoveFeature: 'removefeature',
+  onRemoveProperty: 'removeproperty',
+  onRightClick: 'rightclick',
+  onSetGeometry: 'setgeometry',
+  onSetProperty: 'setproperty'
 };
 var updaterMap$b = {
   add: function add(instance, features) {
@@ -12222,8 +13298,7 @@ var updaterMap$b = {
   revertstyle: function revertstyle(instance, feature) {
     instance.revertStyle(feature);
   },
-  controlposition: function controlposition(instance, controlPosition // TODO: ???
-  ) {
+  controlposition: function controlposition(instance, controlPosition) {
     instance.setControlPosition(controlPosition);
   },
   controls: function controls(instance, _controls) {
@@ -12254,7 +13329,7 @@ function (_React$PureComponent) {
     _this.registeredEvents = [];
     _this.state = {
       data: null
-    }; // eslint-disable-next-line @getify/proper-arrows/this, @getify/proper-arrows/name
+    };
 
     _this.setDataCallback = function () {
       if (_this.state.data !== null && _this.props.onLoad) {
@@ -12278,14 +13353,11 @@ function (_React$PureComponent) {
       nextProps: this.props,
       instance: data
     });
-
-    function setData() {
+    this.setState(function setData() {
       return {
         data: data
       };
-    }
-
-    this.setState(setData, this.setDataCallback);
+    }, this.setDataCallback);
   };
 
   _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
@@ -12324,9 +13396,9 @@ function (_React$PureComponent) {
 Data.contextType = MapContext;
 
 var eventMap$c = {
-  onClick: "click",
-  onDefaultViewportChanged: "defaultviewport_changed",
-  onStatusChanged: "status_changed"
+  onClick: 'click',
+  onDefaultViewportChanged: 'defaultviewport_changed',
+  onStatusChanged: 'status_changed'
 };
 var updaterMap$c = {
   options: function options(instance, _options) {
@@ -12351,7 +13423,7 @@ function (_PureComponent) {
     _this.registeredEvents = [];
     _this.state = {
       kmlLayer: null
-    }; // eslint-disable-next-line @getify/proper-arrows/this, @getify/proper-arrows/name
+    };
 
     _this.setKmlLayerCallback = function () {
       if (_this.state.kmlLayer !== null && _this.props.onLoad) {
@@ -12375,14 +13447,11 @@ function (_PureComponent) {
       nextProps: this.props,
       instance: kmlLayer
     });
-
-    function setLmlLayer() {
+    this.setState(function setLmlLayer() {
       return {
         kmlLayer: kmlLayer
       };
-    }
-
-    this.setState(setLmlLayer, this.setKmlLayerCallback);
+    }, this.setKmlLayerCallback);
   };
 
   _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
@@ -12419,24 +13488,26 @@ KmlLayer.contextType = MapContext;
 
 /* eslint-disable filenames/match-regex */
 function getOffsetOverride(containerElement, getPixelPositionOffset) {
-  return typeof getPixelPositionOffset === "function" ? getPixelPositionOffset(containerElement.offsetWidth, containerElement.offsetHeight) : {};
-}
+  return typeof getPixelPositionOffset === 'function' ? getPixelPositionOffset(containerElement.offsetWidth, containerElement.offsetHeight) : {};
+} // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
 var createLatLng = function createLatLng(inst, Type) {
   return new Type(inst.lat, inst.lng);
-};
+}; // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 
 var createLatLngBounds = function createLatLngBounds(inst, Type) {
   return new Type(new google.maps.LatLng(inst.ne.lat, inst.ne.lng), new google.maps.LatLng(inst.sw.lat, inst.sw.lng));
-};
+}; // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 
 var ensureOfType = function ensureOfType(inst, type, factory) {
   return inst instanceof type ? inst : factory(inst, type);
 };
 
 var getLayoutStylesByBounds = function getLayoutStylesByBounds(mapCanvasProjection, offset, bounds) {
-  var ne = mapCanvasProjection.fromLatLngToDivPixel(bounds.getNorthEast());
-  var sw = mapCanvasProjection.fromLatLngToDivPixel(bounds.getSouthWest());
+  var ne = mapCanvasProjection && mapCanvasProjection.fromLatLngToDivPixel(bounds.getNorthEast());
+  var sw = mapCanvasProjection && mapCanvasProjection.fromLatLngToDivPixel(bounds.getSouthWest());
 
   if (ne && sw) {
     return {
@@ -12448,13 +13519,13 @@ var getLayoutStylesByBounds = function getLayoutStylesByBounds(mapCanvasProjecti
   }
 
   return {
-    left: "-9999px",
-    top: "-9999px"
+    left: '-9999px',
+    top: '-9999px'
   };
 };
 
 var getLayoutStylesByPosition = function getLayoutStylesByPosition(mapCanvasProjection, offset, position) {
-  var point = mapCanvasProjection.fromLatLngToDivPixel(position);
+  var point = mapCanvasProjection && mapCanvasProjection.fromLatLngToDivPixel(position);
 
   if (point) {
     var x = point.x,
@@ -12466,162 +13537,169 @@ var getLayoutStylesByPosition = function getLayoutStylesByPosition(mapCanvasProj
   }
 
   return {
-    left: "-9999px",
-    top: "-9999px"
+    left: '-9999px',
+    top: '-9999px'
   };
 };
 
-var getLayoutStyles = function getLayoutStyles(mapCanvasProjection, offset, bounds, // eslint-disable-next-line @getify/proper-arrows/params
-position) {
+var getLayoutStyles = function getLayoutStyles(mapCanvasProjection, offset, bounds, position) {
   return bounds !== undefined ? getLayoutStylesByBounds(mapCanvasProjection, offset, ensureOfType(bounds, google.maps.LatLngBounds, createLatLngBounds)) : getLayoutStylesByPosition(mapCanvasProjection, offset, ensureOfType(position, google.maps.LatLng, createLatLng));
 };
+var arePositionsEqual = function arePositionsEqual(currentPosition, previousPosition) {
+  return currentPosition.left === previousPosition.left && currentPosition.top === previousPosition.top && currentPosition.width === previousPosition.height && currentPosition.height === previousPosition.height;
+};
 
-var ContentMountHandler =
-/*#__PURE__*/
-function (_React$Component) {
-  _inheritsLoose(ContentMountHandler, _React$Component);
-
-  function ContentMountHandler() {
-    return _React$Component.apply(this, arguments) || this;
+function convertToLatLngString(latLngLike) {
+  if (!latLngLike) {
+    return '';
   }
 
-  var _proto = ContentMountHandler.prototype;
+  var latLng = latLngLike instanceof google.maps.LatLng ? latLngLike : new google.maps.LatLng(latLngLike.lat, latLngLike.lng);
+  return latLng + '';
+}
 
-  _proto.componentDidMount = function componentDidMount() {
-    if (this.props.onLoad) this.props.onLoad();
-  };
+function convertToLatLngBoundsString(latLngBoundsLike) {
+  if (!latLngBoundsLike) {
+    return '';
+  }
 
-  _proto.render = function render() {
-    return this.props.children;
-  };
-
-  return ContentMountHandler;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+  var latLngBounds = latLngBoundsLike instanceof google.maps.LatLngBounds ? latLngBoundsLike : new google.maps.LatLngBounds(new google.maps.LatLng(latLngBoundsLike.south, latLngBoundsLike.east), new google.maps.LatLng(latLngBoundsLike.north, latLngBoundsLike.west));
+  return latLngBounds + '';
+}
 
 var OverlayView =
 /*#__PURE__*/
 function (_React$PureComponent) {
   _inheritsLoose(OverlayView, _React$PureComponent);
 
-  function OverlayView() {
+  function OverlayView(props) {
     var _this;
 
-    _this = _React$PureComponent.apply(this, arguments) || this;
+    _this = _React$PureComponent.call(this, props) || this;
     _this.state = {
-      overlayView: null
-    };
-    _this.containerElement = null; // eslint-disable-next-line @getify/proper-arrows/this, @getify/proper-arrows/name
-
-    _this.setOverlayViewCallback = function () {
-      if (_this.state.overlayView !== null && _this.props.onLoad) {
-        _this.props.onLoad(_this.state.overlayView);
+      paneEl: null,
+      containerStyle: {
+        // set initial position
+        position: 'absolute'
       }
+    };
 
-      _this.onPositionElement();
-    }; // eslint-disable-next-line @getify/proper-arrows/this, @getify/proper-arrows/name
+    _this.updatePane = function () {
+      var mapPaneName = _this.props.mapPaneName; // https://developers.google.com/maps/documentation/javascript/3.exp/reference#MapPanes
 
+      var mapPanes = _this.overlayView.getPanes();
+
+      !!!mapPaneName ?  true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, "OverlayView requires props.mapPaneName but got %s", mapPaneName) : undefined : void 0;
+
+      if (mapPanes) {
+        _this.setState({
+          paneEl: mapPanes[mapPaneName]
+        });
+      } else {
+        _this.setState({
+          paneEl: null
+        });
+      }
+    };
 
     _this.onAdd = function () {
-      _this.containerElement = document.createElement("div");
-      _this.containerElement.style.position = "absolute";
-    }; // eslint-disable-next-line @getify/proper-arrows/this, @getify/proper-arrows/name
+      _this.updatePane();
 
+      _this.props.onLoad == null ? void 0 : _this.props.onLoad(_this.overlayView);
+    };
 
     _this.onPositionElement = function () {
-      if (_this.state.overlayView !== null && _this.containerElement !== null) {
-        var mapCanvasProjection = _this.state.overlayView.getProjection();
+      var mapCanvasProjection = _this.overlayView.getProjection();
 
-        var offset = _extends({
-          x: 0,
-          y: 0
-        }, getOffsetOverride(_this.containerElement, _this.props.getPixelPositionOffset));
+      var offset = _extends({
+        x: 0,
+        y: 0
+      }, _this.containerRef.current ? getOffsetOverride(_this.containerRef.current, _this.props.getPixelPositionOffset) : {});
 
-        var layoutStyles = getLayoutStyles(mapCanvasProjection, offset, _this.props.bounds, _this.props.position);
-        Object.assign(_this.containerElement.style, layoutStyles);
-      }
-    }; // eslint-disable-next-line @getify/proper-arrows/this, @getify/proper-arrows/name
+      var layoutStyles = getLayoutStyles(mapCanvasProjection, offset, _this.props.bounds, _this.props.position);
+      var _this$state$container = _this.state.containerStyle,
+          left = _this$state$container.left,
+          top = _this$state$container.top,
+          width = _this$state$container.width,
+          height = _this$state$container.height;
 
-
-    _this.draw = function () {
-      !!!_this.props.mapPaneName ?  true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, "OverlayView requires props.mapPaneName but got %s", _this.props.mapPaneName) : undefined : void 0;
-      var overlayView = _this.state.overlayView;
-
-      if (overlayView === null) {
-        return;
-      } // https://developers.google.com/maps/documentation/javascript/3.exp/reference#MapPanes
-
-
-      var mapPanes = overlayView.getPanes();
-
-      if (!mapPanes) {
-        return;
-      }
-
-      if (_this.containerElement) {
-        mapPanes[_this.props.mapPaneName].appendChild(_this.containerElement);
-      }
-
-      _this.onPositionElement();
-
-      _this.forceUpdate();
-    }; // eslint-disable-next-line @getify/proper-arrows/this, @getify/proper-arrows/name
-
-
-    _this.onRemove = function () {
-      if (_this.containerElement !== null && _this.containerElement.parentNode) {
-        _this.containerElement.parentNode.removeChild(_this.containerElement);
-
-        delete _this.containerElement;
+      if (!arePositionsEqual(layoutStyles, {
+        left: left,
+        top: top,
+        width: width,
+        height: height
+      })) {
+        _this.setState({
+          containerStyle: _extends({}, layoutStyles, {
+            position: 'absolute'
+          })
+        });
       }
     };
 
+    _this.draw = function () {
+      _this.onPositionElement();
+    };
+
+    _this.onRemove = function () {
+      _this.setState(function () {
+        return {
+          paneEl: null
+        };
+      }); // this.mapPaneEl = null
+
+
+      _this.props.onUnmount == null ? void 0 : _this.props.onUnmount(_this.overlayView);
+    };
+
+    _this.containerRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["createRef"])(); // You must implement three methods: onAdd(), draw(), and onRemove().
+
+    var overlayView = new google.maps.OverlayView();
+    overlayView.onAdd = _this.onAdd;
+    overlayView.draw = _this.draw;
+    overlayView.onRemove = _this.onRemove;
+    _this.overlayView = overlayView;
     return _this;
   }
 
-  var _proto2 = OverlayView.prototype;
+  var _proto = OverlayView.prototype;
 
-  _proto2.componentDidMount = function componentDidMount() {
-    var overlayView = new google.maps.OverlayView(); // You must implement three methods: onAdd(), draw(), and onRemove().
-
-    overlayView.onAdd = this.onAdd;
-    overlayView.draw = this.draw;
-    overlayView.onRemove = this.onRemove;
-    overlayView.setMap(this.context); // You must call setMap() with a valid Map object to trigger the call to
+  _proto.componentDidMount = function componentDidMount() {
+    // You must call setMap() with a valid Map object to trigger the call to
     // the onAdd() method and setMap(null) in order to trigger the onRemove() method.
-
-    function setOverlayView() {
-      return {
-        overlayView: overlayView
-      };
-    }
-
-    this.setState(setOverlayView);
+    this.overlayView.setMap(this.context);
   };
 
-  _proto2.componentDidUpdate = function componentDidUpdate(prevProps) {
-    var _this2 = this;
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    var prevPositionString = convertToLatLngString(prevProps.position);
+    var positionString = convertToLatLngString(this.props.position);
+    var prevBoundsString = convertToLatLngBoundsString(prevProps.bounds);
+    var boundsString = convertToLatLngBoundsString(this.props.bounds);
 
-    if (prevProps.position !== this.props.position || prevProps.bounds !== this.props.bounds) {
-      setTimeout(function () {
-        _this2.state.overlayView !== null && _this2.state.overlayView.draw();
-      }, 0);
+    if (prevPositionString !== positionString || prevBoundsString !== boundsString) {
+      this.overlayView.draw();
+    }
+
+    if (prevProps.mapPaneName !== this.props.mapPaneName) {
+      this.updatePane();
     }
   };
 
-  _proto2.componentWillUnmount = function componentWillUnmount() {
-    if (this.state.overlayView !== null) {
-      if (this.props.onUnmount) {
-        this.props.onUnmount(this.state.overlayView);
-      }
-
-      this.state.overlayView.setMap(null);
-    }
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    this.overlayView.setMap(null);
   };
 
-  _proto2.render = function render() {
-    return this.containerElement !== null ? Object(react_dom__WEBPACK_IMPORTED_MODULE_3__["createPortal"])(Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ContentMountHandler, {
-      onLoad: this.setOverlayViewCallback
-    }, react__WEBPACK_IMPORTED_MODULE_0__["Children"].only(this.props.children)), this.containerElement) : Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null);
+  _proto.render = function render() {
+    var paneEl = this.state.paneEl;
+
+    if (paneEl) {
+      return Object(react_dom__WEBPACK_IMPORTED_MODULE_4__["createPortal"])(Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+        ref: this.containerRef,
+        style: this.state.containerStyle
+      }, react__WEBPACK_IMPORTED_MODULE_0__["Children"].only(this.props.children)), paneEl);
+    } else {
+      return null;
+    }
   };
 
   return OverlayView;
@@ -12633,9 +13711,11 @@ OverlayView.OVERLAY_LAYER = "overlayLayer";
 OverlayView.OVERLAY_MOUSE_TARGET = "overlayMouseTarget";
 OverlayView.contextType = MapContext;
 
+function noop() {}
+
 var eventMap$d = {
-  onDblClick: "dblclick",
-  onClick: "click"
+  onDblClick: 'dblclick',
+  onClick: 'click'
 };
 var updaterMap$d = {
   opacity: function opacity(instance, _opacity) {
@@ -12654,7 +13734,7 @@ function (_React$PureComponent) {
     _this.registeredEvents = [];
     _this.state = {
       groundOverlay: null
-    }; // eslint-disable-next-line @getify/proper-arrows/this, @getify/proper-arrows/name
+    };
 
     _this.setGroundOverlayCallback = function () {
       if (_this.state.groundOverlay !== null && _this.props.onLoad) {
@@ -12668,7 +13748,7 @@ function (_React$PureComponent) {
   var _proto = GroundOverlay.prototype;
 
   _proto.componentDidMount = function componentDidMount() {
-    !(!!this.props.url || !!this.props.bounds) ?  true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, "For GroundOveray, url and bounds are passed in to constructor and are immutable after instantiated. This is the behavior of Google Maps JavaScript API v3 ( See https://developers.google.com/maps/documentation/javascript/reference#GroundOverlay) Hence, use the corresponding two props provided by `react-google-maps-api`, url and bounds. In some cases, you'll need the GroundOverlay component to reflect the changes of url and bounds. You can leverage the React's key property to remount the component. Typically, just `key={url}` would serve your need. See https://github.com/tomchentw/react-google-maps/issues/655") : undefined : void 0;
+    !(!!this.props.url || !!this.props.bounds) ?  true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, "For GroundOverlay, url and bounds are passed in to constructor and are immutable after instantiated. This is the behavior of Google Maps JavaScript API v3 ( See https://developers.google.com/maps/documentation/javascript/reference#GroundOverlay) Hence, use the corresponding two props provided by `react-google-maps-api`, url and bounds. In some cases, you'll need the GroundOverlay component to reflect the changes of url and bounds. You can leverage the React's key property to remount the component. Typically, just `key={url}` would serve your need. See https://github.com/tomchentw/react-google-maps/issues/655") : undefined : void 0;
     var groundOverlay = new google.maps.GroundOverlay(this.props.url, this.props.bounds, _extends({}, this.props.options, {
       map: this.context
     }));
@@ -12679,14 +13759,11 @@ function (_React$PureComponent) {
       nextProps: this.props,
       instance: groundOverlay
     });
-
-    function setGroundOverlay() {
+    this.setState(function setGroundOverlay() {
       return {
         groundOverlay: groundOverlay
       };
-    }
-
-    this.setState(setGroundOverlay, this.setGroundOverlayCallback);
+    }, this.setGroundOverlayCallback);
   };
 
   _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
@@ -12719,7 +13796,7 @@ function (_React$PureComponent) {
   return GroundOverlay;
 }(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
 GroundOverlay.defaultProps = {
-  onLoad: function onLoad() {}
+  onLoad: noop
 };
 GroundOverlay.contextType = MapContext;
 
@@ -12747,7 +13824,7 @@ function (_React$PureComponent) {
     _this.registeredEvents = [];
     _this.state = {
       heatmapLayer: null
-    }; // eslint-disable-next-line @getify/proper-arrows/this, @getify/proper-arrows/name
+    };
 
     _this.setHeatmapLayerCallback = function () {
       if (_this.state.heatmapLayer !== null && _this.props.onLoad) {
@@ -12762,10 +13839,9 @@ function (_React$PureComponent) {
 
   _proto.componentDidMount = function componentDidMount() {
     !!!google.maps.visualization ?  true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, 'Did you include prop libraries={["visualization"]} to <LoadScript />? %s', google.maps.visualization) : undefined : void 0;
-    !!!this.props.data ?  true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, "data property is required in HeatmapLayer %s", this.props.data) : undefined : void 0;
-    var heatmapLayer = new google.maps.visualization.HeatmapLayer(_extends({
-      data: this.props.data
-    }, this.props.options || {}, {
+    !!!this.props.data ?  true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, 'data property is required in HeatmapLayer %s', this.props.data) : undefined : void 0;
+    var heatmapLayer = new google.maps.visualization.HeatmapLayer(_extends({}, this.props.options || {}, {
+      data: this.props.data,
       map: this.context
     }));
     this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
@@ -12775,14 +13851,11 @@ function (_React$PureComponent) {
       nextProps: this.props,
       instance: heatmapLayer
     });
-
-    function setHeatmapLayer() {
+    this.setState(function setHeatmapLayer() {
       return {
         heatmapLayer: heatmapLayer
       };
-    }
-
-    this.setState(setHeatmapLayer, this.setHeatmapLayerCallback);
+    }, this.setHeatmapLayerCallback);
   };
 
   _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
@@ -12816,14 +13889,14 @@ function (_React$PureComponent) {
 HeatmapLayer.contextType = MapContext;
 
 var eventMap$f = {
-  onCloseClick: "closeclick",
-  onPanoChanged: "pano_changed",
-  onPositionChanged: "position_changed",
-  onPovChanged: "pov_changed",
-  onResize: "resize",
-  onStatusChanged: "status_changed",
-  onVisibleChanged: "visible_changed",
-  onZoomChanged: "zoom_changed"
+  onCloseClick: 'closeclick',
+  onPanoChanged: 'pano_changed',
+  onPositionChanged: 'position_changed',
+  onPovChanged: 'pov_changed',
+  onResize: 'resize',
+  onStatusChanged: 'status_changed',
+  onVisibleChanged: 'visible_changed',
+  onZoomChanged: 'zoom_changed'
 };
 var updaterMap$f = {
   register: function register(instance, provider, options) {
@@ -12866,7 +13939,7 @@ function (_React$PureComponent) {
     _this.registeredEvents = [];
     _this.state = {
       streetViewPanorama: null
-    }; // eslint-disable-next-line @getify/proper-arrows/this, @getify/proper-arrows/name
+    };
 
     _this.setStreetViewPanoramaCallback = function () {
       if (_this.state.streetViewPanorama !== null && _this.props.onLoad) {
@@ -12888,14 +13961,11 @@ function (_React$PureComponent) {
       nextProps: this.props,
       instance: streetViewPanorama
     });
-
-    function setStreetViewPanorama() {
+    this.setState(function setStreetViewPanorama() {
       return {
         streetViewPanorama: streetViewPanorama
       };
-    }
-
-    this.setState(setStreetViewPanorama, this.setStreetViewPanoramaCallback);
+    }, this.setStreetViewPanoramaCallback);
   };
 
   _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
@@ -12941,7 +14011,7 @@ function (_React$PureComponent) {
     _this = _React$PureComponent.apply(this, arguments) || this;
     _this.state = {
       streetViewService: null
-    }; // eslint-disable-next-line @getify/proper-arrows/this, @getify/proper-arrows/name
+    };
 
     _this.setStreetViewServiceCallback = function () {
       if (_this.state.streetViewService !== null && _this.props.onLoad) {
@@ -12956,14 +14026,11 @@ function (_React$PureComponent) {
 
   _proto.componentDidMount = function componentDidMount() {
     var streetViewService = new google.maps.StreetViewService();
-
-    function setStreetViewService() {
+    this.setState(function setStreetViewService() {
       return {
         streetViewService: streetViewService
       };
-    }
-
-    this.setState(setStreetViewService);
+    }, this.setStreetViewServiceCallback);
   };
 
   _proto.componentWillUnmount = function componentWillUnmount() {
@@ -12993,7 +14060,7 @@ function (_React$PureComponent) {
     _this = _React$PureComponent.apply(this, arguments) || this;
     _this.state = {
       directionsService: null
-    }; // eslint-disable-next-line @getify/proper-arrows/this, @getify/proper-arrows/name
+    };
 
     _this.setDirectionsServiceCallback = function () {
       if (_this.state.directionsService !== null && _this.props.onLoad) {
@@ -13007,16 +14074,13 @@ function (_React$PureComponent) {
   var _proto = DirectionsService.prototype;
 
   _proto.componentDidMount = function componentDidMount() {
-    !!!this.props.options ?  true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, "DirectionsService expected options object as parameter, but got %s", this.props.options) : undefined : void 0;
+    !!!this.props.options ?  true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, 'DirectionsService expected options object as parameter, but got %s', this.props.options) : undefined : void 0;
     var directionsService = new google.maps.DirectionsService();
-
-    function setDirectionsService() {
+    this.setState(function setDirectionsService() {
       return {
         directionsService: directionsService
       };
-    }
-
-    this.setState(setDirectionsService, this.setDirectionsServiceCallback);
+    }, this.setDirectionsServiceCallback);
   };
 
   _proto.componentDidUpdate = function componentDidUpdate() {
@@ -13041,7 +14105,7 @@ function (_React$PureComponent) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
 
 var eventMap$g = {
-  onDirectionsChanged: "directions_changed"
+  onDirectionsChanged: 'directions_changed'
 };
 var updaterMap$g = {
   directions: function directions(instance, _directions) {
@@ -13072,7 +14136,7 @@ function (_React$PureComponent) {
     _this.registeredEvents = [];
     _this.state = {
       directionsRenderer: null
-    }; // eslint-disable-next-line @getify/proper-arrows/this, @getify/proper-arrows/name
+    };
 
     _this.setDirectionsRendererCallback = function () {
       if (_this.state.directionsRenderer !== null) {
@@ -13153,7 +14217,7 @@ function (_React$PureComponent) {
       distanceMatrixService: null
     };
 
-    _this.setDistanceMatrixServiceCallbak = function () {
+    _this.setDistanceMatrixServiceCallback = function () {
       if (_this.state.distanceMatrixService !== null && _this.props.onLoad) {
         _this.props.onLoad(_this.state.distanceMatrixService);
       }
@@ -13167,14 +14231,11 @@ function (_React$PureComponent) {
   _proto.componentDidMount = function componentDidMount() {
     !!!this.props.options ?  true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, 'DistanceMatrixService expected options object as parameter, but go %s', this.props.options) : undefined : void 0;
     var distanceMatrixService = new google.maps.DistanceMatrixService();
-
-    function setDistanceMatrixService() {
+    this.setState(function setDistanceMatrixService() {
       return {
         distanceMatrixService: distanceMatrixService
       };
-    }
-
-    this.setState(setDistanceMatrixService, this.setDistanceMatrixServiceCallbak);
+    }, this.setDistanceMatrixServiceCallback);
   };
 
   _proto.componentDidUpdate = function componentDidUpdate() {
@@ -13199,7 +14260,7 @@ function (_React$PureComponent) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
 
 var eventMap$h = {
-  onPlacesChanged: "places_changed"
+  onPlacesChanged: 'places_changed'
 };
 var updaterMap$h = {
   bounds: function bounds(instance, _bounds) {
@@ -13220,7 +14281,7 @@ function (_React$PureComponent) {
     _this.containerElement = Object(react__WEBPACK_IMPORTED_MODULE_0__["createRef"])();
     _this.state = {
       searchBox: null
-    }; // eslint-disable-next-line @getify/proper-arrows/this, @getify/proper-arrows/name
+    };
 
     _this.setSearchBoxCallback = function () {
       if (_this.state.searchBox !== null && _this.props.onLoad) {
@@ -13237,11 +14298,10 @@ function (_React$PureComponent) {
     !!!google.maps.places ?  true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, 'You need to provide libraries={["places"]} prop to <LoadScript /> component %s', google.maps.places) : undefined : void 0;
 
     if (this.containerElement !== null && this.containerElement.current !== null) {
-      var input = this.containerElement.current.querySelector("input");
+      var input = this.containerElement.current.querySelector('input');
 
-      if (input) {
-        var searchBox = new google.maps.places.SearchBox( // @ts-ignore
-        input, this.props.options);
+      if (input !== null) {
+        var searchBox = new google.maps.places.SearchBox(input, this.props.options);
         this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
           updaterMap: updaterMap$h,
           eventMap: eventMap$h,
@@ -13293,7 +14353,7 @@ function (_React$PureComponent) {
 StandaloneSearchBox.contextType = MapContext;
 
 var eventMap$i = {
-  onPlaceChanged: "place_changed"
+  onPlaceChanged: 'place_changed'
 };
 var updaterMap$i = {
   bounds: function bounds(instance, _bounds) {
@@ -13325,7 +14385,7 @@ function (_React$PureComponent) {
     _this.containerElement = Object(react__WEBPACK_IMPORTED_MODULE_0__["createRef"])();
     _this.state = {
       autocomplete: null
-    }; // eslint-disable-next-line @getify/proper-arrows/this, @getify/proper-arrows/name
+    };
 
     _this.setAutocompleteCallback = function () {
       if (_this.state.autocomplete !== null && _this.props.onLoad) {
@@ -13339,10 +14399,11 @@ function (_React$PureComponent) {
   var _proto = Autocomplete.prototype;
 
   _proto.componentDidMount = function componentDidMount() {
-    !!!google.maps.places ?  true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, 'You need to provide libraries={["places"]} prop to <LoadScript /> component %s', google.maps.places) : undefined : void 0; // TODO: why is this possibly null
+    !!!google.maps.places ?  true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, 'You need to provide libraries={["places"]} prop to <LoadScript /> component %s', google.maps.places) : undefined : void 0; // TODO: why current could be equal null?
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
     // @ts-ignore
 
-    var input = this.containerElement.current.querySelector("input");
+    var input = this.containerElement.current.querySelector('input');
 
     if (input) {
       var autocomplete = new google.maps.places.Autocomplete(input, this.props.options);
@@ -13380,7 +14441,8 @@ function (_React$PureComponent) {
 
   _proto.render = function render() {
     return Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-      ref: this.containerElement
+      ref: this.containerElement,
+      className: this.props.className || ''
     }, react__WEBPACK_IMPORTED_MODULE_0__["Children"].only(this.props.children));
   };
 
@@ -13550,7 +14612,8 @@ function () {
     var img = '';
 
     if (this.closeBoxURL !== '') {
-      img = '<img';
+      img = '<img alt=""';
+      img += ' aria-hidden="true"';
       img += " src='" + this.closeBoxURL + "'";
       img += ' align=right'; // Do this because Opera chokes on style='float: right;'
 
@@ -14138,7 +15201,7 @@ function () {
 
     this.boundsChangedListener = google.maps.event.addListener( // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
     // @ts-ignore
-    this.getMap(), 'boundschanged', function boundsChabged() {
+    this.getMap(), 'boundschanged', function boundsChanged() {
       cDraggingMapByCluster = cMouseDownInCluster;
     });
     google.maps.event.addDomListener(this.div, 'mousedown', function onMouseDown() {
@@ -14323,9 +15386,9 @@ function () {
     // @ts-ignore
     var pos = this.getProjection().fromLatLngToDivPixel(latlng);
     pos.x -= this.anchorIcon[1];
-    pos.y -= this.anchorIcon[0];
-    pos.x = pos.x;
-    pos.y = pos.y;
+    pos.y -= this.anchorIcon[0]; // pos.x = pos.x
+    // pos.y = pos.y
+
     return pos;
   };
 
@@ -14442,7 +15505,6 @@ function () {
       marker.setMap(null);
     }
 
-    this.updateIcon();
     return true;
   };
 
@@ -14486,7 +15548,7 @@ function () {
   };
 
   _proto.isMarkerAlreadyAdded = function isMarkerAlreadyAdded(marker) {
-    if (this.markers.indexOf) {
+    if (this.markers.includes) {
       return this.markers.includes(marker);
     } else {
       for (var i = 0; i < this.markers.length; i++) {
@@ -14502,7 +15564,7 @@ function () {
   return Cluster;
 }();
 
-/* eslint-disable filenames/match-regex */
+/* global google */
 
 var CALCULATOR = function CALCULATOR(markers, numStyles) {
   var index = 0;
@@ -15095,6 +16157,10 @@ function () {
        */
 
       google.maps.event.trigger(this, 'clusteringend', this);
+
+      for (var _i4 = 0; _i4 < this.clusters.length; _i4++) {
+        this.clusters[_i4].updateIcon();
+      }
     }
   };
 
