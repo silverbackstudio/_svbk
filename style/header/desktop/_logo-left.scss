@@ -2,7 +2,7 @@
 
 	@media screen and (min-width: breakpoint('desktop-nav')) {
 
-		.wrap {
+		> .wrap {
 			display: flex;
 			justify-content: space-between;
 		}

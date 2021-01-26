@@ -10,7 +10,7 @@
 	box-shadow: 0 0 3px #00000033;
 	position: relative;
 	
-	.wrap {
+	> .wrap {
 		display: grid;
 		grid-column-gap: 10px;
 		grid-template-columns: auto 40px;
