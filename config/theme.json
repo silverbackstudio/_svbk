@@ -21,20 +21,22 @@
 	
 	"fonts": {
 		"main" : {
-			"_source": "'https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto:400,700&display=swap'",
+			"_source": "'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap'",
 			"_fallback": {
-				"font-family": "'Arial'",
+				"font-family": "sans-serif",
 				"letter-spacing": "0.5px",
 				"word-spacing": "-0.45px"
 			},
-			"font-family": "Roboto"
+			"font-family": "'Roboto'"
 		},
 		"headings" : {
-			"_source": "'https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto:400,700&display=swap'",
+			"_source": "'https://fonts.googleapis.com/css2?family=Lora&display=swap'",
 			"_fallback": {
-				"font-family": ["Arial", "Helvetica", "sans-serif"]
+				"font-family": "'serif'",
+				"letter-spacing": "0.5px",
+				"word-spacing": "-0.45px"
 			},
-			"font-family": "'Open Sans'"
+			"font-family": "'Lora'"
 		}
 	},
 	
@@ -72,11 +74,15 @@
 	"color_palette": {
 		"primary" : {
 			"name":"Primary",
-			"color":"#1976d2"
+			"color":"#17252a"
 		},
 		"secondary": {
 			"name":"Secondary",
-			"color":"#7edeea"
+			"color":"#2c7a76"
+		},
+		"tertiary": {
+			"name":"Secondary",
+			"color":"#3aafa8"
 		},
 		"dark-gray":{
 			"name":"Dark Gray",
@@ -84,7 +90,7 @@
 		},
 		"light-gray": {
 			"name":"Light Gray",
-			"color":"#F6F7F9"
+			"color":"#def2f1"
 		},
 		"white": {
 			"name":"White",
@@ -92,7 +98,7 @@
 		},
 		"gradient": {
 			"name":"Corporate gradient",
-			"color":"linear-gradient(to bottom, #1976d2, #11508e)"
+			"color":"linear-gradient(to bottom, #17252a, #080d0f)"
 		}		
 	}
 }

@@ -1,7 +1,7 @@
 //Corporate
-$color__corporate: #0097a7;
-$color__corporate-secondary: #ffa000;
-$color__corporate-tertiary: #1D4E89;
+$color__corporate: #17252a;
+$color__corporate-secondary: #2c7a76;
+$color__corporate-tertiary: #3aafa8;
 
 //Text
 $color__text-screen: #21759b;
@@ -19,24 +19,24 @@ $color__background-page: #fff;
 $color__background-screen: #f1f1f1;
 $color__background-header: #fff;
 $color__background-sub-menu: #f5f5f5;
-$color__background-footer: #555;
-$color__background-sub-footer: #333;
+$color__background-footer: #17252a;
+$color__background-sub-footer: #080d0f;
 
 $color__background-dark: #6b6b6b;
-$color__background-light: #F6F7F9;
+$color__background-light: #def2f1;
 $color__background-gradient: linear-gradient(to bottom, $color__corporate, darken($color__corporate, 15%));
 
 $color__background-hr: #bababa;
 $color__background-pre: #eee;
-$color__background-highlight: rgba($color__corporate, .2);
+$color__background-highlight: rgba($color__corporate-secondary, .2);
 
 //Elements borders
 $color__border-input: #ccc;
 $color__border-abbr: #666;
 
 //Button
-$color__text-button: #fff;
-$color__background-button: #ffa000;
+$color__text-button: #f5f5f5;
+$color__background-button: #3aafa8;
 $color__border-button: $color__background-button;
 $color__background-button-hover: lighten($color__background-button, 10%);
 $color__border-button-hover: $color__background-button-hover;
@@ -53,6 +53,7 @@ $color__link-visited: $color__background-button-focus;
 $colors: (
     "primary": $color__corporate,
     "secondary": $color__corporate-secondary,
+    "tertiary": $color__corporate-tertiary,
     "dark-gray": $color__background-dark,
     "light-gray": $color__background-light,
     "white": #fff
