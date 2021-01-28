@@ -10,6 +10,11 @@
 
 	a {
 		color: #fff;
+
+		&:hover,
+		&:active {
+			color: #fff;
+		}
 	}
 
 	ul {
@@ -110,6 +115,10 @@
 	background-color: $color__background-sub-footer;
 	text-align: center;
 	padding: 10px $padding__content-mobile;
+
+	ul li {
+		display: inline-block;
+	}
 
 	dl, dd, dt {
 		margin: 0;
