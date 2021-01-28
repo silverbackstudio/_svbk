@@ -7,7 +7,7 @@
           var target = $(this.hash);
           target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
           if (target.length) {
-            var headerHeight = $("#site-header-content").height();
+            var headerHeight = $("#masthead").height();
             var scrollOffset = $(target).offset().top - headerHeight - 100;
             $('html, body').animate({
                 scrollTop: scrollOffset
