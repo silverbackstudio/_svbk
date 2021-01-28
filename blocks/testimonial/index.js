@@ -163,16 +163,17 @@ export const settings = {
 		const textClass = getColorClassName( 'color', textColor );
 
 		const classNames = classnames( {
+			'has-avatar': avatarUrl,
 			'has-text-color': textColor || customTextColor,
 			'has-background': backgroundColor || customBackgroundColor,			
 			[ textClass ]: textClass,
-			[ backgroundClass ]: backgroundClass,			
+			[ backgroundClass ]: backgroundClass,		
 		} );		
 		
 		const style = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			color: textClass ? undefined : customTextColor,
-		};			
+		};
 		
 		return (
 			<div className={ classNames } style={ style } >

@@ -39,11 +39,7 @@ export const settings = {
 	    {
 	        name: 'grid',
 	        label: __( 'Grid', '_svbk' )
-	    },
-	    {
-	        name: 'masonry',
-	        label: __( 'Masonry', '_svbk' )
-	    },	    
+	    }   
 	],
 
 	attributes: {

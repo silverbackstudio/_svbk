@@ -8550,6 +8550,7 @@ var settings = {
     var backgroundClass = getColorClassName('background-color', backgroundColor);
     var textClass = getColorClassName('color', textColor);
     var classNames = classnames__WEBPACK_IMPORTED_MODULE_2___default()((_classnames = {
+      'has-avatar': avatarUrl,
       'has-text-color': textColor || customTextColor,
       'has-background': backgroundColor || customBackgroundColor
     }, _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_classnames, textClass, textClass), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_classnames, backgroundClass, backgroundClass), _classnames));
@@ -8649,9 +8650,6 @@ var settings = {
   }, {
     name: 'grid',
     label: __('Grid', '_svbk')
-  }, {
-    name: 'masonry',
-    label: __('Masonry', '_svbk')
   }],
   attributes: {
     align: {
