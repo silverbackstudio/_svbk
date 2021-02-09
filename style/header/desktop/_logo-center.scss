@@ -1,6 +1,6 @@
 #masthead {
 
-	@media screen and (min-width: breakpoint('desktop-nav')) {
+	@media screen and (min-width: $breakpoint__desktop-nav) {
 		text-align: center;
 
 		> .wrap {

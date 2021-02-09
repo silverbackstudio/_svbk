@@ -43,7 +43,7 @@
 		margin: 0;
 	}
 
-	@media screen and (min-width: breakpoint('desktop-nav')) {
+	@media screen and (min-width: $breakpoint__desktop-nav) {
 
 		.site-title {
 			@include font-size(1.2);

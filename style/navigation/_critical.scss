@@ -26,7 +26,7 @@
 		right: -300px;
 	}
 
-	@media screen and (min-width: breakpoint('desktop-nav')) {
+	@media screen and (min-width: $breakpoint__desktop-nav) {
 		padding: 0;
 		box-shadow: none;
 		position: static;
@@ -68,7 +68,7 @@
 		@include icon-content("\e908");
 	}
 
-	@media screen and (min-width: breakpoint('desktop-nav')) {
+	@media screen and (min-width: $breakpoint__desktop-nav) {
 			display: none;
 	}
 }

@@ -25,7 +25,7 @@
 			right: 300px;
 		}
 
-		@media screen and (min-width: breakpoint('desktop-nav')) {
+		@media screen and (min-width: $breakpoint__desktop-nav) {
 			right: 0;
 		}
 	}
@@ -34,7 +34,7 @@
 		top: $size__header-height-mobile;
 	}
 
-	@media screen and (min-width: breakpoint('desktop-nav')) {
+	@media screen and (min-width: $breakpoint__desktop-nav) {
 
 		#main-navigation li.cta-item {
 			animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;

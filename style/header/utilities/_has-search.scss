@@ -1,7 +1,7 @@
 .site-header #main-navigation {
     padding-top: 0;
 
-    @media screen and (min-width: breakpoint('desktop-nav')) {
+    @media screen and (min-width: $breakpoint__desktop-nav) {
         padding-right: 60px;
     }
 }
@@ -28,7 +28,7 @@
 			color: $color__text-main;
         }
         
-        @media screen and (min-width: breakpoint('desktop-nav')) {
+        @media screen and (min-width: $breakpoint__desktop-nav) {
             display: block;
             position: absolute;
             right: 0;
@@ -46,7 +46,7 @@
         margin: 0 -20px 10px;
         background-color: $color__background-light;
     
-        @media screen and (min-width: breakpoint('desktop-nav')) {
+        @media screen and (min-width: $breakpoint__desktop-nav) {
             display: none;
             border-radius: 3px;
             box-shadow: 1px 3px 4px rgba(0,0,0,.3);
@@ -73,7 +73,7 @@
 .search__overlay {
     display: none;
 
-    @media screen and (min-width: breakpoint('desktop-nav')) {
+    @media screen and (min-width: $breakpoint__desktop-nav) {
         background: rgba(0,0,0, .8);
         position: fixed;
         top: 0;
