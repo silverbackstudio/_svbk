@@ -386,9 +386,9 @@
 .wp-block-svbk-testimonial__header {
     position: relative;
     margin-bottom: 15px;
-    min-height: 70px;
 
     .has-avatar & {
+        min-height: 70px;
         padding-left: 90px;
     }
 }
