@@ -1,6 +1,10 @@
 .wp-block-group {
     padding-top: 30px;
     padding-bottom: 30px;
+
+    &__inner-container > h1, h2 {
+        margin-top: 0;
+    }
     
     .page__content > & {
 

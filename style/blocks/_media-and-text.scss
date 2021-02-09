@@ -4,6 +4,11 @@
 	padding-top: 30px;
 	padding-bottom: 30px;
 
+    .wp-block-group.has-background & {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
 	.wp-block-media-text__content {
 		padding: 0;
 
@@ -11,6 +16,13 @@
 			@include clearfix();
 			@include clearfix-after();
 		}
+
+        @media screen and (min-width: breakpoint('tablet-portrait')) {
+            
+            > h1, > h2 {
+                margin-top: 0;
+            }
+        }
 	}
 
 	@media screen and (max-width: breakpoint('tablet-portrait')) {
