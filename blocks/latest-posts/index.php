@@ -74,7 +74,7 @@ function _svbk_render_block_core_latest_posts( $attributes ) {
 
 	$block_content = sprintf(
 		'<div class="%1$s">%2$s</div>',
-		esc_attr( join( $classes, ' ' ) ),
+		esc_attr( join( ' ', $classes ) ),
 		$items_markup
 	);
 
