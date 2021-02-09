@@ -43,7 +43,12 @@ big {
 p.is-style-standout {
 	@include font-size(1.1);
 	border-left: 3px solid $color__corporate;
+	border-color: $color__corporate;
 	padding-left: 15px;
+
+	&.has-text-color {
+		border-color: inherit;
+	}
 }
 
 p.has-drop-cap:not(:focus):first-letter {
