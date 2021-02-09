@@ -8,7 +8,12 @@ ul, ol {
 
 		&:before {
 			line-height: 1em;
-			color: $color__corporate-secondary;
+			color: $color__corporate;
+
+            .has-gradient-background-color &,
+            .has-primary-background-color & {
+                color: inherit; 
+            }
 		}
 	}
 }
