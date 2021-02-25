@@ -8,8 +8,8 @@
   "main": "index.php",
   "scripts": {
     "sass": "sass --watch ./sass:./",
-    "blocks": "wp-scripts start blocks/blocks.js --output-path=dist/js",
-    "blocks:build": "wp-scripts build blocks/blocks.js --output-path=dist/js",
+    "blocks": "wp-scripts start blocks/blocks.js --output-path=dist/blocks",
+    "blocks:build": "wp-scripts build blocks/blocks.js --output-path=dist/blocks",
     "wp-env": "wp-env",
     "wp": "wp-env run cli wp"
   },
