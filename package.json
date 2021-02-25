@@ -14,30 +14,30 @@
     "wp": "wp-env run cli wp"
   },
   "devDependencies": {
-    "@wordpress/env": "^1.6.0",
-    "@wordpress/scripts": "^5.0.1",
-    "autoprefixer": "^6.7.0",
+    "@wordpress/env": "^3.0.2",
+    "@wordpress/scripts": "^13.0.3",
+    "autoprefixer": "^9.0.0",
     "classnames": "^2.2.6",
-    "del": "^3.0.0",
+    "del": "^6.0.0",
     "gulp": "^4.0.2",
-    "gulp-csso": "^2.0.0",
+    "gulp-csso": "^4.0.1",
     "gulp-minify": "^3.1.0",
-    "gulp-postcss": "^6.2.0",
-    "gulp-rename": "^1.4.0",
+    "gulp-postcss": "^9.0.0",
+    "gulp-rename": "^2.0.0",
     "gulp-replace": "^1.0.0",
-    "gulp-responsive": "^2.14.0",
+    "gulp-responsive": "^3.0.1",
     "gulp-sass": "^4.1.0",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-svgmin": "^2.2.0",
-    "lodash": "^4.17.20",
-    "node-sass": "^4.14.1",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-svgmin": "^3.0.0",
+    "lodash": "^4.17.21",
+    "node-sass": "^5.0.0",
     "node-sass-json-importer": "^4.3.0",
     "postcss-object-fit-images": "^1.1.2",
     "readline-sync": "^1.4.10"
   },
   "dependencies": {
-    "@react-google-maps/api": "^1.13.0",
-    "fg-loadcss": "^2.1.0",
-    "sharp": "^0.23.4"
+    "@react-google-maps/api": "^2.1.1",
+    "fg-loadcss": "^3.1.0",
+    "sharp": "^0.27.2"
   }
 }
