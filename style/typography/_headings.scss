@@ -28,19 +28,18 @@ h6 {
 	@include font-size(1);
 }
 
-.is-style-pretitle,
-.is-style-subtitle {
+[class*="pretitle"],
+[class*="subtitle"] {
 	margin-top: 0;
 	margin-bottom: 20px;
 	line-height: 1.2;
 }
 
-.is-style-pretitle {
+[class*="pretitle"] {
 	@include font-size(1.1);
 }
 
-.is-style-subtitle,
-.wp-block-svbk-warranty__subtitle {
+[class*="subtitle"] {
 	@include font-size(1.2);
 	font-weight: bold;
 

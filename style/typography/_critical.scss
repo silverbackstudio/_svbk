@@ -27,8 +27,8 @@ p {
 }
 
 h1, h2, h3, h4, h5, h6,
-.is-style-subtitle,
-.is-style-pretitle {
+[class*="pretitle"],
+[class*="subtitle"] {
 	clear: both;
 	@include font( 'headings' );
 	line-height: 1.2em;
